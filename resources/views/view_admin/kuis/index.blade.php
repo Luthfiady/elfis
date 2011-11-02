@@ -106,7 +106,7 @@ Kuis
 					<tr>
 						<td class="kolom-tengah">4</td>
 						<td>Adobe Photoshop</td>
-						<td>Desain</td>
+						<td>Desain Web</td>
 						<td class="kolom-kanan">16/05/2015</td>
 						<td class="kolom-kanan">22/05/2015</td>
 						<td class="kolom-kanan">00:50:00</td>

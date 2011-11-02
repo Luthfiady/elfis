@@ -12,7 +12,7 @@
         <form id="add_form" class="form form-horizontal" role="form">
 
           <div class="form-group">
-            <label class="col-sm-2 label-right">Isi Komentar</label>
+            <label class="col-sm-2">Isi Komentar</label>
             <div class="col-sm-10">
               <textarea class="form-control" rows="10" required></textarea>
             </div>
@@ -22,8 +22,8 @@
 
       <div class="modal-footer">
 	      <div class="form-group">
-	        <button type="submit" id="submit_add_form" class="btn btn-primary btn-sm" value="save" data-dismiss="modal">Save</button>
-	        <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+          <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+          <button type="submit" id="submit_add_form" class="btn btn-primary btn-sm" value="save">Simpan</button>
 	      </div>
 
         </form>

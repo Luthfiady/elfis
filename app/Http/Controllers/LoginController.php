@@ -66,7 +66,7 @@ class LoginController extends Controller {
 				$group_name = $value_group->nama_group;
 			}
 			
-			return redirect($group_name);
+			return redirect($group_name)->with('username', $user);
 			// session(['id_user' => $status[]]);
 			// echo $user;
 
