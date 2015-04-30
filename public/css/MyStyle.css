@@ -1,0 +1,58 @@
+/*Font Style*/
+
+h2.header {font-family: sans-serif; color: gray; font-weight: bold;}
+h3.legend {font-family: sans-serif; font-weight: bold;}
+
+p.footer {font-family: sans-serif; font-size: 9pt; color: gray; margin-top: 7px;}
+
+
+/*Template View*/
+
+.Row-Header-Login {
+	height: 125px;
+	padding-top: 10px;
+}
+
+.Row-Body-Login {
+	height: 400px;
+
+}
+
+.Row-Footer {
+	border-top: solid 1px lightgray;
+	text-align: center;
+}
+
+.Row-Main-Header {
+	/*background-image: url(../img/background/fabric.png);*/
+	height: 80px;
+	margin-top: 10px;
+}
+
+.Row-Main-Body {
+	margin-top: 20px;
+	height: 600px;
+}
+
+
+/*Slider View*/
+
+.contain-slider {
+    max-height: 100%;
+    margin-top: 15px;
+}
+
+
+/*Form Style*/
+
+.show-pass {
+	margin-top: -5px;
+	color: #818181;
+	text-align: right;
+	padding-right: 15px;
+}
+
+label {
+	font-size: 12pt;
+	margin-top: 3px;
+}
