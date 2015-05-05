@@ -65,7 +65,7 @@ class LoginController extends Controller {
 			foreach ($status_group as $keys => $value_group) {
 				$group_name = $value_group->nama_group;
 			}
-
+			
 			return redirect($group_name);
 			// session(['id_user' => $status[]]);
 			// echo $user;

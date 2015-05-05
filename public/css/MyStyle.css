@@ -1,12 +1,18 @@
-/*Font Style*/
+/*--------------------------------------Font Style--------------------------------------*/
 
 h2.header {font-family: sans-serif; color: gray; font-weight: bold;}
 h3.legend {font-family: sans-serif; font-weight: bold;}
 
-p.footer {font-family: sans-serif; font-size: 9pt; color: gray; margin-top: 7px;}
+p.footer {font-family: sans-serif; font-size: 9pt; color: gray; margin-top: 12px;}
 
 
-/*Template View*/
+
+/*--------------------------------------Template View--------------------------------------*/
+
+.container-fluid {
+	background-image: url(../img/background/light_wool.png);
+	/*background-color: #ffffff;*/
+}
 
 .Row-Header-Login {
 	height: 125px;
@@ -15,35 +21,217 @@ p.footer {font-family: sans-serif; font-size: 9pt; color: gray; margin-top: 7px;
 
 .Row-Body-Login {
 	height: 400px;
-
 }
 
 .Row-Footer {
 	border-top: solid 1px lightgray;
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 .Row-Main-Header {
-	/*background-image: url(../img/background/fabric.png);*/
-	height: 80px;
+	/*background-image: url(../img/background/fabric.png);
+	height: 80px; */
 	margin-top: 10px;
 }
 
 .Row-Main-Body {
-	margin-top: 20px;
-	height: 600px;
+	max-height: 100%;
+	max-width: 80%;
+	text-align: left;
+	padding-top: 50px;
+}
+
+.Row-space {
+	height: 70px;
 }
 
 
-/*Slider View*/
+
+/*--------------------------------------Breadcrumbs--------------------------------------*/
+
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: -10px;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 4px;
+}
+.breadcrumb > li {
+  display: inline-block;
+  font-size: 12.5pt;
+}
+.breadcrumb li a {
+	color: #127EA4;
+}
+.breadcrumb li a:hover, a:focus {
+	color: #FEE212;
+  	text-decoration: none;
+}
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+.breadcrumb > .active {
+  color: #777;
+}
+
+
+/*--------------------------------------Thumbnail--------------------------------------*/
+
+.core-box {
+	display: inline-block;
+}
+
+.core-box .heading {
+	margin-bottom: 15px;
+	color: #127EA4;
+}
+
+.core-box .heading .circle-icon {
+	float: left;
+}
+
+.core-box .heading h3 {
+	line-height: 15px !important;
+	margin: 0;
+	padding-left: 30px;
+	font-weight: normal;
+	color: #127EA4;
+	font-size: 16pt;
+}
+.core-box .content {
+	color: #747474 !important;
+	line-height: 20px;
+	margin-bottom: 10px;
+}
+.core-box .view-more {
+	color: #127EA4;
+}
+.core-box .view-more i {
+	display: inline-block;
+}
+.core-box .view-more:hover {
+	text-decoration: none;
+	color: #073242;
+}
+
+
+/*--------------------------------------Navbar--------------------------------------*/
+
+.my-navbar {
+  background-color: #127EA4;
+  border-color: #e7e7e7;
+}
+.my-navbar .navbar-brand {
+  color: #fff;
+  font-size: 16pt;
+}
+.my-navbar .navbar-brand:hover,
+.my-navbar .navbar-brand:focus {
+  color: #FEE212;
+  background-color: transparent;
+}
+.my-navbar .navbar-text {
+  color: #fff;
+}
+.my-navbar .navbar-nav > li > a {
+  color: #fff;
+}
+.my-navbar .navbar-nav > li > a:hover,
+.my-navbar .navbar-nav > li > a:focus {
+  color: #FEE212;
+  background-color: transparent;
+}
+.my-navbar .navbar-nav > .active > a,
+.my-navbar .navbar-nav > .active > a:hover,
+.my-navbar .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+.my-navbar .navbar-nav > .disabled > a,
+.my-navbar .navbar-nav > .disabled > a:hover,
+.my-navbar .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.my-navbar .navbar-toggle {
+  border-color: #ddd;
+}
+.my-navbar .navbar-toggle:hover,
+.my-navbar .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.my-navbar .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.my-navbar .navbar-collapse,
+.my-navbar .navbar-form {
+  border-color: #e7e7e7;
+}
+.my-navbar .navbar-nav > .open > a,
+.my-navbar .navbar-nav > .open > a:hover,
+.my-navbar .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #59A5BF;
+}
+@media (max-width: 767px) {
+  .my-navbar .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .my-navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+  .my-navbar .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  .my-navbar .navbar-nav .open .dropdown-menu > .active > a,
+  .my-navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .my-navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  .my-navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+  .my-navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .my-navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+.my-navbar .navbar-link {
+  color: #777;
+}
+.my-navbar .navbar-link:hover {
+  color: #333;
+}
+.my-navbar .btn-link {
+  color: #777;
+}
+.my-navbar .btn-link:hover,
+.my-navbar .btn-link:focus {
+  color: #333;
+}
+.my-navbar .btn-link[disabled]:hover,
+fieldset[disabled] .my-navbar .btn-link:hover,
+.my-navbar .btn-link[disabled]:focus,
+fieldset[disabled] .my-navbar .btn-link:focus {
+  color: #ccc;
+}
+
+
+/*--------------------------------------Slider View--------------------------------------*/
 
 .contain-slider {
     max-height: 100%;
     margin-top: 15px;
 }
 
+.row-dashboard-slider {
+	max-height: 100%;
+}
 
-/*Form Style*/
+
+/*--------------------------------------Form Style--------------------------------------*/
 
 .show-pass {
 	margin-top: -5px;
@@ -56,3 +244,10 @@ label {
 	font-size: 12pt;
 	margin-top: 3px;
 }
+
+
+/*--------------------------------------Dashboard Admin--------------------------------------*/
+
+/*--------------------------------------Dashboard Guru--------------------------------------*/
+
+/*--------------------------------------Dashboard Siswa--------------------------------------*/

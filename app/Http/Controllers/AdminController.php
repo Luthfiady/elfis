@@ -13,20 +13,21 @@ class AdminController extends Controller {
 
 	public function index() {
 		if(session('id_group') == 3) {
-			echo 'admin';
+			return view('view_admin/dashboard');
 		}
 		else {
 			return redirect('login');
 		}
 	}
 
-	public function user_data() {
-		if(session('id_group') == 3) {
-			return DB::table('user')->get();
-		}
-		else {
-			return redirect('login');
-		}
-	}
+	// public function user_data() {
+	// 	if(session('id_group') == 3) {
+	// 		return DB::table('user')->get();
+	// 	}
+	// 	else {
+	// 		return redirect('login');
+	// 	}
+	// }
+
 
 }
