@@ -21,38 +21,33 @@
                 <a href=""> </a>
             </li>
             <li class=''>
-                <a href="">
+                <a href="{{ URL::to('siswa/') }}">
                     Dashboard
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('siswa/materi') }}">
                     Materi   
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('siswa/tugas') }}">
                     Tugas
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('siswa/kuis') }}">
                     Kuis
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('siswa/ujian') }}">
                     Ujian
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('siswa/forum') }}">
                     Forum
-                </a>
-            </li>
-            <li class="">
-                <a href="">
-                    Nilai
                 </a>
             </li>
         </ul>
@@ -65,15 +60,22 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="">
-                            <i class="clip-user-2"></i>
+                        <a href="{{ URL::to('siswa/profile') }}">
+                            <i class="glyphicon glyphicon-user"></i>
                             &nbsp;My Profile
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
+                        <a href="{{ URL::to('siswa/change_password') }}">
+                            <i class="glyphicon glyphicon-wrench"></i>
+                            &nbsp;Change Password
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
                         <a href="{{ URL::to('do_logout') }}">
-                            <i class="clip-exit"></i>
+                            <i class="glyphicon glyphicon-log-out"></i>
                             &nbsp;Log Out
                         </a>
                     </li>

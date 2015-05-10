@@ -1,7 +1,7 @@
 @extends('templates/guru_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/nivo-slider.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('/themes/default/default.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nivo-slider.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/themes/default/default.css') }}">
 
 @section('bread_guru')
 Dashboard
@@ -14,11 +14,9 @@ Dashboard
     <div class="row row-dashboard-slider">
         <div class="col-md-12 contain-slider slider-wrapper theme-default">
 			<div id="slider" class="nivoSlider">
-				<img src="{{ asset('/img/slider/1.jpg') }}">
-				<img src="{{ asset('/img/slider/2.jpg') }}">
-				<img src="{{ asset('/img/slider/3.jpg') }}">
-				<img src="{{ asset('/img/slider/4.jpg') }}">
-				<img src="{{ asset('/img/slider/5.jpg') }}">
+				<img src="{{ asset('public/img/slider/1.png') }}">
+                <img src="{{ asset('public/img/slider/2.png') }}">
+                <img src="{{ asset('public/img/slider/3.png') }}">
             </div>
 		</div>
     </div>

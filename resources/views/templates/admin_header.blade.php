@@ -21,37 +21,37 @@
                 <a href=""> </a>
             </li>
             <li class=''>
-                <a href="">
+                <a href="{{ URL::to('admin/') }}">
                     Dashboard
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('admin/materi') }}">
                     Materi   
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('admin/tugas') }}">
                     Tugas
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('admin/kuis') }}">
                     Kuis
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('admin/ujian') }}">
                     Ujian
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('admin/forum') }}">
                     Forum
                 </a>
             </li>
             <li class="">
-                <a href="">
+                <a href="{{ URL::to('admin/nilai') }}">
                     Nilai
                 </a>
             </li>
@@ -62,12 +62,12 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="">
-                        <a href="">
+                        <a href="{{ URL::to('admin/setting_user') }}">
                             User Management
                         </a>
                     </li>
                     <li class="">
-                        <a href="">
+                        <a href="{{ URL::to('admin/setting_grup') }}">
                             Group Management
                         </a>
                     </li>
@@ -83,15 +83,29 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="">
-                            <i class="clip-user-2"></i>
+                        <a href="{{ URL::to('admin/profile') }}">
+                            <i class="glyphicon glyphicon-user"></i>
                             &nbsp;My Profile
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
+                        <a href="{{ URL::to('admin/change_password') }}">
+                            <i class="glyphicon glyphicon-wrench"></i>
+                            &nbsp;Change Password
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{ URL::to('admin/reset_password') }}">
+                            <i class="glyphicon glyphicon-erase"></i>
+                            &nbsp;Reset Password
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
                         <a href="{{ URL::to('do_logout') }}">
-                            <i class="clip-exit"></i>
+                            <i class="glyphicon glyphicon-log-out"></i>
                             &nbsp;Log Out
                         </a>
                     </li>

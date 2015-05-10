@@ -12,11 +12,11 @@
 	<title>E-Learning SMKN 56 Jakarta</title>
 
 	<!-- css style -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/MyStyle.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/nivo-slider.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/themes/default/default.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-theme.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/MyStyle.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nivo-slider.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/themes/default/default.css') }}">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -28,7 +28,7 @@
 		
 		<div class="row Row-Header-Login">
 			<div class="col-md-12">
-				<img src="{{ asset('/img/logo/logo.jpg') }}" alt="SMKN 56 Jakarta" height="80px">
+				<img src="{{ asset('public/img/logo/logo.jpg') }}" alt="SMKN 56 Jakarta" height="80px">
 
 
 				<!-- <h2 class="header"> SMK Negeri 53 Jakarta </h2> -->
@@ -39,15 +39,13 @@
 		<div class="row Row-Body-Login">
 			<div class="col-md-9 contain-slider slider-wrapper theme-default">
 				<div id="slider" class="nivoSlider">
-					<img src="{{ asset('/img/slider/1.jpg') }}">
-					<img src="{{ asset('/img/slider/2.jpg') }}">
-					<img src="{{ asset('/img/slider/3.jpg') }}">
-					<img src="{{ asset('/img/slider/4.jpg') }}">
-					<img src="{{ asset('/img/slider/5.jpg') }}">
+					<img src="{{ asset('public/img/slider/1.png') }}">
+					<img src="{{ asset('public/img/slider/2.png') }}">
+					<img src="{{ asset('public/img/slider/3.png') }}">
                 </div>
 			</div> 
 
-			<div class="col-md-3">
+			<div class="col-md-3" style="margin-top:15px;">
 				<form class="form-horizontal" role="form" method="post" action="{{ URL::to('do_login') }}" name="myform">
 				<fieldset>
 					<legend> <h3 class="legend"> Login </h3> </legend>
@@ -90,11 +88,11 @@
 	</div> <!-- Tutup div container -->
 
 	<!-- Scripts -->
-	<script src="{{ asset('/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('/js/jquery-1.11.2.min.js') }}"></script>
-	<script src="{{ asset('/js/jquery.nivo.slider.js') }}"></script>
-	<script src="{{ asset('/js/login.js') }}"></script>
+	<script src="{{ asset('public/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('public/js/jquery-1.11.2.min.js') }}"></script>
+	<script src="{{ asset('public/js/jquery.nivo.slider.js') }}"></script>
+	<script src="{{ asset('public/js/login.js') }}"></script>
 	
 	<script>
         $(window).load(function() {
