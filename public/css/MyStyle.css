@@ -3,8 +3,11 @@
 h2.header {font-family: sans-serif; color: gray; font-weight: bold;}
 h3.legend {font-family: sans-serif; font-weight: bold;}
 h4 {font-family: cursive; font-size: 11pt; font-weight: bold;}
+h4.judul-soal {font-family: sans-serif; font-size: 14pt; font-weight: bold;}
 
 p.footer {font-family: sans-serif; font-size: 9pt; color: gray; margin-top: 12px;}
+p.durasi {font-family: sans-serif; font-size: 12pt; font-weight: bold; text-align: right;}
+
 a.btn {font-family: sans-serif; font-size: 9pt;}
 
 
@@ -47,7 +50,6 @@ body {
 .Row-space {
 	height: 50px;
 }
-
 
 
 /*--------------------------------------Breadcrumbs--------------------------------------*/
@@ -303,7 +305,7 @@ input[readonly] {
 
 /*--------------------------------------table--------------------------------------*/
 
-thead th {
+thead.index th {
   background-color: #127EA4;
   text-align: center;
   color: white;
@@ -311,4 +313,29 @@ thead th {
 
 
 
-/*--------------------------------------Dashboard Siswa--------------------------------------*/
+/*--------------------------------------KUIS--------------------------------------*/
+
+.row-judul {
+  margin-bottom: 25px;
+}
+
+table.table-soal th, tr, td{
+  border-style: none !important;
+}
+
+thead.thead-soal th {
+  text-align: justify;
+  font-family: verdana;
+  font-weight: normal;
+  font-size: 11pt;
+  vertical-align: text-top;
+}
+
+tbody.tbody-jawaban tr {
+  margin-top: -20px;
+}
+
+.radio label {
+  font-family: verdana;
+  font-size: 11pt;
+}

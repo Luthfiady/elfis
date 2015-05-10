@@ -43,7 +43,7 @@ class LoginController extends Controller {
 
 		$id_user = trim(Input::get('id_user'));
 		$password = trim(Input::get('password'));
-
+		
 		$status = DB::table('user')->where('id_user', '=', $id_user)->where('password', '=', $password)->get(['id_group', 'username', 'id_user']);
 
 		if(!empty($status)) {

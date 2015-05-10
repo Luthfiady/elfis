@@ -45,13 +45,13 @@ Nilai
 		<div class="col-md-12">
 			
 			<table class="table table-hover table-bordered table-striped table-responsive">
-				<thead>
+				<thead class="index">
 					<th>A</th>
 					<th>B</th>
 					<th>C</th>
 				</thead>
 
-				<tbody>
+				<tbody class="index">
 					<tr>
 						<td>1</td>
 						<td>2</td>

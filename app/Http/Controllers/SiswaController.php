@@ -11,6 +11,8 @@ class SiswaController extends Controller {
 
 	public $status = false;
 
+// -------------------------------------------------------- INDEX --------------------------------------------------------
+
 	public function index() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/dashboard');
@@ -21,6 +23,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- MATERI --------------------------------------------------------
+	
 	public function materi() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/materi/index');
@@ -31,6 +35,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- TUGAS --------------------------------------------------------
+	
 	public function tugas() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/tugas/index');
@@ -41,6 +47,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- KUIS --------------------------------------------------------
+
 	public function kuis() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/kuis/index');
@@ -50,6 +58,26 @@ class SiswaController extends Controller {
 		}
 	}
 
+	public function kuis_soal() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/kuis/soal');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
+	public function kuis_nilai() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/kuis/nilai');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
+
+// -------------------------------------------------------- UJIAN --------------------------------------------------------
 
 	public function ujian() {
 		if(session('id_group') == 1) {
@@ -61,6 +89,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- FORUM --------------------------------------------------------
+	
 	public function forum() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/forum/index');
@@ -71,6 +101,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- NILAI --------------------------------------------------------
+	
 	public function nilai() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/nilai/index');
@@ -81,6 +113,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- PROFILE --------------------------------------------------------
+	
 	public function profile() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/setting/profile');
@@ -91,6 +125,8 @@ class SiswaController extends Controller {
 	}
 
 
+// -------------------------------------------------------- CHANGE PASSWORD --------------------------------------------------------
+	
 	public function change_password() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/setting/change_pass');
