@@ -48,6 +48,7 @@
 				<div class="row">
 					<ol class="breadcrumb">
 					  <li><a href="{{ URL::to('siswa/') }}">Siswa</a></li>
+					  @yield('add_bread_guru')
 					  <li class="active">@yield('bread_siswa')</li>
 					</ol>
 				</div>

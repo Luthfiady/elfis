@@ -1,0 +1,31 @@
+/*--------------------------------------KUIS--------------------------------------*/
+
+h4.judul-soal {font-family: sans-serif; font-size: 14pt; font-weight: bold;}
+
+p.durasi {font-family: sans-serif; font-size: 12pt; font-weight: bold; text-align: right;}
+
+
+.row-judul {
+  margin-bottom: 25px;
+}
+
+table.table-soal th, tr, td{
+  border-style: none !important;
+}
+
+thead.thead-soal th {
+  text-align: justify;
+  font-family: verdana;
+  font-weight: normal;
+  font-size: 11pt;
+  vertical-align: text-top;
+}
+
+tbody.tbody-jawaban tr {
+  margin-top: -20px;
+}
+
+.radio label {
+  font-family: verdana;
+  font-size: 11pt;
+}
