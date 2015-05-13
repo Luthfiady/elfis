@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -19,7 +19,7 @@ class AdminController extends Controller {
 			return redirect('login');
 		}
 	}
- 
+
 
 	public function materi() {
 		if(session('id_group') == 3) {
@@ -138,6 +138,10 @@ class AdminController extends Controller {
 		else {
 			return redirect('login');
 		}
+	}
+
+	public function test_commit() {
+		echo 'test komit nih';
 	}
 
 	// public function user_data() {
