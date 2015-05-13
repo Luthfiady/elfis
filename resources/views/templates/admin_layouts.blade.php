@@ -48,6 +48,7 @@
 				<div class="row">
 					<ol class="breadcrumb">
 					  <li><a href="{{ URL::to('admin/') }}">Admin</a></li>
+					  @yield('add_bread_admin')
 					  <li class="active">@yield('bread_admin')</li>
 					</ol>
 				</div>

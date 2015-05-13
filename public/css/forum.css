@@ -1,0 +1,32 @@
+h3.header-pembuat {font-style: arial; font-size: 16pt;}
+
+h4.sub-header-buat {font-style: arial; font-size: 12pt; font-weight: normal;}
+
+
+.form-right {
+	float: right
+}
+
+.form-group-khusus {
+	padding-bottom: -10px;
+}
+
+
+.header-right {
+	text-align: right;
+}
+
+.row-isi-forum {
+	margin-top: 20px;
+}
+
+table.isi-forum tr td {
+	border-style: solid 2px black;
+	background-color: lightgray;
+	height: 250px;
+}
+
+table.header-komentar {
+	margin-top: 10px;
+	background-color: lightgray;
+}

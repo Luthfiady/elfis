@@ -30,6 +30,7 @@ Route::get('admin/tugas', 'AdminController@tugas');
 Route::get('admin/kuis', 'AdminController@kuis');
 Route::get('admin/ujian', 'AdminController@ujian');
 Route::get('admin/forum', 'AdminController@forum');
+Route::get('admin/forum_isi', 'AdminController@forum_isi');
 Route::get('admin/nilai', 'AdminController@nilai');
 Route::get('admin/setting_user', 'AdminController@setting_user');
 Route::get('admin/setting_grup', 'AdminController@setting_grup');

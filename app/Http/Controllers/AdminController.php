@@ -71,6 +71,16 @@ class AdminController extends Controller {
 	}
 
 
+	public function forum_isi() {
+		if(session('id_group') == 3) {
+			return view('view_admin/forum/forum');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
+
 	public function nilai() {
 		if(session('id_group') == 3) {
 			return view('view_admin/nilai/index');
