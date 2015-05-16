@@ -290,7 +290,7 @@ input[readonly] {
 }
 
 .row-table-data {
-  padding-top: 20px;
+  padding-top: 10px;
   height: 450px;
 }
 
@@ -309,3 +309,10 @@ thead.index th {
   color: white;
 }
 
+tbody.index td {
+  font-size: 10pt;
+}
+
+td.kolom-tengah {
+  text-align: center;
+}

@@ -1,6 +1,18 @@
-h3.header-pembuat {font-style: arial; font-size: 16pt;}
+h3.header-judul {font-family: sans-serif; font-size: 16pt; font-weight: bold;}
+h3.header-modal {font-family: sans-serif; font-size: 12pt; font-weight: bold;}
 
-h4.sub-header-buat {font-style: arial; font-size: 12pt; font-weight: normal;}
+p.header-pembuat {font-family: sans-serif; font-size: 12pt}
+p.sub-header-buat {font-family: sans-serif; font-size: 10pt; font-weight: normal;}
+p.info-komentar {font-family: sans-serif; font-size: 12pt; margin-top: 5px;}
+
+a.rating, a.rating:visited {
+	text-decoration: none;
+	color: white;
+}
+a.rating:hover, a.rating:active, a.rating:link {
+	text-decoration: none;
+	color: #c5f5f7;
+}
 
 
 .form-right {
@@ -17,16 +29,43 @@ h4.sub-header-buat {font-style: arial; font-size: 12pt; font-weight: normal;}
 }
 
 .row-isi-forum {
-	margin-top: 20px;
-}
-
-table.isi-forum tr td {
-	border-style: solid 2px black;
-	background-color: lightgray;
-	height: 250px;
-}
-
-table.header-komentar {
 	margin-top: 10px;
-	background-color: lightgray;
+}
+
+
+/* ----------------------------------------- Tabel -----------------------------------------*/
+
+tr.forum-kepala {
+	background-color: #006699;
+	color: white;
+}
+
+tr.forum-komentar {
+	background-color: #f57900;
+	color: white;
+	margin-top: 15px !important;
+}
+
+tr.forum td {
+	background-color: #e9edf3;
+	padding-right: 15px !important;
+	padding-left: 15px !important;
+	padding-bottom: 20px !important;
+	text-align: justify;
+}
+
+table.table-komentar-forum {
+	margin-top: 10px;
+}
+
+
+/*----------------------------------------- Modal -----------------------------------------*/
+
+.modal-width-index {
+	
+	max-width: 100%;
+}
+
+.label-right {
+	text-align: right;
 }

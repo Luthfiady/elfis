@@ -11,6 +11,8 @@ class GuruController extends Controller {
 
 	public $status = false;
 
+// -------------------------------------------------------- INDEX --------------------------------------------------------
+
 	public function index() {
 		if(session('id_group') == 2) {
 			return view('view_guru/dashboard');
@@ -20,6 +22,8 @@ class GuruController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- MATERI --------------------------------------------------------
 	
 	public function materi() {
 		if(session('id_group') == 2) {
@@ -31,6 +35,8 @@ class GuruController extends Controller {
 	}
 
 
+// -------------------------------------------------------- TUGAS --------------------------------------------------------
+
 	public function tugas() {
 		if(session('id_group') == 2) {
 			return view('view_guru/tugas/index');
@@ -40,6 +46,8 @@ class GuruController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- KUIS --------------------------------------------------------
 
 	public function kuis() {
 		if(session('id_group') == 2) {
@@ -51,6 +59,8 @@ class GuruController extends Controller {
 	}
 
 
+// -------------------------------------------------------- UJIAN --------------------------------------------------------
+
 	public function ujian() {
 		if(session('id_group') == 2) {
 			return view('view_guru/ujian/index');
@@ -60,6 +70,8 @@ class GuruController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- FORUM --------------------------------------------------------
 
 	public function forum() {
 		if(session('id_group') == 2) {
@@ -71,6 +83,8 @@ class GuruController extends Controller {
 	}
 
 
+// -------------------------------------------------------- NILAI --------------------------------------------------------
+
 	public function nilai() {
 		if(session('id_group') == 2) {
 			return view('view_guru/nilai/index');
@@ -81,6 +95,8 @@ class GuruController extends Controller {
 	}
 
 
+// -------------------------------------------------------- PROFILE --------------------------------------------------------
+
 	public function profile() {
 		if(session('id_group') == 2) {
 			return view('view_guru/setting/profile');
@@ -90,6 +106,8 @@ class GuruController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- CHANGE PASSWORD --------------------------------------------------------
 
 	public function change_password() {
 		if(session('id_group') == 2) {

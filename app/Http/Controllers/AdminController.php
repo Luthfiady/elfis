@@ -11,6 +11,8 @@ class AdminController extends Controller {
 
 	public $status = false;
 
+// -------------------------------------------------------- INDEX --------------------------------------------------------
+
 	public function index() {
 		if(session('id_group') == 3) {
 			return view('view_admin/dashboard');
@@ -20,6 +22,8 @@ class AdminController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- MATERI --------------------------------------------------------
 
 	public function materi() {
 		if(session('id_group') == 3) {
@@ -31,6 +35,8 @@ class AdminController extends Controller {
 	}
 
 
+// -------------------------------------------------------- TUGAS --------------------------------------------------------
+
 	public function tugas() {
 		if(session('id_group') == 3) {
 			return view('view_admin/tugas/index');
@@ -40,6 +46,8 @@ class AdminController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- KUIS --------------------------------------------------------
 
 	public function kuis() {
 		if(session('id_group') == 3) {
@@ -51,6 +59,8 @@ class AdminController extends Controller {
 	}
 
 
+// -------------------------------------------------------- UJIAN --------------------------------------------------------
+
 	public function ujian() {
 		if(session('id_group') == 3) {
 			return view('view_admin/ujian/index');
@@ -60,6 +70,8 @@ class AdminController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- FORUM --------------------------------------------------------
 
 	public function forum() {
 		if(session('id_group') == 3) {
@@ -81,6 +93,8 @@ class AdminController extends Controller {
 	}
 
 
+// -------------------------------------------------------- NILAI --------------------------------------------------------
+
 	public function nilai() {
 		if(session('id_group') == 3) {
 			return view('view_admin/nilai/index');
@@ -90,6 +104,8 @@ class AdminController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- SETTING USER --------------------------------------------------------
 
 	public function setting_user() {
 		if(session('id_group') == 3) {
@@ -101,6 +117,8 @@ class AdminController extends Controller {
 	}
 
 
+// -------------------------------------------------------- SETTING GRUP --------------------------------------------------------
+
 	public function setting_grup() {
 		if(session('id_group') == 3) {
 			return view('view_admin/grup/index');
@@ -110,6 +128,8 @@ class AdminController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- PROFILE --------------------------------------------------------
 
 	public function profile() {
 		if(session('id_group') == 3) {
@@ -121,6 +141,8 @@ class AdminController extends Controller {
 	}
 
 
+// -------------------------------------------------------- CHANGE PASSWORD --------------------------------------------------------
+
 	public function change_password() {
 		if(session('id_group') == 3) {
 			return view('view_admin/setting/change_pass');
@@ -130,6 +152,8 @@ class AdminController extends Controller {
 		}
 	}
 
+
+// -------------------------------------------------------- RESET PASSWORD --------------------------------------------------------
 
 	public function reset_password() {
 		if(session('id_group') == 3) {

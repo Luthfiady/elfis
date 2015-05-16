@@ -14,28 +14,30 @@ Forum Contoh Untuk Semua
 <div class="main-content">
 
 	<div class="row"> <!-- Header Forum -->
-		<div class="col-md-6">
-			<h3 class="header-pembuat">Tubagus Axel Luthfiady</h3>
-			<h4 class="sub-header-buat">Sabtu, 9 Mei 2015</h4>
-			<h4 class="sub-header-buat">15:30 WIB</h4>
-		</div>
-		<div class="col-md-6 header-right">
-			<h3 class="header-pembuat">Forum Contoh Untuk Semua</h3>
-			<h4 class="sub-header-buat">Rating 5 Bintang</h4>
-			<h4 class="sub-header-buat"><a href="#">Suka</a></h4>
+		<div class="col-md-12">
+			<h3 class="header-judul">Forum Contoh Untuk Semua</h3>
 		</div>
 	</div>
 
 	<div class="row row-isi-forum"> <!-- Isi Forum Pembuat -->
-		<div class="col-md-12">
-			<table class="table isi-forum table-bordered">
-				<tr><td>aaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbb cccccccccccccccccccccc dddddddddddddddddddddddddddddddddd
-				eeeeeeeeeeeeeeeeeeeeeeeee fffffffffffffffffffffff gggggggggggggggggggggggg hhhhhhhhhhhhhhhhhhhhhhhhhhhh
-				iiiiiiiiiiiiiiiiiiiiiiii jjjjjjjjjjjjjjjjjjjjjjjjjj kkkkkkkkkkkkkkkkkk llllllllllllllllllllllllllllllll
-				sdadsa sdandjkasndjsad sajd js ndjksdnjks bdjksa jdk jsakb djksa bdjksab djksabdjkbsajkd bsajkbdk 
-				dsadsadsa skld klasndklsnadlksn adbsakbdksabdlksad;k sldb lsbd ljasbdsabld b;sakdlsab djsabdkjbsaljd bjksbdksakj
-				dsadsadsad sdn aldn sabd jsbadbysgduisbayidgsi aduisa du vsayidv uasv dyivsa ifdi avdpoadubsai ydgiusa bi</td></tr>
+		<div class="col-md-12 table-responsive">
+
+			<table class="table table-header-forum">
+				<tr class="forum-kepala">
+					<td>
+						<p class="header-pembuat">Tubagus Axel Luthfiady</p>
+						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
+					</td>
+					<td class="header-right">
+						<p class="sub-header-buat">Rating 5 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
+					</td>
+				</tr>
+				<tr class="forum">
+					<td colspan="2">Segalanya yang terjadi sudahlah terjadi, di Indonesia banyak yang sudah seperti ini apa adanya. Aku mah apah atuh!
+					Itulah salah satu yang menjadi tren saat ini di kalangan anak muda, ckckck. Ampun dah yaa hahahaha</td>
+				</tr>
 			</table>
+
 		</div>
 	</div>
 
@@ -43,51 +45,63 @@ Forum Contoh Untuk Semua
 		<div class="col-md-12">
 			<ul class="nav nav-tabs">
 				<li role="presentation" class="active"><a href="#">Votes</a></li>
-			  	<li role="presentation"><a href="#">Newew</a></li>
+			  	<li role="presentation"><a href="#">Newer</a></li>
 			  	<li role="presentation"><a href="#">Older</a></li>
-			  	<form class="form-inline form-right">
-			  		<div class="form-group form-group-khusus">
-				  		<h4 class="sub-header-buat">4 Jawaban &nbsp</h4>
-				  	</div>
-				  	<div class="form-group form-group-khusus">
-				  		<button href="#" class="btn btn-sm btn-primary inform-height">Tambah Komentar</button>
-				  	</div>
-			  	</form>
+
+			  	<button href="#" class="btn btn-sm btn-primary inform-height form-right">Tambah</button>
+			  	<p class="info-komentar form-right">4 Komentar &nbsp</p>
+			  	
 			</ul>
 		</div>
 	</div>
 
 	<div class="row"> <!-- Isi Komentar -->
-		<div class="col-md-12"> <!-- Header User Komen -->
-			<table class="table header-komentar" style="background-color: lightgray;">
-				<tr>
+		<div class="col-md-12 table-responsive"> <!-- Header User Komen -->
+
+			<table class="table table-komentar-forum">
+				<tr class="forum-komentar">
 					<td>
-						Anditika Maulida Purnamasari
+						<p class="header-pembuat">Anditika Maulida Purnamasari</p>
+						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
 					</td>
-					<td style="text-align:right;">
-						Judul Komentar Untuk Semua
+					<td class="header-right">
+						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
 					</td>
 				</tr>
-				<tr>
+
+				<tr class="forum">
+					<td colspan="2">Sedang ada apa ini? hahahaha </td>
+				</tr>
+
+				<tr class="forum-komentar">
 					<td>
-						Minggu, 10 Mei 2015
+						<p class="header-pembuat">Anditika Maulida Purnamasari</p>
+						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
 					</td>
-					<td style="text-align:right;">
-						Rating 5 Rating
+					<td class="header-right">
+						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
 					</td>
 				</tr>
-				<tr>
+
+				<tr class="forum">
+					<td colspan="2">Sedang ada apa ini? sdasdnakld dsajdhkja dasdhas dadh </td>
+				</tr>
+
+				<tr class="forum-komentar">
 					<td>
-						20:20 WIB
+						<p class="header-pembuat">Anditika Maulida Purnamasari</p>
+						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
 					</td>
-					<td style="text-align:right;">
-						<a href=""> Suka</a>
+					<td class="header-right">
+						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
 					</td>
+				</tr>
+
+				<tr class="forum">
+					<td colspan="2">Sedang ada apa ini? sdasdnakld dsajdhkja dasdhas dadh \n sdbnjkasbdj /n dsajkbdjsak </td>
 				</tr>
 			</table>
-		</div>
-		<div class="col-md-12"> <!-- Isi User Komen -->
-			
+
 		</div>
 	</div>
 

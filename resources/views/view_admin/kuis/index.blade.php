@@ -1,5 +1,7 @@
 @extends('templates/admin_layouts')
 
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis.css') }}">
+
 @section('bread_admin')
 Kuis
 @stop
@@ -38,9 +40,9 @@ Kuis
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12">
+		<div class="col-md-12 table-responsive">
 			
-			<table class="table table-hover table-bordered table-striped table-responsive">
+			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
 					<th>A</th>
 					<th>B</th>

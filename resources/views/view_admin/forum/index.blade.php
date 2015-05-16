@@ -1,5 +1,7 @@
 @extends('templates/admin_layouts')
 
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/forum.css') }}">
+
 @section('bread_admin')
 Forum
 @stop
@@ -15,8 +17,10 @@ Forum
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value="modul_code"> Nama Forum </option>
+	        			<option value="modul_name"> Subjek </option>
+	        			<option value="modul_name"> Keterangan </option>
+	        			<option value="modul_name"> Diposting </option>
 					</select>	
 				</div>
 
@@ -29,7 +33,7 @@ Forum
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_forum"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>
@@ -38,35 +42,26 @@ Forum
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12">
+		<div class="col-md-12 table-responsive">
 			
-			<table class="table table-hover table-bordered table-striped table-responsive">
+			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>A</th>
-					<th>B</th>
-					<th>C</th>
+					<th>No</th>
+					<th>Nama Forum</th>
+					<th>Subjek</th>
+					<th>Keterangan</th>
+					<th>Rating</th>
+					<th>Dispoting Oleh</th>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td><a href="{{ URL::to('admin/forum_isi') }}">1</a></td>
-						<td>2</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td class="kolom-tengah">1</td>
+						<td><a href="{{ URL::to('admin/forum_isi') }}">Perubahan Jadwal Sekolah</a></td>
+						<td>(kosong)</td>
+						<td>Hanya untuk orang tertentu saja</td>
+						<td class="kolom-tengah">50  <span class="glyphicon glyphicon-star"></span> </td>
+						<td class="kolom-tengah">Admin</td>
 					</tr>
 				</tbody>
 			</table>
@@ -94,6 +89,13 @@ Forum
 		    </li>
 		  </ul>
 		</nav>
+	</div>
+
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_forum" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.forum.modal_add')
 	</div>
 
 </div>

@@ -15,8 +15,9 @@ Kuis
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value=""> Nama Kuis </option>
+	        			<option value=""> Materi </option>
+	        			<option value=""> Nama Guru </option>
 					</select>	
 				</div>
 
@@ -38,35 +39,55 @@ Kuis
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12">
+		<div class="col-md-12 table-responsive">
 			
-			<table class="table table-hover table-bordered table-striped table-responsive">
+			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>A</th>
-					<th>B</th>
-					<th>C</th>
+					<th>No</th>
+					<th>Nama Kuis</th>
+					<th>Materi</th>
+					<th>Nama Guru</th>
+					<th>Waktu Mulai</th>
+					<th>Waktu Selesai</th>
+					<th>Durasi Kuis</th>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td>1</td>
-						<td><a href="{{URL::to('siswa/kuis_soal')}}">2</a></td>
-						<td>3</td>
+						<td align="center">1</td>
+						<td><a href="{{URL::to('siswa/kuis_soal')}}">Perancangan Sistem Informasi</a></td>
+						<td>Perancangan Sistem</td>
+						<td>Eko Prasetyo</td>
+						<td align="right">20/05/2015</td>
+						<td align="right">25/05/2015</td>
+						<td align="right">00:10:00</td>
 					</tr>
 					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
+						<td align="center">2</td>
+						<td>Matematika Diskrit</td>
+						<td>Matematika</td>
+						<td>Budi Subardi</td>
+						<td align="right">13/05/2015</td>
+						<td align="right">15/05/2015</td>
+						<td align="right">00:15:00</td>
 					</tr>
 					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
+						<td align="center">3</td>
+						<td>Grammer</td>
+						<td>Bahasa Inggris</td>
+						<td>Shinta</td>
+						<td align="right">14/05/2015</td>
+						<td align="right">20/05/2015</td>
+						<td align="right">00:30:00</td>
 					</tr>
 					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td align="center">4</td>
+						<td>Adobe Photoshop</td>
+						<td>Desain</td>
+						<td>Chyntia</td>
+						<td align="right">16/05/2015</td>
+						<td align="right">22/05/2015</td>
+						<td align="right">00:50:00</td>
 					</tr>
 				</tbody>
 			</table>

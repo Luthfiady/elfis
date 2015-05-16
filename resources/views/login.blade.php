@@ -28,7 +28,7 @@
 		
 		<div class="row Row-Header-Login">
 			<div class="col-md-12">
-				<img src="{{ asset('public/img/logo/logo.jpg') }}" alt="SMKN 56 Jakarta" height="80px">
+				<img src="{{ asset('public/img/logo/logo.png') }}" alt="SMKN 56 Jakarta" height="80px">
 
 
 				<!-- <h2 class="header"> SMK Negeri 53 Jakarta </h2> -->
