@@ -21,8 +21,14 @@
             <tbody class="modal-materi">
               <tr>
                 <td class="kolom-tengah">1</td>
-                <td>Jurnalis</td>
-                <td>XI - Mama</td>
+                <td>Jaringan</td>
+                <td>XI - TKJ</td>
+                <td class="kolom-tengah"><a href="" class="btn btn-xs btn-info"> <span class="glyphicon glyphicon-ok-circle"></span> </a></td>
+              </tr>
+              <tr>
+                <td class="kolom-tengah">1</td>
+                <td>Multimedia</td>
+                <td>XI - Multimedia</td>
                 <td class="kolom-tengah"><a href="" class="btn btn-xs btn-info"> <span class="glyphicon glyphicon-ok-circle"></span> </a></td>
               </tr>
             </tbody>
