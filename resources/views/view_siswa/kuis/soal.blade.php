@@ -1,6 +1,6 @@
 @extends('templates/siswa_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis_soal.css') }}">
 
 @section('add_bread_siswa')
 <li><a href="{{ URL::to('siswa/kuis') }}">Kuis</a></li>

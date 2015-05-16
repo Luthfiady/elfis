@@ -44,7 +44,7 @@ Perancangan Sistem Informasi
 
 				    <div class="form-group">
 						<div class="col-sm-12" style="text-align:center;">
-							<button type="submit" class="btn btn-primary btn-sm">Close</button>
+							<a href="{{URL::to('siswa/kuis')}}" type="submit" class="btn btn-primary btn-sm">Close</a>
 						</div>
 				    </div>
 

@@ -8,6 +8,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta content="" name="description" />
     <meta content="" name="author" />
+
+    <link rel="icon" href="{{ asset('public/img/logo/icon.png') }}">
     
 	<title>E-Learning SMKN 56 Jakarta</title>
 

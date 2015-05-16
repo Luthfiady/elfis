@@ -28,11 +28,6 @@ Kuis
 					</button>
 				</div>
 
-				&nbsp 
-
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
-					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
-
 			</form>
 		</div>
 	</div>
@@ -47,47 +42,60 @@ Kuis
 					<th>Nama Kuis</th>
 					<th>Materi</th>
 					<th>Nama Guru</th>
-					<th>Waktu Mulai</th>
-					<th>Waktu Selesai</th>
+					<th>Tanggal Mulai</th>
+					<th>Tanggal Selesai</th>
 					<th>Durasi Kuis</th>
+					<th><span class="glyphicon glyphicon-folder-open"></span></th>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td align="center">1</td>
-						<td><a href="{{URL::to('siswa/kuis_soal')}}">Perancangan Sistem Informasi</a></td>
+						<td class="kolom-tengah">1</td>
+						<td>Perancangan Sistem Informasi</a></td>
 						<td>Perancangan Sistem</td>
 						<td>Eko Prasetyo</td>
-						<td align="right">20/05/2015</td>
-						<td align="right">25/05/2015</td>
-						<td align="right">00:10:00</td>
+						<td class="kolom-kanan">20/05/2015</td>
+						<td class="kolom-kanan">25/05/2015</td>
+						<td class="kolom-kanan">00:10:00</td>
+						<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="{{URL::to('siswa/kuis_soal')}}">
+							<span class="glyphicon glyphicon-new-window"></span></a>
+						</td>
 					</tr>
 					<tr>
-						<td align="center">2</td>
+						<td class="kolom-tengah">2</td>
 						<td>Matematika Diskrit</td>
 						<td>Matematika</td>
 						<td>Budi Subardi</td>
-						<td align="right">13/05/2015</td>
-						<td align="right">15/05/2015</td>
-						<td align="right">00:15:00</td>
+						<td class="kolom-kanan">13/05/2015</td>
+						<td class="kolom-kanan">15/05/2015</td>
+						<td class="kolom-kanan">00:15:00</td>
+						<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="{{URL::to('siswa/kuis_soal')}}">
+							<span class="glyphicon glyphicon-new-window"></span></a>
+						</td>
 					</tr>
 					<tr>
-						<td align="center">3</td>
-						<td>Grammer</td>
+						<td class="kolom-tengah">3</td>
+						<td>Present Tense</td>
 						<td>Bahasa Inggris</td>
 						<td>Shinta</td>
-						<td align="right">14/05/2015</td>
-						<td align="right">20/05/2015</td>
-						<td align="right">00:30:00</td>
+						<td class="kolom-kanan">14/05/2015</td>
+						<td class="kolom-kanan">20/05/2015</td>
+						<td class="kolom-kanan">00:30:00</td>
+						<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="{{URL::to('siswa/kuis_soal')}}">
+							<span class="glyphicon glyphicon-new-window"></span></a>
+						</td>
 					</tr>
 					<tr>
-						<td align="center">4</td>
+						<td class="kolom-tengah">4</td>
 						<td>Adobe Photoshop</td>
 						<td>Desain</td>
 						<td>Chyntia</td>
-						<td align="right">16/05/2015</td>
-						<td align="right">22/05/2015</td>
-						<td align="right">00:50:00</td>
+						<td class="kolom-kanan">16/05/2015</td>
+						<td class="kolom-kanan">22/05/2015</td>
+						<td class="kolom-kanan">00:50:00</td>
+						<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="{{URL::to('siswa/kuis_soal')}}">
+							<span class="glyphicon glyphicon-new-window"></span></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

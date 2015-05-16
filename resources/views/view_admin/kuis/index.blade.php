@@ -1,7 +1,5 @@
 @extends('templates/admin_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis.css') }}">
-
 @section('bread_admin')
 Kuis
 @stop
@@ -17,8 +15,8 @@ Kuis
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value=""> Nama Ujian </option>
+	        			<option value=""> Materi </option>
 					</select>	
 				</div>
 
@@ -31,7 +29,7 @@ Kuis
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_kuis"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>
@@ -44,31 +42,79 @@ Kuis
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>A</th>
-					<th>B</th>
-					<th>C</th>
+					<th>No</th>
+					<th>Nama Kuis</th>
+					<th>Materi</th>
+					<th>Tanggal Mulai</th>
+					<th>Tanggal Selesai</th>
+					<th>Durasi Kuis</th>
+					<th><span class="glyphicon glyphicon-wrench"></span></th>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+						<td class="kolom-tengah">1</td>
+						<td>Perancangan Sistem Informasi</a></td>
+						<td>Perancangan Sistem</td>
+						<td class="kolom-kanan">20/05/2015</td>
+						<td class="kolom-kanan">25/05/2015</td>
+						<td class="kolom-kanan">00:10:00</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_kuis">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
+						<td class="kolom-tengah">2</td>
+						<td>Matematika Diskrit</td>
+						<td>Matematika</td>
+						<td class="kolom-kanan">13/05/2015</td>
+						<td class="kolom-kanan">15/05/2015</td>
+						<td class="kolom-kanan">00:15:00</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_kuis">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
+						<td class="kolom-tengah">3</td>
+						<td>Present Tense</td>
+						<td>Bahasa Inggris</td>
+						<td class="kolom-kanan">14/05/2015</td>
+						<td class="kolom-kanan">20/05/2015</td>
+						<td class="kolom-kanan">00:30:00</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_kuis">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td class="kolom-tengah">4</td>
+						<td>Adobe Photoshop</td>
+						<td>Desain</td>
+						<td class="kolom-kanan">16/05/2015</td>
+						<td class="kolom-kanan">22/05/2015</td>
+						<td class="kolom-kanan">00:50:00</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_kuis">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -96,6 +142,18 @@ Kuis
 		    </li>
 		  </ul>
 		</nav>
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_kuis" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.kuis.modal_add')
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="edit_kuis" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.kuis.modal_add')
 	</div>
 
 </div>
