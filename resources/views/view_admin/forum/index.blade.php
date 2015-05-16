@@ -1,6 +1,5 @@
 @extends('templates/admin_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/forum.css') }}">
 
 @section('bread_admin')
 Forum
@@ -52,6 +51,7 @@ Forum
 					<th>Keterangan</th>
 					<th>Rating</th>
 					<th>Dispoting Oleh</th>
+					<th><span class="glyphicon glyphicon-wrench"></span></th>
 				</thead>
 
 				<tbody class="index">
@@ -62,6 +62,10 @@ Forum
 						<td>Hanya untuk orang tertentu saja</td>
 						<td class="kolom-tengah">50  <span class="glyphicon glyphicon-star"></span> </td>
 						<td class="kolom-tengah">Admin</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-success btn-xs" href="#" data-toggle="modal" data-target="#edit_forum"> <span class="glyphicon glyphicon-edit"></span> </a> 
+	                		<a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+	                	</td>
 					</tr>
 				</tbody>
 			</table>
@@ -97,6 +101,13 @@ Forum
 	<div class="modal fade" id="add_forum" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.forum.modal_add')
 	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="edit_forum" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.forum.modal_edit')
+	</div>
+
 
 </div>
 

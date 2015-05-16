@@ -1,11 +1,11 @@
 <!-- MODAL ADD -->
 	
-<div class="modal-dialog">
-    <div class="modal-content modal-width-index">
+<div class="modal-dialog modal-width-index">
+    <div class="modal-content">
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" class="header-modal">Tambah Forum</h3>
+        <p class="modal-title">Tambah Forum</p>
       </div>
 
       <div class="modal-body">
@@ -14,28 +14,28 @@
           <div class="form-group">
             <label class="col-sm-3 label-right">Nama Forum</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control form-height" id="add_nama_forum" placeholder="Nama Forum">
+              <input type="text" class="form-control inform-height" id="add_nama_forum" placeholder="Nama Forum">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 label-right">Subjek</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control form-height" id="add_Subjek" placeholder="Subjek">
+              <input type="text" class="form-control inform-height" id="add_Subjek" placeholder="Subjek">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 label-right">Keterangan</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control form-height" id="add_keterangan" placeholder="Keterangan">
+              <input type="text" class="form-control inform-height" id="add_keterangan" placeholder="Keterangan">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 label-right">Isi</label>
             <div class="col-sm-9">
-              <textarea class="ckeditor form-control" cols="10" rows="10" name="editor1" required></textarea>
+              <textarea class="form-control" rows="10" required></textarea>
             </div>
           </div>
 

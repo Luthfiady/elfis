@@ -1,5 +1,4 @@
 h3.header-judul {font-family: sans-serif; font-size: 16pt; font-weight: bold;}
-h3.header-modal {font-family: sans-serif; font-size: 12pt; font-weight: bold;}
 
 p.header-pembuat {font-family: sans-serif; font-size: 12pt}
 p.sub-header-buat {font-family: sans-serif; font-size: 10pt; font-weight: normal;}
@@ -56,16 +55,4 @@ tr.forum td {
 
 table.table-komentar-forum {
 	margin-top: 10px;
-}
-
-
-/*----------------------------------------- Modal -----------------------------------------*/
-
-.modal-width-index {
-	
-	max-width: 100%;
-}
-
-.label-right {
-	text-align: right;
 }
