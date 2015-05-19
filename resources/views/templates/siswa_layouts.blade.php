@@ -17,24 +17,35 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/MyStyle.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nivo-slider.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/themes/default/default.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/jquery-ui-1.11.3/jquery-ui.min.css') }}">
-
-<!-- 
-		<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/main-responsive.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/theme_light.css') }}" id="skin_color">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/print.css') }}" media="print"/>
- -->
+		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/MyStyle.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nivo-slider.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('public/themes/default/default.css') }}">
 
 		<!-- Fonts -->
 		<link rel="stylesheet" href="{{asset('public/fonts/style.css')}}">
 		<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
+		<!-- Scripts -->
+		<script src="{{ asset('public/js/jquery.js') }}"></script>
+		<script src="{{ asset('public/js/jquery.min.js') }}"></script>
+		<script src="{{ asset('public/js/moment.js') }}"></script>
+		<script src="{{ asset('public/js/jquery-1.11.2.min.js') }}"></script>
+		<script src="{{ asset('public/js/jquery-ui-1.11.3/jquery-ui.js') }}"></script>
+		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('public/js/bootstrap-datetimepicker.js') }}"></script>
+		<script src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+		<script src="{{ asset('public/js/validator.js') }}"></script>
+		<script src="{{ asset('public/js/jquery.nivo.slider.js') }}"></script>
+		<script>
+            var base_url = "{{url()}}";
+
+	        $(window).load(function() {
+	            $('#slider').nivoSlider();
+	        });
+		</script>
 
 	</head>
 	<body>
@@ -69,23 +80,5 @@
 		</div>
 		
 
-		<!-- Scripts -->
-		<script src="{{ asset('public/js/jquery.js') }}"></script>
-		<script src="{{ asset('public/js/jquery.min.js') }}"></script>
-		<script src="{{ asset('public/js/moment.js') }}"></script>
-		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('public/js/bootstrap-datetimepicker.js') }}"></script>
-		<script src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
-		<script src="{{ asset('public/js/jquery-1.11.2.min.js') }}"></script>
-		<script src="{{ asset('public/js/jquery-ui-1.11.3/jquery-ui.js') }}"></script>
-		<script src="{{ asset('public/js/jquery.nivo.slider.js') }}"></script>
-		<script>
-            var base_url = "{{url()}}";
-
-	        $(window).load(function() {
-	            $('#slider').nivoSlider();
-	        });
-		</script>
-		
 	</body>
 </html>

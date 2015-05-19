@@ -45,19 +45,21 @@ Forum
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>No</th>
-					<th>Nama Forum</th>
-					<th>Subjek</th>
-					<th>Keterangan</th>
-					<th>Rating</th>
-					<th>Dispoting Oleh</th>
-					<th><span class="glyphicon glyphicon-wrench"></span></th>
+					<tr>
+						<th>No</th>
+						<th>Nama Forum</th>
+						<th>Subjek</th>
+						<th>Keterangan</th>
+						<th>Rating</th>
+						<th>Dispoting Oleh</th>
+						<th><span class="glyphicon glyphicon-wrench"></span></th>
+					</tr>
 				</thead>
 
 				<tbody class="index">
 					<tr>
 						<td class="kolom-tengah">1</td>
-						<td><a href="{{ URL::to('admin/forum_isi') }}">Perubahan Jadwal Sekolah</a></td>
+						<td><a class="link-to" href="{{ URL::to('admin/forum_isi') }}">Perubahan Jadwal Sekolah</a></td>
 						<td>(kosong)</td>
 						<td>Hanya untuk orang tertentu saja</td>
 						<td class="kolom-tengah">50  <span class="glyphicon glyphicon-star"></span> </td>

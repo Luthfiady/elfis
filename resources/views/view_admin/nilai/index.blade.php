@@ -46,9 +46,11 @@ Nilai
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>A</th>
-					<th>B</th>
-					<th>C</th>
+					<tr>
+						<th>A</th>
+						<th>B</th>
+						<th>C</th>
+					</tr>
 				</thead>
 
 				<tbody class="index">

@@ -38,14 +38,16 @@ Kuis
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>No</th>
-					<th>Nama Kuis</th>
-					<th>Materi</th>
-					<th>Nama Guru</th>
-					<th>Tanggal Mulai</th>
-					<th>Tanggal Selesai</th>
-					<th>Durasi Kuis</th>
-					<th><span class="glyphicon glyphicon-folder-open"></span></th>
+					<tr>
+						<th>No</th>
+						<th>Nama Kuis</th>
+						<th>Materi</th>
+						<th>Nama Guru</th>
+						<th>Tanggal Mulai</th>
+						<th>Tanggal Selesai</th>
+						<th>Durasi Kuis</th>
+						<th><span class="glyphicon glyphicon-folder-open"></span></th>
+					</tr>
 				</thead>
 
 				<tbody class="index">

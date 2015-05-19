@@ -30,6 +30,7 @@ Forum Contoh Untuk Semua
 					</td>
 					<td class="header-right">
 						<p class="sub-header-buat">Rating 5 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
+						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
 					</td>
 				</tr>
 				<tr class="forum">
@@ -48,7 +49,7 @@ Forum Contoh Untuk Semua
 			  	<li role="presentation"><a href="#">Newer</a></li>
 			  	<li role="presentation"><a href="#">Older</a></li>
 
-			  	<button href="#" class="btn btn-sm btn-primary inform-height form-right">Tambah</button>
+			  	<button href="#" class="btn btn-sm btn-primary inform-height form-right" data-toggle="modal" data-target="#add_comment">Tambah</button>
 			  	<p class="info-komentar form-right">4 Komentar &nbsp</p>
 			  	
 			</ul>
@@ -66,6 +67,7 @@ Forum Contoh Untuk Semua
 					</td>
 					<td class="header-right">
 						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
+						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
 					</td>
 				</tr>
 
@@ -80,6 +82,7 @@ Forum Contoh Untuk Semua
 					</td>
 					<td class="header-right">
 						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
+						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
 					</td>
 				</tr>
 
@@ -94,6 +97,7 @@ Forum Contoh Untuk Semua
 					</td>
 					<td class="header-right">
 						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
+						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
 					</td>
 				</tr>
 
@@ -103,6 +107,18 @@ Forum Contoh Untuk Semua
 			</table>
 
 		</div>
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_comment" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.forum.modal_comment_add')
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="edit_comment" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.forum.modal_comment_edit')
 	</div>
 
 </div>

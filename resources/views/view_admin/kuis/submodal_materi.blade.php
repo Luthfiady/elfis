@@ -5,7 +5,7 @@
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title">Tambah Kuis</h3>
+        <p class="modal-title">Tambah Kuis</p>
       </div>
 
       <div class="modal-body">
@@ -13,22 +13,30 @@
         <div class="table-responsive">
           <table class="table table-bordered table-stripped table-hover table-modal-materi">
             <thead class="modal-materi">
-              <th>No</th>
-              <th>Nama Materi</th>
-              <th>Kelas</th>
-              <th>Pilih</th>
+              <tr>
+                 <th>No</th>
+                <th>Nama Materi</th>
+                <th>Kelas</th>
+                <th>Pilih</th>
+              </tr>
             </thead>
+            
             <tbody class="modal-materi">
               <tr>
                 <td class="kolom-tengah">1</td>
                 <td>Jurnalis</td>
                 <td>XI - Mama</td>
-                <td class="kolom-tengah"><a href="" class="btn btn-xs btn-info"> <span class="glyphicon glyphicon-ok-circle"></span> </a></td>
+                <td class="kolom-tengah"><input type="checkbox" value=""></td>
               </tr>
             </tbody>
          </table>
         </div>
     
+      </div>
+
+      <div class="modal-footer">
+        <a type="close" class="btn btn-primary btn-sm" data-dismiss="modal">Close</a>
+        <a type="submit" class="btn btn-primary btn-sm" value="save">Select</a>
       </div>
 
     </div>
