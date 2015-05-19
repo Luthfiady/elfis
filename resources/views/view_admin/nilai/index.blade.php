@@ -47,21 +47,15 @@ Nilai
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-<<<<<<< HEAD
 					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
+						<th>No</th>
+						<th>NIS</th>
+						<th>Nama Siswa</th>
+						<th>Kelas</th>
+						<th>Nama Materi</th>
+						<th>Keterangan</th>
+						<th>Nilai</th>
 					</tr>
-=======
-					<th>No</th>
-					<th>NIS</th>
-					<th>Nama Siswa</th>
-					<th>Kelas</th>
-					<th>Nama Materi</th>
-					<th>Keterangan</th>
-					<th>Nilai</th>
->>>>>>> ecfcd779a18e4d6a585ef4a75df1000040a5b1cb
 				</thead>
 
 				<tbody class="index">

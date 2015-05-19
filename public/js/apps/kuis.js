@@ -2,11 +2,11 @@
 $(document).ready(function(){
 
 // ------------------- DateTimePicker -------------------
-    $('#datepicker_start').timepicker({
+    $('#datepicker_start').datepicker({
         format: 'YYYY-MM-DD'
     });
 
-    $('#datepicker_end').timepicker({
+    $('#datepicker_end').datepicker({
         format: 'YYYY-MM-DD'
     });
 

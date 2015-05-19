@@ -1,4 +1,4 @@
-<!-- MODAL ADD -->
+<!-- MODAL ADD --> 
 	
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis.css') }}">
 
@@ -91,12 +91,5 @@
 <!-- ///////////////////////////////////////////////////////////// Modal Soal ///////////////////////////////////////////////////////////// -->
 
   <div class="modal fade" id="modal-soal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<<<<<<< HEAD
-    @include('view_admin.kuis.modal_soal')
-  </div>
-
-  
-=======
     @include('view_admin.kuis.modal_soal_add')
   </div>
->>>>>>> ecfcd779a18e4d6a585ef4a75df1000040a5b1cb

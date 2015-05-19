@@ -1,7 +1,6 @@
 @extends('templates/admin_layouts')
 
 
-
 @section('bread_admin')
 Kuis
 @stop

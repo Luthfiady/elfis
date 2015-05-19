@@ -1,6 +1,5 @@
 <!-- MODAL ADD -->
 
-
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
       
