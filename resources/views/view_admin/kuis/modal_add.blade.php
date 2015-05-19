@@ -15,23 +15,24 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Nama Ujian</label>
+            <label class="col-sm-3 label-right">Nama Kuis</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control inform-height" id="add_nama_ujian" placeholder="Nama Ujian">
+              <input type="text" class="form-control inform-height" id="add_nama_kuis" placeholder="Nama Kuis" required>
             </div>
             <div class="col-md-1"></div>
           </div>
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Materi</label>
+            <label class="col-sm-3 label-right">Nama Materi</label>
             <div class="col-sm-7">
-              <div class="input-group">
-                <input type="text" class="form-control inform-height" style="height:30px;" id="add_materi" placeholder="Materi">
-                <span class="input-group-addon">
-                  <a href="" data-toggle="modal" data-target="#submodal_materi"><i class="glyphicon glyphicon-list"></i></a> 
-                </span>
-              </div>
+              <select class="form-control" id="nama_materi" required>
+                <option value=""> Nama Materi </option>
+                <option value="A"> Materi A </option>
+                <option value="B"> Materi B </option>
+                <option value="C"> Materi C </option>
+                <option value="D"> Materi D </option>
+              </select>
             </div>
             <div class="col-md-1"></div>
           </div>
@@ -41,7 +42,7 @@
             <label class="col-sm-3 label-right">Tanggal Mulai</label>
             <div class="col-sm-7">
               <div class="input-group date" id="datepicker_start">
-                <input type="text" class="form-control inform-height" placeholder="Tanggal Mulai">
+                <input type="text" class="form-control inform-height" placeholder="Tanggal Mulai" required>
                   <span class="input-group-addon">
                     <i class="glyphicon glyphicon-calendar"></i>
                   </span>
@@ -55,7 +56,7 @@
             <label class="col-sm-3 label-right">Tanggal Selesai</label>
             <div class="col-sm-7">
               <div class="input-group date" id="datepicker_end">
-                <input type="text" class="form-control inform-height" placeholder="Tanggal Selesai">
+                <input type="text" class="form-control inform-height" placeholder="Tanggal Selesai" required>
                 <span class="input-group-addon">
                   <i class="glyphicon glyphicon-calendar"></i>
                 </span>
@@ -68,7 +69,7 @@
             <div class="col-md-1"></div>
             <label class="col-sm-3 label-right">Durasi Kuis</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control inform-height" id="add_durasi_kuis" placeholder="Durasi Kuis">
+              <input type="text" class="form-control inform-height" id="add_durasi_kuis" placeholder="Durasi Kuis" required>
             </div>
             <div class="col-md-1"></div>
           </div>
@@ -87,14 +88,8 @@
     </div>
 </div>
 
-<!-- ///////////////////////////////////////////////////////////// Sub Modal Materi ///////////////////////////////////////////////////////////// -->
-
-  <div class="modal fade" id="submodal_materi" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    @include('view_admin.kuis.submodal_materi')
-  </div>
-
-<!-- ///////////////////////////////////////////////////////////// Sub Modal Materi ///////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////// Modal Soal ///////////////////////////////////////////////////////////// -->
 
   <div class="modal fade" id="modal-soal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    @include('view_admin.kuis.modal_soal')
+    @include('view_admin.kuis.modal_soal_add')
   </div>
