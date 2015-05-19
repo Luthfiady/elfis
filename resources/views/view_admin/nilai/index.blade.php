@@ -14,16 +14,17 @@ Nilai
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
-						<option value=""> Jurusan </option>
-						<option value="modul_code"> Multimedia 1 </option>
-	        			<option value="modul_name"> Multimedia 2 </option>
-					</select>	
-
-					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kelas </option>
 						<option value="modul_code"> XI M1 </option>
 	        			<option value="modul_name"> XI M2 </option>
 					</select>	
+
+					<select class="form-control inform-height" id="search_by">
+						<option value=""> Materi </option>
+						<option value="modul_code"> Bahasa Indonesia </option>
+	        			<option value="modul_name"> Perkabelan </option>
+					</select>	
+					
 				</div>
 
 				<button type="submit" id="search_button" class="btn btn-sm btn-primary inform-height"> 
@@ -46,33 +47,41 @@ Nilai
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
+<<<<<<< HEAD
 					<tr>
 						<th>A</th>
 						<th>B</th>
 						<th>C</th>
 					</tr>
+=======
+					<th>No</th>
+					<th>NIS</th>
+					<th>Nama Siswa</th>
+					<th>Kelas</th>
+					<th>Nama Materi</th>
+					<th>Keterangan</th>
+					<th>Nilai</th>
+>>>>>>> ecfcd779a18e4d6a585ef4a75df1000040a5b1cb
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+						<td class="kolom-tengah">1</td>
+						<td class="kolom-tengah">10001</td>
+						<td>Faried Muharam</td>
+						<td class="kolom-tengah">XI M1</td>
+						<td>Perkabelan</td>
+						<td>Ujian</td>
+						<td class="kolom-kanan">90</td>
 					</tr>
 					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td class="kolom-tengah">2</td>
+						<td class="kolom-tengah">10001</td>
+						<td>Faried Muharam</td>
+						<td class="kolom-tengah">XI M1</td>
+						<td>Perkabelan</td>
+						<td>Kuis</td>
+						<td class="kolom-kanan">95</td>
 					</tr>
 				</tbody>
 			</table>
