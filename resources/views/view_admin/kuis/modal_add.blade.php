@@ -15,8 +15,8 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Nama Kuis</label>
-            <div class="col-sm-7">
+            <label class="col-sm-2 label-right">Nama Kuis</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control inform-height" id="add_nama_kuis" placeholder="Nama Kuis" required>
             </div>
             <div class="col-md-1"></div>
@@ -24,8 +24,8 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Nama Materi</label>
-            <div class="col-sm-7">
+            <label class="col-sm-2 label-right">Nama Materi</label>
+            <div class="col-sm-8">
               <select class="form-control" id="nama_materi" required>
                 <option value=""> Nama Materi </option>
                 <option value="A"> Materi A </option>
@@ -39,8 +39,8 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Tanggal Mulai</label>
-            <div class="col-sm-7">
+            <label class="col-sm-2 label-right">Tanggal Mulai</label>
+            <div class="col-sm-8">
               <div class="input-group date" id="datepicker_start">
                 <input type="text" class="form-control inform-height" placeholder="Tanggal Mulai" required>
                   <span class="input-group-addon">
@@ -53,8 +53,8 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Tanggal Selesai</label>
-            <div class="col-sm-7">
+            <label class="col-sm-2 label-right">Tanggal Akhir</label>
+            <div class="col-sm-8">
               <div class="input-group date" id="datepicker_end">
                 <input type="text" class="form-control inform-height" placeholder="Tanggal Selesai" required>
                 <span class="input-group-addon">
@@ -67,9 +67,14 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-3 label-right">Durasi Kuis</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control inform-height" id="add_durasi_kuis" placeholder="Durasi Kuis" required>
+            <label class="col-sm-2 label-right">Durasi Kuis</label>
+            <div class="col-sm-8">
+              <div class="input-group date" id="time_durasi">
+                <input type="text" class="form-control inform-height" placeholder="Durasi Kuis" required>
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-time"></i>
+                </span>
+              </div>
             </div>
             <div class="col-md-1"></div>
           </div>

@@ -2,11 +2,15 @@
 $(document).ready(function(){
 
 // ------------------- DateTimePicker -------------------
-    $('#datepicker_start').datepicker({
+    $('#time_durasi').datetimepicker({
+        format: 'LT'
+    });
+
+    $('#datepicker_start').datetimepicker({
         format: 'YYYY-MM-DD'
     });
 
-    $('#datepicker_end').datepicker({
+    $('#datepicker_end').datetimepicker({
         format: 'YYYY-MM-DD'
     });
 

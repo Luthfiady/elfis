@@ -326,7 +326,7 @@
   height: 27px;
   line-height: 27px;
 }
-.input-group.date .input-group-addon {
+.input-group.date .input-group-addon i {
   cursor: pointer;
 }
 .sr-only {

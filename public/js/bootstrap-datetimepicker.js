@@ -1611,7 +1611,7 @@
         if (element.hasClass('input-group')) {
             // in case there is more then one 'input-group-addon' Issue #48
             if (element.find('.datepickerbutton').size() === 0) {
-                component = element.find('[class^="input-group-addon"]');
+                component = element.find('[class^="input-group-addon, .btn"]');
             } else {
                 component = element.find('.datepickerbutton');
             }

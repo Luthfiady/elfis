@@ -61,7 +61,8 @@
             <li class="dropdown">
                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                     Hi, Guru<span class="username"></span>
-                    <i class="clip-chevron-down"></i>
+                    <span class="caret">
+                    <!-- <i class="clip-chevron-down"></i> -->
                 </a>
                 <ul class="dropdown-menu">
                     <li>
