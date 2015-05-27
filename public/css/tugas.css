@@ -1,0 +1,47 @@
+/*--------------------------------------TUGAS--------------------------------------*/
+
+
+h3.judul-tugas {font-family: sans-serif; font-size: 20pt; font-weight: bold;}
+h4.unggah-jawaban {font-family: sans-serif; font-size: 12pt; font-weight: bold;}
+
+
+.row-detail {
+  padding-top: 20px;
+  height: 350px;
+}
+
+.row-paging-table {
+  text-align: center;
+  margin-bottom: -25px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+
+/*--------------------------------------table--------------------------------------*/
+
+thead.tugas th {
+  background-color: transparent;
+  text-align: center;
+  color: black;
+}
+
+tbody
+.tugas tr {
+  text-align: center;
+}
+.info tr {
+	font-size: 12px;
+}
+
+td.kolom-kiri {
+  text-align: left;
+}
+
+table.table-soal th, tr, td{
+  border-style: none !important;
+  vertical-align: text-top !important;
+}

@@ -55,6 +55,7 @@ Route::get('guru/change_password', 'GuruController@change_password');
 Route::get('siswa', 'SiswaController@index');
 Route::get('siswa/materi', 'SiswaController@materi');
 Route::get('siswa/tugas', 'SiswaController@tugas');
+Route::get('siswa/tugas_detail', 'SiswaController@tugas_detail');
 Route::get('siswa/kuis', 'SiswaController@kuis');
 Route::get('siswa/kuis_soal', 'SiswaController@kuis_soal');
 Route::get('siswa/kuis_nilai', 'SiswaController@kuis_nilai');

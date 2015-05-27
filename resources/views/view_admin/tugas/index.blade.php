@@ -15,8 +15,8 @@ Tugas
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value="modul_code"> Nama Tugas </option>
+	        			<option value="modul_name"> Materi </option>
 					</select>	
 				</div>
 
@@ -29,7 +29,7 @@ Tugas
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_tugas"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>
@@ -43,32 +43,54 @@ Tugas
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
 					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
+						<th>No</th>
+						<th>Nama Tugas</th>
+						<th>Materi</th>
+						<th>Pelajaran</th>
+						<th>Tanggal Mulai</th>
+						<th>Tanggal Selesai</th>
+						<th><span class="glyphicon glyphicon-wrench"></span></th>
 					</tr>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+						<td class="kolom-tengah">1</td>
+						<td>Membuat maket rumah masing-masing</td>
+						<td>Bangunan dan Landscape</td>
+						<td>Bangunan</td>
+						<td class="kolom-kanan">23/5/2015</td>
+						<td class="kolom-kanan">29/5/2015</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+							<a class="btn btn-xs btn-info" href="#" title="Unduh File">
+								<span class="glyphicon glyphicon-download-alt"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td class="kolom-tengah">2</td>
+						<td>Menghancurkan maket teman</td>
+						<td>Bangunan dan Landscape</td>
+						<td>Bangunan</td>
+						<td class="kolom-kanan">23/5/2015</td>
+						<td class="kolom-kanan">29/5/2015</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+							<a class="btn btn-xs btn-info" href="#" title="Unduh File">
+								<span class="glyphicon glyphicon-download-alt"></span>
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -97,6 +119,17 @@ Tugas
 		  </ul>
 		</nav>
 	</div>
+
+		<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.tugas.modal_add')
+	</div>
+	<div class="modal fade" id="edit_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.tugas.modal_edit')
+	</div>
+
+	<script type="text/javascript" src="{{asset('public/js/apps/kuis.js')}}"></script>
 
 </div>
 
