@@ -1,12 +1,3 @@
-/*------------------------------------------- Sub Modal Materi -------------------------------------------*/
-
-thead.modal-materi th {
-	text-align: center;
-	background-color: #127EA4;
-	color: #ffffff;
-}
-
-
 /*------------------------------------------- Modal Soal -------------------------------------------*/
 
 p.nomor-soal {font-family: arial; font-size: 13pt; font-weight: bold;}

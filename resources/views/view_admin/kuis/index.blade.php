@@ -1,5 +1,6 @@
 @extends('templates/admin_layouts')
 
+
 @section('bread_admin')
 Kuis
 @stop
@@ -42,13 +43,15 @@ Kuis
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>No</th>
-					<th>Nama Kuis</th>
-					<th>Materi</th>
-					<th>Tanggal Mulai</th>
-					<th>Tanggal Selesai</th>
-					<th>Durasi Kuis</th>
-					<th><span class="glyphicon glyphicon-wrench"></span></th>
+					<tr>
+						<th>No</th>
+						<th>Nama Kuis</th>
+						<th>Materi</th>
+						<th>Tanggal Mulai</th>
+						<th>Tanggal Selesai</th>
+						<th>Durasi Kuis</th>
+						<th><span class="glyphicon glyphicon-wrench"></span></th>
+					</tr>
 				</thead>
 
 				<tbody class="index">
@@ -103,7 +106,7 @@ Kuis
 					<tr>
 						<td class="kolom-tengah">4</td>
 						<td>Adobe Photoshop</td>
-						<td>Desain</td>
+						<td>Desain Web</td>
 						<td class="kolom-kanan">16/05/2015</td>
 						<td class="kolom-kanan">22/05/2015</td>
 						<td class="kolom-kanan">00:50:00</td>
@@ -157,5 +160,7 @@ Kuis
 	</div>
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/kuis.js')}}"></script>
 
 @stop

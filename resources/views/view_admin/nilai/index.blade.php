@@ -47,13 +47,15 @@ Nilai
 			
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>No</th>
-					<th>NIS</th>
-					<th>Nama Siswa</th>
-					<th>Kelas</th>
-					<th>Nama Materi</th>
-					<th>Keterangan</th>
-					<th>Nilai</th>
+					<tr>
+						<th>No</th>
+						<th>NIS</th>
+						<th>Nama Siswa</th>
+						<th>Kelas</th>
+						<th>Nama Materi</th>
+						<th>Keterangan</th>
+						<th>Nilai</th>
+					</tr>
 				</thead>
 
 				<tbody class="index">

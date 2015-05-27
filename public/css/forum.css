@@ -7,10 +7,14 @@ p.info-komentar {font-family: sans-serif; font-size: 12pt; margin-top: 5px;}
 a.rating, a.rating:visited {
 	text-decoration: none;
 	color: white;
+	font-family: sans-serif;
+	font-size: 10pt;
 }
 a.rating:hover, a.rating:active, a.rating:link {
 	text-decoration: none;
 	color: #c5f5f7;
+	font-family: sans-serif;
+	font-size: 10pt;
 }
 
 

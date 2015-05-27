@@ -10,15 +10,26 @@ p.footer {font-family: sans-serif; font-size: 9pt; color: gray; margin-top: 12px
 
 a.btn {font-family: sans-serif; font-size: 9pt;}
 
-/*a, a:visited {
-  text-decoration: none;
-  color: black;
-}
-
-a:link, a:hover, a:active {
+a.link-to, a.link-to:visited {
   text-decoration: none;
   color: #006699;
-}*/
+}
+
+a.link-to:link, a.link-to:hover, a.link-to:active, a.link-to:focus {
+  text-decoration: none;
+  color: #f57900;
+}
+
+
+a.paging, a.paging:visited {
+  text-decoration: none;
+  color: #006699;
+}
+
+a.paging:link, a.paging:hover, a.paging:active, a.paging:focus {
+  text-decoration: none;
+  color: #f57900;
+}
 
 
 
@@ -58,7 +69,7 @@ body {
 }
 
 .Row-space {
-	height: 50px;
+	height: 100px;
 }
 
 
@@ -260,7 +271,7 @@ label {
 }
 
 .inform-height {
-  height: 30px;
+  height: 31px;
 }
 
 .btn-right {
@@ -288,6 +299,10 @@ label {
 input[readonly] {
   background-color: white !important;
   cursor: text !important;
+}
+
+.help-block {
+  margin-bottom: -15px;
 }
 
 

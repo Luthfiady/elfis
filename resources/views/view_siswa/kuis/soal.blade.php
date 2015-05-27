@@ -1,6 +1,6 @@
 @extends('templates/siswa_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis_soal.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis_siswa.css') }}">
 
 @section('add_bread_siswa')
 <li><a href="{{ URL::to('siswa/kuis') }}">Kuis</a></li>
@@ -29,9 +29,12 @@ Perancangan Sistem Informasi
 			
 			<table class="table table-soal">
 				<thead class="thead-soal">
-					<th width="30px">1.</th>
-					<th>Huruf apa saja yang terdapat pada kata sistem, kecuali?</th>
+					<tr>
+						<th width="30px">1.</th>
+						<th>Huruf apa saja yang terdapat pada kata sistem, kecuali?</th>
+					</tr>
 				</thead>
+
 				<tbody>
 					<tr>
 						<td></td>
@@ -71,9 +74,12 @@ Perancangan Sistem Informasi
 				</tbody>
 
 				<thead class="thead-soal">
-					<th width="30px">2.</th>
-					<th>Suku kata apa saja yang terdapat pada kata informasi, kecuali?</th>
+					<tr>
+						<th width="30px">2.</th>
+						<th>Suku kata apa saja yang terdapat pada kata informasi, kecuali?</th>
+					</tr>
 				</thead>
+				
 				<tbody>
 					<tr>
 						<td></td>
@@ -117,8 +123,8 @@ Perancangan Sistem Informasi
 		<div class="col-md-12">
 			<nav>
 				<ul class="pager">
-					<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a href="{{URL::to('siswa/kuis_nilai')}}">Next <span aria-hidden="true">&rarr;</span></a></li>
+					<li class="previous"><a class="paging" href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+					<li class="next"><a class="paging" href="{{URL::to('siswa/kuis_nilai')}}">Next <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
 			</nav>
 		</div>

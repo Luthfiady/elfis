@@ -13,13 +13,15 @@ Forum
 		<div class="col-md-12">
 			<form class="form-inline" style="float:right;">
 
+				<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 				<div class="form-group">
-					<select class="form-control inform-height" id="search_by">
+					<select class="form-control inform-height" id="search_by" name="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Nama Forum </option>
-	        			<option value="modul_name"> Subjek </option>
-	        			<option value="modul_name"> Keterangan </option>
-	        			<option value="modul_name"> Diposting </option>
+						<option value="nama_forum"> Nama Forum </option>
+						<option value="role_access"> Hak Akses </option>
+	        			<option value="subyek"> Subyek </option>
+	        			<option value="keterangan"> Keterangan </option>
+	        			<option value="created_by"> Diposting </option>
 					</select>	
 				</div>
 
@@ -41,32 +43,40 @@ Forum
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
-			
+		<div class="col-md-12 dataTable table-responsive">
+
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
-					<th>No</th>
-					<th>Nama Forum</th>
-					<th>Subjek</th>
-					<th>Keterangan</th>
-					<th>Rating</th>
-					<th>Dispoting Oleh</th>
-					<th><span class="glyphicon glyphicon-wrench"></span></th>
-				</thead>
-
-				<tbody class="index">
 					<tr>
-						<td class="kolom-tengah">1</td>
-						<td><a href="{{ URL::to('admin/forum_isi') }}">Perubahan Jadwal Sekolah</a></td>
-						<td>(kosong)</td>
-						<td>Hanya untuk orang tertentu saja</td>
-						<td class="kolom-tengah">50  <span class="glyphicon glyphicon-star"></span> </td>
-						<td class="kolom-tengah">Admin</td>
+						<th>No</th>
+						<th>Nama Forum</th>
+						<th>Hak Akses</th>
+						<th>Subyek</th>
+						<th>Keterangan</th>
+						<th>Rating</th>
+						<th>Dispoting Oleh</th>
+						<th><span class="glyphicon glyphicon-wrench"></span></th>
+					</tr>
+				</thead>
+ 
+				<tbody class="index">
+				<?php $i = 1; ?>
+				@foreach($ForumData as $df)
+					<tr>
+						<td class="kolom-tengah">{{$i}}</td>
+						<td><a class="link-to" href="{{ URL::to('admin/forum_isi') }}"> {{ $df->nama_forum }} </a></td>
+						<td> {{ $df->role_access }} </td>
+						<td> {{ $df->subyek }} </td>
+						<td> {{ $df->keterangan }} </td>
+						<td class="kolom-tengah"> {{ $df->rate }}  <span class="glyphicon glyphicon-star"></span> </td>
+						<td class="kolom-tengah"> {{ $df->forum_create_by }} </td>
 						<td class="kolom-tengah">
 							<a class="btn btn-success btn-xs" href="#" data-toggle="modal" data-target="#edit_forum"> <span class="glyphicon glyphicon-edit"></span> </a> 
 	                		<a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 	                	</td>
 					</tr>
+					<?php $i++; ?>
+				@endforeach
 				</tbody>
 			</table>
 
@@ -110,5 +120,7 @@ Forum
 
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/forum.js')}}"></script>
 
 @stop
