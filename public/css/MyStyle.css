@@ -271,7 +271,11 @@ label {
 }
 
 .inform-height {
+<<<<<<< HEAD
   height: 31spx;
+=======
+  height: 31px;
+>>>>>>> 36f4020d2002ae25b244e36b187a03f6e59e5070
 }
 
 .btn-right {

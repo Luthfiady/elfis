@@ -30,6 +30,7 @@ Route::get('admin/tugas', 'AdminController@tugas');
 Route::get('admin/kuis', 'AdminController@kuis');
 Route::get('admin/ujian', 'AdminController@ujian');
 Route::get('admin/forum', 'AdminController@forum');
+Route::post('admin/forum_list', 'AdminController@forum_get_list');
 Route::get('admin/forum_isi', 'AdminController@forum_isi');
 Route::get('admin/nilai', 'AdminController@nilai');
 Route::get('admin/setting_user', 'AdminController@setting_user');
@@ -38,6 +39,10 @@ Route::get('admin/profile', 'AdminController@profile');
 Route::get('admin/change_password', 'AdminController@change_password');
 Route::get('admin/reset_password', 'AdminController@reset_password');
 
+// Route::post('admin/forum_search', 'AdminController@forum');
+
+// Route::post('admin/forum_add', 'AdminController@forum_add');
+// Route::post('admin/forum_edit', 'AdminController@forum_edit');
 
 // Route Guru
 Route::get('guru', 'GuruController@index');
