@@ -91,5 +91,5 @@
 <!-- ///////////////////////////////////////////////////////////// Modal Soal ///////////////////////////////////////////////////////////// -->
 
   <div class="modal fade" id="modal-soal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    @include('view_admin.kuis.modal_soal_add')
+    @include('view_admin.kuis.modal_soal_add') 
   </div>
