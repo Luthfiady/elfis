@@ -60,7 +60,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                    Hi, Guru<span class="username"></span>
+                    Hai, Guru<span class="username"></span>
                     <span class="caret">
                     <!-- <i class="clip-chevron-down"></i> -->
                 </a>
@@ -68,21 +68,21 @@
                     <li>
                         <a href="{{ URL::to('guru/profile') }}">
                             <i class="glyphicon glyphicon-user"></i>
-                            &nbsp;My Profile
+                            &nbsp;Profil
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ URL::to('guru/change_password') }}">
                             <i class="glyphicon glyphicon-wrench"></i>
-                            &nbsp;Change Password
+                            &nbsp;Ubah Password
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ URL::to('do_logout') }}">
                             <i class="glyphicon glyphicon-log-out"></i>
-                            &nbsp;Log Out
+                            &nbsp;Keluar
                         </a>
                     </li>
                 </ul>

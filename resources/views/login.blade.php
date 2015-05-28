@@ -67,7 +67,7 @@
 					</div>
 
 					<div class="form-group show-pass">
-						<input type="checkbox" id="show_password" value="1"> Show Password 
+						<input type="checkbox" id="show_password" value="1"> Lihat Password 
 					</div>
 {{ $alert }}
 					<div class="form-group">

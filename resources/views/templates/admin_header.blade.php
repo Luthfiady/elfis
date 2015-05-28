@@ -58,17 +58,12 @@
             <li class="">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">
                     <span class="selected"></span>
-                    Setting <span class="caret"></span><i class="fa fa-angle-down"></i>
+                    Pengaturan <span class="caret"></span><i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="">
                         <a href="{{ URL::to('admin/setting_user') }}">
-                            User Management
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{ URL::to('admin/setting_grup') }}">
-                            Group Management
+                            Managemen User
                         </a>
                     </li>
                 </ul>
@@ -78,21 +73,21 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                    Hi, Admin <span class="username"></span>
+                    Hai, Admin <span class="username"></span>
                     <span class="caret">
                 </a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="{{ URL::to('admin/profile') }}">
                             <i class="glyphicon glyphicon-user"></i>
-                            &nbsp;My Profile
+                            &nbsp;Profil
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ URL::to('admin/change_password') }}">
                             <i class="glyphicon glyphicon-wrench"></i>
-                            &nbsp;Change Password
+                            &nbsp;Ubah Password
                         </a>
                     </li>
                     <li class="divider"></li>
@@ -106,7 +101,7 @@
                     <li>
                         <a href="{{ URL::to('do_logout') }}">
                             <i class="glyphicon glyphicon-log-out"></i>
-                            &nbsp;Log Out
+                            &nbsp;Keluar
                         </a>
                     </li>
                 </ul>

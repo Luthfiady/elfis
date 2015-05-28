@@ -1,7 +1,7 @@
 @extends('templates/admin_layouts')
 
 @section('bread_admin')
-User Management
+Managemen User
 @stop
 
 @section('content')
@@ -15,8 +15,8 @@ User Management
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value="modul_code"> Nama User </option>
+	        			<option value="modul_name"> Nama Group </option>
 					</select>	
 				</div>
 
@@ -29,7 +29,7 @@ User Management
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_user"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>
@@ -43,32 +43,56 @@ User Management
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
 					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
+						<th>No</th>
+						<th>ID User</th>
+						<th>Nama User</th>
+						<th>Nama Group</th>
+						<th><span class="glyphicon glyphicon-wrench"></span></th>
 					</tr>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+						<td class="kolom-tengah">1</td>
+						<td>10003</td>
+						<td>Axel</td>
+						<td>Admin</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_user">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
+						<td class="kolom-tengah">2</td>
+						<td>10002</td>
+						<td>Tubagus</td>
+						<td>Guru</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_user">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td class="kolom-tengah">3</td>
+						<td>10001</td>
+						<td>Luthfiady</td>
+						<td>Siswa</td>
+						<td class="kolom-tengah">
+							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_user">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-xs btn-danger" href="#">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -96,6 +120,18 @@ User Management
 		    </li>
 		  </ul>
 		</nav>
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_user" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.user.modal_add_user')
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="edit_user" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.user.modal_edit_user')
 	</div>
 
 </div>

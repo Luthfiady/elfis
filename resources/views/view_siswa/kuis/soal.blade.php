@@ -123,8 +123,8 @@ Perancangan Sistem Informasi
 		<div class="col-md-12">
 			<nav>
 				<ul class="pager">
-					<li class="previous"><a class="paging" href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a class="paging" href="{{URL::to('siswa/kuis_nilai')}}">Next <span aria-hidden="true">&rarr;</span></a></li>
+					<li class="previous"><a class="paging" href="#"><span aria-hidden="true">&larr;</span> Sebelumnya</a></li>
+					<li class="next"><a class="paging" href="{{URL::to('siswa/kuis_nilai')}}">Selanjutnya <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
 			</nav>
 		</div>

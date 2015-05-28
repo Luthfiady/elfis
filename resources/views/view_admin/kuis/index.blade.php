@@ -156,7 +156,7 @@ Kuis
 	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="edit_kuis" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.kuis.modal_add')
+		@include('view_admin.kuis.modal_edit')
 	</div>
 
 </div>

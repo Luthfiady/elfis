@@ -62,21 +62,21 @@
                     <li>
                         <a href="{{ URL::to('siswa/profile') }}">
                             <i class="glyphicon glyphicon-user"></i>
-                            &nbsp;My Profile
+                            &nbsp;Profil
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ URL::to('siswa/change_password') }}">
                             <i class="glyphicon glyphicon-wrench"></i>
-                            &nbsp;Change Password
+                            &nbsp;Ubah Password
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ URL::to('do_logout') }}">
                             <i class="glyphicon glyphicon-log-out"></i>
-                            &nbsp;Log Out
+                            &nbsp;Keluar
                         </a>
                     </li>
                 </ul>

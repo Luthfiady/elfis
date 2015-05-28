@@ -16,7 +16,7 @@ Reset Password
 		<div class="col-md-6">
 			<form class="form form-horizontal" role="form" style="margin-top:-20px;">
 				
-			<legend> <h3 class="legend"> Reset Password User </h3> </legend>
+			<legend> <h3 class="legend"> Reset Password </h3> </legend>
 
 				<div class="form-group">
 					<label class="col-sm-4">Username</label>

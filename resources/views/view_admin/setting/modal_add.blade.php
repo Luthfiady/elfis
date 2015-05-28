@@ -22,7 +22,7 @@ User Profile
 		<div class="col-md-9">
 			<form class="form form-horizontal" role="form" style="margin-top:-20px;">
 				
-				<legend> <h3 class="legend"> User Profile </h3> </legend>
+				<legend> <h3 class="legend"> Profil </h3> </legend>
 
 				<div class="form-group">
 					<label class="col-sm-3">NIK</label>
@@ -78,7 +78,7 @@ User Profile
 						
 					</div>
 					<div class="col-sm-2">
-						<button type="submit" id="submit_add_form" class="btn btn-primary btn-sm" value="save">Save</button>
+						<button type="submit" id="submit_add_form" class="btn btn-primary btn-sm" value="save">Simpan</button>
 			    		<button type="reset" id="reset_add_form" class="btn btn-default btn-sm">Reset</button>
 					</div>
 					<div class="col-sm-4">
