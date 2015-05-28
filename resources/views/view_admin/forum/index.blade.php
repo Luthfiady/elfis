@@ -13,7 +13,7 @@ Forum
 		<div class="col-md-12">
 			<form class="form-inline" style="float:right;">
 
-				<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by" name="search_by">
 						<option value=""> Kategori </option>
@@ -44,42 +44,7 @@ Forum
 
 	<div class="row row-table-data">
 		<div class="col-md-12 dataTable table-responsive">
-
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>Nama Forum</th>
-						<th>Hak Akses</th>
-						<th>Subyek</th>
-						<th>Keterangan</th>
-						<th>Rating</th>
-						<th>Dispoting Oleh</th>
-						<th><span class="glyphicon glyphicon-wrench"></span></th>
-					</tr>
-				</thead>
- 
-				<tbody class="index">
-				<?php $i = 1; ?>
-				@foreach($ForumData as $df)
-					<tr>
-						<td class="kolom-tengah">{{$i}}</td>
-						<td><a class="link-to" href="{{ URL::to('admin/forum_isi') }}"> {{ $df->nama_forum }} </a></td>
-						<td> {{ $df->role_access }} </td>
-						<td> {{ $df->subyek }} </td>
-						<td> {{ $df->keterangan }} </td>
-						<td class="kolom-tengah"> {{ $df->rate }}  <span class="glyphicon glyphicon-star"></span> </td>
-						<td class="kolom-tengah"> {{ $df->forum_create_by }} </td>
-						<td class="kolom-tengah">
-							<a class="btn btn-success btn-xs" href="#" data-toggle="modal" data-target="#edit_forum"> <span class="glyphicon glyphicon-edit"></span> </a> 
-	                		<a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-	                	</td>
-					</tr>
-					<?php $i++; ?>
-				@endforeach
-				</tbody>
-			</table>
-
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		</div>
 	</div>
 
@@ -104,6 +69,8 @@ Forum
 		  </ul>
 		</nav>
 	</div>
+
+	<input type="hidden" id="base_url" value="<?php echo ('localhost/elfis/admin/forum_list') ?>"/>
 
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->

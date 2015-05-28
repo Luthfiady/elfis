@@ -76,18 +76,18 @@ class AdminController extends Controller {
 	public function forum() {
 		if(session('id_group') == 3) {
 				
-			$search_by = trim(Input::get('search_by'));
-			$search_input = trim(Input::get('search_input'));
+			// $search_by = trim(Input::get('search_by'));
+			// $search_input = trim(Input::get('search_input'));
 
-			if ($search_by != null) {
-				$sql_ext = "where ".$search_by." like '%".$search_input."%'";
-			} else {
-				$sql_ext = "";
-			}
+			// if ($search_by != null) {
+			// 	$sql_ext = "where ".$search_by." like '%".$search_input."%'";
+			// } else {
+			// 	$sql_ext = "";
+			// }
 
-			$data_forum = DB::select('select * from forum '.$sql_ext);
+			// $data_forum = DB::select('select * from forum '.$sql_ext);
 
-			return view('view_admin/forum/index')->with('ForumData', $data_forum);
+			return view('view_admin/forum/index');
 
 		} else {
 			return redirect('login');
@@ -96,10 +96,11 @@ class AdminController extends Controller {
 
 
 	public function forum_get_list() {
+		
 		if(session('id_group') == 3) {
 
-			$search_by = trim(Input::get('search_by'));
-			$search_input = trim(Input::get('search_input'));
+			$search_by = Input::get('search_by');
+			$search_input = Input::get('search_input');
 
 			if ($search_by != null) {
 				$sql_ext = "where ".$search_by." like '%".$search_input."%'";
@@ -107,7 +108,7 @@ class AdminController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_forum = DB::select('select * from forum '.$sql_ext);
+			$data_forum = DB::select('select * from forum '.$sql_ext)->toArray();
 
 
 			$result = '';
@@ -159,11 +160,15 @@ class AdminController extends Controller {
 
 			}
 
-			$response = array (
-	            'result' => $result
-	        );
+			return Response::json(array(
+				'result'=>$result
+			));
 
-	        echo json_encode($response);
+			// $response = array (
+	  //           'result' => $result
+	  //       );
+
+	  //       echo json_encode($response);
 
 		} else {
 			return redirect('login');

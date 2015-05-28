@@ -54,7 +54,7 @@
 					<div class="form-group">
 						<label class="col-sm-4">Username</label>
 						<div class="col-sm-8">
-							<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="text" class="form-control" style="height:30px;" name="id_user" id="login_username" placeholder="Username" required autofocus>
 						</div>
 					</div>
