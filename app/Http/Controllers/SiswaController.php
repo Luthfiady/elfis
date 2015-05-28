@@ -34,6 +34,24 @@ class SiswaController extends Controller {
 		}
 	}
 
+	public function materi_soal() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/materi/soal');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
+	public function materi_nilai() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/materi/nilai');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 
 // -------------------------------------------------------- TUGAS --------------------------------------------------------
 	

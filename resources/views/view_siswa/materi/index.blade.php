@@ -15,8 +15,9 @@ Materi
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value=""> Nama Materi </option>
+						<option value=""> Pelajaran </option>
+	        			<option value=""> Nama Guru </option>
 					</select>	
 				</div>
 
@@ -29,13 +30,9 @@ Materi
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
-					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
-
 			</form>
 		</div>
 	</div>
-
 
 	<div class="row row-table-data">
 		<div class="col-md-12 table-responsive">
@@ -43,32 +40,50 @@ Materi
 			<table class="table table-hover table-bordered table-striped">
 				<thead class="index">
 					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
+						<th>No.</th>
+						<th>Nama Materi</th>
+						<th>Pelajaran</th>
+						<th>Nama Guru</th>
+						<th>Waktu Unggah</th>
+						<th>Status</th>
+						<th>Keterangan</th>
+						<th><span class="glyphicon glyphicon-wrench"></span></th>
 					</tr>
 				</thead>
 
 				<tbody class="index">
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+						<td class="kolom-tengah">1</td>
+						<td class="kolom-tengah">MTK-01</td>
+						<td class="kolom-tengah">Matematika</td>
+						<td class="kolom-tengah">Sholeh</td>
+						<td class="kolom-tengah">25/05/2015</td>
+						<td class="kolom-tengah">Belum</td>
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}">
+							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 					</tr>
 					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
+						<td class="kolom-tengah">2</td>
+						<td class="kolom-tengah">BINDO-02</td>
+						<td class="kolom-tengah">Bahasa Indonesia</td>
+						<td class="kolom-tengah">Kartika</td>
+						<td class="kolom-tengah">25/05/2015</td>
+						<td class="kolom-tengah">Belum</td>
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}">
+							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 					</tr>
 					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
+						<td class="kolom-tengah">3</td>
+						<td class="kolom-tengah">SB-03</td>
+						<td class="kolom-tengah">Seni Budaya</td>
+						<td class="kolom-tengah">Lubis</td>
+						<td class="kolom-tengah">25/05/2015</td>
+						<td class="kolom-tengah">Belum</td>
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}">
+							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 					</tr>
 				</tbody>
 			</table>

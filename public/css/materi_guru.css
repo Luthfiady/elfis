@@ -1,0 +1,55 @@
+/*--------------------------------------MATERI--------------------------------------*/
+.h1, .h2, .h3, .h4, h1, h2, h3, h4 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+  	font-family: sans-serif;
+	}
+
+.form-group {
+  	font-family: sans-serif;
+ 	font-size: 11.5pt;
+	}
+
+fieldset.scheduler-border {
+	border: 1px groove #ddd !important;
+	padding: 0 1.4em 1.4em 1.4em !important;
+	margin: 0 0 1.5em 0 !important;
+	-webkit-box-shadow:  0px 0px 0px 0px #000;
+	        box-shadow:  0px 0px 0px 0px #000;
+	}
+
+legend.scheduler-border {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+	}
+
+.show-grid [class^=col-] {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #eee;
+	background-color: rgba(86,61,124,.15);
+	border: 1px solid #ddd;
+	border: 1px solid rgba(86,61,124,.2);
+	}
+
+thead.index th {
+  background-color: #127EA4;
+  text-align: center;
+  color: white;
+}
+
+tbody.index tr {
+	font-family: sans-serif;
+ 	font-size: 11.5pt;
+}
+
+tr.baris-tengah {
+  text-align: center;
+}
+
+tr.baris-kanan {
+  text-align: right;
+}
+
+

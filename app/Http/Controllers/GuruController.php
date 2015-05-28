@@ -34,6 +34,15 @@ class GuruController extends Controller {
 		}
 	}
 
+	public function detail_materi() {
+		if(session('id_group') == 2) {
+			return view('view_guru/materi/detail');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 
 // -------------------------------------------------------- TUGAS --------------------------------------------------------
 

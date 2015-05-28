@@ -42,6 +42,7 @@ Route::get('admin/reset_password', 'AdminController@reset_password');
 // Route Guru
 Route::get('guru', 'GuruController@index');
 Route::get('guru/materi', 'GuruController@materi');
+Route::get('guru/detail_materi', 'GuruController@detail_materi');
 Route::get('guru/tugas', 'GuruController@tugas');
 Route::get('guru/kuis', 'GuruController@kuis');
 Route::get('guru/ujian', 'GuruController@ujian');
@@ -54,6 +55,8 @@ Route::get('guru/change_password', 'GuruController@change_password');
 // Route Siswa
 Route::get('siswa', 'SiswaController@index');
 Route::get('siswa/materi', 'SiswaController@materi');
+Route::get('siswa/materi_soal', 'SiswaController@materi_soal');
+Route::get('siswa/materi_nilai', 'SiswaController@materi_nilai');
 Route::get('siswa/tugas', 'SiswaController@tugas');
 Route::get('siswa/kuis', 'SiswaController@kuis');
 Route::get('siswa/kuis_soal', 'SiswaController@kuis_soal');
