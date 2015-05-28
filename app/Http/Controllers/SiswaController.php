@@ -64,6 +64,15 @@ class SiswaController extends Controller {
 		}
 	}
 
+	public function tugas_detail() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/tugas/detail');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 
 // -------------------------------------------------------- KUIS --------------------------------------------------------
 

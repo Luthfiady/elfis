@@ -75,11 +75,132 @@ class AdminController extends Controller {
 
 	public function forum() {
 		if(session('id_group') == 3) {
-			return view('view_admin/forum/index');
-		}
-		else {
+				
+			$search_by = trim(Input::get('search_by'));
+			$search_input = trim(Input::get('search_input'));
+
+			if ($search_by != null) {
+				$sql_ext = "where ".$search_by." like '%".$search_input."%'";
+			} else {
+				$sql_ext = "";
+			}
+
+			$data_forum = DB::select('select * from forum '.$sql_ext);
+
+			return view('view_admin/forum/index')->with('ForumData', $data_forum);
+
+		} else {
 			return redirect('login');
 		}
+	}
+
+
+	public function forum_get_list() {
+		if(session('id_group') == 3) {
+
+			$search_by = trim(Input::get('search_by'));
+			$search_input = trim(Input::get('search_input'));
+
+			if ($search_by != null) {
+				$sql_ext = "where ".$search_by." like '%".$search_input."%'";
+			} else {
+				$sql_ext = "";
+			}
+
+			$data_forum = DB::select('select * from forum '.$sql_ext);
+
+
+			$result = '';
+
+			$result .= '<table class="table table-hover table-bordered table-striped">';
+			$result .= '<thead class="index">';
+			$result .= '<tr>';
+			$result .= '<th>No</th>';
+			$result .= '<th>Nama Forum</th>';
+			$result .= '<th>Hak Akses</th>';
+			$result .= '<th>Subyek</th>';
+			$result .= '<th>Keterangan</th>';
+			$result .= '<th>Rating</th>';
+			$result .= '<th>Dispoting Oleh</th>';
+			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
+			$result .= '</tr>';
+			$result .= '</thead>';
+			$result .= '<tbody class="index">';
+			$result .= '<tr>';
+
+			if ($data_forum == null) {
+
+				$result .= '<td colspan="8">No Data In Database</td>';
+				$result .= '</tr>';
+				$result .= '</tbody>';
+				$result .= '</table>';
+
+			} else {
+
+				$i = 1;
+				foreach ($data_forum as $row => $list) {
+					$result .= '<td class="kolom-tengah">'.$i.'</td>';
+					$result .= '<td><a class="link-to" href="{{ URL::to("admin/forum_isi") }}">'.$list['nama_forum'].'</a></td>';
+					$result .= '<td>'.$list['role_access'].'</td>';
+					$result .= '<td>'.$list['subyek'].'</td>';
+					$result .= '<td>'.$list['keterangan'].'</td>';
+					$result .= '<td class="kolom-tengah">'.$list['rate'].' <span class="glyphicon glyphicon-star"></span> </td>';
+					$result .= '<td class="kolom-tengah">'.$list['forum_create_by'].'</td>';
+					$result .= '<td class="kolom-tengah">
+									<a class="btn btn-success btn-xs" href="#" data-toggle="modal" data-target="#edit_forum"> <span class="glyphicon glyphicon-edit"></span> </a> 
+			                		<a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+			                	</td>';
+					$result .= '</tr>';
+					$i++;
+				}
+
+				$result .= '</tbody';
+				$result .= '</table>';
+
+			}
+
+			$response = array (
+	            'result' => $result
+	        );
+
+	        echo json_encode($response);
+
+		} else {
+			return redirect('login');
+		}
+	}
+
+
+	public function forum_add() {
+		if(session('id_group') == 3) {
+
+			$nama_forum = Input::get('add_nama_forum');
+			$role_access = Input::get('add_role_access');
+			$subyek = Input::get('add_subyek');
+			$keterangan = Input::get('add_keterangan');
+			$isi = Input::get('add_isi');
+
+			$data_forum_add = DB::insert('insert into forum values (
+										id_forum = "3", 
+										nama_forum = "'.$nama_forum.'", 
+										role_access = "'.$role_access.'", 
+										subyek = "'.$subyek.'", 
+										keterangan = "'.$keterangan.'", 
+										isi = "'.$isi.'", 
+										rate = "0", 
+										forum_create = "'.date('Y-m-d H:i:s').'",
+										forum_create_by = "admin")');
+
+			return view('view_admin/forum/index')->with($data_forum_add);
+
+		} else {
+			return redirect('login');
+		}
+	}
+
+
+	public function forum_edit() {
+
 	}
 
 

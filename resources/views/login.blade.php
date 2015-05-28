@@ -95,12 +95,7 @@
 	<script src="{{ asset('public/js/jquery-1.11.2.min.js') }}"></script>
 	<script src="{{ asset('public/js/jquery.nivo.slider.js') }}"></script>
 	<script src="{{ asset('public/js/login.js') }}"></script>
-	
-	<script>
-        $(window).load(function() {
-            $('#slider').nivoSlider();
-        });
-	</script>
+
 
 </body>
 </html>
