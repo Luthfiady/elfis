@@ -63,7 +63,7 @@
                 <ul class="dropdown-menu">
                     <li class="">
                         <a href="{{ URL::to('admin/setting_user') }}">
-                            Managemen User
+                            Manajemen User
                         </a>
                     </li>
                 </ul>

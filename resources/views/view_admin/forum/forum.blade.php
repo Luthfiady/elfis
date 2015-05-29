@@ -1,5 +1,5 @@
 @extends('templates/admin_layouts')
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/forum.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/forum.css') }}">
 
 @section('add_bread_admin')
 <li><a href="{{ URL::to('admin/forum') }}">Forum</a></li>
