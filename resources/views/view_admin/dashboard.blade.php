@@ -14,7 +14,7 @@ Dashboard
     <div class="row row-dashboard-slider">
         <div class="col-md-12 contain-slider slider-wrapper theme-default">
 			<div id="slider" class="nivoSlider">
-				<img src="{{ asset('public/img/slider/1.png') }}">
+                <img src="{{ asset('public/img/slider/1.png') }}">
                 <img src="{{ asset('public/img/slider/2.png') }}">
                 <img src="{{ asset('public/img/slider/3.png') }}">
             </div>

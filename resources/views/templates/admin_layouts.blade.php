@@ -23,7 +23,6 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/jquery-ui-1.11.3/jquery-ui.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/MyStyle.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nivo-slider.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/fileinput.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/themes/default/default.css') }}">
 
 		<!-- Fonts -->
@@ -41,9 +40,6 @@
 		<script src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
 		<script src="{{ asset('public/js/validator.js') }}"></script>
 		<script src="{{ asset('public/js/jquery.nivo.slider.js') }}"></script>
-		<script src="{{ asset('public/js/apps/tugas.js') }}"></script>
-		<script src="{{ asset('public/js/fileinput.min.js') }}" type="text/javascript"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 		<script>
             var base_url = "{{url()}}";
 
