@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /vendor
 /node_modules
+=======
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+>>>>>>> origin/master
 .env
