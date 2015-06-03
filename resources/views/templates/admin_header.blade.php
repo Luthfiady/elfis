@@ -31,9 +31,22 @@
                 </a>
             </li>
             <li class="">
-                <a href="{{ URL::to('admin/tugas') }}">
-                    Tugas
+                <a href="javascript:void(0)" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">
+                    <span class="selected"></span>
+                    Tugas <span class="caret"></span><i class="fa fa-angle-down"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li class="">
+                        <a href="{{ URL::to('admin/tugas') }}">
+                            Tambah Tugas
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ URL::to('admin/jawaban_tugas') }}">
+                            Jawaban Tugas
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="">
                 <a href="{{ URL::to('admin/kuis') }}">

@@ -13,7 +13,7 @@ Forum
 		<div class="col-md-12">
 			<form class="form-inline" style="float:right;">
 
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by" name="search_by">
 						<option value=""> Kategori </option>
@@ -44,7 +44,7 @@ Forum
 
 	<div class="row row-table-data">
 		<div class="col-md-12 dataTable table-responsive">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 		</div>
 	</div>
 
@@ -70,7 +70,7 @@ Forum
 		</nav>
 	</div>
 
-	<input type="hidden" id="base_url" value="<?php echo ('localhost/elfis/admin/forum_list') ?>"/>
+	<input type="hidden" id="base_url" value="<?php echo ('localhost/elfis/admin/') ?>"/>
 
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->

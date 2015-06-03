@@ -58,6 +58,7 @@ Route::get('siswa/materi_nilai', 'SiswaController@materi_nilai');
 
 // Route Admin 
 Route::get('admin/tugas', 'AdminController@tugas');
+Route::get('admin/jawaban_tugas', 'AdminController@jawaban_tugas');
 
 // Route Guru
 Route::get('guru/tugas', 'GuruController@tugas');
@@ -73,6 +74,8 @@ Route::get('siswa/tugas_detail', 'SiswaController@tugas_detail');
 
 // Route Admin 
 Route::get('admin/kuis', 'AdminController@kuis');
+Route::get('admin/kuis_add', 'AdminController@kuis_add');
+Route::get('admin/kuis_list', 'AdminController@kuis_get_list');
 
 // Route Guru
 Route::get('guru/kuis', 'GuruController@kuis');
@@ -81,7 +84,6 @@ Route::get('guru/kuis', 'GuruController@kuis');
 Route::get('siswa/kuis', 'SiswaController@kuis');
 Route::get('siswa/kuis_soal', 'SiswaController@kuis_soal');
 Route::get('siswa/kuis_nilai', 'SiswaController@kuis_nilai');
-
 
 
 
@@ -103,10 +105,15 @@ Route::get('siswa/ujian', 'SiswaController@ujian');
 
 // Route Admin 
 Route::get('admin/forum', 'AdminController@forum');
-Route::post('admin/forum_list', 'AdminController@forum_get_list');
 Route::get('admin/forum_isi', 'AdminController@forum_isi');
+
+Route::get('admin/forum_list', 'AdminController@forum_get_list');
+Route::post('admin/forum_add', 'AdminController@forum_add');
+Route::post('admin/forum_delete', 'AdminController@forum_delete');
+Route::post('admin/forum_get_edit', 'AdminController@forum_get_edit');
+Route::post('admin/forum_edit', 'AdminController@forum_edit');
+
 // Route::post('admin/forum_search', 'AdminController@forum');
-// Route::post('admin/forum_add', 'AdminController@forum_add');
 // Route::post('admin/forum_edit', 'AdminController@forum_edit');
 
 // Route Guru

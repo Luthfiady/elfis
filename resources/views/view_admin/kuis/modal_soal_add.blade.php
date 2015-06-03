@@ -111,9 +111,8 @@
 
       <div class="modal-footer">
 	      <div class="form-group">
-          <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm" style="float:left;">Reset</button>
-          <button type="submit" class="btn btn-primary btn-sm" data-dismiss="modal">Sebelumnya</button>
-	        <a type="submit" id="simpan_soal" class="btn btn-primary btn-sm" value="save">Selanjutnya</a>
+          <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+	        <a type="submit" id="simpan_soal" class="btn btn-primary btn-sm" value="save">Simpan</a>
           <button type="submit" id="btn_hide_soal" class="btn btn-primary btn-sm" style="display:none;">hide</button>
 	      </div>
 

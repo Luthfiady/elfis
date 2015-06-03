@@ -1,12 +1,12 @@
 @extends('templates/siswa_layouts')
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/materi_siswa.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi_siswa.css') }}">
 
 @section('add_bread_siswa')
 <li><a href="{{ URL::to('siswa/materi') }}">Materi</a></li>
 @stop
 
 @section('bread_siswa')
-MTK-01
+Nilai
 @stop
 
 @section('content')
@@ -18,7 +18,7 @@ MTK-01
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
 
-				<form class="form form-horizontal" role="form" style="margin-top:-20px;">
+				<form class="form form-horizontal" role="form" style="margin-top:-20px;" data-toggle="validator">
 					<legend> <h3 class="legend"> Hasil Latihan Soal </h3> </legend>
 					<div class="form-group">
 						<p class="col-sm-6">Jawaban Benar</p>

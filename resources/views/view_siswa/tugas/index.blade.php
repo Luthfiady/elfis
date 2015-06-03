@@ -28,6 +28,11 @@ Tugas
 					</button>
 				</div>
 
+				&nbsp 
+
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_jawabanTugas"> 
+					<span class="glyphicon glyphicon-upload"></span> Unggah Tugas </a>
+
 			</form>
 		</div>
 	</div>
@@ -61,9 +66,6 @@ Tugas
 							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
 								<span class="glyphicon glyphicon-new-window"></span>
 							</a>
-							<a class="btn btn-xs btn-success" href="" title="upload">
-								<span class="glyphicon glyphicon-upload"></span>
-							</a>
 						</td>
 					</tr>
 					<tr>
@@ -76,9 +78,6 @@ Tugas
 						<td class="kolom-tengah">
 							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
 								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-							<a class="btn btn-xs btn-success" href="" title="upload">
-								<span class="glyphicon glyphicon-upload"></span>
 							</a>
 						</td>
 					</tr>
@@ -93,9 +92,6 @@ Tugas
 							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
 								<span class="glyphicon glyphicon-new-window"></span>
 							</a>
-							<a class="btn btn-xs btn-success" href="" title="upload">
-								<span class="glyphicon glyphicon-upload"></span>
-							</a>
 						</td>
 					</tr>
 					<tr>
@@ -108,9 +104,6 @@ Tugas
 						<td class="kolom-tengah">
 							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
 								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-							<a class="btn btn-xs btn-success" href="" title="upload">
-								<span class="glyphicon glyphicon-upload"></span>
 							</a>
 						</td>
 					</tr>
@@ -140,6 +133,12 @@ Tugas
 		    </li>
 		  </ul>
 		</nav>
+	</div>
+
+<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_jawabanTugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_siswa.tugas.modal_upload')
 	</div>
 
 </div>

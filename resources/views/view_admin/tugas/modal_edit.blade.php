@@ -11,20 +11,23 @@
       </div>
 
       <div class="modal-body">
-        <form id="add_form" class="form form-horizontal" role="form">
+        <form id="edit_form" class="form form-horizontal" role="form">
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Nama Tugas</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Nama Tugas</label>
             <div class="col-sm-8">
               <input type="text" class="form-control inform-height" id="add_nama_tugas" placeholder="Nama Tugas" required>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Materi</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Nama Materi</label>
             <div class="col-sm-8">
               <select class="form-control" id="nama_materi" required>
                 <option value=""> Nama Materi </option>
@@ -34,69 +37,86 @@
                 <option value="D"> Materi D </option>
               </select>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Isi</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Isi</label>
             <div class="col-sm-8">
-              <textarea rows="3" class="form-control inform-height" id="add_isi" placeholder="Deskripsi Tugas" required></textarea>
+              <textarea rows="3" class="form-control inform-height" id="add_isi" placeholder="Uraian Tugas" required></textarea>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Tanggal Mulai</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Tugas Mulai</label>
             <div class="col-sm-8">
               <div class="input-group date" id="datepicker_start">
-                <input type="text" class="form-control inform-height" placeholder="Tanggal Mulai" required>
+                <input type="text" id="tgl_mulai" class="form-control inform-height" placeholder="Tanggal Mulai" required>
                   <span class="input-group-addon">
                     <i class="glyphicon glyphicon-calendar"></i>
                   </span>
               </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Tanggal Akhir</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Tugas Selesai</label>
             <div class="col-sm-8">
               <div class="input-group date" id="datepicker_end">
-                <input type="text" class="form-control inform-height" placeholder="Tanggal Selesai" required>
+                <input type="text" id="tgl_selesai" class="form-control inform-height" placeholder="Tanggal Selesai" required>
                 <span class="input-group-addon">
                   <i class="glyphicon glyphicon-calendar"></i>
                 </span>
               </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Durasi Tugas</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Durasi Tugas</label>
             <div class="col-sm-8">
               <div class="input-group date" id="time_durasi">
-                <input type="text" class="form-control inform-height" placeholder="Durasi Tugas" required>
+                <input type="text" id="durasi" class="form-control inform-height" placeholder="Durasi Tugas" required>
                 <span class="input-group-addon">
                   <i class="glyphicon glyphicon-time"></i>
                 </span>
               </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">File Tugas</label>
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">File Tugas</label>
             <div class="col-sm-8">
                 <input type="file" name="input_tugas" accept="file_extension">
             </div>
-            <div class="col-md-1"></div>
-          </div>
+            <div class="col-sm-1"></div>
 
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
+          </div>
       </div>
 
       <div class="modal-footer">

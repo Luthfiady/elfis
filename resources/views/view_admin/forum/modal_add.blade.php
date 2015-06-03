@@ -24,7 +24,7 @@
           <div class="form-group">
             <label class="col-sm-2">Hak Akses</label>
             <div class="col-sm-10">
-              <select class="form-control inform-height" name="add_role_access" id="" required>
+              <select class="form-control inform-height" name="add_role_access" id="add_role_access" required>
                 <option value=""> Hak Akses </option>
                 <option value="Semua"> Semua </option>
                 <option value="Guru"> Guru </option>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label class="col-sm-2">Subyek</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control inform-height" name="add_subyek" id="add_Subyek" placeholder="Subyek">
+              <input type="text" class="form-control inform-height" name="add_subyek" id="add_subyek" placeholder="Subyek">
             </div>
           </div>
 
@@ -52,7 +52,7 @@
           <div class="form-group">
             <label class="col-sm-2">Isi</label>
             <div class="col-sm-10">
-              <textarea class="form-control" rows="10" name="add_isi" required></textarea>
+              <textarea class="form-control" rows="10" name="add_isi" id="add_isi" required></textarea>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-8 help-block with-errors"></div>

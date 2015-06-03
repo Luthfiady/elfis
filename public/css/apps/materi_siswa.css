@@ -4,6 +4,13 @@
 	margin-bottom: 10px;
 }
 
+
+h3.mulai {font-family: sans-serif; font-size: 12pt; font-weight: bold; text-align: right;}
+
+.jarak{
+  padding-top: 10px;
+}
+
 .show-grid [class^=col-] {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -23,6 +30,8 @@
 h4.judul-soal {font-family: sans-serif; font-size: 14pt; font-weight: bold;}
 
 h3 {font-family: sans-serif; font-size: 12pt; font-weight: bold; text-align: right;}
+
+h3.juduldownload {text-align: center;}
 
 
 .form-group p {
@@ -54,3 +63,21 @@ table.table-soal th, tr, td{
 .radio {
   margin-top: -10px !important;
 }
+
+
+thead.index th {
+  background-color: #127EA4;
+  text-align: center;
+  color: white;
+}
+
+tbody.index tr {
+  font-family: sans-serif;
+  font-size: 11.5pt;
+}
+
+table th, tr, td{
+  border-style: none !important;
+  vertical-align: text-top !important;
+}
+

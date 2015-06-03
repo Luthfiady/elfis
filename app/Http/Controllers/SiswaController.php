@@ -52,6 +52,15 @@ class SiswaController extends Controller {
 		}
 	}
 
+	public function materi_download() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/materi/download');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 
 // -------------------------------------------------------- TUGAS --------------------------------------------------------
 	

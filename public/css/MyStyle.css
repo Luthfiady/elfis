@@ -331,6 +331,10 @@ input[readonly] {
 
 /*--------------------------------------table--------------------------------------*/
 
+.dataTable {
+  text-align: center;
+}
+
 thead.index th {
   background-color: #127EA4;
   text-align: center;

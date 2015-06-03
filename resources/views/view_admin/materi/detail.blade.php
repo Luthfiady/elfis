@@ -1,11 +1,11 @@
-@extends('templates/guru_layouts')
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi_guru.css') }}">
+@extends('templates/admin_layouts')
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi_admin.css') }}">
 
-@section('add_bread_guru')
-<li><a href="{{ URL::to('guru/materi') }}">Materi</a></li>
+@section('add_bread_admin')
+<li><a href="{{ URL::to('admin/materi') }}">Materi</a></li>
 @stop
 
-@section('bread_guru')
+@section('bread_admin')
 Detail Materi dan Soal
 @stop
 
@@ -13,7 +13,7 @@ Detail Materi dan Soal
 
 <div class="main-content">
 	    <fieldset class="scheduler-border">
-	    <legend class="scheduler-border">Detail Materi</legend>
+	    <legend class="scheduler-border">Detail Materi </legend>
 		    <div class="row">
 				<div class="col-md-6">
 				</div>

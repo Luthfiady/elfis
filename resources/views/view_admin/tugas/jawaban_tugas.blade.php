@@ -1,22 +1,29 @@
 @extends('templates/admin_layouts')
 
+@section('add_bread_admin')
+<li><a href="{{ URL::to('admin/tugas') }}">Tugas</a></li>
+@stop
+
 @section('bread_admin')
-Tugas
+Jawaban Tugas
 @stop
 
 @section('content')
 
 <div class="main-content">
 
-	<div class="row">
+	<div class="row row-judul">
+
 		<div class="col-md-12">
-			<form class="form-inline" style="float:right;">
+		
+			<form class="form-inline pull-right">
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
 						<option value="modul_code"> Nama Tugas </option>
 	        			<option value="modul_name"> Materi </option>
+	        			<option value="modul_name"> Pelajaran </option>
 					</select>	
 				</div>
 
@@ -29,9 +36,8 @@ Tugas
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_tugas"> 
-					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
-
+				<a href="#" id="add_button" class="btn btn-sm btn-primary inform-height" data-toggle="modal" data-target="#add_NilaiTugas"> 
+					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Nilai </a>
 			</form>
 		</div>
 	</div>
@@ -44,56 +50,45 @@ Tugas
 				<thead class="index">
 					<tr>
 						<th>No</th>
-						<th>Nama Tugas</th>
+						<th>Siswa/i</th>
+						<th>Jawaban Tugas</th>
 						<th>Materi</th>
 						<th>Pelajaran</th>
-						<th>Tanggal Mulai</th>
-						<th>Tanggal Selesai</th>
+						<th>Tanggal Unggah</th>
 						<th><span class="glyphicon glyphicon-wrench"></span></th>
-						<th><span class="glyphicon glyphicon-folder-open"></span></th>
 					</tr>
 				</thead>
 
 				<tbody class="index">
 					<tr>
 						<td class="kolom-tengah">1</td>
-						<td>Membuat maket rumah masing-masing</td>
-						<td>Bangunan dan Landscape</td>
-						<td>Bangunan</td>
-						<td class="kolom-kanan">23/5/2015</td>
-						<td class="kolom-kanan">29/5/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
-								<span class="glyphicon glyphicon-trash"></span>
+						<td>Anditika</td>
+						<td><a href="#" title="Unduh">
+								Anditika_IT8A_Menggambar Gunung.docx <span class="glyphicon glyphicon-download"></span>
 							</a>
 						</td>
+						<td>Bangunan dan Perancangan</td>
+						<td>Bangunan</td>
+						<td class="kolom-kanan">29/5/2015</td>
 						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="#" title="Detail">
-								<span class="glyphicon glyphicon-new-window"></span>
+							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
+								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>
 					</tr>
 					<tr>
 						<td class="kolom-tengah">2</td>
-						<td>Menghancurkan maket teman</td>
-						<td>Bangunan dan Landscape</td>
-						<td>Bangunan</td>
-						<td class="kolom-kanan">23/5/2015</td>
-						<td class="kolom-kanan">29/5/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
-								<span class="glyphicon glyphicon-trash"></span>
+						<td>Ayu</td>
+						<td><a href="#" title="Unduh">
+								Ayu_IT8A_Menghancurkan Gunung.doc <span class="glyphicon glyphicon-download"></span>
 							</a>
 						</td>
+						<td>Bangunan dan Perancangan</td>
+						<td>Bangunan</td>
+						<td class="kolom-kanan">29/5/2015</td>
 						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="#" title="Detail">
-								<span class="glyphicon glyphicon-new-window"></span>
+							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
+								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>
 					</tr>
@@ -125,16 +120,13 @@ Tugas
 		</nav>
 	</div>
 
-		<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
-	<div class="modal fade" id="add_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.tugas.modal_add')
-	</div>
-	<div class="modal fade" id="edit_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.tugas.modal_edit')
+	<div class="modal fade" id="add_NilaiTugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.tugas.modal_nilai_add')
 	</div>
 
-	<script type="text/javascript" src="{{asset('public/js/apps/kuis.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/js/apps/tugas.js')}}"></script>
 
 </div>
 

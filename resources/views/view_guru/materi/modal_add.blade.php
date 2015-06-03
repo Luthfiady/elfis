@@ -1,158 +1,75 @@
-<!-- Modal Add-->
-  <div class="modal-dialog">
+<!-- MODAL ADD --> 
+  
+<div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Menambahkan Materi dan Soal</h4>
-      </div>
-      <div class="modal-body">
-      
-      <form id="addMateri" class="form form-horizontal" role="form" data-toggle="validator">
-      <fieldset class="scheduler-border">
-        <legend class="scheduler-border">Materi</legend>
-          <div class="form-group">
-            <label class="col-sm-2 label-right">Pelajaran</label>
-            <div class="col-sm-10">
-                <select class="form-control inform-height" id="" required>
-                  <option value="">-Pilih Pelajaran-</option>
-                  <option value="modul_code">Matematika2</option>
-                  <option value="modul_name">Matematika3</option>
-                  <option value="modul_name">Matematika4</option>
-                </select>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p class="modal-title">Tambah Materi</p>
+        </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 label-right">Kelas</label>
-            <div class="col-sm-10">
-                <select class="form-control inform-height" id="" required>
-                  <option value="">-Pilih Kelas-</option>
-                  <option value="modul_code">2MM2</option>
-                  <option value="modul_name">2TKR1</option>
-                  <option value="modul_name">2TKR2</option>
-                </select>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-
-          <div class="form-group">
-              <label class="col-sm-2 label-right">Nama Materi</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control inform-height" id="" placeholder="Nama Materi" required>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-
-          <div class="form-group">
-              <label class="col-sm-2 label-right">Isi Materi</label>
-              <div class="col-sm-10">
-                <textarea class="form-control" rows="10" required></textarea>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 label-right" for="fileUpload">File Upload</label>
-            <input type="file" id="fileUpload">
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" id="closeAddMateri" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" id="saveAddMateri" class="btn btn-primary">Save</button>
-          </div>
-        </fieldset>
-
-
-        <fieldset class="scheduler-border">
-        <legend class="scheduler-border">Soal</legend>
+        <div class="modal-body">
+          <form id="addMateri" class="form form-horizontal" role="form" data-toggle="validator">
+            
             <div class="form-group">
-              <label class="col-sm-2 label-right">Soal</label>
-              <div class="col-sm-10">
-                <textarea class="form-control" rows="10" required></textarea>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
+                <div class="col-md-1"></div>
+                <label class="col-sm-2 label-right">Materi</label>
+                <div class="col-sm-8">
+                  <select class="form-control" id="nama_materi" required>
+                    <option value=""> Pilih Pelajaran </option>
+                    <option value="A"> Matematika2 </option>
+                    <option value="B"> Matematika3 </option>
+                    <option value="C"> Matematika4 </option>
+                  </select>
+                </div>
+                <div class="col-md-1"></div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 label-right">Pilihan A</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control inform-height" id="" placeholder="" required>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-          <div class="form-group">
-              <label class="col-sm-2 label-right">Pilihan B</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control inform-height" id="" placeholder="" required>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-          <div class="form-group">
-              <label class="col-sm-2 label-right">Pilihan C</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control inform-height" id="" placeholder="" required>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-          <div class="form-group">
-              <label class="col-sm-2 label-right">Pilihan D</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control inform-height" id="" placeholder="" required>
-              </div>
-              <div class="col-sm-2"></div>
-              <div class="col-sm-8 help-block with-errors"></div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 label-right">Jawaban</label>
-            <div class="col-sm-10">
-              <div class="radio">
-                  <label class="col-sm-10">
-                    <input type="radio" name="" id="" value="A">
-                    Huruf A
-                  </label>
-              </div>
-              <div class="radio">
-                  <label class="col-sm-10">
-                    <input type="radio" name="" id="" value="B">
-                    Huruf B
-                  </label>
-              </div>
-              <div class="radio">
-                  <label class="col-sm-10">
-                    <input type="radio" name="" id="" value="C">
-                    Huruf C
-                  </label>
-              </div>
-              <div class="radio">
-                  <label class="col-sm-10">
-                    <input type="radio" name="" id="" value="D">
-                    Huruf D
-                  </label>
-              </div>
-              <div class="radio">
-                  <label class="col-sm-10">
-                    <input type="radio" name="" id="" value="D">
-                    Huruf D
-                  </label>
-              </div>
+                <div class="col-md-1"></div>
+                <label class="col-sm-2 label-right">Kelas</label>
+                <div class="col-sm-8">
+                  <select class="form-control" id="nama_materi" required>
+                    <option value=""> Pilih Kelas </option>
+                    <option value="A"> 2MM2 </option>
+                    <option value="B"> 2TKR1 </option>
+                    <option value="C"> 2TKR2 </option>
+                  </select>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-1"></div>
+                <label class="col-sm-2 label-right">Nama Materi</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control inform-height" id="addNamaMateri" placeholder="Nama Materi" required>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-1"></div>
+                <label class="col-sm-2 label-right">Isi Materi</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" rows="10" required></textarea>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-1"></div>
+              <label class="col-sm-2 label-right" for="fileUpload">File Upload</label>
+              <input type="file" id="fileUpload">
+              <div class="col-md-1"></div>
+            </div>
+
+            <div class="modal-footer">
+              <div class="form-group">
+                  <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+                <a type="submit" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
             </div>
           </div>
-        </fieldset>
-      </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="closeAddMateri" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" id="saveAddMateri" class="btn btn-primary">Save</button>
-      </div>
+          </form>
+        </div>
     </div>
-  </div>
+</div>

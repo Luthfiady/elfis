@@ -1,5 +1,4 @@
 @extends('templates/guru_layouts')
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/materi_guru.css') }}">
 
 @section('bread_guru')
 Materi
@@ -11,12 +10,12 @@ Materi
 
 	<div class="row">
 		<div class="col-md-12">
-			<form class="form-inline" style="float:right;">
+			<form class="form-inline" style="float:right;" data-toggle="validator">
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value=""> Nama Materi </option>
+						<option value=""> Nama </option>
 						<option value=""> Pelajaran </option>
 	        			<option value=""> Nama Guru </option>
 					</select>	
@@ -32,7 +31,10 @@ Materi
 				&nbsp 
 
 				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addMateri"> 
-				<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
+					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Materi</a>
+
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addSoal"> 
+					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Soal</a>
 
 			</form>
 		</div>
@@ -62,14 +64,30 @@ Materi
 						<td class="kolom-tengah">Matematika</td>
 						<td class="kolom-tengah">XIMM2</td>
 						<td class="kolom-tengah">25/05/2015</td>
-						<td class="kolom-tengah">-</td>
-						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('guru/detail_materi')}}">
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('guru/materi_detail')}}" title="detail">
 							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editMateri"> 
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editMateri" title="edit"> 
 							<span class="glyphicon glyphicon-pencil"></span></td></a>
 						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri"> 
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri" title="hapus"> 
+							<span class="glyphicon glyphicon-remove"></span></td></a>
+					</tr>
+					<tr>
+						<td class="kolom-tengah">1</td>
+						<td class="kolom-tengah">MTK-01</td>
+						<td class="kolom-tengah">Matematika</td>
+						<td class="kolom-tengah">XIMM2</td>
+						<td class="kolom-tengah">25/05/2015</td>
+						<td class="kolom-tengah">Soal</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('guru/materi_detail')}}" title="detail">
+							<span class="glyphicon glyphicon-folder-open"></span></td></a>
+						<td class="kolom-tengah">
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editSoal" title="edit"> 
+							<span class="glyphicon glyphicon-pencil"></span></td></a>
+						<td class="kolom-tengah">
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri" title="hapus"> 
 							<span class="glyphicon glyphicon-remove"></span></td></a>
 					</tr>
 					<tr>
@@ -78,14 +96,14 @@ Materi
 						<td class="kolom-tengah">Bahasa Indonesia</td>
 						<td class="kolom-tengah">XIMM2</td>
 						<td class="kolom-tengah">25/05/2015</td>
-						<td class="kolom-tengah">-</td>
-						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/detail_materi')}}">
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('guru/materi_detail')}}" title="detail">
 							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editMateri"> 
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editMateri" title="edit"> 
 							<span class="glyphicon glyphicon-pencil"></span></td></a>
 						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri"> 
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri" title="hapus"> 
 							<span class="glyphicon glyphicon-remove"></span></td></a>
 					</tr>
 					<tr>
@@ -94,14 +112,14 @@ Materi
 						<td class="kolom-tengah">Seni Budaya</td>
 						<td class="kolom-tengah">XIMM2</td>
 						<td class="kolom-tengah">25/05/2015</td>
-						<td class="kolom-tengah">-</td>
-						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/detail_materi')}}">
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('guru/materi_detail')}}" title="detail">
 							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editMateri"> 
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#editMateri" title="edit"> 
 							<span class="glyphicon glyphicon-pencil"></span></td></a>
 						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri"> 
+							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri" title="buka"> 
 							<span class="glyphicon glyphicon-remove"></span></td></a>
 					</tr>
 				</tbody>
@@ -132,17 +150,28 @@ Materi
 		</nav>
 	</div>
 
-
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="addMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_guru.materi.modal_add')
 	</div>
 
+	<!-- ///////////////////////////////////////////////////////////// Modal Add Soal///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="addSoal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_guru.materi.modal_addSoal')
+	</div>
+
 	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="editMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_guru.materi.modal_edit')
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit Soal ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="editSoal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_guru.materi.modal_editSoal')
 	</div>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Delete ///////////////////////////////////////////////////////////// -->

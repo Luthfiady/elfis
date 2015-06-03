@@ -1,11 +1,11 @@
-@extends('templates/siswa_layouts')
+@extends('templates/admin_layouts')
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/tugas.css') }}">
 
-@section('add_bread_siswa')
-<li><a href="{{ URL::to('siswa/tugas') }}">Tugas</a></li>
+@section('add_bread_admin')
+<li><a href="{{ URL::to('admin/tugas') }}">Tugas</a></li>
 @stop
 
-@section('bread_siswa')
+@section('bread_admin')
 Menggambar Gunung
 @stop
 
@@ -15,16 +15,15 @@ Menggambar Gunung
 
 	<div class="row row-judul">
 
-		<div class="col-md-12">			
+		<div class="col-md-12">
+<<<<<<< HEAD
 			
-	    	<div class="panel panel-info">
+			<div class="panel panel-success">
     			<div class="panel-heading">
 			        <span class="panel-title">Detail Tugas</span>
 			        <div class="btn-group pull-right">
 			            <div class="btn-group">
-			            	<a href="#" id="add_button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#upload_tugas" title="Unggah Jawaban Tugas Anda"> 
-								<span class="glyphicon glyphicon-upload"></span> Unggah Jawaban </a>
-							<a href="{{URL::to('siswa/tugas')}}" class="btn btn-sm btn-primary">Kembali</a>
+							<a href="{{URL::to('admin/tugas')}}" class="btn btn-primary">Kembali</a>
 						</div>
         			</div>
         			<div class="clearfix"></div>
@@ -38,7 +37,7 @@ Menggambar Gunung
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="info">
+							<tr class="success">
 								<td class="kolom-kiri">
 									<div class="form-group">
 										<p class="col-sm-2">Materi</p>
@@ -54,7 +53,7 @@ Menggambar Gunung
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">Tanggal Selesai</p>
-								        <p class="col-sm-10">: &nbsp 8/03/2015 </p>
+								        <p class="col-sm-10">: &nbsp 8/03/2015 &nbsp</p>
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">Batas Waktu</p>
@@ -62,7 +61,7 @@ Menggambar Gunung
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">File Tugas</p>
-								        <p class="col-sm-10">: &nbsp <a href="{{URL::to('siswa/tugas_detail')}}" title="Unduh"> ManusiaLingkungan.docx <span class="glyphicon glyphicon-download"></span></a></p>
+								        <p class="col-sm-10">: &nbsp <a href="{{URL::to('admin/tugas_detail')}}" title="Unduh"> ManusiaLingkungan.docx <span class="glyphicon glyphicon-download"></span></a></p>
 									</div>
 								</td>
 							</tr>
@@ -82,6 +81,55 @@ Menggambar Gunung
 						</tbody>
 					</table>
     			</div>
+=======
+				<table class="table table-striped">
+					<thead class="tugas">
+						<tr>
+							<th colspan="2"><h3 class="judul-tugas"> Menggambar Gunung </h3></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="success">
+							<td class="kolom-kiri">
+								<div class="form-group">
+									<p class="col-sm-2">Materi</p>
+							        <p class="col-sm-10">: &nbsp Menggambar</p>
+								</div>
+								<div class="form-group">
+									<p class="col-sm-2">Pelajaran</p>
+							        <p class="col-sm-10">: &nbsp Biologi</p>
+								</div>
+								<div class="form-group">
+									<p class="col-sm-2">Tanggal Mulai</p>
+							        <p class="col-sm-10">: &nbsp 6/03/2015</p>
+								</div>
+								<div class="form-group">
+									<p class="col-sm-2">Tanggal Selesai</p>
+							        <p class="col-sm-10">: &nbsp 8/03/2015</p>
+								</div>
+								<div class="form-group">
+									<p class="col-sm-2">File Tugas</p>
+							        <p class="col-sm-10">: &nbsp ManusiaLingkungan.docx</p>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="kolom-kiri">
+								<div class="form-group">
+									<p class="col-sm-2">Uraian Tugas</p>
+							        <p class="col-sm-10 text-justify">: &nbsp jadi tugasnya adalah begini dan begitu ingat ingat harus dikerjakan</p>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="form-group">
+					<div class="col-sm-12" style="text-align:center;">
+						<a href="" class="btn btn-primary btn-sm">Unduh</a>
+						<a href="{{URL::to('admin/tugas')}}" type="submit" class="btn btn-primary btn-sm">Tutup</a>
+					</div>
+	    		</div>
+>>>>>>> parent of 0363982... AF - Tugas
 			</div>
 		</div>
 

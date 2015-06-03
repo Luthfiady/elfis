@@ -10,7 +10,7 @@ Materi
 
 	<div class="row">
 		<div class="col-md-12">
-			<form class="form-inline" style="float:right;">
+			<form class="form-inline" style="float:right;" data-toggle="validator">
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
@@ -60,29 +60,52 @@ Materi
 						<td class="kolom-tengah">25/05/2015</td>
 						<td class="kolom-tengah">Belum</td>
 						<td class="kolom-tengah">Materi</td>
-						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}">
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_download')}}" title="buka">
 							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 					</tr>
 					<tr>
 						<td class="kolom-tengah">2</td>
+						<td class="kolom-tengah">MTK-02</td>
+						<td class="kolom-tengah">Matematika</td>
+						<td class="kolom-tengah">Sholeh</td>
+						<td class="kolom-tengah">25/05/2015</td>
+						<td class="kolom-tengah">Belum</td>
+						<td class="kolom-tengah">Materi</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_download')}}"title="buka">
+							<span class="glyphicon glyphicon-folder-open"></span></td></a>
+					</tr>
+					<tr>
+						<td class="kolom-tengah">3</td>
+						<td class="kolom-tengah">MTK-01</td>
+						<td class="kolom-tengah">Matematika</td>
+						<td class="kolom-tengah">Sholeh</td>
+						<td class="kolom-tengah">25/05/2015</td>
+						<td class="kolom-tengah">Belum</td>
+						<td class="kolom-tengah">Soal</td>
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}" title="buka">
+							<span class="glyphicon glyphicon-folder-open"></span></td></a>
+					</tr>
+
+					<tr>
+						<td class="kolom-tengah">4</td>
 						<td class="kolom-tengah">BINDO-02</td>
 						<td class="kolom-tengah">Bahasa Indonesia</td>
 						<td class="kolom-tengah">Kartika</td>
 						<td class="kolom-tengah">25/05/2015</td>
 						<td class="kolom-tengah">Belum</td>
 						<td class="kolom-tengah">Materi</td>
-						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}">
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_download')}}" title="buka">
 							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 					</tr>
 					<tr>
-						<td class="kolom-tengah">3</td>
+						<td class="kolom-tengah">5</td>
 						<td class="kolom-tengah">SB-03</td>
 						<td class="kolom-tengah">Seni Budaya</td>
 						<td class="kolom-tengah">Lubis</td>
 						<td class="kolom-tengah">25/05/2015</td>
 						<td class="kolom-tengah">Belum</td>
 						<td class="kolom-tengah">Materi</td>
-						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_soal')}}">
+						<td class="kolom-tengah"><a class="btn btn-danger btn-xs" href="{{URL::to('siswa/materi_download')}}" title="buka">
 							<span class="glyphicon glyphicon-folder-open"></span></td></a>
 					</tr>
 				</tbody>
