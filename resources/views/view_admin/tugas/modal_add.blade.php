@@ -1,17 +1,18 @@
 <!-- MODAL ADD --> 
 	
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/tugas.css') }}">
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/fileinput.min.css') }}">
 
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
       
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
         <p class="modal-title">Tambah Tugas</p>
       </div>
 
       <div class="modal-body">
-        <form id="add_form" class="form form-horizontal" role="form">
+        <form id="add_form" class="form form-horizontal" role="form" data-toggle="validator">
 
           <div class="form-group">
             <div class="col-sm-1"></div>
@@ -44,13 +45,8 @@
           </div>
 
           <div class="form-group">
-<<<<<<< HEAD
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">Isi</label>
-=======
-            <div class="col-md-1"></div>
-            <label class="col-sm-2 label-right">Isi</label>
->>>>>>> parent of 0363982... AF - Tugas
             <div class="col-sm-8">
               <textarea rows="3" class="form-control inform-height" id="add_isi" placeholder="Uraian Tugas" required></textarea>
             </div>
@@ -115,7 +111,7 @@
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">File Tugas</label>
             <div class="col-sm-8">
-                <input type="file" name="input_tugas" accept="file_extension">
+                <input id="input-1a" type="file" class="file" data-show-preview="false">
             </div>
             <div class="col-sm-1"></div>
 
@@ -128,16 +124,13 @@
       <div class="modal-footer">
 	      <div class="form-group">
           <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-	        <a type="submit" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
+	        <a type="submit" id="simpan_tugas" class="btn btn-primary btn-sm" value="save">Simpan</a>
+          <button type="submit" id="btn_hide_tugas" class="btn btn-primary btn-sm" style="display:none;">hide</button>
 	      </div>
-
         </form>
       </div>
 
     </div>
 </div>
-<<<<<<< HEAD
 
 <script type="text/javascript" src="{{ asset('public/js/fileinput.min.js') }}"></script>
-=======
->>>>>>> parent of 0363982... AF - Tugas

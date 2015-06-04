@@ -15,8 +15,9 @@ Tugas
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Nama Tugas </option>
-	        			<option value="modul_name"> Materi </option>
+						<option value="a.nama_tugas"> Nama Tugas </option>
+	        			<option value="b.nama_materi"> Materi </option>
+	        			<option value="c.nama_pelajaran"> Pelajaran </option>
 					</select>	
 				</div>
 
@@ -38,67 +39,7 @@ Tugas
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
-			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>Nama Tugas</th>
-						<th>Materi</th>
-						<th>Pelajaran</th>
-						<th>Tanggal Mulai</th>
-						<th>Tanggal Selesai</th>
-						<th><span class="glyphicon glyphicon-wrench"></span></th>
-						<th><span class="glyphicon glyphicon-folder-open"></span></th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td>Membuat maket rumah masing-masing</td>
-						<td>Bangunan dan Landscape</td>
-						<td>Bangunan</td>
-						<td class="kolom-kanan">23/5/2015</td>
-						<td class="kolom-kanan">29/5/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="#" title="Detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">2</td>
-						<td>Menghancurkan maket teman</td>
-						<td>Bangunan dan Landscape</td>
-						<td>Bangunan</td>
-						<td class="kolom-kanan">23/5/2015</td>
-						<td class="kolom-kanan">29/5/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="#" title="Detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col-md-12 table-responsive dataTable">
 
 		</div>
 	</div>
@@ -124,6 +65,7 @@ Tugas
 		  </ul>
 		</nav>
 	</div>
+	
 
 		<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
@@ -134,7 +76,7 @@ Tugas
 		@include('view_admin.tugas.modal_edit')
 	</div>
 
-	<script type="text/javascript" src="{{asset('public/js/apps/kuis.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/js/apps/tugas.js')}}"></script>
 
 </div>
 

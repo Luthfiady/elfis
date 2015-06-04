@@ -1,6 +1,7 @@
 <!-- MODAL ADD --> 
 	
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis.css') }}">
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/fileinput.min.css') }}">
 
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
@@ -110,7 +111,7 @@
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">File Tugas</label>
             <div class="col-sm-8">
-                <input type="file" name="input_tugas" accept="file_extension">
+                <input id="input-1a" type="file" class="file" data-show-preview="false">
             </div>
             <div class="col-sm-1"></div>
 
@@ -130,3 +131,5 @@
 
     </div>
 </div>
+
+<script type="text/javascript" src="{{ asset('public/js/fileinput.min.js') }}"></script>
