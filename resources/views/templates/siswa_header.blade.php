@@ -55,7 +55,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                    Hi, Siswa<span class="username"></span>
+                    Hi, {{ session('username') }} <span class="username"></span>
                     <span class="caret">
                 </a>
                 <ul class="dropdown-menu">

@@ -66,9 +66,11 @@ class LoginController extends Controller {
 				$group_name = $value_group->nama_group;
 			}
 			
-			return redirect($group_name)->with('username', $user);
+			return redirect($group_name);
 			// session(['id_user' => $status[]]);
 			// echo $user;
+
+
 
 		}
 		else {
@@ -77,9 +79,7 @@ class LoginController extends Controller {
 	}
 
 	public function do_logout() {
-
 		Session::flush();
-
 		return redirect('login');
 
 	}

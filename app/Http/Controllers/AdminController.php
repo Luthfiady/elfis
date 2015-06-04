@@ -218,7 +218,7 @@ class AdminController extends Controller {
 			$result .= '<th>Subyek</th>';
 			$result .= '<th>Keterangan</th>';
 			$result .= '<th>Rating</th>';
-			$result .= '<th>Dispoting Oleh</th>';
+			$result .= '<th>Diposting Oleh</th>';
 			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
 			$result .= '<th><span class="glyphicon glyphicon-folder-open"></span></th>';
 			$result .= '</tr>';
@@ -228,7 +228,7 @@ class AdminController extends Controller {
 			if ($data_forum != true) {
 
 				$result .= '<tr>';
-				$result .= '<td colspan="8">No Data In Database</td>';
+				$result .= '<td colspan="9">No Data In Database</td>';
 				$result .= '</tr>';
 				$result .= '</tbody>';
 				$result .= '</table>';
@@ -286,7 +286,7 @@ class AdminController extends Controller {
 			$isi = Input::get('add_isi');
 
 			$data_add = DB::insert('insert into forum values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-								['', $nama_forum, $role_access, $subyek, $keterangan, $isi, '0', date('Y-m-d H:i:s'), 'Admin']);
+								['', $nama_forum, $role_access, $subyek, $keterangan, $isi, '0', date('Y-m-d H:i:s'), session('username')]);
 
 			// $message = "Data Telah Ditambah";
 
@@ -369,7 +369,7 @@ class AdminController extends Controller {
 			$isi = Input::get('edit_isi');
 
 			$data_update =  DB::update('update forum set nama_forum = "'.$nama_forum.'", role_access = "'.$role_access.'", subyek = "'.$subyek.'", 
-				keterangan = "'.$keterangan.'", isi = "'.$isi.'", forum_create = "'.date('Y-m-d H:i:s').'", forum_create_by = "Admin" 
+				keterangan = "'.$keterangan.'", isi = "'.$isi.'", forum_create = "'.date('Y-m-d H:i:s').'", forum_create_by = "'.session('username').'" 
 				where id_forum = '.$id_forum.'');
 
 			// $data = DB::table('forum')

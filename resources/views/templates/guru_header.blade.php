@@ -73,7 +73,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                    Hai, Guru<span class="username"></span>
+                    Hi, {{ session('username') }} <span class="username"></span>
                     <span class="caret">
                     <!-- <i class="clip-chevron-down"></i> -->
                 </a>
