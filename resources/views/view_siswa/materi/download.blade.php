@@ -1,71 +1,67 @@
 @extends('templates/siswa_layouts')
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/materi_siswa.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi_siswa.css') }}">
 
 @section('add_bread_siswa')
 <li><a href="{{ URL::to('siswa/materi') }}">Materi</a></li>
 @stop
 
 @section('bread_siswa')
-Download
+Detail Materi
 @stop
 
 @section('content')
 
 <div class="main-content">
-	    <fieldset class="scheduler-border">
-	    <legend class="scheduler-border">Detail Materi</legend>
-		    <div class="row">
-				<div class="col-md-6">
-				</div>
-				<div class="col-md-6">
-					<h3 class="durasi">
-						<a href="#" class="btn btn-primary">Unduh</a>
-						<a href="{{URL::to('siswa/materi_soal')}}" class="btn btn-primary">Latihan Soal</a>
-					</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-				</div>
-				<div class="col-md-6">
-				<h3 class="juduldownload"><strong>MTK-01</strong></h3>
-					<table class="table">
-						<tbody class="index">
-							<tr class="baris-tengah">
-								<th>Pelajaran</th>
-								<td>:</td>
-								<td>Matematika</td>
+	
+	<div class="row row-judul">
+
+		<div class="col-md-12">			
+			
+	    	<div class="panel panel-info">
+    			<div class="panel-heading">
+			        <span class="panel-title">Detail Materi</span>
+			        <div class="btn-group pull-right">
+			            <div class="btn-group">
+			            	<a href="#" id="add_button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#upload_tugas" title="Unduh Materi"> 
+								<span class="glyphicon glyphicon-upload"></span> Unduh </a>
+							<a href="{{URL::to('siswa/materi_soal')}}" class="btn btn-sm btn-primary">
+								<span class="glyphicon glyphicon-pencil"></span> Latihan Soal </a>
+							<a href="{{URL::to('siswa/materi')}}" class="btn btn-sm btn-primary"></span> Kembali </a>
+						</div>
+        			</div>
+        			<div class="clearfix"></div>
+    			</div>
+
+    			<div class="panel-body-tgs">
+        			<table class="table table-striped table-responsive">
+						<thead class="tugas">
+							<tr>
+								<th colspan="2"><h3 class="namaMateri"> MTK-01 </h3></th>
 							</tr>
-							<tr class="baris-tengah">
-								<th>Kelas</th>
-								<td>:</td>
-								<td>2MM1</td>
-							</tr>
-							<tr class="baris-tengah">
-								<th>Nama Materi</th>
-								<td>:</td>
-								<td>MTK-01</td>
-							</tr>
-							<tr class="baris-tengah">
-								<th>Oleh</th>
-								<td>:</td>
-								<td>Dwi</td>
-							</tr>				
+						</thead>
+						<tbody>
+							<tr class="info">
+								<td class="kolom-kiri">
+									<div class="form-group">
+										<p class="col-sm-2">Pelajaran</p>
+								        <p class="col-sm-10">: &nbsp Matematika</p>
+									</div>
+									<div class="form-group">
+										<p class="col-sm-2">Nama Guru</p>
+								        <p class="col-sm-10">: &nbsp Sholeh</p>
+									</div>
+									<div class="form-group">
+										<p class="col-sm-2">Waktu Unggah</p>
+								        <p class="col-sm-10">: &nbsp 25/05/2015</p>
+									</div>
+								</td>
+							</tr>							
 						</tbody>
-			</table>
-				</div>
-				<div class="col-md-3">
-				</div>
+					</table>
+    			</div>
 			</div>
+		</div>
+	</div>
 
-			<div class="row jarak"></div>
-
-			<div class="row show-grid">
-				<div class="col-md-12">
-				Isi Materi
-				</div>
-			</div>
-
-	    </fieldset>
 </div>
 @stop

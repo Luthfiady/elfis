@@ -10,7 +10,7 @@ Tugas
 
 	<div class="row">
 		<div class="col-md-12">
-			<form class="form-inline" style="float:right;">
+			<form class="form-inline pull-right">
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">

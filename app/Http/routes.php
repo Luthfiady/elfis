@@ -50,7 +50,7 @@ Route::get('guru/detail_materi', 'GuruController@detail_materi');
 Route::get('siswa/materi', 'SiswaController@materi');
 Route::get('siswa/materi_soal', 'SiswaController@materi_soal');
 Route::get('siswa/materi_nilai', 'SiswaController@materi_nilai');
-
+Route::get('siswa/materi_download', 'SiswaController@materi_download');
 
 
 
