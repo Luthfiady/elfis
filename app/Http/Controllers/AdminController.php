@@ -62,11 +62,6 @@ class AdminController extends Controller {
 			$search_input = trim(Input::get('search_input'));			
 
 			if ($search_by != null) {
-				// if ($search_input != null) {
-				// 	$sql_ext = "and ".$search_by." like '%".$search_input."%'";
-				// } else {
-				// 	$sql_ext = "";
-				// }
 				$sql_ext = "and ".$search_by." LIKE '%".$search_input."%'";
 			} else {
 				$sql_ext = "";
@@ -117,8 +112,10 @@ class AdminController extends Controller {
 									<span class="glyphicon glyphicon-edit"></span></a>
 			                		<a class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
-			        $result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" >
-									<span class="glyphicon glyphicon-new-window"></span></a>
+			        $result .= '<td class="kolom-tengah">
+								<a class="btn btn-xs btn-warning" href="/elfis/admin/tugas_detail" title="Detail">
+								<span class="glyphicon glyphicon-new-window"></span>
+								</a>
 								</td>';
 					$result .= '</tr>';
 					$i++;
@@ -156,6 +153,80 @@ class AdminController extends Controller {
 			return view('view_admin/tugas/jawaban_tugas');
 		}
 		else {
+			return redirect('login');
+		}
+	}
+
+	public function jawaban_get_list() {
+		if(session('id_group') == 3) {
+
+			$search_by = trim(Input::get('search_by'));
+			$search_input = trim(Input::get('search_input'));
+
+			if ($search_by != null) {
+				$sql_ext = "and ".$search_by." like '%".$search_input."%'";
+			} else {
+				$sql_ext = "";
+			}
+
+			$data_jawaban = DB::select('select a.*, b.nama_tugas from jawaban_tugas a JOIN tugas b where a.id_tugas = b.id_tugas '.$sql_ext);
+
+			$result = '';
+
+			$result .= '<table class="table table-hover table-bordered table-striped">';
+			$result .= '<thead class="index">';
+			$result .= '<tr>';
+			$result .= '<th>No</th>';
+			$result .= '<th>NIS</th>';
+			$result .= '<th>Siswa/i</th>';
+			$result .= '<th>Nama Tugas</th>';
+			$result .= '<th>Jawaban Tugas</th>';
+			$result .= '<th>Tanggal Unggah</th>';
+			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
+			$result .= '</tr>';
+			$result .= '</thead>';
+			$result .= '<tbody class="index">';
+
+			if ($data_jawaban != true) {
+
+				$result .= '<tr>';
+				$result .= '<td colspan="7">No Data In Database</td>';
+				$result .= '</tr>';
+				$result .= '</tbody>';
+				$result .= '</table>';
+
+			} else {
+
+				$i = 1;
+				foreach ($data_jawaban as $row => $list) {
+					$list = get_object_vars($list);
+
+					$result .= '<tr>';
+					$result .= '<td class="kolom-tengah">'.$i.'</td>';
+					$result .= '<td class="kolom-tengah">'.$list['nis'].'</td>';
+					$result .= '<td class="kolom-tengah">'.$list['upload_by'].'</td>';
+					$result .= '<td class="kolom-tengah">'.$list['nama_tugas'].'</td>';
+					$result .= '<td><a href="#" title="Unduh">'.$list['file'].'<span class="glyphicon glyphicon-download"></span></a></td>';
+					$result .= '<td class="kolom-kanan"">'.$list['tanggal_unggah'].'</td>';
+					$result .= '<td class="kolom-tengah">
+									<a class="btn btn-danger btn-xs" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
+			                	</td>';
+					$result .= '</tr>';
+					$i++;
+				}
+
+				$result .= '</tbody>';
+				$result .= '</table>';
+
+			}
+
+			$response = array (
+	            'result' => $result
+	        );
+
+	        echo json_encode($response);
+
+		} else {
 			return redirect('login');
 		}
 	}

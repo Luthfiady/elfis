@@ -21,9 +21,9 @@ Jawaban Tugas
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Nama Tugas </option>
-	        			<option value="modul_name"> Materi </option>
-	        			<option value="modul_name"> Pelajaran </option>
+						<option value="a.upload_by"> Siswa/i </option>
+						<option value="a.nis"> NIS </option>
+						<option value="b.nama_tugas"> Nama Tugas </option>
 					</select>	
 				</div>
 
@@ -44,57 +44,8 @@ Jawaban Tugas
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
+		<div class="col-md-12 table-responsive jwb_dataTable">
 			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>Siswa/i</th>
-						<th>Jawaban Tugas</th>
-						<th>Materi</th>
-						<th>Pelajaran</th>
-						<th>Tanggal Unggah</th>
-						<th><span class="glyphicon glyphicon-wrench"></span></th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td>Anditika</td>
-						<td><a href="#" title="Unduh">
-								Anditika_IT8A_Menggambar Gunung.docx <span class="glyphicon glyphicon-download"></span>
-							</a>
-						</td>
-						<td>Bangunan dan Perancangan</td>
-						<td>Bangunan</td>
-						<td class="kolom-kanan">29/5/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">2</td>
-						<td>Ayu</td>
-						<td><a href="#" title="Unduh">
-								Ayu_IT8A_Menghancurkan Gunung.doc <span class="glyphicon glyphicon-download"></span>
-							</a>
-						</td>
-						<td>Bangunan dan Perancangan</td>
-						<td>Bangunan</td>
-						<td class="kolom-kanan">29/5/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-danger" href="#" title="Hapus">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
 		</div>
 	</div>
 
@@ -126,7 +77,10 @@ Jawaban Tugas
 		@include('view_admin.tugas.modal_nilai_add')
 	</div>
 
-	<script type="text/javascript" src="{{asset('public/js/apps/tugas.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/js/apps/jawaban_tugas.js')}}"></script>
+	<script type="text/javascript">
+		jawaban_getList();
+	</script>
 
 </div>
 
