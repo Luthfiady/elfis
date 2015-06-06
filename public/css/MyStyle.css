@@ -352,6 +352,9 @@ td.kolom-kanan {
   text-align: right;
 }
 
+td.kolom-kiri {
+  text-align: left;
+}
 
 /*----------------------------------------- Modal -----------------------------------------*/
 

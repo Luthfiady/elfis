@@ -29,10 +29,7 @@ Tambah Kuis
 					<div class="col-sm-5">
 						<input type="text" class="form-control inform-height" id="add_nama_kuis" placeholder="Nama Kuis" required>
 					</div>
-					<div class="col-sm-5"></div>
-
-					<div class="col-sm-3"></div>
-					<div class="col-sm-9 help-block with-errors"></div>
+					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
 				<div class="form-group">
@@ -46,10 +43,7 @@ Tambah Kuis
 							<option value="D"> Materi D </option>
 						</select>
 					</div>
-					<div class="col-sm-5"></div>
-
-					<div class="col-sm-3"></div>
-					<div class="col-sm-9 help-block with-errors"></div>
+					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
 				<div class="form-group">
@@ -62,10 +56,7 @@ Tambah Kuis
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-5"></div>
-
-					<div class="col-sm-3"></div>
-					<div class="col-sm-9 help-block with-errors"></div>
+					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
 				<div class="form-group">
@@ -78,10 +69,7 @@ Tambah Kuis
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-5"></div>
-
-					<div class="col-sm-3"></div>
-					<div class="col-sm-9 help-block with-errors"></div>
+					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
 				<div class="form-group">
@@ -94,13 +82,9 @@ Tambah Kuis
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-5"></div>
-
-					<div class="col-sm-3"></div>
-					<div class="col-sm-9 help-block with-errors"></div>
+					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
-          	</form>
 		</div>		
 	</div>
 
@@ -158,6 +142,8 @@ Tambah Kuis
         <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
         <a type="submit" id="simpan_kuis" class="btn btn-primary btn-sm" value="save">Simpan</a>
         <button type="submit" id="btn_hide" class="btn btn-primary btn-sm" style="display:none;">hide</button>
+
+        </form>
     </div>
 
 

@@ -69,7 +69,7 @@ $(document).ready(function(){
 
 function getList() {
 
-    $(".dataTable").html('<img style="margin-top:100px;" src="../public/img/setting/loadings.gif") }}" width="50px" height="50px">');
+    $(".dataTable").html('<img style="margin-top:180px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
         search_by       : $('#search_by').val(),
         search_input    : $('#search_input').val(),

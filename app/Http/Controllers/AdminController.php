@@ -298,13 +298,13 @@ class AdminController extends Controller {
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
-					// $mulai = date("Y-m-d");
+					// $mulai = date("Y-m-d"); 
 					// $selesai = date("y-M-d");
 
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
-					$result .= '<td>'.$list['nama_group_kuis'].'</td>';
-					$result .= '<td>'.$list['nama_materi'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama_group_kuis'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama_materi'].'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['kuis_mulai'].'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['kuis_selesai'].'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['durasi'].'</td>';
@@ -330,6 +330,36 @@ class AdminController extends Controller {
 		} else {
 			return redirect('login');
 		}
+	}
+
+
+	public function kuis_add() {
+
+		if(session('id_group') == 3) {
+
+			$nama_group_kuis = Input::get('add_nama_group_kuis');
+			$nama_materi = Input::get('add_nama_materi');
+			$kuis_mulai = Input::get('add_kuis_mulai');
+			$kuis_selesai = Input::get('add_kuis_selesai');
+			$durasi = Input::get('add_durasi');
+
+			$data_add = DB::insert('insert into group_kuis values (?, ?, ?, ?, ?, ?)',
+								['', $nama_group_kuis, $nama_materi, $kuis_mulai, $kuis_selesai, $durasi]);
+
+			// $message = "Data Telah Ditambah";
+
+			// $response = array (
+	  //           'pesan' => $message
+	  //       );
+
+	  //       echo json_encode($response);
+
+			return view('view_admin/kuis/index');
+
+		} else {
+			return redirect('login');
+		}
+
 	}
 
 
