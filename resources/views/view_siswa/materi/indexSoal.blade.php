@@ -1,7 +1,7 @@
 @extends('templates/siswa_layouts')
 
 @section('bread_siswa')
-Materi
+Soal
 @stop
 
 @section('content')
@@ -41,31 +41,24 @@ Materi
 				<thead class="index">
 					<tr>
 						<th>No.</th>
-						<th>Nama Materi</th>
+						<th>Nama Soal</th>
 						<th>Pelajaran</th>
 						<th>Nama Guru</th>
 						<th>Waktu Unggah</th>
+						<th>Status</th>
 						<th><span class="glyphicon glyphicon-folder-open"></span></th>
 					</tr>
 				</thead>
 
-				<tbody class="index">
+				<tbody class="index">					
 					<tr>
 						<td class="kolom-tengah">1</td>
-						<td class="kolom-tengah">MTK-01</td>
+						<td class="kolom-tengah">MTK-0102</td>
 						<td class="kolom-tengah">Matematika</td>
 						<td class="kolom-tengah">Sholeh</td>
 						<td class="kolom-tengah">25/05/2015</td>
-						<td class="kolom-tengah"><a class="btn btn-warning btn-xs" href="{{URL::to('siswa/materi_detail')}}" title="buka">
-							<span class="glyphicon glyphicon-new-window"></span></td></a>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">2</td>
-						<td class="kolom-tengah">MTK-02</td>
-						<td class="kolom-tengah">Matematika</td>
-						<td class="kolom-tengah">Sholeh</td>
-						<td class="kolom-tengah">25/05/2015</td>
-						<td class="kolom-tengah"><a class="btn btn-warning btn-xs" href="{{URL::to('siswa/materi_detail')}}"title="buka">
+						<td class="kolom-tengah">Belum</td>
+						<td class="kolom-tengah"><a class="btn btn-warning btn-xs" href="{{URL::to('siswa/materi_soal')}}" title="buka">
 							<span class="glyphicon glyphicon-new-window"></span></td></a>
 					</tr>
 				</tbody>

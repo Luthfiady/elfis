@@ -17,7 +17,7 @@ Soal
 			<h4 class="judul-soal"> Soal MTK-01 </h4>
 		</div>
 		<div class="col-md-12 text-right">
-			<h3 class="mulai">Waktu Mulai: &nbsp 25/05/2015</h3>
+			<h3 class="mulai">Durasi: &nbsp 00:00:00 / 00:00:00</h3>
 		</div>
 	</div> <!-- row row judul -->
 

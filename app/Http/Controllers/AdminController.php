@@ -34,6 +34,94 @@ class AdminController extends Controller {
 		}
 	}
 
+	public function materi_get_list(){
+		if(session('id_group') == 3){
+			$search_by = trim(Input::get('search_by'));
+			$search_input = trim(Input::get('search_input'));
+
+			if($search_by != null) {
+				$sql_ext = "and ".$search_by." like '%".$search_input."%'";
+			}else {
+				$sql_ext = "";
+			}
+
+			$data_materi = DB::select('select a.*, b.nama_pelajaran, c.nama_kelas from materi a JOIN pelajaran b JOIN kelas c where a.id_pelajaran = b.id_pelajaran and a.id_kelas = c.id_kelas '.$sql_ext);
+
+			$result = '';
+
+			$result .= '<table class="table table-hover table-bordered table-striped">';
+			$result .= '<thead class="index">';
+			$result .= '<tr>';
+			$result .= '<th>No.</th>';
+			$result .= '<th>Nama Materi</th>';
+			$result .= '<th>Pelajaran</th>';
+			$result .= '<th>Kelas</th>';
+			$result .= '<th>Waktu Unggah</th>';
+			$result .= '<th>Nama Guru</th>';
+			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
+			$result .= '<th><span class="glyphicon glyphicon-folder-open"></span></th>';
+			$result .= '</tr>';
+			$result .= '</thead>';
+			$result .= '<tbody class="index">';
+
+			if ($data_materi != true) {
+
+				$result .= '<tr>';
+				$result .= '<td colspan="9">No Data In Database</td>';
+				$result .= '</tr>';
+				$result .= '</tbody>';
+				$result .= '</table>';
+
+			} else {
+
+				$i = 1;
+				foreach ($data_materi as $row => $list) {
+					$list = get_object_vars($list);
+					$result .= '<tr>';
+					$result .= '<td class="kolom-tengah">'.$i.'</td>';
+					$result .= '<td>'.$list['nama_materi'].'</td>';
+					$result .= '<td>'.$list['nama_pelajaran'].'</td>';
+					$result .= '<td>'.$list['nama_kelas'].'</td>';
+					$result .= '<td>'.$list['create_date'].'</td>';
+					$result .= '<td>'.$list['created_by'].'</td>';
+					$result .= '<td class="kolom-tengah">
+									<a class="btn btn-success btn-xs" data-toggle="modal" data-target="#editMateri"> <span class="glyphicon glyphicon-edit"></span> </a> 
+			                		<a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteMateri"><span class="glyphicon glyphicon-trash"></span></a>
+			                	</td>';
+			        $result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="/elfis/admin/materi_detail">
+									<span class="glyphicon glyphicon-new-window"></span></a>
+								</td>';
+					$result .= '</tr>';
+					$i++;
+				}
+
+				$result .= '</tbody';
+				$result .= '</table>';
+			}
+
+			//return Response()->json(array('result' => $result));
+			$response = array (
+	            'result' => $result
+	        );
+
+	        echo json_encode($response);
+
+		} else {
+			return redirect('login');
+		}
+	}
+
+	// 
+
+	public function soal(){
+		if(session('id_group') == 3) {
+			return view('view_admin/materi/indexSoal');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 	public function materi_detail() {
 		if(session('id_group') == 3) {
 			return view('view_admin/materi/detail');
@@ -42,6 +130,8 @@ class AdminController extends Controller {
 			return redirect('login');
 		}
 	}
+
+
 
 
 // -------------------------------------------------------- TUGAS --------------------------------------------------------

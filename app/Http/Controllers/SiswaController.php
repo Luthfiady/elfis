@@ -34,6 +34,15 @@ class SiswaController extends Controller {
 		}
 	}
 
+	public function soal() {
+		if(session('id_group') == 1) {
+			return view('view_siswa/materi/indexSoal');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 	public function materi_soal() {
 		if(session('id_group') == 1) {
 			return view('view_siswa/materi/soal');
@@ -52,9 +61,9 @@ class SiswaController extends Controller {
 		}
 	}
 
-	public function materi_download() {
+	public function materi_detail() {
 		if(session('id_group') == 1) {
-			return view('view_siswa/materi/download');
+			return view('view_siswa/materi/detail');
 		}
 		else {
 			return redirect('login');
