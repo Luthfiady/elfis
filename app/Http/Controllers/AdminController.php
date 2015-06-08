@@ -211,7 +211,7 @@ class AdminController extends Controller {
 					$i++;
 				}
 
-				$result .= '</tbody';
+				$result .= '</tbody>';
 				$result .= '</table>';
 
 			}
@@ -226,6 +226,37 @@ class AdminController extends Controller {
 		else {
 			return redirect('login');
 		}
+	}
+
+	public function tugas_add() {
+
+		if(session('id_group') == 3) {
+
+			$nama_tugas = Input::get('add_nama_tugas');
+			$nama_materi = Input::get('add_nama_materi');
+			$isi = Input::get('add_isi');
+			$tugas_mulai = Input::get('tugas_mulai');
+			$tugas_selesai = Input::get('tugas_selesai');
+			$durasi = Input::get('tugas_durasi');
+			$file = Input::get('file_tugas');
+
+			$data_add = DB::insert('insert into tugas values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+								['', $nama_forum, $role_access, $subyek, $keterangan, $isi, '0', date('Y-m-d H:i:s'), session('username')]);
+
+			// $message = "Data Telah Ditambah";
+
+			// $response = array (
+	  //           'pesan' => $message
+	  //       );
+
+	  //       echo json_encode($response);
+
+			return view('view_admin/tugas/index');
+
+		} else {
+			return redirect('login');
+		}
+
 	}
 
 	public function tugas_detail() {
@@ -293,11 +324,11 @@ class AdminController extends Controller {
 
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
-					$result .= '<td class="kolom-tengah">'.$list['nis'].'</td>';
-					$result .= '<td class="kolom-tengah">'.$list['upload_by'].'</td>';
-					$result .= '<td class="kolom-tengah">'.$list['nama_tugas'].'</td>';
-					$result .= '<td><a href="#" title="Unduh">'.$list['file'].'<span class="glyphicon glyphicon-download"></span></a></td>';
-					$result .= '<td class="kolom-kanan"">'.$list['tanggal_unggah'].'</td>';
+					$result .= '<td>'.$list['nis'].'</td>';
+					$result .= '<td>'.$list['upload_by'].'</td>';
+					$result .= '<td>'.$list['nama_tugas'].'</td>';
+					$result .= '<td><a href="#" title="Unduh">'.$list['file'].' <span class="glyphicon glyphicon-download"></span></a></td>';
+					$result .= '<td class="kolom-kanan">'.$list['tanggal_unggah'].'</td>';
 					$result .= '<td class="kolom-tengah">
 									<a class="btn btn-danger btn-xs" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
