@@ -15,9 +15,11 @@ Soal
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value=""> Nama </option>
-						<option value=""> Pelajaran </option>
-	        			<option value=""> Nama Guru </option>
+						<option value="nama_soal"> Nama Soal </option>
+						<option value="a.nama_materi"> Materi </option>
+						<option value="b.nama_pelajaran"> Pelajaran </option>
+						<option value="d.nama_kelas"> Kelas </option>
+	        			<option value="a.create_date"> Waktu Unggah </option>
 					</select>	
 				</div>
 
@@ -31,52 +33,15 @@ Soal
 				&nbsp 
 
 				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addSoal"> 
-					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Soal</a>
+					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Soal </a>
 			</form>
 		</div>
 	</div>
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No.</th>
-						<th>Nama Materi</th>
-						<th>Pelajaran</th>
-						<th>Kelas</th>
-						<th>Waktu Unggah</th>
-						<th>Keterangan</th>
-						<th><span class="glyphicon glyphicon-wrench"></span></th>
-						<th><span class="glyphicon glyphicon-folder-open"></span></th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td class="kolom-tengah">MTK-01</td>
-						<td class="kolom-tengah">Matematika</td>
-						<td class="kolom-tengah">XIMM2</td>
-						<td class="kolom-tengah">25/05/2015</td>
-						<td class="kolom-tengah">Soal dari materi 1, 2, 3</td>
-						<td class="kolom-tengah">
-							<a href="#" id="add_button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#editSoal" title="edit"> 
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a href="#" id="add_button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSoal" title="hapus"> 
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-warning btn-xs" href="{{URL::to('admin/materi_detail')}}" title="detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col-md-12 table-responsive dataTable">			
+			
 		</div>
 	</div>
 
@@ -119,6 +84,8 @@ Soal
 	<div class="modal fade" id="deleteMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.materi.modal_delete')
 	</div>
+
+	<script  type="text/javascript" src="{{asset('public/js/apps/materi_soal.js')}}"></script>
 
 </div>
 

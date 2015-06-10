@@ -43,6 +43,7 @@ Route::get('siswa', 'SiswaController@index');
 Route::get('admin/materi', 'AdminController@materi');
 Route::get('admin/soal', 'AdminController@soal');
 Route::get('admin/materi_list', 'AdminController@materi_get_list');
+Route::get('admin/soal_list', 'AdminController@soal_get_list');
 
 // Route Guru
 Route::get('guru/materi', 'GuruController@materi');
