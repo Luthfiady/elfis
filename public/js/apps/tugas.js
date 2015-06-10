@@ -58,3 +58,43 @@ function getList() {
     });
 }
 
+function getAdd() {
+    $('#add_nama_tugas').val('');
+    $('#add_nama_materi').val('');
+    $('#add_isi').val('');
+    $('#add_tugas_mulai').val('');
+    $('#add_tugas_selesai').val('');
+    $('#add_tugas_durasi').val('');
+    $('#add_file_tugas').val('');
+    
+    return false;
+
+}
+
+function AddData() {
+
+    var form_data = {
+        add_nama_tugas      : $('#add_nama_tugas').val(),
+        add_nama_materi     : $('#add_nama_materi').val(),
+        add_isi             : $('#add_isi').val(),
+        add_tugas_mulai     : $('#add_tugas_mulai').val(),
+        add_tugas_selesai   : $('#add_tugas_selesai').val(),
+        add_tugas_durasi    : $('#add_tugas_durasi').val(),
+        add_file_tugas      : $('#add_file_tugas').val(),
+        _token              : CSRF_TOKEN
+    }
+
+    $.ajax({
+        // async: "false",
+        url: 'tugas_add',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            alert(data.pesan);
+            getList('');
+            getAdd();
+        }
+    });
+
+}

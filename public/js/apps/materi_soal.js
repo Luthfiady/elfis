@@ -4,17 +4,15 @@ var current_page;
 
 $(document).ready(function(){
 
-    jawaban_getList();
+	getList(''); 
 
-    $("#search_button").click(function() {
-        jawaban_getList('');
-
+    $('#search_button').click(function(){
+        getList('');
         return false;
     });
+ });
 
-});
-
-function jawaban_getList() {
+function getList() {
 
     $(".dataTable").html('<img style="margin-top:180px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
@@ -23,9 +21,11 @@ function jawaban_getList() {
         _token          : CSRF_TOKEN
     }
 
+    //url = base_url + 'AdminController@forum_list';
+
     $.ajax({
         async: "false",
-        url: 'jawaban_list',
+        url: 'soal_list',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
@@ -35,5 +35,5 @@ function jawaban_getList() {
             return false;
         }
     });
-    
+
 }

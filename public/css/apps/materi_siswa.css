@@ -1,83 +1,35 @@
 /*--------------------------------------MATERI--------------------------------------*/
-.h1, .h2, .h3, h1, h2, h3 {
-	margin-top: 20px;
-	margin-bottom: 10px;
+h3.judul-tugas {font-family: sans-serif; font-size: 20pt; font-weight: bold;}
+h3.mulai {font-family: sans-serif; font-size: 12pt; font-weight: bold;}
+h4.judul-soal {font-family: sans-serif; font-size: 20pt; font-weight: bold;}
+
+/*--------------------------------------table--------------------------------------*/
+
+.table-tugas th,
+.table-tugas td {
+  background-color: white;
+  border: 2px solid #ddd !important;
 }
 
-
-h3.mulai {font-family: sans-serif; font-size: 12pt; font-weight: bold; text-align: right;}
-
-.jarak{
-  padding-top: 10px;
-}
-
-.show-grid [class^=col-] {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #eee;
-  background-color: rgba(86,61,124,.15);
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
-  }
-
- .form-group {
-  font-family: sans-serif;
-  font-size: 11.5pt;
-	}
-
-/*--------------------------------------KUIS--------------------------------------*/
-
-h4.judul-soal {font-family: sans-serif; font-size: 14pt; font-weight: bold;}
-
-h3 {font-family: sans-serif; font-size: 12pt; font-weight: bold; text-align: right;}
-
-h3.juduldownload {text-align: center;}
-
-
-.form-group p {
-  font-family: sans-serif;
-  font-size: 11.5pt;
-}
-
-.row-judul {  
-  padding-top: 10px;
-}
-
-table.table-soal th, tr, td{
-  border-style: none !important;
-  vertical-align: text-top !important;
-}
-
-.thead-soal th {
-  text-align: justify;
-  font-family: verdana;
-  font-weight: normal;
-  font-size: 11pt;
-}
-
-.radio label {
-  font-family: verdana;
-  font-size: 11pt;
-}
-
-.radio {
-  margin-top: -10px !important;
-}
-
-
-thead.index th {
-  background-color: #127EA4;
+thead.tugas th {
   text-align: center;
-  color: white;
+  color: black;
 }
 
-tbody.index tr {
-  font-family: sans-serif;
-  font-size: 11.5pt;
+td.kolom-kiri {
+  text-align: left;
 }
 
-table th, tr, td{
-  border-style: none !important;
-  vertical-align: text-top !important;
+
+@media {
+  
+  #left {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+    width: 100%;
+    max-height: 600%;
+  }
 }
 

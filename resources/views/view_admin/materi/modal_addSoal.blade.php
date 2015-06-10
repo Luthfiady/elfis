@@ -14,7 +14,7 @@
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Soal</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="10" required></textarea>
+                  <textarea class="form-control" rows="8" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
             </div>

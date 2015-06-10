@@ -16,7 +16,7 @@ Jawaban Tugas
 
 		<div class="col-md-12">
 		
-			<form class="form-inline pull-right">
+			<form class="form-inline" style="float:right;">
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
@@ -44,7 +44,7 @@ Jawaban Tugas
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive jwb_dataTable">
+		<div class="col-md-12 table-responsive dataTable">
 			
 		</div>
 	</div>
@@ -78,9 +78,6 @@ Jawaban Tugas
 	</div>
 
 	<script type="text/javascript" src="{{asset('public/js/apps/jawaban_tugas.js')}}"></script>
-	<script type="text/javascript">
-		jawaban_getList();
-	</script>
 
 </div>
 
