@@ -15,9 +15,9 @@ Tugas
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value=""> Nama Tugas </option>
-	        			<option value=""> Materi </option>
-	        			<option value=""> Pelajaran </option>
+						<option value="a.nama_tugas"> Nama Tugas </option>
+	        			<option value="b.nama_materi"> Materi </option>
+	        			<option value="c.nama_pelajaran"> Pelajaran </option>
 					</select>	
 				</div>
 

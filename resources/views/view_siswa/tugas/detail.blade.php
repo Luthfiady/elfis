@@ -62,7 +62,7 @@ Menggambar Gunung
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">File Tugas</p>
-								        <p class="col-sm-10">: &nbsp <a href="{{URL::to('siswa/tugas_detail')}}" title="Unduh"> ManusiaLingkungan.docx <span class="glyphicon glyphicon-download"></span></a></p>
+								        <p class="col-sm-10">: &nbsp <a href="{{URL::to('siswa/tugas_detail')}}" title="Unduh"> ManusiaLingkungan.docx <span class="glyphicon glyphicon-download-alt"></span></a></p>
 									</div>
 								</td>
 							</tr>

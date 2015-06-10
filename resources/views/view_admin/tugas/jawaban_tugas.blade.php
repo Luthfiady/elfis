@@ -44,7 +44,7 @@ Jawaban Tugas
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive jwb_dataTable">
+		<div class="col-md-12 table-responsive dataTable">
 			
 		</div>
 	</div>
