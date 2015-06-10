@@ -13,13 +13,10 @@ $(document).ready(function(){
 
     $('#submit_add_form').click(function(){
         AddData();
-
-        // return false;
     })
 
     $('#submit_edit_form').click(function(){
         EditData();
-
         return false;
     })
 
@@ -52,11 +49,11 @@ function getList() {
 }
 
 function getAdd() {
-    $('#add_nama_forum').val('');
-    $('#add_role_access').val('');
-    $('#add_subyek').val('');
-    $('#add_keterangan').val('');
-    $('#add_isi').val('');
+    // $('#add_nama_forum').val('');
+    // $('#add_role_access').val('');
+    // $('#add_subyek').val('');
+    // $('#add_keterangan').val('');
+    // $('#add_isi').val('');
     
     return false;
 
@@ -74,15 +71,25 @@ function AddData() {
     }
 
     $.ajax({
-        // async: "false",
+        async: "false",
         url: 'forum_add',
         type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
-            getList('');
+            // if (data.sukses != null) {
+            //     alert(data.sukses);
+            //     getList('');
+            // } else {
+            //     alert('data salah');
+            //     getList('');
+            // }
+            alert(data['key']);
         }
     });
+
+    getList(current_page);
+    getAdd();
 
 }
 
@@ -95,15 +102,15 @@ function deleteData(id_forum) {
 
     $.ajax({
         //async: "false",
-        url: 'forum_delete',
         type: 'POST',
         data: form_data,
+        url: 'forum_delete',
         dataType: "JSON",
         success: function(data) {
             getList(current_page);
         }
     });
-   
+
 }
 
 function getEdit(id_forum) {

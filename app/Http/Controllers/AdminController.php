@@ -931,7 +931,7 @@ class AdminController extends Controller {
 	public function forum_add() {
 
 		if(session('id_group') == 3) {
-
+				
 			$nama_forum = Input::get('add_nama_forum');
 			$role_access = Input::get('add_role_access');
 			$subyek = Input::get('add_subyek');
@@ -941,15 +941,13 @@ class AdminController extends Controller {
 			$data_add = DB::insert('insert into forum values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
 								['', $nama_forum, $role_access, $subyek, $keterangan, $isi, '0', date('Y-m-d H:i:s'), session('username')]);
 
-			// $message = "Data Telah Ditambah";
+			// $this->json['sukses'] = 'Data berhasil masuk ke database';
+			// echo json_encode($this->json);
 
-			// $response = array (
-	  //           'pesan' => $message
-	  //       );
+			// $data = ['key1'=>'Data berhasil masuk ke database'];
+			// return Response::json(['success'=>true,'data'=>$data]);
 
-	  //       echo json_encode($response);
-
-			return view('view_admin/forum/index');
+			return ['key' => 'Data berhasil masuk ke database'];
 
 		} else {
 			return redirect('login');
