@@ -670,7 +670,7 @@ class AdminController extends Controller {
 
 
 	public function kuisGetId() {
-		
+
 		if(session('id_group') == 3) {
 
 			$get_id = DB::select('select * from param_group_kuis ORDER BY p_id_group_kuis DESC LIMIT 1');
@@ -687,7 +687,7 @@ class AdminController extends Controller {
 		}
 
 	}
-
+  
 
 	public function soal_add_id() {
 
