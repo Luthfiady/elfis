@@ -62,9 +62,11 @@ Route::get('siswa/materi_detail', 'SiswaController@materi_detail');
 
 // Route Admin 
 Route::get('admin/tugas', 'AdminController@tugas');
+Route::get('admin/tugas_add', 'AdminController@tugas_add');
 Route::get('admin/tugas_detail', 'AdminController@tugas_detail');
-Route::get('admin/jawaban_tugas', 'AdminController@jawaban_tugas');
 Route::get('admin/tugas_list', 'AdminController@tugas_get_list');
+
+Route::get('admin/jawaban_tugas', 'AdminController@jawaban_tugas');
 Route::get('admin/jawaban_list', 'AdminController@jawaban_get_list');
 
 // Route Guru

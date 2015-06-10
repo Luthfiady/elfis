@@ -289,7 +289,7 @@ class AdminController extends Controller {
 					$i++;
 				}
 
-				$result .= '</tbody';
+				$result .= '</tbody>';
 				$result .= '</table>';
 
 			}
@@ -304,6 +304,29 @@ class AdminController extends Controller {
 		else {
 			return redirect('login');
 		}
+	}
+
+	public function tugas_add() {
+
+		if(session('id_group') == 3) {
+
+			$nama_tugas = Input::get('add_nama_tugas');
+			$id_materi = Input::get('add_nama_materi');
+			$isi = Input::get('add_isi');
+			$tugas_mulai = Input::get('add_tugas_mulai');
+			$tugas_selesai = Input::get('add_tugas_selesai');
+			$durasi = Input::get('add_tugas_durasi');
+			$file = Input::get('add_file_tugas');
+
+			$add_data_soal = DB::insert('insert into tugas values ("", "'.$id_materi.'", "'.$nama_tugas.'", "'.$isi.'", "'.$file.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+
+			$this->json['pesan'] = 'Data telah tersimpan';
+			echo json_encode($this->json);
+		
+		} else {
+			return redirect('login');
+		}
+
 	}
 
 	public function tugas_detail() {
@@ -350,7 +373,7 @@ class AdminController extends Controller {
 			$result .= '<th>Nama Tugas</th>';
 			$result .= '<th>Jawaban Tugas</th>';
 			$result .= '<th>Tanggal Unggah</th>';
-			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
+			$result .= '<th><span class="glyphicon glyphicon-folder-open"></span></th>';
 			$result .= '</tr>';
 			$result .= '</thead>';
 			$result .= '<tbody class="index">';
@@ -371,13 +394,13 @@ class AdminController extends Controller {
 
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
-					$result .= '<td class="kolom-tengah">'.$list['nis'].'</td>';
-					$result .= '<td class="kolom-tengah">'.$list['upload_by'].'</td>';
-					$result .= '<td class="kolom-tengah">'.$list['nama_tugas'].'</td>';
-					$result .= '<td><a href="#" title="Unduh">'.$list['file'].'<span class="glyphicon glyphicon-download"></span></a></td>';
-					$result .= '<td class="kolom-kanan"">'.$list['tanggal_unggah'].'</td>';
+					$result .= '<td>'.$list['nis'].'</td>';
+					$result .= '<td>'.$list['upload_by'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama_tugas'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['file'].'</td>';
+					$result .= '<td>'.$list['tanggal_unggah'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a class="btn btn-danger btn-xs" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
+									<a class="btn btn-info btn-xs" title="Unduh"><span class="glyphicon glyphicon-download-alt"></span></a>
 			                	</td>';
 					$result .= '</tr>';
 					$i++;
@@ -412,14 +435,14 @@ class AdminController extends Controller {
 	}
 
 
-	// public function kuis_add() {
-	// 	if(session('id_group') == 3) {
-	// 		return view('view_admin/kuis/kuis_add');
-	// 	}
-	// 	else {
-	// 		return redirect('login');
-	// 	}
-	// }
+	public function kuis_add() {
+		if(session('id_group') == 3) {
+			return view('view_admin/kuis/kuis_add');
+		}
+		else {
+			return redirect('login');
+		}
+	}
 
 
 	public function kuis_get_list() {
@@ -499,7 +522,6 @@ class AdminController extends Controller {
 			return redirect('login');
 		}
 	}
-
 
 	public function kuis_add() {
 
