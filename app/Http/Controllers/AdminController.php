@@ -196,7 +196,7 @@ class AdminController extends Controller {
 		}
 	}
 
-	public function soal_get_list(){
+	public function latihanSoal_get_list(){
 		if(session('id_group') == 3){
 			$search_by = trim(Input::get('search_by'));
 			$search_input = trim(Input::get('search_input'));

@@ -1,5 +1,8 @@
 <!-- MODAL ADD --> 
-	
+
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/jasny-bootstrap.min.css') }}">
+
+
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
     	<div class="modal-header">
@@ -59,8 +62,13 @@
 		        <div class="form-group">
 		        	<div class="col-md-1"></div>
 		        	<label class="col-sm-2 label-right" for="fileUpload">File Upload</label>
-		        	<input type="file" id="fileUpload">
-		        	<div class="col-md-1"></div>
+		        	<div class="col-sm-8">
+		            <div class="fileinput fileinput-new input-group" data-provides="fileinput" type="file">
+		                <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+		                <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+		                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+		              	</div>
+		            </div>
 		        </div>
 
 		        <div class="modal-footer">
@@ -73,3 +81,8 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="{{ asset('public/js/jasny-bootstrap.min.js') }}"></script>
+<script type="text/javascript">
+  $('.fileinput').fileinput()
+</script>
