@@ -25,7 +25,7 @@ function getList() {
 
     $.ajax({
         async: "false",
-        url: 'soal_list',
+        url: 'latihanSoal_list',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
