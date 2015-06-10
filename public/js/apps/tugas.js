@@ -5,6 +5,7 @@ var current_page;
 $(document).ready(function(){
 
     getList();
+
 // ------------------- DateTimePicker -------------------
     $('#time_durasi').datetimepicker({
         format: 'LT'
@@ -25,6 +26,7 @@ $(document).ready(function(){
     $("#datepicker_end").on("dp.change",function (e) {
         $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
     });
+// ------------------- DateTimePicker ENDING -------------------
 
     $("#search_button").click(function() {
         getList('');
