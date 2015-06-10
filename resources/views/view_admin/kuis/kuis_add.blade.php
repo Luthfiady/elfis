@@ -10,6 +10,8 @@ Tambah Kuis
 	
 @section('content')
 
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/kuis.css') }}">
+
 <div class="main-content">
 
 	<!-- ///////////////////////////////////////////////////////////// Detail Kuis ///////////////////////////////////////////////////////////// -->
@@ -36,11 +38,7 @@ Tambah Kuis
 					<label class="col-sm-2 label-modal-soal">Nama Materi</label>
 					<div class="col-sm-5">
 						<select class="form-control" id="nama_materi" required>
-							<option value=""> Nama Materi </option>
-							<option value="A"> Materi A </option>
-							<option value="B"> Materi B </option>
-							<option value="C"> Materi C </option>
-							<option value="D"> Materi D </option>
+							
 						</select>
 					</div>
 					<div class="col-sm-5 help-block with-errors"></div>
@@ -85,6 +83,9 @@ Tambah Kuis
 					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
+				<input class="form-control" type="hidden" id="id_before">
+				<input class="form-control" type="hidden" id="id_after">
+
 		</div>		
 	</div>
 
@@ -102,50 +103,17 @@ Tambah Kuis
 		<div class="col-md-12">
 			<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-soal-add"> <span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 		</div>
-		<div class="col-md-12 daftar-soal">
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>Nama Kuis</th>
-						<th>Materi</th>
-						<th>Tanggal Mulai</th>
-						<th>Tanggal Selesai</th>
-						<th>Durasi Kuis</th>
-						<th><span class="glyphicon glyphicon-wrench"></span></th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td>Perancangan Sistem Informasi</a></td>
-						<td>Perancangan Sistem</td>
-						<td class="kolom-kanan">20/05/2015</td>
-						<td class="kolom-kanan">25/05/2015</td>
-						<td class="kolom-kanan">00:10:00</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#modal-soal-edit">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col-md-12 dataTable">
+			
 		</div>		
 	</div>
 
     <div class="form-group" style="float:right;">
+        <button type="submit" id="simpan_kuis" class="btn btn-primary btn-sm" value="save">Simpan</button>
         <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-        <a type="submit" id="simpan_kuis" class="btn btn-primary btn-sm" value="save">Simpan</a>
-        <button type="submit" id="btn_hide" class="btn btn-primary btn-sm" style="display:none;">hide</button>
-
-        </form>
+        <button type="submit" id="hapus_soal" class="btn btn-primary btn-sm">Batal</button>
     </div>
-
+	</form>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
@@ -161,7 +129,7 @@ Tambah Kuis
 
 </div>
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/kuis.css') }}">
-<script type="text/javascript" src="{{asset('public/js/apps/kuis.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('public/js/apps/kuis_soal.js')}}"></script>
 
 @stop

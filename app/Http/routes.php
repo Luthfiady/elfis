@@ -23,6 +23,18 @@ Route::post('do_login', 'LoginController@do_login');
 Route::get('do_logout', 'LoginController@do_logout');
 
 
+Route::get('admin/get_materi', 'AdminController@getMateri');
+Route::get('guru/get_materi', 'GuruController@getMateri');
+
+
+Route::get('admin/get_pelajaran', 'AdminController@getPelajaran');
+Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');
+
+
+Route::get('admin/get_kelas', 'AdminController@getKelas');
+Route::get('guru/get_kelas', 'GuruController@getKelas');
+
+
 /////////////////////////////////////////////////  Route Index  /////////////////////////////////////////////////
 
 // Route Admin 
@@ -79,6 +91,15 @@ Route::get('siswa/tugas_detail', 'SiswaController@tugas_detail');
 Route::get('admin/kuis', 'AdminController@kuis');
 Route::get('admin/kuis_add', 'AdminController@kuis_add');
 Route::get('admin/kuis_list', 'AdminController@kuis_get_list');
+Route::get('admin/kuis_get_id', 'AdminController@kuisGetId');
+
+Route::get('admin/soal_list', 'AdminController@soal_get_list');
+Route::post('admin/soal_add_id', 'AdminController@soal_add_id');
+Route::post('admin/soal_add', 'AdminController@soal_add');
+Route::post('admin/soal_delete', 'AdminController@soal_delete');
+
+Route::post('admin/soal_get_edit', 'AdminController@soal_get_edit');
+Route::post('admin/soal_edit', 'AdminController@soal_edit');
 
 // Route Guru
 Route::get('guru/kuis', 'GuruController@kuis');

@@ -30,40 +30,24 @@ $(document).ready(function(){
         return false;
     });
 
-    $("#simpan_kuis").click(function(){
+    // $("#simpan_soal").click(function(){
 
-        nama_kuis = $("#add_nama_kuis").val();
-        nama_materi = $("#nama_materi").val();
-        mulai = $("#tgl_mulai").val();
-        selesai = $("#tgl_selesai").val();
-        durasi = $("#durasi").val();
+    //     soal = $("#soal_kuis").val('');
+    //     jwb_a = $("#jwb_a").val('');
+    //     jwb_b = $("#jwb_b").val('');
+    //     jwb_c = $("#jwb_c").val('');
+    //     jwb_d = $("#jwb_d").val('');
+    //     jwb_e = $("#jwb_e").val('');
+    //     jwb_benar = $("#jwb_benar").val();
 
-        if(nama_kuis != '' && nama_materi != 'Nama Materi' && mulai != '' && selesai != '' && durasi != ''){
-            $('#modal-soal').modal('show');
-        } else {
-            document.getElementById('btn_hide').click();
-        }
+    //     if(soal != '' && jwb_a != '' && jwb_b != '' && jwb_c != '' && jwb_d != '' && jwb_e != '' && jwb_benar != ''){
+    //         // $('#modal-soal').modal('show');
+    //         alert('untuk selanjutnya');
+    //     } else {
+    //         document.getElementById('btn_hide_soal').click();
+    //     }
         
-    });
-
-    $("#simpan_soal").click(function(){
-
-        soal = $("#soal_kuis").val('');
-        jwb_a = $("#jwb_a").val('');
-        jwb_b = $("#jwb_b").val('');
-        jwb_c = $("#jwb_c").val('');
-        jwb_d = $("#jwb_d").val('');
-        jwb_e = $("#jwb_e").val('');
-        jwb_benar = $("#jwb_benar").val();
-
-        if(soal != '' && jwb_a != '' && jwb_b != '' && jwb_c != '' && jwb_d != '' && jwb_e != '' && jwb_benar != ''){
-            // $('#modal-soal').modal('show');
-            alert('untuk selanjutnya');
-        } else {
-            document.getElementById('btn_hide_soal').click();
-        }
-        
-    });
+    // });
 
 });
 
@@ -85,6 +69,31 @@ function getList() {
         success: function(data) {
             $(".dataTable").html(data.result);
             return false;
+        }
+    });
+
+}
+
+
+function AddData() {
+
+    var form_data = {
+        add_nama_forum    : $('#add_p_nama_group_kuis').val(),
+        add_role_acces    : $('#add_p_id_materi').val(),
+        add_subyek        : $('#add_p_kuis_mulai').val(),
+        add_keterangan    : $('#add_p_kuis_selesai').val(),
+        add_isi           : $('#add_p_durasi').val(),
+        _token            : CSRF_TOKEN
+    }
+
+    $.ajax({
+        // async: "false",
+        url: 'forum_add',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            getList('');
         }
     });
 
