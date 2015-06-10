@@ -323,7 +323,7 @@ class AdminController extends Controller {
 			$this->json['pesan'] = 'Data telah tersimpan';
 			echo json_encode($this->json);
 		
-		} else {
+		} else {	
 			return redirect('login');
 		}
 
@@ -433,7 +433,6 @@ class AdminController extends Controller {
 			return redirect('login');
 		}
 	}
-
 
 	public function kuis_add() {
 		if(session('id_group') == 3) {
