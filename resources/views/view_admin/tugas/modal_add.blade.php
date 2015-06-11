@@ -12,9 +12,8 @@
       </div>
 
       <div class="modal-body">
-        <form id="add_form" class="form form-horizontal" role="form" data-toggle="validator" method="post" action="{{ URL::to('admin/tugas_add') }}">
+        <form id="add_form" class="form form-horizontal" role="form" data-toggle="validator">
 
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group">
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">Nama Tugas</label>
@@ -32,11 +31,7 @@
             <label class="col-sm-2 ">Nama Materi</label>
             <div class="col-sm-8">
               <select class="form-control" name="add_nama_materi" id="add_nama_materi" required>
-                <option value=""> Nama Materi </option>
-                <option value="A"> Materi A </option>
-                <option value="B"> Materi B </option>
-                <option value="C"> Materi C </option>
-                <option value="D"> Materi D </option>
+
               </select>
             </div>
             <div class="col-sm-1"></div>
@@ -130,7 +125,6 @@
 	      <div class="form-group">
           <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
 	        <a type="submit" id="simpan_tugas" class="btn btn-primary btn-sm" value="save">Simpan</a>
-          <button type="submit" id="btn_hide_tugas" class="btn btn-primary btn-sm" style="display:none;">hide</button>
 	      </div>
         </form>
       </div>

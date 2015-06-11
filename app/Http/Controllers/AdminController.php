@@ -392,7 +392,7 @@ class AdminController extends Controller {
 			$durasi = Input::get('add_tugas_durasi');
 			$file = Input::get('add_file_tugas');
 
-			$add_data_soal = DB::insert('insert into tugas values ("", "'.$id_materi.'", "'.$nama_tugas.'", "'.$isi.'", "'.$file.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+			$add_data_soal = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
 
 			$this->json['pesan'] = 'Data telah tersimpan';
 			echo json_encode($this->json);
