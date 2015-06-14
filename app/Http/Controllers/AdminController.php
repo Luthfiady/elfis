@@ -212,6 +212,28 @@ class AdminController extends Controller {
 		}
 	}
 
+	public function materi_add() {
+
+		if(session('id_group') == 3) {
+
+			$id_pelajaran = Input::get('addPelajaran');
+			$id_kelas = Input::get('addKelas');
+			$nama = Input::get('addNama');
+			$nama_materi = Input::get('addNamaMateri');
+			$isi = Input::get('addIsiMateri');
+			$file = Input::get('addFileUpload');
+
+			$add_data_materi = DB::insert('insert into materi values ("", '.$id_pelajaran.', '.$id_kelas.', "'.$nama.'", "'.$isi.'", "'.$file.'", "'.date('Y-m-d').'", "'.session('username').'")'); 
+
+			$this->json['pesan'] = 'Data telah tersimpan';
+			echo json_encode($this->json);
+		
+		} else {	
+			return redirect('login');
+		}
+
+	}
+
 	// 
 
 	public function soal(){

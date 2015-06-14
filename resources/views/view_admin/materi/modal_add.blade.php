@@ -11,17 +11,14 @@
       	</div>
 
       	<div class="modal-body">
-	        <form id="addMateri" class="form form-horizontal" role="form" data-toggle="validator">
+	        <form id="formAddMateri" class="form form-horizontal" role="form" data-toggle="validator">
 	        	
 		        <div class="form-group">
 		            <div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Pelajaran</label>
 		            <div class="col-sm-8">
-		              <select class="form-control" id="pelajaran" required>
-		                <option value=""> Pilih Pelajaran </option>
-		                <option value="A"> Matematika2 </option>
-		                <option value="B"> Matematika3 </option>
-		                <option value="C"> Matematika4 </option>
+		              <select class="form-control" id="addPelajaran" required>
+		               
 		              </select>
 		            </div>
 		            <div class="col-md-1"></div>
@@ -31,11 +28,8 @@
 		            <div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Kelas</label>
 		            <div class="col-sm-8">
-		              <select class="form-control" id="kelas" required>
-		                <option value=""> Pilih Kelas </option>
-		                <option value="A"> 2MM2 </option>
-		                <option value="B"> 2TKR1 </option>
-		                <option value="C"> 2TKR2 </option>
+		              <select class="form-control" id="addKelas" required>
+		               
 		              </select>
 		            </div>
 		            <div class="col-md-1"></div>
@@ -45,7 +39,7 @@
 		            <div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Nama Materi</label>
 		            <div class="col-sm-8">
-		              <input type="text" class="form-control inform-height" id="namaMateri" placeholder="Nama Materi" required>
+		              <input type="text" class="form-control inform-height" id="addNamaMateri" placeholder="Nama Materi" required>
 		            </div>
 		            <div class="col-md-1"></div>
 
@@ -57,7 +51,7 @@
 		        	<div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Isi Materi</label>
 		            <div class="col-sm-8">
-		            	<textarea class="form-control" rows="10" id="isiMateri" required></textarea>
+		            	<textarea class="form-control" rows="10" id="addIsiMateri" required></textarea>
 		            </div>
 		            <div class="col-md-1"></div>
 
@@ -67,7 +61,7 @@
 
 		        <div class="form-group">
 		        	<div class="col-md-1"></div>
-		        	<label class="col-sm-2 label-right" for="fileUpload">File Upload</label>
+		        	<label class="col-sm-2 label-right" id="addFileUpload" for="fileUpload">File Upload</label>
 		        	<div class="col-sm-8">
 		            <div class="fileinput fileinput-new input-group" data-provides="fileinput" type="file">
 		                <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
