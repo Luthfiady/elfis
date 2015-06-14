@@ -15,9 +15,9 @@
 	        	
 		        <div class="form-group">
 		            <div class="col-md-1"></div>
-		            <label class="col-sm-2 label-right">Materi</label>
+		            <label class="col-sm-2 label-right">Pelajaran</label>
 		            <div class="col-sm-8">
-		              <select class="form-control" id="nama_materi" required>
+		              <select class="form-control" id="pelajaran" required>
 		                <option value=""> Pilih Pelajaran </option>
 		                <option value="A"> Matematika2 </option>
 		                <option value="B"> Matematika3 </option>
@@ -31,7 +31,7 @@
 		            <div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Kelas</label>
 		            <div class="col-sm-8">
-		              <select class="form-control" id="nama_materi" required>
+		              <select class="form-control" id="kelas" required>
 		                <option value=""> Pilih Kelas </option>
 		                <option value="A"> 2MM2 </option>
 		                <option value="B"> 2TKR1 </option>
@@ -45,18 +45,24 @@
 		            <div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Nama Materi</label>
 		            <div class="col-sm-8">
-		              <input type="text" class="form-control inform-height" id="addNamaMateri" placeholder="Nama Materi" required>
+		              <input type="text" class="form-control inform-height" id="namaMateri" placeholder="Nama Materi" required>
 		            </div>
 		            <div class="col-md-1"></div>
+
+		            <div class="col-sm-3"></div>
+            		<div class="col-sm-9 help-block with-errors"></div>
 		        </div>
 
 		        <div class="form-group">
 		        	<div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Isi Materi</label>
 		            <div class="col-sm-8">
-		            	<textarea class="form-control" rows="10" required></textarea>
+		            	<textarea class="form-control" rows="10" id="isiMateri" required></textarea>
 		            </div>
 		            <div class="col-md-1"></div>
+
+		            <div class="col-sm-3"></div>
+            		<div class="col-sm-9 help-block with-errors"></div>
 		        </div>
 
 		        <div class="form-group">
@@ -69,6 +75,9 @@
 		                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 		              	</div>
 		            </div>
+
+		            <div class="col-sm-3"></div>
+            		<div class="col-sm-9 help-block with-errors"></div>
 		        </div>
 
 		        <div class="modal-footer">

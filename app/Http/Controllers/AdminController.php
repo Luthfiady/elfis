@@ -418,7 +418,9 @@ class AdminController extends Controller {
 			$tugas_selesai = Input::get('add_tugas_selesai');
 			$durasi = Input::get('add_tugas_durasi');
 
+
 			$file_name = "";
+
 
 			if(Input::hasFile('add_file_tugas')) {
 				$file_name = Input::file('add_file_tugas')->getClientOriginalName();
@@ -426,7 +428,7 @@ class AdminController extends Controller {
 				Input::file('add_file_tugas')->move($path, $file_name);
 			}
 
-			$add_data_soal = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file_name.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+			$add_data_tugas = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file_name.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
 
 			return 'Data telah tersimpan';
 		
@@ -707,7 +709,7 @@ class AdminController extends Controller {
 
 
 	public function kuisGetId() {
-
+		
 		if(session('id_group') == 3) {
 
 			$get_id = DB::select('select * from param_group_kuis ORDER BY p_id_group_kuis DESC LIMIT 1');
@@ -724,7 +726,7 @@ class AdminController extends Controller {
 		}
 
 	}
-  
+
 
 	public function soal_add_id() {
 
@@ -968,7 +970,7 @@ class AdminController extends Controller {
 	public function forum_add() {
 
 		if(session('id_group') == 3) {
-				
+
 			$nama_forum = Input::get('add_nama_forum');
 			$role_access = Input::get('add_role_access');
 			$subyek = Input::get('add_subyek');
@@ -978,13 +980,15 @@ class AdminController extends Controller {
 			$data_add = DB::insert('insert into forum values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
 								['', $nama_forum, $role_access, $subyek, $keterangan, $isi, '0', date('Y-m-d H:i:s'), session('username')]);
 
-			// $this->json['sukses'] = 'Data berhasil masuk ke database';
-			// echo json_encode($this->json);
+			// $message = "Data Telah Ditambah";
 
-			// $data = ['key1'=>'Data berhasil masuk ke database'];
-			// return Response::json(['success'=>true,'data'=>$data]);
+			// $response = array (
+	  //           'pesan' => $message
+	  //       );
 
-			return ['key' => 'Data berhasil masuk ke database'];
+	  //       echo json_encode($response);
+
+			return view('view_admin/forum/index');
 
 		} else {
 			return redirect('login');
