@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Input;
 use DB;
+use Redirect;
+use URL;
 use Session;
-use Illuminate\Http\Response;
+use Response;
+use Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdminController extends Controller {
 
@@ -89,6 +93,29 @@ class AdminController extends Controller {
 			}
 
 			return ['data' => $pelajaran];
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+	public function getTugas() {
+
+		if(session('id_group') == 3) {
+
+			$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas ASC');
+
+			$tugas = "";
+			foreach ($get_tugas as $key => $value) {
+				$value = get_object_vars($value);
+				$materi[] = array(
+                    'id_tugas' => $value['id_tugas'],
+                    'nama_tugas' => $value['nama_tugas']
+                );
+			}
+
+			return ['data' => $tugas];
 
 		} else {
 			return redirect('login');
@@ -390,12 +417,18 @@ class AdminController extends Controller {
 			$tugas_mulai = Input::get('add_tugas_mulai');
 			$tugas_selesai = Input::get('add_tugas_selesai');
 			$durasi = Input::get('add_tugas_durasi');
-			$file = Input::get('add_file_tugas');
 
-			$add_data_soal = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+			$file_name = "";
 
-			$this->json['pesan'] = 'Data telah tersimpan';
-			echo json_encode($this->json);
+			if(Input::hasFile('add_file_tugas')) {
+				$file_name = Input::file('add_file_tugas')->getClientOriginalName();
+				$path = public_path('uploads/file_tugas');
+				Input::file('add_file_tugas')->move($path, $file_name);
+			}
+
+			$add_data_soal = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file_name.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+
+			return 'Data telah tersimpan';
 		
 		} else {	
 			return redirect('login');
@@ -406,7 +439,11 @@ class AdminController extends Controller {
 	public function tugas_detail() {
 		if(session('id_group') == 3) {
 			return view('view_admin/tugas/detail');
-		}
+
+			$data_tugas = DB::select('select a.*, b.nama_materi, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+
+			$result = '';
+		}	
 		else {
 			return redirect('login');
 		}
