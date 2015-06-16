@@ -901,7 +901,7 @@ class AdminController extends Controller {
 					$result .= '<td class="kolom-tengah">'.$list['forum_create_by'].'</td>';
 					$result .= '<td class="kolom-tengah">
 									<a class="btn btn-success btn-xs" onClick="getEdit('.$list['id_forum'].')" data-toggle="modal" data-target="#edit_forum"> <span class="glyphicon glyphicon-edit"></span> </a> 
-			                		<a class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_forum'].')"><span class="glyphicon glyphicon-trash"></span></a>
+			                		<a id="btn_delete'.$list['id_forum'].'" class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_forum'].')" data-delete="Apakah anda yakin ingin menghapus forum '.$list['nama_forum'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 			        $result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="/elfis/admin/forum_isi">
 									<span class="glyphicon glyphicon-new-window"></span></a>
@@ -938,16 +938,15 @@ class AdminController extends Controller {
 			$keterangan = Input::get('add_keterangan');
 			$isi = Input::get('add_isi');
 
-			$data_add = DB::insert('insert into forum values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-								['', $nama_forum, $role_access, $subyek, $keterangan, $isi, '0', date('Y-m-d H:i:s'), session('username')]);
+			$data_add = DB::insert('insert into forum values ("", "'.$nama_forum.'", "'.$role_access.'", "'.$subyek.'", "'.$keterangan.'", "'.$isi.'", 0, "'.date('Y-m-d H:i:s').'", "'.session('username').'")');
 
-			// $this->json['sukses'] = 'Data berhasil masuk ke database';
-			// echo json_encode($this->json);
+			$this->json['sukses'] = 'Forum berhasil dibuat';
+			echo json_encode($this->json);
 
 			// $data = ['key1'=>'Data berhasil masuk ke database'];
 			// return Response::json(['success'=>true,'data'=>$data]);
 
-			return ['key' => 'Data berhasil masuk ke database'];
+			// return ['key' => 'Data berhasil masuk ke database'];
 
 		} else {
 			return redirect('login');
@@ -964,7 +963,8 @@ class AdminController extends Controller {
 				
 			$data_delete = DB::delete('delete from forum where id_forum = "'.$id_forum.'"');
 
-			return view('view_admin/forum/index');
+			$this->json['sukses'] = 'Forum berhasil dihapus';
+			echo json_encode($this->json);
 
 		} else {
 			return redirect('login');
@@ -1019,26 +1019,10 @@ class AdminController extends Controller {
 			$keterangan = Input::get('edit_keterangan');
 			$isi = Input::get('edit_isi');
 
-			$data_update =  DB::update('update forum set nama_forum = "'.$nama_forum.'", role_access = "'.$role_access.'", subyek = "'.$subyek.'", 
-				keterangan = "'.$keterangan.'", isi = "'.$isi.'", forum_create = "'.date('Y-m-d H:i:s').'", forum_create_by = "'.session('username').'" 
-				where id_forum = '.$id_forum.'');
+			$data_update =  DB::update('update forum set nama_forum = "'.$nama_forum.'", role_access = "'.$role_access.'", subyek = "'.$subyek.'", keterangan = "'.$keterangan.'", isi = "'.$isi.'", forum_create = "'.date('Y-m-d H:i:s').'", forum_create_by = "'.session('username').'" where id_forum = '.$id_forum);
 
-			// $data = DB::table('forum')
-			// 	->where('id_forum', '=', $id_forum)
-			// 	->update(['nama_forum' => $nama_forum], ['role_access' => $role_access], ['subyek' => $subyek], ['keterangan' => $keterangan],
-			// 		['isi' => $isi], ['forum_create' => date('Y-m-d H:i:s')], ['forum_create_by' => 'SAdmin']);
-
-			// $data = DB::table('forum')
-			// 	->where('id_forum', $id_forum)
-			// 	->update(['nama_forum' => $nama_forum])
-			// 	->update(['role_access' => $role_access])
-			// 	->update(['subyek' => $subyek])
-			// 	->update(['keterangan' => $keterangan])
-			// 	->update(['isi' => $isi])
-			// 	->update(['forum_create' => date('Y-m-d H:i:s')])
-			// 	->update(['forum_create_by' => 'Admin']);
-
-			return view('view_admin/forum/index');
+			$this->json['sukses'] = 'Forum berhasil diubah';
+			echo json_encode($this->json);
 
 		} else {
 			return redirect('login');
