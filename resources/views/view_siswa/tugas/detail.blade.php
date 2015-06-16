@@ -22,8 +22,6 @@ Menggambar Gunung
 			        <span class="panel-title">Detail Tugas</span>
 			        <div class="btn-group pull-right">
 			            <div class="btn-group">
-			            	<a href="#" id="add_button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#upload_tugas" title="Unggah Jawaban Tugas Anda"> 
-								<span class="glyphicon glyphicon-upload"></span> Unggah Jawaban </a>
 							<a href="{{URL::to('siswa/tugas')}}" class="btn btn-sm btn-primary">Kembali</a>
 						</div>
         			</div>
@@ -34,7 +32,7 @@ Menggambar Gunung
         			<table class="table table-striped table-responsive">
 						<thead class="tugas">
 							<tr>
-								<th colspan="2"><h3 class="judul-tugas"> Menggambar Gunung </h3></th>
+								<th colspan="2"><h3 class="judul-tugas"> {{ $data_tugas['nama_tugas'] }} </h3></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,27 +40,27 @@ Menggambar Gunung
 								<td class="kolom-kiri">
 									<div class="form-group">
 										<p class="col-sm-2">Materi</p>
-								        <p class="col-sm-10">: &nbsp Menggambar</p>
+								        <p class="col-sm-10">: &nbsp {{ $data_tugas['nama_materi'] }}</p>
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">Pelajaran</p>
-								        <p class="col-sm-10">: &nbsp Biologi</p>
+								        <p class="col-sm-10">: &nbsp {{ $data_tugas['nama_pelajaran'] }}</p>
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">Tanggal Mulai</p>
-								        <p class="col-sm-10">: &nbsp 6/03/2015</p>
+								        <p class="col-sm-10">: &nbsp {{ $data_tugas['tugas_mulai'] }}</p>
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">Tanggal Selesai</p>
-								        <p class="col-sm-10">: &nbsp 8/03/2015 </p>
+								        <p class="col-sm-10">: &nbsp {{ $data_tugas['tugas_selesai'] }} </p>
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">Batas Waktu</p>
-								        <p class="col-sm-10">: &nbsp 12:00 pm &nbsp<span class="label label-danger">Deadline!</span></p>
+								        <p class="col-sm-10">: &nbsp {{ $data_tugas['durasi'] }} &nbsp<span class="label label-danger">Deadline!</span></p>
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">File Tugas</p>
-								        <p class="col-sm-10">: &nbsp <a href="{{URL::to('siswa/tugas_detail')}}" title="Unduh"> ManusiaLingkungan.docx <span class="glyphicon glyphicon-download-alt"></span></a></p>
+								        <p class="col-sm-10">: &nbsp <a href="{{ URL::to('public/uploads/file_tugas/' . $data_tugas['file']) }}" title="Unduh">{{ $data_tugas['file'] }} <span class="glyphicon glyphicon-download-alt"></span></a></p>
 									</div>
 								</td>
 							</tr>
@@ -74,7 +72,7 @@ Menggambar Gunung
 									</div>
 									<div class="form-group" id="right">
 										<p class="col-sm-12 text-justify">
-										<br /> Food truck fixie locavore, bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb  adajdajshdjhasgdjhasgdsa adjasgdhasgdhasd aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+										<br /> {{ $data_tugas['isi'] }}
 										</p>
 									</div>
 								</td>
