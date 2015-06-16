@@ -115,7 +115,6 @@ class AdminController extends Controller {
                 'nama_tugas' => $value['nama_tugas']
             );
 		}
-
 		return ['data' => $tugas];
 
 	} else {
