@@ -53,6 +53,7 @@ Route::get('siswa', 'SiswaController@index');
 
 // Route Admin 
 Route::get('admin/materi', 'AdminController@materi');
+Route::get('admin/materi_add', 'AdminController@materi_add');
 Route::get('admin/soal', 'AdminController@soal');
 Route::get('admin/materi_list', 'AdminController@materi_get_list');
 Route::get('admin/latihanSoal_list', 'AdminController@latihanSoal_get_list');
@@ -63,6 +64,7 @@ Route::get('guru/detail_materi', 'GuruController@detail_materi');
 
 // Route Siswa
 Route::get('siswa/materi', 'SiswaController@materi');
+Route::get('siswa/materi_list', 'SiswaController@materi_get_list');
 Route::get('siswa/soal', 'SiswaController@soal');
 Route::get('siswa/materi_soal', 'SiswaController@materi_soal');
 Route::get('siswa/materi_nilai', 'SiswaController@materi_nilai');
@@ -70,11 +72,12 @@ Route::get('siswa/materi_detail', 'SiswaController@materi_detail');
 
 
 
+
 /////////////////////////////////////////////////  Route Tugas  /////////////////////////////////////////////////
 
 // Route Admin 
 Route::get('admin/tugas', 'AdminController@tugas');
-Route::get('admin/tugas_add', 'AdminController@tugas_add');
+Route::post('admin/tugas_add', 'AdminController@tugas_add');
 Route::get('admin/tugas_detail', 'AdminController@tugas_detail');
 Route::get('admin/tugas_list', 'AdminController@tugas_get_list');
 

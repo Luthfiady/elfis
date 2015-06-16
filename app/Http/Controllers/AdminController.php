@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Input;
 use DB;
+use Redirect;
+use URL;
 use Session;
-use Illuminate\Http\Response;
+use Response;
+use Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdminController extends Controller {
 
@@ -89,6 +93,29 @@ class AdminController extends Controller {
 			}
 
 			return ['data' => $pelajaran];
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+	public function getTugas() {
+
+		if(session('id_group') == 3) {
+
+			$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas ASC');
+
+			$tugas = "";
+			foreach ($get_tugas as $key => $value) {
+				$value = get_object_vars($value);
+				$materi[] = array(
+                    'id_tugas' => $value['id_tugas'],
+                    'nama_tugas' => $value['nama_tugas']
+                );
+			}
+
+			return ['data' => $tugas];
 
 		} else {
 			return redirect('login');
@@ -183,6 +210,28 @@ class AdminController extends Controller {
 		} else {
 			return redirect('login');
 		}
+	}
+
+	public function materi_add() {
+
+		if(session('id_group') == 3) {
+
+			$id_pelajaran = Input::get('addPelajaran');
+			$id_kelas = Input::get('addKelas');
+			$nama = Input::get('addNama');
+			$nama_materi = Input::get('addNamaMateri');
+			$isi = Input::get('addIsiMateri');
+			$file = Input::get('addFileUpload');
+
+			$add_data_materi = DB::insert('insert into materi values ("", '.$id_pelajaran.', '.$id_kelas.', "'.$nama.'", "'.$isi.'", "'.$file.'", "'.date('Y-m-d').'", "'.session('username').'")'); 
+
+			$this->json['pesan'] = 'Data telah tersimpan';
+			echo json_encode($this->json);
+		
+		} else {	
+			return redirect('login');
+		}
+
 	}
 
 	// 
@@ -390,12 +439,20 @@ class AdminController extends Controller {
 			$tugas_mulai = Input::get('add_tugas_mulai');
 			$tugas_selesai = Input::get('add_tugas_selesai');
 			$durasi = Input::get('add_tugas_durasi');
-			$file = Input::get('add_file_tugas');
 
-			$add_data_soal = DB::insert('insert into tugas values ("", "'.$id_materi.'", "'.$nama_tugas.'", "'.$isi.'", "'.$file.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
 
-			$this->json['pesan'] = 'Data telah tersimpan';
-			echo json_encode($this->json);
+			$file_name = "";
+
+
+			if(Input::hasFile('add_file_tugas')) {
+				$file_name = Input::file('add_file_tugas')->getClientOriginalName();
+				$path = public_path('uploads/file_tugas');
+				Input::file('add_file_tugas')->move($path, $file_name);
+			}
+
+			$add_data_tugas = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file_name.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+
+			return 'Data telah tersimpan';
 		
 		} else {	
 			return redirect('login');
@@ -406,7 +463,11 @@ class AdminController extends Controller {
 	public function tugas_detail() {
 		if(session('id_group') == 3) {
 			return view('view_admin/tugas/detail');
-		}
+
+			$data_tugas = DB::select('select a.*, b.nama_materi, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+
+			$result = '';
+		}	
 		else {
 			return redirect('login');
 		}
@@ -670,7 +731,7 @@ class AdminController extends Controller {
 
 
 	public function kuisGetId() {
-
+		
 		if(session('id_group') == 3) {
 
 			$get_id = DB::select('select * from param_group_kuis ORDER BY p_id_group_kuis DESC LIMIT 1');
@@ -687,7 +748,7 @@ class AdminController extends Controller {
 		}
 
 	}
-  
+
 
 	public function soal_add_id() {
 
@@ -931,7 +992,7 @@ class AdminController extends Controller {
 	public function forum_add() {
 
 		if(session('id_group') == 3) {
-				
+
 			$nama_forum = Input::get('add_nama_forum');
 			$role_access = Input::get('add_role_access');
 			$subyek = Input::get('add_subyek');
@@ -943,8 +1004,11 @@ class AdminController extends Controller {
 			$this->json['sukses'] = 'Forum berhasil dibuat';
 			echo json_encode($this->json);
 
-			// $data = ['key1'=>'Data berhasil masuk ke database'];
-			// return Response::json(['success'=>true,'data'=>$data]);
+			// $message = "Data Telah Ditambah";
+			// $response = array (
+	  		//           'pesan' => $message
+	  		// );
+	  		// echo json_encode($response);
 
 			// return ['key' => 'Data berhasil masuk ke database'];
 

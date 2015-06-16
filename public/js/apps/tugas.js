@@ -4,7 +4,13 @@ var current_page;
 
 $(document).ready(function(){
 
+    getMateri();
     getList();
+
+    $('#simpan_tugas').click(function() {
+        AddDataTugas();
+        return false;
+    });
 
 // ------------------- DateTimePicker -------------------
     $('#time_durasi').datetimepicker({
@@ -36,6 +42,32 @@ $(document).ready(function(){
 
 });
 
+function getMateri() {
+
+    var form_data = {
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'get_materi',
+        type: 'GET',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+
+            option_materi = '';
+            option_materi += '<option value="0"> Nama Materi </option><br/>';
+            $.each(data.data, function(i, item) {
+            option_materi += '<option value="' + data.data[i].id_materi + '">' + data.data[i].nama_materi + '</option><br/>';
+            });
+
+            $('#add_nama_materi').html(option_materi);
+            return false;
+        }
+    });
+
+}
+
 function getList() {
     $(".dataTable").html('<img style="margin-top:180px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
@@ -43,8 +75,6 @@ function getList() {
         search_input    : $('#search_input').val(),
         _token          : CSRF_TOKEN
     }
-
-    //url = base_url + 'AdminController@forum_list';
 
     $.ajax({
         async: "false",
@@ -73,30 +103,53 @@ function getAdd() {
 
 }
 
-function AddData() {
+function clear_iframe() {
+    $('#target_submit').val(null);
+}
 
-    var form_data = {
-        add_nama_tugas      : $('#add_nama_tugas').val(),
-        add_nama_materi     : $('#add_nama_materi').val(),
-        add_isi             : $('#add_isi').val(),
-        add_tugas_mulai     : $('#add_tugas_mulai').val(),
-        add_tugas_selesai   : $('#add_tugas_selesai').val(),
-        add_tugas_durasi    : $('#add_tugas_durasi').val(),
-        add_file_tugas      : $('#add_file_tugas').val(),
-        _token              : CSRF_TOKEN
-    }
+function clear_form() {
+    $('input-tugas').val(null);
+}
 
-    $.ajax({
-        // async: "false",
-        url: 'tugas_add',
-        type: 'POST',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            alert(data.pesan);
-            getList('');
-            getAdd();
+function AddDataTugas() {
+
+    // var form_data = {
+    //     add_nama_tugas      : $('#add_nama_tugas').val(),
+    //     add_nama_materi     : $('#add_nama_materi').val(),
+    //     add_isi             : $('#add_isi').val(),
+    //     add_tugas_mulai     : $('#add_tugas_mulai').val(),
+    //     add_tugas_selesai   : $('#add_tugas_selesai').val(),
+    //     add_tugas_durasi    : $('#add_tugas_durasi').val(),
+    //     add_file_tugas      : $('#add_file_tugas').val(),
+    //     _token              : CSRF_TOKEN
+    // }
+
+    // $.ajax({
+    //     // async: "false",
+    //     url: 'tugas_add',
+    //     type: 'POST',
+    //     data: form_data,
+    //     dataType: "JSON",
+    //     success: function(data) {
+    //         alert(data.pesan);
+    //         getList();
+    //         getAdd();
+    //     }
+    // });
+    setTimeout(function() {
+        result = $('#target_submit').contents().find('body').html(); // Nama Iframe
+        if(result == '') {
+            AddDataTugas();
         }
-    });
+        else if(result === undefined) {
+            AddDataTugas();
+        }
+        else {
+            alert(result);
+            clear_iframe();
+            clear_form();
+        }
+    }, 1);
+
 
 }

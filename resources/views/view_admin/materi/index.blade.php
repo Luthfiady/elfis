@@ -31,7 +31,7 @@ Materi
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addMateri"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#formAddMateri"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Materi</a>
 			</form>
 		</div>
@@ -69,7 +69,7 @@ Materi
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
-	<div class="modal fade" id="addMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="formAddMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.materi.modal_add')
 	</div>
 
