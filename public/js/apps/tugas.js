@@ -164,10 +164,17 @@ function open_tugas_edit(id_tugas, nama_tugas, id_materi, isi, tugas_mulai, tuga
     $('#edit_file_tugas').val(file);
 }
 
-function deleteData(id_tugas) {
+function open_tugas_hapus(id_tugas, nama_tugas){
+    $('#hapus_id_tugas').val(id_tugas);
+    $('#hapus_nama_tugas').html(nama_tugas);
+}
+
+function deleteData() {
+
+    alert($('#hapus_id_tugas').val());
 
     var form_data = {
-        id_tugas : id_tugas,
+        id_tugas : $('#hapus_id_tugas').val(),
         _token   : CSRF_TOKEN
     }
 

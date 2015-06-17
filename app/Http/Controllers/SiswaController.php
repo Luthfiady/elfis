@@ -296,7 +296,7 @@ class SiswaController extends Controller {
 
 
 			if(Input::hasFile('add_file_jawaban')) {
-				$file_name = Input::file('add_file_jawaban')->getClientOriginalName();
+				$file_name = $nis . '_' . $id_tugas . '.' . Input::file('add_file_jawaban')->getClientOriginalExtension();
 				$path = public_path('uploads/file_jawaban_tugas');
 				Input::file('add_file_jawaban')->move($path, $file_name);
 			}

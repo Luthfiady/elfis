@@ -397,6 +397,8 @@ class AdminController extends Controller {
 
 					$data_test = "'" . $list['id_tugas'] . "','" . $list['nama_tugas'] .  "','" . $list['id_materi'] . "','" . $list['isi'] . "','" . $list['tugas_mulai'] . "','" . $list['tugas_selesai'] . "','" . $list['durasi'] . "','" . $list['file'] .  "'";
 
+					$nama_tugas = "'" . $list['nama_tugas'] .  "'";
+
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
 					$result .= '<td>'.$list['nama_tugas'].'</td>';
@@ -409,7 +411,7 @@ class AdminController extends Controller {
 									onclick="open_tugas_edit(' . $data_test . ')"
 									title="Ubah">
 									<span class="glyphicon glyphicon-edit"></span></a>
-			                		<a class="btn btn-danger btn-xs" data-target="#delete_tugas" onClick="deleteData('.$list['id_tugas'].')"><span class="glyphicon glyphicon-trash"></span></a>
+			                		<a class="btn btn-danger btn-xs" data-target="#delete_tugas" data-toggle="modal" onclick="open_tugas_hapus('. $list['id_tugas'] .', '. $nama_tugas .')" ><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 			        $result .= '<td class="kolom-tengah">
 								<a class="btn btn-xs btn-warning" href="/elfis/admin/tugas_detail?id_tugas=' . $list['id_tugas'] . '" title="Detail">
@@ -514,6 +516,9 @@ class AdminController extends Controller {
 				$path = public_path('uploads/file_tugas');
 				Input::file('edit_file_tugas')->move($path, $file_name);
 			}
+			else {
+				$file_name = Input::get('edit_file_tugas_lama');
+			}
 
 			
 
@@ -616,7 +621,7 @@ class AdminController extends Controller {
 					$result .= '<td class="kolom-kiri">'.$list['file'].'</td>';
 					$result .= '<td>'.$list['tanggal_unggah'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a class="btn btn-info btn-xs" href="/elfis/public/uploads/file_jawaban_tugas/'.$list['file'].'" title="Unduh"><span class="glyphicon glyphicon-download-alt"></span></a>
+									<a class="btn btn-info btn-xs" href=../public/uploads/file_jawaban_tugas/' . $list['file'] . ' title="Unduh"><span class="glyphicon glyphicon-download-alt"></span></a>
 			                	</td>';
 					$result .= '</tr>';
 					$i++;
