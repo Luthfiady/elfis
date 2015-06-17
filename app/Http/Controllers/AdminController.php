@@ -7,7 +7,8 @@ use DB;
 use Redirect;
 use URL;
 use Session;
-use Response;
+use Illuminate\Http\Response;
+// use Response;
 use Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -102,26 +103,26 @@ class AdminController extends Controller {
 
 	public function getTugas() {
 
-		if(session('id_group') == 3) {
+	if(session('id_group') == 3) {
 
-			$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas ASC');
+		$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas ASC');
 
-			$tugas = "";
-			foreach ($get_tugas as $key => $value) {
-				$value = get_object_vars($value);
-				$materi[] = array(
-                    'id_tugas' => $value['id_tugas'],
-                    'nama_tugas' => $value['nama_tugas']
-                );
-			}
-
-			return ['data' => $tugas];
-
-		} else {
-			return redirect('login');
+		$tugas = "";
+		foreach ($get_tugas as $key => $value) {
+			$value = get_object_vars($value);
+			$tugas[] = array(
+                'id_tugas' => $value['id_tugas'],
+                'nama_tugas' => $value['nama_tugas']
+            );
 		}
 
+		return ['data' => $tugas];
+
+	} else {
+		return redirect('login');
 	}
+
+}
 
 
 // -------------------------------------------------------- MATERI --------------------------------------------------------
@@ -358,7 +359,7 @@ class AdminController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_tugas = DB::select('select a.*, b.nama_materi, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
 
 
 			$result = '';
@@ -390,7 +391,13 @@ class AdminController extends Controller {
 
 				$i = 1;
 				foreach ($data_tugas as $row => $list) {
+
+					
+
 					$list = get_object_vars($list);
+
+					$data_test = "'" . $list['id_tugas'] . "','" . $list['nama_tugas'] .  "','" . $list['id_materi'] . "','" . $list['isi'] . "','" . $list['tugas_mulai'] . "','" . $list['tugas_selesai'] . "','" . $list['durasi'] . "','" . $list['file'] .  "'";
+
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
 					$result .= '<td>'.$list['nama_tugas'].'</td>';
@@ -399,12 +406,14 @@ class AdminController extends Controller {
 					$result .= '<td>'.$list['tugas_mulai'].'</td>';
 					$result .= '<td>'.$list['tugas_selesai'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#edit_tugas" title="Ubah">
+									<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#edit_tugas" 
+									onclick="open_tugas_edit(' . $data_test . ')"
+									title="Ubah">
 									<span class="glyphicon glyphicon-edit"></span></a>
-			                		<a class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></a>
+			                		<a class="btn btn-danger btn-xs" data-target="#delete_tugas" onClick="deleteData('.$list['id_tugas'].')"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 			        $result .= '<td class="kolom-tengah">
-								<a class="btn btn-xs btn-warning" href="/elfis/admin/tugas_detail" title="Detail">
+								<a class="btn btn-xs btn-warning" href="/elfis/admin/tugas_detail?id_tugas=' . $list['id_tugas'] . '" title="Detail">
 								<span class="glyphicon glyphicon-new-window"></span>
 								</a>
 								</td>';
@@ -462,15 +471,88 @@ class AdminController extends Controller {
 
 	public function tugas_detail() {
 		if(session('id_group') == 3) {
-			return view('view_admin/tugas/detail');
+			
 
-			$data_tugas = DB::select('select a.*, b.nama_materi, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+			$data_tugas = DB::table('tugas')
+			->join('materi', 'tugas.id_materi', '=', 'materi.id_materi')
+			->join('pelajaran', 'materi.id_pelajaran', '=', 'pelajaran.id_pelajaran')
+			->where('tugas.id_tugas', '=', Input::get('id_tugas'))
+			->get(['tugas.*', 'materi.nama_materi', 'pelajaran.nama_pelajaran']);
 
-			$result = '';
+			$result = [];
+
+			foreach ($data_tugas as $key => $value) {
+				foreach ($value as $k => $v) {
+					$result[$k] = $v;
+				}
+			}
+			// 'select  from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and a.id_tugas = "' . Input::get('id_tugas') . '"');
+
+			return view('view_admin/tugas/detail', ['data_tugas' => $result]);
+
+			
 		}	
 		else {
 			return redirect('login');
 		}
+	}
+
+	public function tugas_edit() {
+		if(session('id_group') == 3) {
+
+			$id_tugas = Input::get('id_tugas');
+			$nama_tugas = Input::get('edit_nama_tugas');
+			$id_materi = Input::get('edit_id_materi');
+			$isi = Input::get('edit_isi');
+			$tugas_mulai = Input::get('edit_tanggal_mulai');
+			$tugas_selesai = Input::get('edit_tanggal_selesai');
+			$durasi = Input::get('edit_durasi');
+
+			$file_name = "";
+
+			if(Input::hasFile('edit_file_tugas')) {
+				$file_name = Input::file('edit_file_tugas')->getClientOriginalName();
+				$path = public_path('uploads/file_tugas');
+				Input::file('edit_file_tugas')->move($path, $file_name);
+			}
+
+			
+
+			// DB::update('update into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file_name.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
+			
+			DB::table('tugas')
+			->where('id_tugas', '=', $id_tugas)
+			->update([
+				'id_materi' => $id_materi, 
+				'nama_tugas' => $nama_tugas, 
+				'isi' => $isi, 
+				'file' => $file_name, 
+				'tugas_mulai' => $tugas_mulai, 
+				'tugas_selesai' => $tugas_selesai, 
+				'durasi' => $durasi
+			]);
+
+			return 'Data telah tersimpan';
+			
+		} else {	
+			return redirect('login');
+		}
+	}
+
+	public function tugas_delete() {
+
+		if(session('id_group') == 3) {
+
+			$id_tugas = trim(Input::get('id_tugas'));
+				
+			$data_delete = DB::delete('delete from tugas where id_tugas = "'.$id_tugas.'"');
+
+			return view('view_admin/tugas/index');
+
+		} else {
+			return redirect('login');
+		}
+	
 	}
 
 
@@ -535,7 +617,7 @@ class AdminController extends Controller {
 					$result .= '<td class="kolom-kiri">'.$list['file'].'</td>';
 					$result .= '<td>'.$list['tanggal_unggah'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a class="btn btn-info btn-xs" title="Unduh"><span class="glyphicon glyphicon-download-alt"></span></a>
+									<a class="btn btn-info btn-xs" href="/elfis/public/uploads/file_jawaban_tugas/'.$list['file'].'" title="Unduh"><span class="glyphicon glyphicon-download-alt"></span></a>
 			                	</td>';
 					$result .= '</tr>';
 					$i++;
@@ -557,7 +639,7 @@ class AdminController extends Controller {
 		}
 	}
 
-
+	
 // -------------------------------------------------------- KUIS --------------------------------------------------------
 
 	public function kuis() {
