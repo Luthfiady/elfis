@@ -169,25 +169,30 @@ function open_tugas_hapus(id_tugas, nama_tugas){
     $('#hapus_nama_tugas').html(nama_tugas);
 }
 
-function deleteData() {
+function deleteData(id_tugas) {
 
-    alert($('#hapus_id_tugas').val());
-
+    var konfirmasi = confirm($('#btn_delete'+id_tugas).data('delete'));
     var form_data = {
-        id_tugas : $('#hapus_id_tugas').val(),
-        _token   : CSRF_TOKEN
-    }
-
-    $.ajax({
-        //async: "false",
-        type: 'POST',
-        data: form_data,
-        url: 'tugas_delete',
-        dataType: "JSON",
-        success: function(data) {
-            getList(current_page);
-            
+            id_tugas : id_tugas,
+            _token   : CSRF_TOKEN
         }
-    });
+
+    if(konfirmasi == true) {
+
+        $.ajax({
+            //async: "false",
+            type: 'POST',
+            data: form_data,
+            url: 'tugas_delete',
+            dataType: "JSON",
+            success: function(data) {
+                getList();
+                return false;
+            }
+        });
+
+    } else {
+        return false;
+    }
 
 }

@@ -397,8 +397,6 @@ class AdminController extends Controller {
 
 					$data_test = "'" . $list['id_tugas'] . "','" . $list['nama_tugas'] .  "','" . $list['id_materi'] . "','" . $list['isi'] . "','" . $list['tugas_mulai'] . "','" . $list['tugas_selesai'] . "','" . $list['durasi'] . "','" . $list['file'] .  "'";
 
-					$nama_tugas = "'" . $list['nama_tugas'] .  "'";
-
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
 					$result .= '<td>'.$list['nama_tugas'].'</td>';
@@ -411,7 +409,7 @@ class AdminController extends Controller {
 									onclick="open_tugas_edit(' . $data_test . ')"
 									title="Ubah">
 									<span class="glyphicon glyphicon-edit"></span></a>
-			                		<a class="btn btn-danger btn-xs" data-target="#delete_tugas" data-toggle="modal" onclick="open_tugas_hapus('. $list['id_tugas'] .', '. $nama_tugas .')" ><span class="glyphicon glyphicon-trash"></span></a>
+			                		<a id="btn_delete'.$list['id_tugas'].'" title="Hapus" class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_tugas'].')" data-delete="Apakah anda yakin ingin menghapus tugas '.$list['nama_tugas'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 			        $result .= '<td class="kolom-tengah">
 								<a class="btn btn-xs btn-warning" href="/elfis/admin/tugas_detail?id_tugas=' . $list['id_tugas'] . '" title="Detail">
@@ -551,7 +549,8 @@ class AdminController extends Controller {
 				
 			$data_delete = DB::delete('delete from tugas where id_tugas = "'.$id_tugas.'"');
 
-			return view('view_admin/tugas/index');
+			$this->json['sukses'] = 'Tugas berhasil dihapus';
+			echo json_encode($this->json);
 
 		} else {
 			return redirect('login');
