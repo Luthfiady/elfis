@@ -15,8 +15,8 @@ Managemen User
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Nama User </option>
-	        			<option value="modul_name"> Nama Group </option>
+						<option value="username"> Nama User </option>
+	        			<option value="b.nama_group"> Nama Group </option>
 					</select>	
 				</div>
 
@@ -38,88 +38,18 @@ Managemen User
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
+		<div class="col-md-12 dataTable table-responsive">
 			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>ID User</th>
-						<th>Nama User</th>
-						<th>Nama Group</th>
-						<th><span class="glyphicon glyphicon-wrench"></span></th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td>10003</td>
-						<td>Axel</td>
-						<td>Admin</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_user">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">2</td>
-						<td>10002</td>
-						<td>Tubagus</td>
-						<td>Guru</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_user">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">3</td>
-						<td>10001</td>
-						<td>Luthfiady</td>
-						<td>Siswa</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#edit_user">
-								<span class="glyphicon glyphicon-edit"></span>
-							</a>
-							<a class="btn btn-xs btn-danger" href="#">
-								<span class="glyphicon glyphicon-trash"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
 
 		</div>
 	</div>
 
 	<div class="row row-paging-table">
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
@@ -134,6 +64,9 @@ Managemen User
 		@include('view_admin.user.modal_edit_user')
 	</div>
 
+
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/user.js')}}"></script>
 
 @stop

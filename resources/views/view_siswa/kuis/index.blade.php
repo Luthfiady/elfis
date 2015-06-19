@@ -17,7 +17,7 @@ Kuis
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
 						<option value="nama_group_kuis"> Nama Kuis </option>
-	        			<option value="b.nama_materi"> Materi </option>
+	        			<option value="b.nama_materi"> Nama Materi </option>
 	        			<option value="c.nama"> Nama Guru </option>
 					</select>	
 				</div>

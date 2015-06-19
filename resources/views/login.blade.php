@@ -10,6 +10,7 @@
     <meta content="" name="author" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+
     <link rel="icon" href="{{ asset('public/img/logo/icon.png') }}">
     
 	<title>E-Learning SMKN 56 Jakarta</title>

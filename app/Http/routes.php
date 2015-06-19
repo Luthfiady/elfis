@@ -291,8 +291,10 @@ Route::get('admin/reset_password', 'AdminController@reset_password');
 /////////////////////////////////////////////////  Route User Management  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/setting_user', 'AdminController@setting_user');
+Route::get('admin/setting_user', 'Admin_SettingController@user');
 
-
-
-
+Route::get('admin/user_list', 'Admin_SettingController@user_get_list');
+Route::post('admin/user_add', 'Admin_SettingController@user_add');
+Route::post('admin/user_delete', 'Admin_SettingController@user_delete');
+Route::post('admin/user_get_edit', 'Admin_SettingController@user_get_edit');
+Route::post('admin/user_edit', 'Admin_SettingController@user_edit');

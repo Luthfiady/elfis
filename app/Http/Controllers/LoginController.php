@@ -44,7 +44,7 @@ class LoginController extends Controller {
 		$id_user = trim(Input::get('login_username'));
 		$password = trim(Input::get('login_password'));
 		
-		$status = DB::table('user')->where('id_user', '=', $id_user)->where('password', '=', $password)->get(['id_group', 'username', 'id_user']);
+		$status = DB::table('users')->where('id_user', '=', $id_user)->where('password', '=', $password)->get(['id_group', 'username', 'id_user']);
 
 		if($status != null) {
 
@@ -60,7 +60,7 @@ class LoginController extends Controller {
 			$group = session('id_group');
 			$id_user_id = session('id_user');
 
-			$status_group = DB::table('group')->where('id_group', '=', $group)->get(['nama_group']);
+			$status_group = DB::table('groups')->where('id_group', '=', $group)->get(['nama_group']);
 
 			foreach ($status_group as $keys => $value_group) {
 				$group_name = $value_group->nama_group;

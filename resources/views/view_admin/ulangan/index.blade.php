@@ -17,7 +17,7 @@ Ulangan
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
 						<option value="nama_group_ulangan"> Nama Ulangan </option>
-	        			<option value="b.nama_materi"> Materi </option>
+	        			<option value="b.nama_materi"> Nama Materi </option>
 					</select>	
 				</div>
 

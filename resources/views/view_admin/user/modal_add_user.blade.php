@@ -51,11 +51,27 @@
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">Nama Group</label>
             <div class="col-sm-8">
-              <select class="form-control" id="nama_group" required>
+              <select class="form-control" id="add_nama_group" required>
                 <option value=""> Nama Group </option>
-                <option value="A"> Siswa </option>
-                <option value="B"> Guru </option>
-                <option value="C"> Admin </option>\
+                <option value="1"> Siswa </option>
+                <option value="2"> Guru </option>
+                <option value="3"> Admin </option>\
+              </select>
+            </div>
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-1"></div>
+            <label class="col-sm-2 ">Disabled</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="add_disabled" required>
+                <option value=""> Disabled </option>
+                <option value="N"> N </option>
+                <option value="Y"> Y </option>\
               </select>
             </div>
             <div class="col-sm-1"></div>
