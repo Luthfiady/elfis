@@ -219,14 +219,20 @@ Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
 
 // Route Admin 
 Route::get('admin/forum', 'Admin_ForumController@forum');
-Route::get('admin/forum_isi', 'Admin_ForumController@forum_isi');
 
+	// ----------------------------- index -----------------------------
 Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
 Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
 Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
 Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
 Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
 
+	// ----------------------------- Isi -----------------------------
+Route::get('admin/forum/{nama_forum}/{id_forum}', 'Admin_ForumController@forum_isi');
+Route::get('admin/forum_isi_set_data', 'Admin_ForumController@forum_isi_set_data');
+Route::post('admin/forum_add_star', 'Admin_ForumController@forum_add_star');
+Route::post('admin/komentar_add_star', 'Admin_ForumController@komentar_add_star');
+Route::post('admin/komentar_add', 'Admin_ForumController@komentar_add');
 
 // Route Guru
 Route::get('guru/forum', 'GuruController@forum');

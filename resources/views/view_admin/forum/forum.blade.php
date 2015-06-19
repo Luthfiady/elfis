@@ -6,7 +6,7 @@
 @stop
 
 @section('bread_admin')
-Forum Contoh Untuk Semua
+{{$nama_forum}}
 @stop
 
 @section('content')
@@ -15,29 +15,13 @@ Forum Contoh Untuk Semua
 
 	<div class="row"> <!-- Header Forum -->
 		<div class="col-md-12">
-			<h3 class="header-judul">Forum Contoh Untuk Semua</h3>
+			<h3 class="header-judul">{{$nama_forum}}</h3>
+			<input class="form-control" type="hidden" id="id_forum" value="{{$id_forum}}" />
 		</div>
 	</div>
 
 	<div class="row row-isi-forum"> <!-- Isi Forum Pembuat -->
-		<div class="col-md-12 table-responsive">
-
-			<table class="table table-header-forum">
-				<tr class="forum-kepala">
-					<td>
-						<p class="header-pembuat">Tubagus Axel Luthfiady</p>
-						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
-					</td>
-					<td class="header-right">
-						<p class="sub-header-buat">Rating 5 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
-						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
-					</td>
-				</tr>
-				<tr class="forum">
-					<td colspan="2">Segalanya yang terjadi sudahlah terjadi, di Indonesia banyak yang sudah seperti ini apa adanya. Aku mah apah atuh!
-					Itulah salah satu yang menjadi tren saat ini di kalangan anak muda, ckckck. Ampun dah yaa hahahaha</td>
-				</tr>
-			</table>
+		<div class="col-md-12 table-responsive dataHead">
 
 		</div>
 	</div>
@@ -50,64 +34,30 @@ Forum Contoh Untuk Semua
 			  	<li role="presentation"><a href="#">Older</a></li>
 
 			  	<button href="#" class="btn btn-sm btn-primary inform-height form-right" data-toggle="modal" data-target="#add_comment">Tambah</button>
-			  	<p class="info-komentar form-right">4 Komentar &nbsp</p>
+			  	<p class="info-komentar form-right jml_komentar"></p>
 			  	
 			</ul>
 		</div>
 	</div>
 
 	<div class="row"> <!-- Isi Komentar -->
-		<div class="col-md-12 table-responsive"> <!-- Header User Komen -->
-
-			<table class="table table-komentar-forum">
-				<tr class="forum-komentar">
-					<td>
-						<p class="header-pembuat">Anditika Maulida Purnamasari</p>
-						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
-					</td>
-					<td class="header-right">
-						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
-						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
-					</td>
-				</tr>
-
-				<tr class="forum">
-					<td colspan="2">Sedang ada apa ini? hahahaha </td>
-				</tr>
-
-				<tr class="forum-komentar">
-					<td>
-						<p class="header-pembuat">Anditika Maulida Purnamasari</p>
-						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
-					</td>
-					<td class="header-right">
-						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
-						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
-					</td>
-				</tr>
-
-				<tr class="forum">
-					<td colspan="2">Sedang ada apa ini? sdasdnakld dsajdhkja dasdhas dadh </td>
-				</tr>
-
-				<tr class="forum-komentar">
-					<td>
-						<p class="header-pembuat">Anditika Maulida Purnamasari</p>
-						<p class="sub-header-buat">Sabtu, 9 Mei 2015 | 15:30 WIB</p>
-					</td>
-					<td class="header-right">
-						<p class="sub-header-buat">Rating 3 <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" class="rating">Suka</a></p>
-						<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>
-					</td>
-				</tr>
-
-				<tr class="forum">
-					<td colspan="2">Sedang ada apa ini? sdasdnakld dsajdhkja dasdhas dadh \n sdbnjkasbdj /n dsajkbdjsak </td>
-				</tr>
-			</table>
+		<div class="col-md-12 table-responsive dataChild" style="text-align:center;"> <!-- Header User Komen -->
 
 		</div>
 	</div>
+
+	<div class="row row-paging-table">
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
+	</div>
+
+	<div class="row space-footer">
+	</div>
+
+	<input type="hidden" id="base_url" value="<?php echo ('localhost/elfis/admin/') ?>"/>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
@@ -122,5 +72,7 @@ Forum Contoh Untuk Semua
 	</div>
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/forum_isi.js')}}"></script>
 
 @stop
