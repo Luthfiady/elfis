@@ -32,7 +32,7 @@ $(document).ready(function(){
 
     // $("#simpan_soal").click(function(){
 
-    //     soal = $("#soal_kuis").val('');
+    //     soal = $("#soal_ulangan").val('');
     //     jwb_a = $("#jwb_a").val('');
     //     jwb_b = $("#jwb_b").val('');
     //     jwb_c = $("#jwb_c").val('');
@@ -62,7 +62,7 @@ function getList() {
 
     $.ajax({
         // async: "false",
-        url: 'kuis_list',
+        url: 'ulangan_list',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
@@ -75,19 +75,19 @@ function getList() {
 }
 
 
-function deleteKuis(id) {
+function deleteUlangan(id) {
 
     var konfirmasi = confirm($('#deleteData'+id).data('delete'));
 
     var form_data = {
-        id_kuis   : id,
+        id_ulangan   : id,
         _token    : CSRF_TOKEN
     }
 
     if (konfirmasi == true) {
 
         $.ajax({
-                url: 'kuis_delete',
+                url: 'ulangan_delete',
                 type: 'POST',
                 data: form_data,
                 dataType: "JSON",

@@ -83,8 +83,9 @@ Tambah Kuis
 					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
-				<input class="form-control" type="hidden" id="id_before">
+				<input class="form-control" type="hidden" id="id_kuis">
 				<input class="form-control" type="hidden" id="id_after">
+				<input class="form-control" type="hidden" id="id_before">
 
 		</div>		
 	</div>
@@ -105,13 +106,13 @@ Tambah Kuis
 		</div>
 		<div class="col-md-12 dataTable">
 			
-		</div>		
+		</div>
 	</div>
 
     <div class="form-group" style="float:right;">
-        <button type="submit" id="simpan_kuis" class="btn btn-primary btn-sm" value="save">Simpan</button>
+        <button type="submit" id="simpan_kuis" class="btn btn-primary btn-sm">Submit</button>
         <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-        <button type="submit" id="hapus_soal" class="btn btn-primary btn-sm">Batal</button>
+        <button type="submit" id="hapus_kuis" class="btn btn-primary btn-sm">Batal</button>
     </div>
 	</form>
 
@@ -130,6 +131,6 @@ Tambah Kuis
 </div>
 
 
-<script type="text/javascript" src="{{asset('public/js/apps/kuis_soal.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/apps/kuis_add.js')}}"></script>
 
 @stop

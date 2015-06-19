@@ -5,7 +5,7 @@
       
       <div class="modal-header">
         <button type="button" id="close_modal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <p class="modal-title">Ubah Kuis</p>
+        <p class="modal-title">Ubah Ulangan</p>
       </div>
 
       <div class="modal-body">
@@ -21,9 +21,9 @@
 
           <div class="form-group">
             <div class="col-md-1"></div>
-            <label class="col-sm-2 label-modal-soal">Soal Kuis</label>
+            <label class="col-sm-2 label-modal-soal">Soal Ulangan</label>
             <div class="col-sm-8">
-              <textarea id="edit_soal_kuis" rows="3" class="form-control" placeholder="Soal" required></textarea>
+              <textarea id="edit_soal_ulangan" rows="3" class="form-control" placeholder="Soal" required></textarea>
             </div>
             <div class="col-md-1"></div>
 
@@ -111,7 +111,7 @@
 
       <div class="modal-footer">
         <div class="form-group">
-          <input type="hidden" id="edit_id_kuis">
+          <input type="hidden" id="edit_id_ulangan">
           <button type="reset" id="reset_edit_form" class="btn btn-primary btn-sm">Reset</button>
           <button type="submit" id="ubah_soal" class="btn btn-primary btn-sm" value="save">Ubah</button>
         </div>

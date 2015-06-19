@@ -1,10 +1,10 @@
-@extends('templates/admin_layouts')
+@extends('templates/guru_layouts')
 
-@section('add_bread_admin')
-<li><a href="{{ URL::to('admin/kuis') }}">Kuis</a></li>
+@section('add_bread_guru')
+<li><a href="{{ URL::to('guru/kuis') }}">Kuis</a></li>
 @stop
 
-@section('bread_admin')
+@section('bread_guru')
 Ubah Kuis 
 @stop
 	
@@ -111,20 +111,20 @@ Ubah Kuis
     <div class="form-group" style="float:right;">
         <button type="submit" id="ubah_kuis" class="btn btn-primary btn-sm">Ubah</button>
         <button type="reset" id="reset_edit_form" class="btn btn-primary btn-sm">Reset</button>
-        <a href="{{URL::to('admin/kuis')}}" class="btn btn-sm btn-primary" id="redirect" style="display:none;"> </a>
+        <a href="{{URL::to('guru/kuis')}}" class="btn btn-sm btn-primary" id="redirect" style="display:none;"> </a>
     </div>
 	</form>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="modal-soal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    @include('view_admin.kuis.modal_soal_add')
+	    @include('view_guru.kuis.modal_soal_add')
 	</div>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="modal-soal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    @include('view_admin.kuis.modal_soal_edit')
+	    @include('view_guru.kuis.modal_soal_edit')
 	</div>
 
 </div>

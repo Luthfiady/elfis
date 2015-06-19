@@ -1,37 +1,61 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-var id_kata = 'S00';
 
 $(document).ready(function(){
 
 	getMateri();
-	getKelas();
-	getPelajaran();
+	soal_list_edit();
+    getEditDetailKuis();
 
-	getId();
-	getList_soal();
+	$('#ubah_kuis').click(function() {
+
+	    nama = $('#edit_nama_kuis').val();
+	    materi = $('#edit_nama_materi').val();
+	    mulai = $('#edit_tgl_mulai').val();
+	    selesai = $('#edit_tgl_selesai').val();
+	    durasi = $('#edit_durasi').val();
+
+		if (nama && materi && mulai && selesai && durasi != "") {
+            UpdateKuis();
+			return false;
+		}
+
+	});
 
 	$('#simpan_soal').click(function() {
-		addDataId();
-		addDataSoal();
-		return false;
+
+		soal = $('#soal_kuis').val();
+	    a = $('#jwb_a').val();
+	    b = $('#jwb_b').val();
+	    c = $('#jwb_c').val();
+	    d = $('#jwb_d').val();
+	    e = $('#jwb_e').val();
+	    jawaban = $('#jawaban').val();
+
+	    if (soal && a && b && c && d && e && jawaban != "" ) {
+			AddSoal();
+			return false;
+	    }
+
 	});
 
 	$('#ubah_soal').click(function() {
-		EditData();
+		EditSoal();
 		return false;
 	});
 
-	// ------------------- DateTimePicker -------------------
+
+	// --------------------------------- DateTimePicker ---------------------------------
+
     $('#time_durasi').datetimepicker({
-        format: 'hh:mm:ss'
+        format: 'HH:mm:ss'
     });
 
     $('#datepicker_start').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
 
     $('#datepicker_end').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
 
     $("#datepicker_start").on("dp.change",function (e) {
@@ -46,6 +70,8 @@ $(document).ready(function(){
 });
 
 
+// ---------------------------------------------------------- Kuis Edit ----------------------------------------------------------
+
 
 function getMateri() {
 
@@ -54,19 +80,19 @@ function getMateri() {
 	}
 
 	$.ajax({
-        url: 'get_materi',
+        url: '../../get_materi',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
 
         	option_materi = '';
-            option_materi += '<option selected="selected" value="0"> Nama Materi </option><br/>';
+            option_materi += '<option value=""> Nama Materi </option><br/>';
             $.each(data.data, function(i, item) {
             option_materi += '<option value="' + data.data[i].id_materi + '">' + data.data[i].nama_materi + '</option><br/>';
             });
 
-            $('#nama_materi').html(option_materi);
+            $('#edit_nama_materi').html(option_materi);
             return false;
         }
     });
@@ -74,39 +100,42 @@ function getMateri() {
 }
 
 
-
-function getId() {
-
-	var form_data = {
-		_token		: CSRF_TOKEN
-	}
-
-	$.ajax({
-        url: 'kuis_get_id',
-        type: 'GET',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            $('#id_before').val(id_kata + data.data);
-            $('#id_after').val(data.data);
-            return false;
-        }
-    });
-
-}
-
-
-function getList_soal() {
-
-    $(".dataTable").html('<img style="margin-top:50px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
+function getEditDetailKuis() {
+    
     var form_data = {
-    	id_param 	: $('#id_before').val(),
+        id_kuis     : $('#id_kuis').val(),
         _token      : CSRF_TOKEN
     }
 
     $.ajax({
-        async: "false",
-        url: 'soal_list',
+        url: '../../get_detail_kuis',
+        type: 'GET',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+
+            $('#edit_nama_kuis').val(data.data_kuis.nama_group_kuis);
+            $('#edit_nama_materi').val(data.data_kuis.id_materi);
+            $('#edit_tgl_mulai').val(data.data_kuis.kuis_mulai);
+            $('#edit_tgl_selesai').val(data.data_kuis.kuis_selesai);
+            $('#edit_durasi').val(data.data_kuis.durasi);
+
+        }
+    });
+
+}
+
+
+function soal_list_edit() {
+
+    $(".dataTable").html('<img style="margin-top:50px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
+    var form_data = {
+        id_soal     : $('#id_group_kuis').val(),
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: '../../soal_list_edit',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
@@ -119,28 +148,8 @@ function getList_soal() {
 }
 
 
-function addDataId() {
+function refreshSoal() {
 
-	var form_data = {
-    	id_kuis 	: $('#id_before').val(),
-        _token      : CSRF_TOKEN
-    }
-
-    $.ajax({
-        url: 'soal_add_id',
-        type: 'POST',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            
-            return false;
-        }
-    });
-
-}
-
-
-function getAdd() {
 	$('#soal_kuis').val('');
     $('#jwb_a').val('');
     $('#jwb_b').val('');
@@ -149,14 +158,13 @@ function getAdd() {
     $('#jwb_e').val('');
     $('#jawaban').val('');
 
-    return false;
 }
 
 
-function addDataSoal() {
+function AddSoal() {
 
 	var form_data = {
-		id_soal 	: $('#id_before').val(),
+		id_soal 	: $('#id_group_kuis').val(),
     	soal_kuis 	: $('#soal_kuis').val(),
     	jwb_a 		: $('#jwb_a').val(),
     	jwb_b 		: $('#jwb_b').val(),
@@ -168,14 +176,14 @@ function addDataSoal() {
     }
 
     $.ajax({
-        url: 'soal_add',
+        url: '../../AddSoal',
         type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
             alert(data.pesan);
-            getList_soal();
-            getAdd();
+            soal_list_edit();
+            refreshSoal();
         }
     });
 
@@ -184,24 +192,30 @@ function addDataSoal() {
 
 function deleteSoal(id) {
 
+	var konfirmasi = confirm($('#delete'+id).data('delete'));
+
 	var form_data = {
 		id 		: id,
         _token  : CSRF_TOKEN
     }
 
-    $.ajax({
-        url: 'soal_delete',
-        type: 'POST',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            alert(data.pesan);
-            getList_soal();
+    if (konfirmasi == true) {
 
-            return false;
-        }
-    });
+	    $.ajax({
+	        url: '../../DeleteSoal',
+	        type: 'POST',
+	        data: form_data,
+	        dataType: "JSON",
+	        success: function(data) {
+	            soal_list_edit();
 
+	            return false;
+	        }
+	    });
+
+    } else {
+    	return false;
+	}
 }
 
 
@@ -213,13 +227,13 @@ function getEdit(id) {
     }
 
     $.ajax({
-        url: 'soal_get_edit',
+        url: '../../soal_get_edit',
         type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
 
-        	$('#id_kuis').val(data.soal.id);
+        	$('#edit_id_kuis').val(data.soal.id);
         	$('#edit_soal_kuis').val(data.soal.soal);
 		    $('#edit_jwb_a').val(data.soal.pil_a);
 		    $('#edit_jwb_b').val(data.soal.pil_b);
@@ -235,10 +249,10 @@ function getEdit(id) {
 }
 
 
-function EditData() {
+function EditSoal() {
 
     var form_data = {
-        id 		: $('#id_kuis').val(),
+        id 		: $('#edit_id_kuis').val(),
         soal 	: $('#edit_soal_kuis').val(),
 		jwb_a 	: $('#edit_jwb_a').val(),
 		jwb_b   : $('#edit_jwb_b').val(),
@@ -251,72 +265,44 @@ function EditData() {
     
     $.ajax({
         // async: "false",
-        url: 'soal_edit',
+        url: '../../soal_edit',
         type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
         	alert(data.pesan);
-            getList_soal();
+            soal_list_edit();
+            document.getElementById('close_modal').click();
         }
     });
 
 }
 
 
-
-
-
-
-function getKelas() {
+function UpdateKuis() {
 
 	var form_data = {
-		_token		: CSRF_TOKEN
-	}
+        id_kuis 		        : $('#id_kuis').val(),
+        edit_nama_kuis		    : $('#edit_nama_kuis').val(),
+        edit_id_materi			: $('#edit_nama_materi').val(),
+        edit_kuis_mulai			: $('#edit_tgl_mulai').val(),
+        edit_kuis_selesai		: $('#edit_tgl_selesai').val(),
+        edit_durasi 		    : $('#edit_durasi').val(),
+        _token                  : CSRF_TOKEN
+    }
 
-	$.ajax({
-        url: 'get_kelas',
-        type: 'GET',
+    $.ajax({
+        // async: "false",
+        url: '../../UpdateKuis',
+        type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
-
-        	option_kelas = '';
-            option_kelas += '<option selected="selected" value="0"> Nama Kelas </option><br/>';
-            $.each(data.data, function(i, item) {
-            option_kelas += '<option value="' + data.data[i].id_kelas + '">' + data.data[i].nama_kelas + '</option><br/>';
-            });
-
-            $('#nama_kelas').html(option_kelas);
-            return false;
+        	alert(data.pesan);
+            document.getElementById('redirect').click();
         }
     });
 
 }
 
 
-function getPelajaran() {
-
-	var form_data = {
-		_token		: CSRF_TOKEN
-	}
-
-	$.ajax({
-        url: 'get_pelajaran',
-        type: 'GET',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-
-        	option_pelajaran = '';
-            option_pelajaran += '<option selected="selected" value="0"> Nama Pelajaran </option><br/>';
-            $.each(data.data, function(i, item) {
-            option_pelajaran += '<option value="' + data.data[i].id_pelajaran + '">' + data.data[i].nama_pelajaran + '</option><br/>';
-            });
-
-            $('#nama_pelajaran').html(option_pelajaran);
-            return false;
-        }
-    });
-
-}

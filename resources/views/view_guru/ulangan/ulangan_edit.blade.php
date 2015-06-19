@@ -1,11 +1,11 @@
-@extends('templates/admin_layouts')
+@extends('templates/guru_layouts')
 
-@section('add_bread_admin')
-<li><a href="{{ URL::to('admin/kuis') }}">Kuis</a></li>
+@section('add_bread_guru')
+<li><a href="{{ URL::to('guru/ulangan') }}">Ulangan</a></li>
 @stop
 
-@section('bread_admin')
-Ubah Kuis 
+@section('bread_guru')
+Ubah Ulangan 
 @stop
 	
 @section('content')
@@ -14,11 +14,11 @@ Ubah Kuis
 
 <div class="main-content">
 
-	<!-- ///////////////////////////////////////////////////////////// Detail Kuis ///////////////////////////////////////////////////////////// -->
+	<!-- ///////////////////////////////////////////////////////////// Detail Ulangan ///////////////////////////////////////////////////////////// -->
  
 	<div class="row row-judul">
 		<div class="col-md-12">
-			<legend> <h4 class="judul-soal"> Detail Kuis </h4> </legend>
+			<legend> <h4 class="judul-soal"> Detail Ulangan </h4> </legend>
 		</div>
 	</div>
 
@@ -27,9 +27,9 @@ Ubah Kuis
 			<form id="add_form" class="form form-horizontal" role="form" data-toggle="validator">
 
 				<div class="form-group">
-					<label class="col-sm-2 label-modal-soal">Nama Kuis</label>
+					<label class="col-sm-2 label-modal-soal">Nama Ulangan</label>
 					<div class="col-sm-5">
-						<input type="text" class="form-control inform-height" id="edit_nama_kuis" placeholder="Nama Kuis" required>
+						<input type="text" class="form-control inform-height" id="edit_nama_ulangan" placeholder="Nama Ulangan" required>
 					</div>
 					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
@@ -71,10 +71,10 @@ Ubah Kuis
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-2 label-modal-soal">Durasi Kuis</label>
+					<label class="col-sm-2 label-modal-soal">Durasi Ulangan</label>
 					<div class="col-sm-5">
 						<div class="input-group date" id="time_durasi">
-							<input type="text" id="edit_durasi" class="form-control inform-height" placeholder="Durasi Kuis" required>
+							<input type="text" id="edit_durasi" class="form-control inform-height" placeholder="Durasi Ulangan" required>
 							<span class="input-group-addon">
 								<i class="glyphicon glyphicon-time"></i>
 							</span>
@@ -83,8 +83,8 @@ Ubah Kuis
 					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
-				<input class="form-control" type="hidden" id="id_kuis" value="{{$id_kuis}}">
-				<input class="form-control" type="hidden" id="id_group_kuis" value="{{$id_group_kuis}}">
+				<input class="form-control" type="hidden" id="id_ulangan" value="{{$id_ulangan}}">
+				<input class="form-control" type="hidden" id="id_group_ulangan" value="{{$id_group_ulangan}}">
 
 		</div>		
 	</div>
@@ -109,27 +109,27 @@ Ubah Kuis
 	</div>
 
     <div class="form-group" style="float:right;">
-        <button type="submit" id="ubah_kuis" class="btn btn-primary btn-sm">Ubah</button>
+        <button type="submit" id="ubah_ulangan" class="btn btn-primary btn-sm">Ubah</button>
         <button type="reset" id="reset_edit_form" class="btn btn-primary btn-sm">Reset</button>
-        <a href="{{URL::to('admin/kuis')}}" class="btn btn-sm btn-primary" id="redirect" style="display:none;"> </a>
+        <a href="{{URL::to('guru/ulangan')}}" class="btn btn-sm btn-primary" id="redirect" style="display:none;"> </a>
     </div>
 	</form>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="modal-soal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    @include('view_admin.kuis.modal_soal_add')
+	    @include('view_guru.ulangan.modal_soal_add')
 	</div>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="modal-soal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    @include('view_admin.kuis.modal_soal_edit')
+	    @include('view_guru.ulangan.modal_soal_edit')
 	</div>
 
 </div>
 
 
-<script type="text/javascript" src="{{asset('public/js/apps/kuis_edit.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/apps/ulangan_edit.js')}}"></script>
 
 @stop

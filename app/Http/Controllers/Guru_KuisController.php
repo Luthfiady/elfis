@@ -7,38 +7,26 @@ use DB;
 use Session;
 use Illuminate\Http\Response;
 
-class GuruController extends Controller {
+class Guru_KuisController extends Controller {
 
 	public $status = false;
 
-// -------------------------------------------------------- INDEX --------------------------------------------------------
 
-	public function index() {
-		if(session('id_group') == 2) {
-			return view('view_guru/dashboard');
-		}
-		else {
-			return redirect('login');
-		}
-	}
+// -------------------------------------------------------- KUIS --------------------------------------------------------
 
-
-	public function getMateri() {
+public function AddIdKuis() {
 
 		if(session('id_group') == 2) {
 
-			$get_materi = DB::select('select DISTINCT * from materi ORDER BY id_materi ASC');
+			$id_kuis = trim(Input::get('id_kuis'));
 
-			$materi = "";
-			foreach ($get_materi as $key => $value) {
-				$value = get_object_vars($value);
-				$materi[] = array(
-                    'id_materi' => $value['id_materi'],
-                    'nama_materi' => $value['nama_materi']
-                );
+			$check_data = DB::select('select id_group_kuis from group_kuis where id_group_kuis = "'.$id_kuis.'"');
+
+			if ($check_data == null) {
+				DB::insert('insert into group_kuis (id_group_kuis) values ("'.$id_kuis.'")');
+			} else {
+				return ['data_null' => 'data null'];
 			}
-
-			return ['data' => $materi];
 
 		} else {
 			return redirect('login');
@@ -46,41 +34,6 @@ class GuruController extends Controller {
 
 	}
 
-
-// -------------------------------------------------------- MATERI --------------------------------------------------------
-	
-	public function materi() {
-		if(session('id_group') == 2) {
-			return view('view_guru/materi/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-	public function materi_detail() {
-		if(session('id_group') == 2) {
-			return view('view_guru/materi/detail');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-
-// -------------------------------------------------------- TUGAS --------------------------------------------------------
-
-	public function tugas() {
-		if(session('id_group') == 2) {
-			return view('view_guru/tugas/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-
-// -------------------------------------------------------- KUIS --------------------------------------------------------
 
 	public function kuis() {
 		if(session('id_group') == 2) {
@@ -146,18 +99,18 @@ class GuruController extends Controller {
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
-					// $mulai = date("Y-m-d"); 
-					// $selesai = date("y-M-d");
+					$mulai = date("d-m-Y", strtotime($list['kuis_mulai'])); 
+					$selesai = date("d-m-Y", strtotime($list['kuis_selesai']));
 
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
 					$result .= '<td class="kolom-kiri">'.$list['nama_group_kuis'].'</td>';
 					$result .= '<td class="kolom-kiri">'.$list['nama_materi'].'</td>';
-					$result .= '<td class="kolom-kanan">'.$list['kuis_mulai'].'</td>';
-					$result .= '<td class="kolom-kanan">'.$list['kuis_selesai'].'</td>';
+					$result .= '<td class="kolom-kanan">'.$mulai.'</td>';
+					$result .= '<td class="kolom-kanan">'.$selesai.'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['durasi'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a href="kuis_get_edit/'.$list['id'].'/'.$list['id_group_kuis'].'" class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-edit"></span> </a> 
+									<a href="kuis_edit/'.$list['id'].'/'.$list['id_group_kuis'].'" class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-edit"></span> </a> 
 			                		<a id="deleteData'.$list['id'].'" class="btn btn-danger btn-xs" onClick="deleteKuis('.$list['id'].')" data-delete="Apakah anda yakin ingin menghapus kuis '.$list['nama_group_kuis'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 					$result .= '</tr>';
@@ -207,7 +160,7 @@ class GuruController extends Controller {
 	}
 
 
-	public function soal_get_param() {
+	public function get_param() {
 
 		if(session('id_group') == 2) {
 
@@ -227,7 +180,7 @@ class GuruController extends Controller {
 	}
 
 
-	public function soal_get_list() {
+	public function soal_list() {
 		if(session('id_group') == 2) {
 
 			$get_id = DB::select('select * from param_group_kuis');
@@ -305,39 +258,18 @@ class GuruController extends Controller {
 	}
 
 
-	public function soal_add_id() {
+	public function AddSoal() {
 
 		if(session('id_group') == 2) {
 
-			$id_kuis = trim(Input::get('id_kuis'));
-
-			$check_data = DB::select('select id_group_kuis from group_kuis where id_group_kuis = "'.$id_kuis.'"');
-
-			if ($check_data == null) {
-				$add_id_kuis = DB::insert('insert into group_kuis (id_group_kuis) values ("'.$id_kuis.'")');
-			} else {
-				return ['data_null' => 'data null'];
-			}
-
-		} else {
-			return redirect('login');
-		}
-
-	}
-
-
-	public function soal_add() {
-
-		if(session('id_group') == 2) {
-
-			$id_soal = Input::get('id_soal');
-			$soal_kuis = Input::get('soal_kuis');
-			$jwb_a	= Input::get('jwb_a');
-			$jwb_b	= Input::get('jwb_b');
-			$jwb_c	= Input::get('jwb_c');
-			$jwb_d	= Input::get('jwb_d');
-			$jwb_e	= Input::get('jwb_e');
-			$jawaban	= Input::get('jawaban');
+			$id_soal 		= Input::get('id_soal');
+			$soal_kuis 		= Input::get('soal_kuis');
+			$jwb_a			= Input::get('jwb_a');
+			$jwb_b			= Input::get('jwb_b');
+			$jwb_c			= Input::get('jwb_c');
+			$jwb_d			= Input::get('jwb_d');
+			$jwb_e			= Input::get('jwb_e');
+			$jawaban		= Input::get('jawaban');
 
 			$add_data_soal = DB::insert('insert into kuis values ("", "'.$id_soal.'", "'.$soal_kuis.'", "'.$jwb_a.'", "'.$jwb_b.'", "'.$jwb_c.'", "'.$jwb_d.'", "'.$jwb_e.'", "'.$jawaban.'")');
 
@@ -415,7 +347,7 @@ class GuruController extends Controller {
 	}
 
 
-	public function soal_delete() {
+	public function DeleteSoal() {
 
 		if(session('id_group') == 2) {
 			
@@ -434,7 +366,7 @@ class GuruController extends Controller {
 	}
 
 
-	public function UpdateGroupKuis() {
+	public function AddDetailKuis() {
 
 		if(session('id_group') == 2) {
 			
@@ -443,9 +375,12 @@ class GuruController extends Controller {
 			$id_group_kuis 		= Input::get('id_group_kuis');
 			$nama_group_kuis 	= Input::get('nama_group_kuis');
 			$id_materi 			= Input::get('id_materi');
-			$kuis_mulai 		= Input::get('kuis_mulai');
-			$kuis_selesai 		= Input::get('kuis_selesai');
+			$mulai 				= Input::get('kuis_mulai');
+			$selesai 			= Input::get('kuis_selesai');
 			$durasi 			= Input::get('durasi');
+
+			$kuis_mulai 		= date("Y-m-d", strtotime($mulai));
+			$kuis_selesai 		= date("Y-m-d", strtotime($selesai));
 
 			$add_param_id = DB::update('update param_group_kuis set p_id_group_kuis = '.$id_after.' where p_id_group_kuis = '.$id_param);
 
@@ -481,7 +416,7 @@ class GuruController extends Controller {
 	}
 
 
-	public function kuis_get_edit($id, $id_group_kuis) {
+	public function kuis_edit($id, $id_group_kuis) {
 
 		if(session('id_group') == 2) {
 
@@ -495,7 +430,7 @@ class GuruController extends Controller {
 	}
 
 
-	public function get_data_kuis() {
+	public function get_detail_kuis() {
 
 		if(session('id_group') == 2) {
 
@@ -505,12 +440,16 @@ class GuruController extends Controller {
 
 			foreach ($getDataKuis as $key => $row) {
 				$row = get_object_vars($row);
+
+				$kuis_mulai = date("d-m-Y", strtotime($row['kuis_mulai']));
+				$kuis_selesai = date("d-m-Y", strtotime($row['kuis_selesai']));
+
 				$data_row = [
 
 					'nama_group_kuis'	=>	$row['nama_group_kuis'],
 					'id_materi'			=>	$row['id_materi'],
-					'kuis_mulai'		=>	$row['kuis_mulai'],
-					'kuis_selesai'		=>	$row['kuis_selesai'],
+					'kuis_mulai'		=>	$kuis_mulai,
+					'kuis_selesai'		=>	$kuis_selesai,
 					'durasi'			=>	$row['durasi']
 
 					];
@@ -605,16 +544,19 @@ class GuruController extends Controller {
 	}
 
 
-	public function UpdateDataKuis() {
+	public function UpdateKuis() {
 
 		if(session('id_group') == 2) {
 			
 			$id_kuis 			= Input::get('id_kuis');
 			$nama_group_kuis 	= Input::get('edit_nama_kuis');
 			$id_materi 			= Input::get('edit_id_materi');
-			$kuis_mulai 		= Input::get('edit_kuis_mulai');
-			$kuis_selesai 		= Input::get('edit_kuis_selesai');
+			$mulai 				= Input::get('edit_kuis_mulai');
+			$selesai 			= Input::get('edit_kuis_selesai');
 			$durasi 			= Input::get('edit_durasi');
+
+			$kuis_mulai 		= date("Y-m-d", strtotime($mulai));
+			$kuis_selesai 		= date("Y-m-d", strtotime($selesai));
 
 			$update_group_kuis = DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'" where id="'.$id_kuis.'"');
 
@@ -626,66 +568,6 @@ class GuruController extends Controller {
 			return redirect('login');
 		}
 
-	}
-
-
-// -------------------------------------------------------- UJIAN --------------------------------------------------------
-
-	public function ujian() {
-		if(session('id_group') == 2) {
-			return view('view_guru/ujian/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-
-// -------------------------------------------------------- FORUM --------------------------------------------------------
-
-	public function forum() {
-		if(session('id_group') == 2) {
-			return view('view_guru/forum/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-
-// -------------------------------------------------------- NILAI --------------------------------------------------------
-
-	public function nilai() {
-		if(session('id_group') == 2) {
-			return view('view_guru/nilai/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-
-// -------------------------------------------------------- PROFILE --------------------------------------------------------
-
-	public function profile() {
-		if(session('id_group') == 2) {
-			return view('view_guru/setting/profile');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-
-
-// -------------------------------------------------------- CHANGE PASSWORD --------------------------------------------------------
-
-	public function change_password() {
-		if(session('id_group') == 2) {
-			return view('view_guru/setting/change_pass');
-		}
-		else {
-			return redirect('login');
-		}
 	}
 
 
