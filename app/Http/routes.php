@@ -143,17 +143,15 @@ Route::get('siswa/ujian', 'SiswaController@ujian');
 /////////////////////////////////////////////////  Route Forum  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/forum', 'AdminController@forum');
-Route::get('admin/forum_isi', 'AdminController@forum_isi');
+Route::get('admin/forum', 'Admin_ForumController@forum');
+Route::get('admin/forum_isi', 'Admin_ForumController@forum_isi');
 
-Route::get('admin/forum_list', 'AdminController@forum_get_list');
-Route::post('admin/forum_add', 'AdminController@forum_add');
-Route::post('admin/forum_delete', 'AdminController@forum_delete');
-Route::post('admin/forum_get_edit', 'AdminController@forum_get_edit');
-Route::post('admin/forum_edit', 'AdminController@forum_edit');
+Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
+Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
+Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
+Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
+Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
 
-// Route::post('admin/forum_search', 'AdminController@forum');
-// Route::post('admin/forum_edit', 'AdminController@forum_edit');
 
 // Route Guru
 Route::get('guru/forum', 'GuruController@forum');
