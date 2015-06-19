@@ -1,0 +1,53 @@
+UMUM :
+- di activity dan usecase terdapat login ke sistem terlebih dahulu
+- ada actor admin yang bertugas mengatur role access menu setiap user
+
+
+AFIFAH :
+
+(activity)
+- "file bermasalah" kayaknya loop ya-nya ke upload tugas yang telah di jawab aja jadi ga perlu dari awal lagi
+- insert nya ke database aja
+- siswa dapat melihat nilai tugas di total penilaian keseluruhan
+
+(usecase)
+- ada hubungan include atau extend antara input pengumuman sama upload file tugas (misal guru harus input dulu baru upload atau gimana?)
+- kalo untuk siswa namanya upload file jawaban tugas aja kali ya? biar beda sama tugas guru
+- siswa bisa download tugas yang telah dikerjakan (?)
+- guru konfirmasi apa?
+- tambahkan tambah tugas sama edit tugas, sesuai dengan activity
+
+
+
+TIKA :
+
+ (activity dan usecase)
+- bisa edit soal kuis dan ujian
+- bisa delete soal kuis dan ujian
+- guru bisa ngasih batesan berapa kelas yang bisa akses
+
+(usecase)
+- tambahin include dan extend
+- melihat aktifitas user dan mengontrolnya ga usah
+
+
+
+TEBE :
+
+(usecase)
+- include dan extend
+- melihat aktifitas user dan mengontrolnya ga usah
+- admin dapat mengatur aktifitas forum
+
+(activity)
+- mengisi detail forum
+
+
+
+AYU :
+
+(usecase dan activity)
+- soalnya mau di upload atau isi soal? soalnya kalo upload, siswa ga bisa jawab langsung
+- logoutnya belum ada
+- kalo menurut gue, yang crud materi, soal itu guru aja. dan score itu otomatis keluar tanpa di crud
+- siswa bisa liat nilai setelah mengerjakan soal

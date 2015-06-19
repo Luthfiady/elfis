@@ -1,7 +1,6 @@
 <!-- MODAL ADD --> 
 	
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/tugas.css') }}">
-<link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/fileinput.min.css') }}">
 
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">

@@ -75,6 +75,9 @@ Tugas
 	<div class="modal fade" id="edit_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.tugas.modal_edit')
 	</div>
+	<div class="modal fade" id="delete_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.tugas.modal_delete')
+	</div>
 
 	<script type="text/javascript" src="{{asset('public/js/apps/tugas.js')}}"></script>
 

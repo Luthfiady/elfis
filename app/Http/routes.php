@@ -34,6 +34,8 @@ Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');
 Route::get('admin/get_kelas', 'AdminController@getKelas');
 Route::get('guru/get_kelas', 'GuruController@getKelas');
 
+Route::get('siswa/get_tugas', 'SiswaController@getTugas');
+
 
 /////////////////////////////////////////////////  Route Index  /////////////////////////////////////////////////
 
@@ -53,6 +55,7 @@ Route::get('siswa', 'SiswaController@index');
 
 // Route Admin 
 Route::get('admin/materi', 'AdminController@materi');
+Route::get('admin/materi_add', 'AdminController@materi_add');
 Route::get('admin/soal', 'AdminController@soal');
 Route::get('admin/materi_list', 'AdminController@materi_get_list');
 Route::get('admin/latihanSoal_list', 'AdminController@latihanSoal_get_list');
@@ -63,6 +66,7 @@ Route::get('guru/detail_materi', 'GuruController@detail_materi');
 
 // Route Siswa
 Route::get('siswa/materi', 'SiswaController@materi');
+Route::get('siswa/materi_list', 'SiswaController@materi_get_list');
 Route::get('siswa/soal', 'SiswaController@soal');
 Route::get('siswa/materi_soal', 'SiswaController@materi_soal');
 Route::get('siswa/materi_nilai', 'SiswaController@materi_nilai');
@@ -70,11 +74,14 @@ Route::get('siswa/materi_detail', 'SiswaController@materi_detail');
 
 
 
+
 /////////////////////////////////////////////////  Route Tugas  /////////////////////////////////////////////////
 
 // Route Admin 
 Route::get('admin/tugas', 'AdminController@tugas');
-Route::get('admin/tugas_add', 'AdminController@tugas_add');
+Route::post('admin/tugas_add', 'AdminController@tugas_add');
+Route::post('admin/tugas_edit', 'AdminController@tugas_edit');
+Route::post('admin/tugas_delete', 'AdminController@tugas_delete');
 Route::get('admin/tugas_detail', 'AdminController@tugas_detail');
 Route::get('admin/tugas_list', 'AdminController@tugas_get_list');
 
@@ -87,7 +94,9 @@ Route::get('guru/tugas', 'GuruController@tugas');
 // Route Siswa
 Route::get('siswa/tugas', 'SiswaController@tugas');
 Route::get('siswa/tugas_detail', 'SiswaController@tugas_detail');
+Route::get('siswa/tugas_list', 'SiswaController@tugas_get_list');
 
+Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 
 
 
@@ -209,17 +218,15 @@ Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
 /////////////////////////////////////////////////  Route Forum  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/forum', 'AdminController@forum');
-Route::get('admin/forum_isi', 'AdminController@forum_isi');
+Route::get('admin/forum', 'Admin_ForumController@forum');
+Route::get('admin/forum_isi', 'Admin_ForumController@forum_isi');
 
-Route::get('admin/forum_list', 'AdminController@forum_get_list');
-Route::post('admin/forum_add', 'AdminController@forum_add');
-Route::post('admin/forum_delete', 'AdminController@forum_delete');
-Route::post('admin/forum_get_edit', 'AdminController@forum_get_edit');
-Route::post('admin/forum_edit', 'AdminController@forum_edit');
+Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
+Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
+Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
+Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
+Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
 
-// Route::post('admin/forum_search', 'AdminController@forum');
-// Route::post('admin/forum_edit', 'AdminController@forum_edit');
 
 // Route Guru
 Route::get('guru/forum', 'GuruController@forum');
