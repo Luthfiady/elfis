@@ -26,22 +26,9 @@
                 </a>
             </li>
             <li class="">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">
-                    <span class="selected"></span>
-                    Materi dan Soal <span class="caret"></span><i class="fa fa-angle-down"></i>
+                <a href="{{ URL::to('admin/materi') }}">
+                    Materi
                 </a>
-                <ul class="dropdown-menu">
-                    <li class="">
-                        <a href="{{ URL::to('admin/materi') }}">
-                            Materi
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{ URL::to('admin/soal') }}">
-                            Soal
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">

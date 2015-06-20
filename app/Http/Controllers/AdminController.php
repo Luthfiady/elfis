@@ -109,7 +109,7 @@ class AdminController extends Controller {
 			$tugas = "";
 			foreach ($get_tugas as $key => $value) {
 				$value = get_object_vars($value);
-				$materi[] = array(
+				$tugas[] = array(
                     'id_tugas' => $value['id_tugas'],
                     'nama_tugas' => $value['nama_tugas']
                 );
@@ -122,6 +122,31 @@ class AdminController extends Controller {
 		}
 
 	}
+
+	public function getGuru() {
+
+		if(session('id_group') == 3) {
+
+			$get_guru = DB::select('select DISTINCT * from guru ORDER BY nik ASC');
+
+			$guru = "";
+			foreach ($get_guru as $key => $value) {
+				$value = get_object_vars($value);
+				$guru[] = array(
+                    'nik' => $value['nik'],
+                    'nama' => $value['nama']
+                );
+			}
+
+			return ['data' => $guru];
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
 
 
 // -------------------------------------------------------- MATERI --------------------------------------------------------
@@ -212,21 +237,41 @@ class AdminController extends Controller {
 		}
 	}
 
+	// 
+	public function materiSoal_add() {
+		if(session('id_group') == 3) {
+			return view('view_admin/materi/materiSoal_add');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+	//
+
 	public function materi_add() {
 
 		if(session('id_group') == 3) {
 
 			$id_pelajaran = Input::get('addPelajaran');
+			$nik = Input::get('addGuru');
 			$id_kelas = Input::get('addKelas');
-			$nama = Input::get('addNama');
 			$nama_materi = Input::get('addNamaMateri');
 			$isi = Input::get('addIsiMateri');
-			$file = Input::get('addFileUpload');
 
-			$add_data_materi = DB::insert('insert into materi values ("", '.$id_pelajaran.', '.$id_kelas.', "'.$nama.'", "'.$isi.'", "'.$file.'", "'.date('Y-m-d').'", "'.session('username').'")'); 
+			$file_name = "";
 
-			$this->json['pesan'] = 'Data telah tersimpan';
-			echo json_encode($this->json);
+
+			if(Input::hasFile('add_file_materi')) {
+				$file_name = Input::file('add_file_materi')->getClientOriginalName();
+				$path = public_path('uploads/file_materi');
+				Input::file('add_file_materi')->move($path, $file_name);
+			}
+
+			// $add_data_materi = DB::insert('insert into materi values ("", "'.$id_pelajaran.'", "'.$id_kelas.'", "'.$nama.'", "'.$isi.'", "'.$file_name.'", "'.date('Y-m-d').'", "'.session('username').'")'); 
+
+			DB::table('materi')->insert(['id_pelajaran' => $id_pelajaran, 'id_kelas' => $id_kelas, 'nik' => $nik, 'nama_materi' => $nama_materi,'isi' => $isi, 'file' => $file_name, 'create_date' => date('Y-m-d'), 'created_by' => session('username')]);
+			
+			return 'Data telah tersimpan';
 		
 		} else {	
 			return redirect('login');
@@ -234,7 +279,13 @@ class AdminController extends Controller {
 
 	}
 
-	// 
+	// public function delete_pb_alat() {
+	// 	$this->m_alat->deleteDataPb_alat($this->input->post('IDPROSES'), $this->input->post('IDALAT'));
+	// 	redirect("index.php/cak_pb_master");
+	// }
+
+	
+// -------------------------------------------------------- MATERI-SOAL --------------------------------------------------------
 
 	public function soal(){
 		if(session('id_group') == 3) {

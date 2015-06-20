@@ -34,6 +34,9 @@ Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');
 Route::get('admin/get_kelas', 'AdminController@getKelas');
 Route::get('guru/get_kelas', 'GuruController@getKelas');
 
+Route::get('admin/get_guru', 'AdminController@getGuru');
+Route::get('guru/get_guru', 'GuruController@getGuru');
+
 
 /////////////////////////////////////////////////  Route Index  /////////////////////////////////////////////////
 
@@ -53,10 +56,12 @@ Route::get('siswa', 'SiswaController@index');
 
 // Route Admin 
 Route::get('admin/materi', 'AdminController@materi');
-Route::get('admin/materi_add', 'AdminController@materi_add');
+Route::post('admin/materi_add', 'AdminController@materi_add');
+Route::get('admin/materiSoal_add', 'AdminController@materiSoal_add');
 Route::get('admin/soal', 'AdminController@soal');
 Route::get('admin/materi_list', 'AdminController@materi_get_list');
 Route::get('admin/latihanSoal_list', 'AdminController@latihanSoal_get_list');
+Route::get('admin/materi_detail', 'AdminController@materi_detail');
 
 // Route Guru
 Route::get('guru/materi', 'GuruController@materi');
