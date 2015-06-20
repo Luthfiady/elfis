@@ -23,6 +23,8 @@ Route::post('do_login', 'LoginController@do_login');
 Route::get('do_logout', 'LoginController@do_logout');
 
 
+Route::get('admin/get_jurusan', 'AdminController@getJurusan');
+
 Route::get('admin/get_materi', 'AdminController@getMateri');
 Route::get('guru/get_materi', 'GuruController@getMateri');
 
@@ -107,7 +109,7 @@ Route::get('admin/kuis', 'Admin_KuisController@kuis');
 Route::get('admin/kuis_add', 'Admin_KuisController@kuis_add');
 Route::get('admin/kuis_list', 'Admin_KuisController@kuis_get_list');
 Route::post('admin/kuis_delete', 'Admin_KuisController@kuis_delete');
-Route::get('admin/kuis_edit/{id}/{id_group_kuis}', 'Admin_KuisController@kuis_edit');
+Route::get('admin/kuis/{nama_group_kuis}/{id}', 'Admin_KuisController@kuis_edit');
 
 Route::get('admin/get_param', 'Admin_KuisController@get_param');
 Route::get('admin/soal_list', 'Admin_KuisController@soal_list');
@@ -131,7 +133,7 @@ Route::get('guru/kuis', 'Guru_KuisController@kuis');
 Route::get('guru/kuis_add', 'Guru_KuisController@kuis_add');
 Route::get('guru/kuis_list', 'Guru_KuisController@kuis_get_list');
 Route::post('guru/kuis_delete', 'Guru_KuisController@kuis_delete');
-Route::get('guru/kuis_edit/{id}/{id_group_kuis}', 'Guru_KuisController@kuis_edit');
+Route::get('guru/kuis/{nama_group_kuis}/{id}', 'Guru_KuisController@kuis_edit');
 
 Route::get('guru/get_param', 'Guru_KuisController@get_param');
 Route::get('guru/soal_list', 'Guru_KuisController@soal_list');
@@ -166,7 +168,7 @@ Route::get('admin/ulangan', 'Admin_UlanganController@ulangan');
 Route::get('admin/ulangan_add', 'Admin_UlanganController@ulangan_add');
 Route::get('admin/ulangan_list', 'Admin_UlanganController@ulangan_get_list');
 Route::post('admin/ulangan_delete', 'Admin_UlanganController@ulangan_delete');
-Route::get('admin/ulangan_get_edit/{id}/{id_group_ulangan}', 'Admin_UlanganController@ulangan_get_edit');
+Route::get('admin/ulangan/{nama_group_ulangan}/{id}', 'Admin_UlanganController@ulangan_get_edit');
 
 Route::get('admin/ulangan_get_param', 'Admin_UlanganController@ulangan_get_param');
 Route::get('admin/ulangan_soal_list', 'Admin_UlanganController@ulangan_soal_list');
@@ -190,7 +192,7 @@ Route::get('guru/ulangan', 'Guru_UlanganController@ulangan');
 Route::get('guru/ulangan_add', 'Guru_UlanganController@ulangan_add');
 Route::get('guru/ulangan_list', 'Guru_UlanganController@ulangan_get_list');
 Route::post('guru/ulangan_delete', 'Guru_UlanganController@ulangan_delete');
-Route::get('guru/ulangan_get_edit/{id}/{id_group_ulangan}', 'Guru_UlanganController@ulangan_get_edit');
+Route::get('guru/ulangan/{nama_group_ulangan}/{id}', 'Guru_UlanganController@ulangan_get_edit');
 
 Route::get('guru/ulangan_get_param', 'Guru_UlanganController@ulangan_get_param');
 Route::get('guru/ulangan_soal_list', 'Guru_UlanganController@ulangan_soal_list');
@@ -298,3 +300,15 @@ Route::post('admin/user_add', 'Admin_SettingController@user_add');
 Route::post('admin/user_delete', 'Admin_SettingController@user_delete');
 Route::post('admin/user_get_edit', 'Admin_SettingController@user_get_edit');
 Route::post('admin/user_edit', 'Admin_SettingController@user_edit');
+
+
+/////////////////////////////////////////////////  Route Pelajaran Management  /////////////////////////////////////////////////
+
+// Route Admin 
+Route::get('admin/setting_pelajaran', 'Admin_SettingController@pelajaran');
+
+Route::get('admin/pelajaran_list', 'Admin_SettingController@pelajaran_get_list');
+Route::post('admin/pelajaran_add', 'Admin_SettingController@pelajaran_add');
+Route::post('admin/pelajaran_delete', 'Admin_SettingController@pelajaran_delete');
+Route::post('admin/pelajaran_get_edit', 'Admin_SettingController@pelajaran_get_edit');
+Route::post('admin/pelajaran_edit', 'Admin_SettingController@pelajaran_edit');

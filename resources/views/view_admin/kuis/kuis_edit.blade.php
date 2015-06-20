@@ -5,7 +5,7 @@
 @stop
 
 @section('bread_admin')
-Ubah Kuis 
+{{$nama_group_kuis}}
 @stop
 	
 @section('content')
@@ -84,7 +84,7 @@ Ubah Kuis
 				</div>
 
 				<input class="form-control" type="hidden" id="id_kuis" value="{{$id_kuis}}">
-				<input class="form-control" type="hidden" id="id_group_kuis" value="{{$id_group_kuis}}">
+				<input class="form-control" type="hidden" id="id_group_kuis" value="">
 
 		</div>		
 	</div>
@@ -106,6 +106,15 @@ Ubah Kuis
 		<div class="col-md-12 dataTable">
 			
 		</div>
+
+	</div>
+
+	<div class="row row-paging-table-soal">
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
     <div class="form-group" style="float:right;">

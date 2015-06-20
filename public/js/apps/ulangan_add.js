@@ -1,10 +1,10 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var current_page;
 
 $(document).ready(function(){
 
 	getId();
 	getMateri();
-	soal_list();
 
 	$('#simpan_ulangan').click(function() {
 
@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	$('#simpan_soal').click(function() {
 
-    	AddIdUlangan();
+        AddIdUlangan();
 
 		soal = $('#soal_ulangan').val();
 	    a = $('#jwb_a').val();
@@ -35,9 +35,8 @@ $(document).ready(function(){
 	    jawaban = $('#jawaban').val();
 
 	    if (soal == "" && a == "" && b == "" && c == "" && d == "" && e == "" && jawaban == "") {
-			return false;
+            return false;
 	    } else {
-            AddIdUlangan();
             AddSoal();
             return false;
         }
@@ -83,6 +82,12 @@ $(document).ready(function(){
 // ---------------------------------------------------------- Ulangan Add ----------------------------------------------------------
 
 
+$(document).on("click", ".pg a", function(){
+    soal_list(this.id);
+    current_page = this.id;
+    return false;
+});
+
 function getMateri() {
 
 	var form_data = {
@@ -125,16 +130,21 @@ function getId() {
             $('#id_ulangan').val('U00' + data.data);
             $('#id_after').val(data.data);
             $('#id_before').val(data.data-1);
+
+            soal_list();
+            return false;
         }
     });
 
 }
 
 
-function soal_list() {
+function soal_list(page) {
 
-    $(".dataTable").html('<img style="margin-top:50px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
+    $(".dataTable").html('<img style="margin-top:50px; margin-bottom:50px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
+        id_ulangan  : $('#id_ulangan').val(),
+        paging      : page,
         _token      : CSRF_TOKEN
     }
 
@@ -145,6 +155,7 @@ function soal_list() {
         dataType: "JSON",
         success: function(data) {
             $(".dataTable").html(data.result);
+            $(".pg ul").html(data.paging);
             return false;
         }
     });
@@ -165,7 +176,6 @@ function AddIdUlangan() {
         data: form_data,
         dataType: "JSON",
         success: function(data) {
-            
             return false;
         }
     });

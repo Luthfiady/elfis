@@ -109,6 +109,14 @@ Tambah Ulangan
 		</div>
 	</div>
 
+	<div class="row row-paging-table-soal">
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
+	</div>
+
     <div class="form-group" style="float:right;">
         <button type="submit" id="simpan_ulangan" class="btn btn-primary btn-sm">Submit</button>
         <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>

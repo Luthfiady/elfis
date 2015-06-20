@@ -107,6 +107,15 @@ Tambah Kuis
 		<div class="col-md-12 dataTable">
 			
 		</div>
+
+	</div>
+
+	<div class="row row-paging-table-soal">
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
     <div class="form-group" style="float:right;">

@@ -61,13 +61,56 @@ public function AddIdKuis() {
 			$search_by = trim(Input::get('search_by'));
 			$search_input = trim(Input::get('search_input'));
 
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
+
 			if ($search_by != null) {
 				$sql_ext = "and ".$search_by." like '%".$search_input."%'";
 			} else {
 				$sql_ext = "";
 			}
 
-			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
+
 
 			$result = '';
 
@@ -95,7 +138,7 @@ public function AddIdKuis() {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -110,7 +153,7 @@ public function AddIdKuis() {
 					$result .= '<td class="kolom-kanan">'.$selesai.'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['durasi'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a href="kuis_edit/'.$list['id'].'/'.$list['id_group_kuis'].'" class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-edit"></span> </a> 
+									<a href="kuis/'.$list['nama_group_kuis'].'/'.$list['id'].'" class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-edit"></span> </a> 
 			                		<a id="deleteData'.$list['id'].'" class="btn btn-danger btn-xs" onClick="deleteKuis('.$list['id'].')" data-delete="Apakah anda yakin ingin menghapus kuis '.$list['nama_group_kuis'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 					$result .= '</tr>';
@@ -123,7 +166,8 @@ public function AddIdKuis() {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -416,11 +460,11 @@ public function AddIdKuis() {
 	}
 
 
-	public function kuis_edit($id, $id_group_kuis) {
+	public function kuis_edit($nama_group_kuis, $id) {
 
 		if(session('id_group') == 2) {
 
-			return view('view_guru/kuis/kuis_edit')->with('id_kuis', $id)->with('id_group_kuis', $id_group_kuis);
+			return view('view_guru/kuis/kuis_edit')->with('id_kuis', $id)->with('nama_group_kuis', $nama_group_kuis);
 
 		}
 		else {
@@ -446,6 +490,7 @@ public function AddIdKuis() {
 
 				$data_row = [
 
+					'id_group_kuis'		=>	$row['id_group_kuis'],
 					'nama_group_kuis'	=>	$row['nama_group_kuis'],
 					'id_materi'			=>	$row['id_materi'],
 					'kuis_mulai'		=>	$kuis_mulai,

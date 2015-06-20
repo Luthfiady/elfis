@@ -61,13 +61,56 @@ class Admin_KuisController extends Controller {
 			$search_by = trim(Input::get('search_by'));
 			$search_input = trim(Input::get('search_input'));
 
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
+
 			if ($search_by != null) {
 				$sql_ext = "and ".$search_by." like '%".$search_input."%'";
 			} else {
 				$sql_ext = "";
 			}
 
-			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
+
 
 			$result = '';
 
@@ -95,7 +138,7 @@ class Admin_KuisController extends Controller {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -110,7 +153,7 @@ class Admin_KuisController extends Controller {
 					$result .= '<td class="kolom-kanan">'.$selesai.'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['durasi'].'</td>';
 					$result .= '<td class="kolom-tengah">
-									<a href="kuis_edit/'.$list['id'].'/'.$list['id_group_kuis'].'" class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-edit"></span> </a> 
+									<a href="kuis/'.$list['nama_group_kuis'].'/'.$list['id'].'" class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-edit"></span> </a> 
 			                		<a id="deleteData'.$list['id'].'" class="btn btn-danger btn-xs" onClick="deleteKuis('.$list['id'].')" data-delete="Apakah anda yakin ingin menghapus kuis '.$list['nama_group_kuis'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 					$result .= '</tr>';
@@ -123,7 +166,8 @@ class Admin_KuisController extends Controller {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -183,14 +227,51 @@ class Admin_KuisController extends Controller {
 	public function soal_list() {
 		if(session('id_group') == 3) {
 
-			$get_id = DB::select('select * from param_group_kuis');
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
 
-			foreach ($get_id as $key => $value) {
-				$value = get_object_vars($value);
-				$id_kuis = $value['p_id_group_kuis']+1;
-			}
+			$id_kuis = Input::get('id_kuis');
 
-			$data_kuis = DB::select('select * from kuis where id_group_kuis="S00'.$id_kuis.'"');
+			$data_rows = DB::select('select * from kuis where id_group_kuis = "'.$id_kuis.'"');
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_kuis = DB::select('select * from kuis where id_group_kuis = "'.$id_kuis.'" ORDER BY id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
 
 			$result = '';
 
@@ -220,7 +301,7 @@ class Admin_KuisController extends Controller {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -247,7 +328,8 @@ class Admin_KuisController extends Controller {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -416,11 +498,11 @@ class Admin_KuisController extends Controller {
 	}
 
 
-	public function kuis_edit($id, $id_group_kuis) {
+	public function kuis_edit($nama_group_kuis, $id) {
 
 		if(session('id_group') == 3) {
 
-			return view('view_admin/kuis/kuis_edit')->with('id_kuis', $id)->with('id_group_kuis', $id_group_kuis);
+			return view('view_admin/kuis/kuis_edit')->with('id_kuis', $id)->with('nama_group_kuis', $nama_group_kuis);
 
 		}
 		else {
@@ -446,6 +528,7 @@ class Admin_KuisController extends Controller {
 
 				$data_row = [
 
+					'id_group_kuis'		=>	$row['id_group_kuis'],
 					'nama_group_kuis'	=>	$row['nama_group_kuis'],
 					'id_materi'			=>	$row['id_materi'],
 					'kuis_mulai'		=>	$kuis_mulai,
@@ -473,9 +556,51 @@ class Admin_KuisController extends Controller {
 
 		if(session('id_group') == 3) {
 
-			$id_soal = Input::get('id_soal');
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
 
-			$data_kuis = DB::select('select * from kuis where id_group_kuis="'.$id_soal.'"');
+			$id_kuis = Input::get('id_kuis');
+
+			$data_rows = DB::select('select * from kuis where id_group_kuis = "'.$id_kuis.'"');
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_kuis = DB::select('select * from kuis where id_group_kuis = "'.$id_kuis.'" ORDER BY id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
 
 			$result = '';
 
@@ -505,7 +630,7 @@ class Admin_KuisController extends Controller {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -532,7 +657,8 @@ class Admin_KuisController extends Controller {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -540,7 +666,6 @@ class Admin_KuisController extends Controller {
 		} else {
 			return redirect('login');
 		}
-
 	}
 
 

@@ -28,6 +28,29 @@ class AdminController extends Controller {
 	}
 
 
+	public function getJurusan() {
+
+		if(session('id_group') == 3) {
+
+			$get_jurusan = DB::select('select DISTINCT * from jurusan ORDER BY id_jurusan ASC');
+
+			$jurusan = "";
+			foreach ($get_jurusan as $key => $value) {
+				$value = get_object_vars($value);
+				$jurusan[] = array(
+                    'id_jurusan' => $value['id_jurusan'],
+                    'nama_jurusan' => $value['nama_jurusan']
+                );
+			}
+
+			return ['data' => $jurusan];
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
 	public function getMateri() {
 
 		if(session('id_group') == 3) {
