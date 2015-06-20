@@ -8,6 +8,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta content="" name="description" />
     <meta content="" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     <link rel="icon" href="{{ asset('public/img/logo/icon.png') }}">
     
@@ -48,13 +50,12 @@
 			</div> 
 
 			<div class="col-md-3" style="margin-top:15px;">
-				<form class="form-horizontal" role="form" method="post" action="{{ URL::to('do_login') }}" name="myform">
+				<form class="form-horizontal" role="form" method="post" name="myform">
 				<fieldset>
 					<legend> <h3 class="legend"> Login </h3> </legend>
 					<div class="form-group">
 						<label class="col-sm-4">Username</label>
 						<div class="col-sm-8">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="text" class="form-control" style="height:30px;" name="id_user" id="login_username" placeholder="Username" required autofocus>
 						</div>
 					</div>
@@ -69,7 +70,7 @@
 					<div class="form-group show-pass">
 						<input type="checkbox" id="show_password" value="1"> Lihat Password 
 					</div>
-{{ $alert }}
+
 					<div class="form-group">
 		                <div class="col-sm-12" align="right">
 		                	<div id="login_message" style="text-align:left; margin-bottom:10px;"></div>

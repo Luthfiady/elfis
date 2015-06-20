@@ -45,26 +45,14 @@ Tugas
 	</div>
 
 	<div class="row row-paging-table">
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
+
+	<input type="hidden" id="base_url" value="<?php echo ('localhost/elfis/admin/') ?>"/>
 	
 
 		<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
@@ -72,12 +60,13 @@ Tugas
 	<div class="modal fade" id="add_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.tugas.modal_add')
 	</div>
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
 	<div class="modal fade" id="edit_tugas" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.tugas.modal_edit')
 	</div>
 
-	<script type="text/javascript" src="{{asset('public/js/apps/tugas.js')}}"></script>
-
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/tugas.js')}}"></script>
 
 @stop

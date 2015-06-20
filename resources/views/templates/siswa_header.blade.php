@@ -54,8 +54,8 @@
                 </a>
             </li>
             <li class="">
-                <a href="{{ URL::to('siswa/ujian') }}">
-                    Ujian
+                <a href="{{ URL::to('siswa/ulangan') }}">
+                    Ulangan
                 </a>
             </li>
             <li class="">

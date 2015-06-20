@@ -9,13 +9,15 @@
       </div>
 
       <div class="modal-body">
-        <form id="add_form" class="form form-horizontal" role="form">
+        <form id="add_form" class="form form-horizontal" role="form" data-toggle="validator">
 
           <div class="form-group">
             <label class="col-sm-2">Isi Komentar</label>
             <div class="col-sm-10">
-              <textarea class="form-control" rows="10" required></textarea>
+              <textarea class="form-control" id="add_isi_komentar" rows="7" required></textarea>
             </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10 help-block with-errors"></div>
           </div>
 
       </div>

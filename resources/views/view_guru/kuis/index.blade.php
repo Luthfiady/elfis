@@ -1,5 +1,6 @@
 @extends('templates/guru_layouts')
 
+
 @section('bread_guru')
 Kuis
 @stop
@@ -15,8 +16,8 @@ Kuis
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value="nama_group_kuis"> Nama Kuis </option>
+	        			<option value="b.nama_materi"> Nama Materi </option>
 					</select>	
 				</div>
 
@@ -29,7 +30,7 @@ Kuis
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
+				<a href="{{ URL::to('guru/kuis_add') }}" id="add_button" class="btn btn-sm btn-primary"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>
@@ -38,40 +39,7 @@ Kuis
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
-			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col-md-12 dataTable table-responsive">
 
 		</div>
 	</div>
@@ -99,5 +67,7 @@ Kuis
 	</div>
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/kuis.js')}}"></script>
 
 @stop

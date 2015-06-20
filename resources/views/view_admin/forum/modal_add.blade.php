@@ -9,9 +9,8 @@
       </div>
 
       <div class="modal-body">
-        <form id="add_form" class="form form-horizontal" role="form" data-toggle="validator" method="post" action="{{ URL::to('admin/forum_add') }}">
+        <form id="add_form" class="form form-horizontal" role="form" data-toggle="validator" method="post">
 
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group">
             <label class="col-sm-2">Nama Forum</label>
             <div class="col-sm-10">

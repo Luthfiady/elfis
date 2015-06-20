@@ -41,12 +41,12 @@ class LoginController extends Controller {
 
 	public function do_login() {
 
-		$id_user = trim(Input::get('id_user'));
-		$password = trim(Input::get('password'));
+		$id_user = trim(Input::get('login_username'));
+		$password = trim(Input::get('login_password'));
 		
-		$status = DB::table('user')->where('id_user', '=', $id_user)->where('password', '=', $password)->get(['id_group', 'username', 'id_user']);
+		$status = DB::table('users')->where('id_user', '=', $id_user)->where('password', '=', $password)->get(['id_group', 'username', 'id_user']);
 
-		if(!empty($status)) {
+		if($status != null) {
 
 			foreach ($status as $key => $value) {
 				$username = $value->username;
@@ -60,21 +60,30 @@ class LoginController extends Controller {
 			$group = session('id_group');
 			$id_user_id = session('id_user');
 
-			$status_group = DB::table('group')->where('id_group', '=', $group)->get(['nama_group']);
+			$status_group = DB::table('groups')->where('id_group', '=', $group)->get(['nama_group']);
 
 			foreach ($status_group as $keys => $value_group) {
 				$group_name = $value_group->nama_group;
 			}
+
+			$response = array (
+	            'group_name' => $group_name,
+	            'login_success' => 'Login berhasil, membuka dashboard'
+	        );
+
+	        echo json_encode($response);
 			
-			return redirect($group_name);
+			// return redirect($group_name);
 			// session(['id_user' => $status[]]);
 			// echo $user;
 
-
-
 		}
 		else {
-			return redirect('login')->with('alert', 'Username or password is incorrect !');
+			
+			$this->validated_fields['login_error'] = 'Username atau password salah';
+            echo json_encode($this->validated_fields);
+
+			// return redirect('login')->with('alert', 'Username or password is incorrect !');
 		}
 	}
 

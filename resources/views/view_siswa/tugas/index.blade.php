@@ -31,7 +31,7 @@ Tugas
 				&nbsp 
 
 				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_jawabanTugas"> 
-					<span class="glyphicon glyphicon-upload"></span> Unggah Tugas </a>
+					<span class="glyphicon glyphicon-upload"></span> Unggah Jawaban </a>
 
 			</form>
 		</div>
@@ -39,101 +39,22 @@ Tugas
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
+		<div class="col-md-12 table-responsive dataTable">
 			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>Nama Tugas</th>
-						<th>Materi</th>
-						<th>Pelajaran</th>
-						<th>Tanggal Mulai</th>
-						<th>Tanggal Selesai</th>
-						<th><span class="glyphicon glyphicon-folder-open"></span></th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td>Perancangan Sistem Informasi</a></td>
-						<td>Perancangan Sistem</td>
-						<td>Sistem Informasi</td>
-						<td class="kolom-kanan">20/05/2015</td>
-						<td class="kolom-kanan">25/05/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">2</td>
-						<td>Matematika Diskrit</td>
-						<td>Matematika</td>
-						<td>Matematika Diskrit</td>
-						<td class="kolom-kanan">13/05/2015</td>
-						<td class="kolom-kanan">15/05/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">3</td>
-						<td>Present Tense</td>
-						<td>Tenses</td>
-						<td>Bahasa Inggris</td>
-						<td class="kolom-kanan">14/05/2015</td>
-						<td class="kolom-kanan">20/05/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">4</td>
-						<td>Adobe Photoshop</td>
-						<td>Desain</td>
-						<td>Graphic Desain</td>
-						<td class="kolom-kanan">16/05/2015</td>
-						<td class="kolom-kanan">22/05/2015</td>
-						<td class="kolom-tengah">
-							<a class="btn btn-xs btn-warning" href="{{URL::to('siswa/tugas_detail')}}" title="detail">
-								<span class="glyphicon glyphicon-new-window"></span>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			
 
 		</div>
 	</div>
 
 	<div class="row row-paging-table">
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
+
+	<input type="hidden" id="base_url" value="<?php echo ('localhost/elfis/siswa/') ?>"/>
 
 <!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
 
@@ -142,5 +63,7 @@ Tugas
 	</div>
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/tugas_siswa.js')}}"></script>
 
 @stop

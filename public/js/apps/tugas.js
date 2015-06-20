@@ -17,7 +17,15 @@ $(document).ready(function(){
         format: 'LT'
     });
 
+    $('#time_durasi_edit').datetimepicker({
+        format: 'LT'
+    });
+
     $('#datepicker_start').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
+    $('#datepicker_start_edit').datetimepicker({
         format: 'YYYY-MM-DD'
     });
 
@@ -25,11 +33,23 @@ $(document).ready(function(){
         format: 'YYYY-MM-DD'
     });
 
+    $('#datepicker_end_edit').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
     $("#datepicker_start").on("dp.change",function (e) {
         $('#datepicker_end').data("DateTimePicker").minDate(e.date);
     });
 
+    $("#datepicker_start_edit").on("dp.change",function (e) {
+        $('#datepicker_end').data("DateTimePicker").minDate(e.date);
+    });
+
     $("#datepicker_end").on("dp.change",function (e) {
+        $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
+    });
+
+    $("#datepicker_end_edit").on("dp.change",function (e) {
         $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
     });
 // ------------------- DateTimePicker ENDING -------------------
@@ -41,6 +61,13 @@ $(document).ready(function(){
     });
 
 });
+
+$(document).on("click", ".pg a", function(){
+    getList(this.id);
+    current_page = this.id;
+    return false;
+});
+
 
 function getMateri() {
 
@@ -62,29 +89,31 @@ function getMateri() {
             });
 
             $('#add_nama_materi').html(option_materi);
+            $('#edit_id_materi').html(option_materi);
             return false;
         }
     });
 
 }
 
-function getList() {
+function getList(page) {
     $(".dataTable").html('<img style="margin-top:180px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
         search_by       : $('#search_by').val(),
         search_input    : $('#search_input').val(),
+        paging          : page,
         _token          : CSRF_TOKEN
     }
 
     $.ajax({
-        async: "false",
+        // async: "false",
         url: 'tugas_list',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
             $(".dataTable").html(data.result);
-
+            $(".pg ul").html(data.paging);
             return false;
         }
     });
@@ -113,29 +142,6 @@ function clear_form() {
 
 function AddDataTugas() {
 
-    // var form_data = {
-    //     add_nama_tugas      : $('#add_nama_tugas').val(),
-    //     add_nama_materi     : $('#add_nama_materi').val(),
-    //     add_isi             : $('#add_isi').val(),
-    //     add_tugas_mulai     : $('#add_tugas_mulai').val(),
-    //     add_tugas_selesai   : $('#add_tugas_selesai').val(),
-    //     add_tugas_durasi    : $('#add_tugas_durasi').val(),
-    //     add_file_tugas      : $('#add_file_tugas').val(),
-    //     _token              : CSRF_TOKEN
-    // }
-
-    // $.ajax({
-    //     // async: "false",
-    //     url: 'tugas_add',
-    //     type: 'POST',
-    //     data: form_data,
-    //     dataType: "JSON",
-    //     success: function(data) {
-    //         alert(data.pesan);
-    //         getList();
-    //         getAdd();
-    //     }
-    // });
     setTimeout(function() {
         result = $('#target_submit').contents().find('body').html(); // Nama Iframe
         if(result == '') {
@@ -148,8 +154,53 @@ function AddDataTugas() {
             alert(result);
             clear_iframe();
             clear_form();
+            getList();
         }
     }, 1);
 
+
+}
+
+function open_tugas_edit(id_tugas, nama_tugas, id_materi, isi, tugas_mulai, tugas_selesai, durasi, file) {
+    $('#edit_id_tugas').val(id_tugas);
+    $('#edit_nama_tugas').val(nama_tugas);
+    $('#edit_id_materi').val(id_materi);
+    $('#edit_isi').val(isi);
+    $('#edit_tanggal_mulai').val(tugas_mulai);
+    $('#edit_tanggal_selesai').val(tugas_selesai);
+    $('#edit_durasi').val(durasi);
+    $('#edit_file_tugas').val(file);
+}
+
+function open_tugas_hapus(id_tugas, nama_tugas){
+    $('#hapus_id_tugas').val(id_tugas);
+    $('#hapus_nama_tugas').html(nama_tugas);
+}
+
+function deleteData(id_tugas) {
+
+    var konfirmasi = confirm($('#btn_delete'+id_tugas).data('delete'));
+    var form_data = {
+            id_tugas : id_tugas,
+            _token   : CSRF_TOKEN
+        }
+
+    if(konfirmasi == true) {
+
+        $.ajax({
+            //async: "false",
+            type: 'POST',
+            data: form_data,
+            url: 'tugas_delete',
+            dataType: "JSON",
+            success: function(data) {
+                getList();
+                return false;
+            }
+        });
+
+    } else {
+        return false;
+    }
 
 }

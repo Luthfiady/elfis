@@ -61,7 +61,7 @@ function getList() {
     }
 
     $.ajax({
-        async: "false",
+        // async: "false",
         url: 'kuis_list',
         type: 'GET',
         data: form_data,
@@ -75,26 +75,32 @@ function getList() {
 }
 
 
-function AddData() {
+function deleteKuis(id) {
+
+    var konfirmasi = confirm($('#deleteData'+id).data('delete'));
 
     var form_data = {
-        add_nama_forum    : $('#add_p_nama_group_kuis').val(),
-        add_role_acces    : $('#add_p_id_materi').val(),
-        add_subyek        : $('#add_p_kuis_mulai').val(),
-        add_keterangan    : $('#add_p_kuis_selesai').val(),
-        add_isi           : $('#add_p_durasi').val(),
-        _token            : CSRF_TOKEN
+        id_kuis   : id,
+        _token    : CSRF_TOKEN
     }
 
-    $.ajax({
-        // async: "false",
-        url: 'forum_add',
-        type: 'POST',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            getList('');
-        }
-    });
+    if (konfirmasi == true) {
+
+        $.ajax({
+                url: 'kuis_delete',
+                type: 'POST',
+                data: form_data,
+                dataType: "JSON",
+                success: function(data) {
+                    // alert(data.pesan);
+                    getList();
+
+                    return false;
+                }
+            });
+
+    } else {
+        return false;
+    }
 
 }
