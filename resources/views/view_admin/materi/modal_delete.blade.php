@@ -6,7 +6,8 @@
       <h4 class="modal-title" id="myModalLabel">Menghapus Materi</h4>
     </div>
     <div class="modal-body">      
-    <form id="deleteMateri" class="form form-horizontal" role="form" data-toggle="validator">
+    <form method="post" action="" id="deleteMateri" class="form form-horizontal" role="form" data-toggle="validator">
+    <form method="post" action="{{ URL::to('admin/materi_add') }}">
       <div class="modal-body">
         <label class="control-label" for="idproses">Apakah Anda yakin akan menghapus materi ini?</label>
       </div>

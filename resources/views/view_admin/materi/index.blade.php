@@ -17,8 +17,9 @@ Materi
 						<option value=""> Kategori </option>
 						<option value="a.nama_materi"> Nama </option>
 						<option value="b.nama_pelajaran"> Pelajaran </option>
-	        			<option value="c.kelas"> Kelas </option>
-	        			<option value="a.created_by"> Nama Guru </option>
+	        			<option value="c.nama_kelas"> Kelas </option>
+	        			<option value="d.nama"> Nama Guru </option>
+	        			<option value="a.create_date"> Waktu Unggah </option>
 					</select>	
 				</div>
 
@@ -31,7 +32,8 @@ Materi
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#formAddMateri"> 
+				<!-- <a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#formAddMateri">  -->
+				<a href="{{ URL::to('admin/materiSoal_add') }}" id="add_button" class="btn btn-sm btn-primary"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Materi</a>
 			</form>
 		</div>

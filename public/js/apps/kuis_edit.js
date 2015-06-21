@@ -4,6 +4,7 @@ var current_page;
 $(document).ready(function(){
 
     getMateri();
+    getEditDetailKuis();
 
 	$('#ubah_kuis').click(function() {
 
@@ -98,8 +99,6 @@ function getMateri() {
             });
 
             $('#edit_nama_materi').html(option_materi);
-
-            getEditDetailKuis();
             return false;
         }
     });
@@ -110,8 +109,8 @@ function getMateri() {
 function getEditDetailKuis() {
     
     var form_data = {
-        id_kuis     : $('#id_kuis').val(),
-        _token      : CSRF_TOKEN
+        id      : $('#id_kuis').val(),
+        _token  : CSRF_TOKEN
     }
 
     $.ajax({
@@ -129,7 +128,7 @@ function getEditDetailKuis() {
             $('#edit_durasi').val(data.data_kuis.durasi);
             
             soal_list_edit();
-
+            return false;
         }
     });
 
@@ -140,7 +139,7 @@ function soal_list_edit(page) {
 
     $(".dataTable").html('<img style="margin-top:50px; margin-bottom:50px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
-        id_kuis     : $('#id_kuis').val(),
+        id_group_kuis     : $('#id_group_kuis').val(),
         paging      : page,
         _token      : CSRF_TOKEN
     }
@@ -176,6 +175,7 @@ function refreshSoal() {
 function AddSoal() {
 
 	var form_data = {
+        submit      : $('#simpan_soal').val(),
 		id_soal 	: $('#id_group_kuis').val(),
     	soal_kuis 	: $('#soal_kuis').val(),
     	jwb_a 		: $('#jwb_a').val(),
@@ -304,7 +304,6 @@ function UpdateKuis() {
     }
 
     $.ajax({
-        // async: "false",
         url: '../../UpdateKuis',
         type: 'POST',
         data: form_data,

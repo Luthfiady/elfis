@@ -122,7 +122,7 @@ function getId() {
 	}
 
 	$.ajax({
-        url: 'ulangan_get_param',
+        url: 'ulangan_get_id',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
@@ -199,6 +199,7 @@ function refreshSoal() {
 function AddSoal() {
 
 	var form_data = {
+        submit           : $('#simpan_soal').val(),
 		id_soal 	     : $('#id_ulangan').val(),
     	soal_ulangan 	 : $('#soal_ulangan').val(),
     	jwb_a 		     : $('#jwb_a').val(),
@@ -299,7 +300,6 @@ function EditSoal() {
     }
     
     $.ajax({
-        // async: "false",
         url: 'ulangan_soal_edit',
         type: 'POST',
         data: form_data,
@@ -329,7 +329,7 @@ function AddUlangan() {
 
 	var form_data = {
 		id_after			: $('#id_after').val(),
-		id_param			: $('#id_before').val(),
+		id_before			: $('#id_before').val(),
         id_group_ulangan 	: $('#id_ulangan').val(),
         nama_group_ulangan	: $('#add_nama_ulangan').val(),
         id_materi			: $('#nama_materi').val(),
@@ -340,16 +340,14 @@ function AddUlangan() {
     }
 
     $.ajax({
-        // async: "false",
         url: 'AddDetailUlangan',
         type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
-        	getId();
         	alert(data.pesan);
         	refreshUlangan();
-        	soal_list();
+            getId();
         }
     });
 

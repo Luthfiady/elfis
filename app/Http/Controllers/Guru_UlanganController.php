@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -11,42 +11,12 @@ class Guru_UlanganController extends Controller {
 
 	public $status = false;
 
-// -------------------------------------------------------- UJIAN --------------------------------------------------------
 
-	public function AddIdUlangan() {
-
-		if(session('id_group') == 2) {
-
-			$id_ulangan = trim(Input::get('id_ulangan'));
-
-			$check_data_ulangan = DB::select('select id_group_ulangan from group_ulangan where id_group_ulangan = "'.$id_ulangan.'"');
-
-			if ($check_data_ulangan == null) {
-				DB::insert('insert into group_ulangan (id_group_ulangan) values ("'.$id_ulangan.'")');
-			} else {
-				return ['data_null' => 'data null'];
-			}
-
-		} else {
-			return redirect('login');
-		}
-
-	}
-
+// -------------------------------------------------------- ULANGAN INDEX --------------------------------------------------------
 
 	public function ulangan() {
 		if(session('id_group') == 2) {
 			return view('view_guru/ulangan/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-  
-
-	public function ulangan_add() {
-		if(session('id_group') == 2) {
-			return view('view_guru/ulangan/ulangan_add');
 		}
 		else {
 			return redirect('login');
@@ -202,7 +172,19 @@ class Guru_UlanganController extends Controller {
 	}
 
 
-	public function ulangan_get_param() {
+// -------------------------------------------------------- ULANGAN ADD --------------------------------------------------------
+
+	public function ulangan_add() {
+		if(session('id_group') == 2) {
+			return view('view_guru/ulangan/ulangan_add');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
+
+	public function ulangan_get_id() {
 
 		if(session('id_group') == 2) {
 
@@ -213,7 +195,8 @@ class Guru_UlanganController extends Controller {
 				$id_ulangan = $value['p_id_group_ulangan']+1;
 			}
 
-			return ['data' => $id_ulangan];
+			$this->json['data'] = $id_ulangan;
+			echo json_encode($this->json);
 
 		} else {
 			return redirect('login');
@@ -225,14 +208,51 @@ class Guru_UlanganController extends Controller {
 	public function ulangan_soal_list() {
 		if(session('id_group') == 2) {
 
-			$get_id = DB::select('select * from param_group_ulangan');
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
 
-			foreach ($get_id as $key => $value) {
-				$value = get_object_vars($value);
-				$id_ulangan = $value['p_id_group_ulangan']+1;
-			}
+			$id_ulangan = Input::get('id_ulangan');
 
-			$data_ulangan = DB::select('select * from ulangan where id_group_ulangan="U00'.$id_ulangan.'"');
+			$data_rows = DB::select('select * from ulangan where id_group_ulangan = "'.$id_ulangan.'"');
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_ulangan = DB::select('select * from ulangan where id_group_ulangan = "'.$id_ulangan.'" ORDER BY id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
 
 			$result = '';
 
@@ -262,7 +282,7 @@ class Guru_UlanganController extends Controller {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_ulangan as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -289,7 +309,8 @@ class Guru_UlanganController extends Controller {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -300,10 +321,32 @@ class Guru_UlanganController extends Controller {
 	}
 
 
+	public function AddIdUlangan() {
+
+		if(session('id_group') == 2) {
+
+			$id_ulangan = trim(Input::get('id_ulangan'));
+
+			$check_data_ulangan = DB::select('select id_group_ulangan from group_ulangan where id_group_ulangan = "'.$id_ulangan.'"');
+
+			if ($check_data_ulangan == null) {
+				DB::insert('insert into group_ulangan (id_group_ulangan) values ("'.$id_ulangan.'")');
+			} else {
+				return ['data_null' => 'data null'];
+			}
+
+		} else {
+			return redirect('login');
+		}
+
+	}	
+
+
 	public function ulangan_AddSoal() {
 
 		if(session('id_group') == 2) {
 
+			$submit			= Input::get('submit');
 			$id_soal 		= Input::get('id_soal');
 			$soal_ulangan 	= Input::get('soal_ulangan');
 			$jwb_a			= Input::get('jwb_a');
@@ -313,12 +356,36 @@ class Guru_UlanganController extends Controller {
 			$jwb_e			= Input::get('jwb_e');
 			$jawaban		= Input::get('jawaban');
 
-			$add_data_soal = DB::insert('insert into ulangan values ("", "'.$id_soal.'", "'.$soal_ulangan.'", "'.$jwb_a.'", "'.$jwb_b.'", "'.$jwb_c.'", "'.$jwb_d.'", "'.$jwb_e.'", "'.$jawaban.'")');
+			if ($submit == null) {
+				$this->json['pesan'] = 'Data null';
+				echo json_encode($this->json);
+			} else {
+				$add_data_soal = DB::insert('insert into ulangan values ("", "'.$id_soal.'", "'.$soal_ulangan.'", "'.$jwb_a.'", "'.$jwb_b.'", "'.$jwb_c.'", "'.$jwb_d.'", "'.$jwb_e.'", "'.$jawaban.'")');
 
-			$this->json['pesan'] = 'Data telah tersimpan';
-			echo json_encode($this->json);
+				$this->json['pesan'] = 'Data telah tersimpan';
+				echo json_encode($this->json);
+			}
 
 		} else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function ulangan_DeleteSoal() {
+
+		if(session('id_group') == 2) {
+			
+			$id = Input::get('id');
+
+			$delete_soal = DB::delete('delete from ulangan where id = "'.$id.'"');
+
+			$this->json['pesan'] = 'Data telah terhapus';
+			echo json_encode($this->json);
+
+		}
+		else {
 			return redirect('login');
 		}
 
@@ -386,26 +453,7 @@ class Guru_UlanganController extends Controller {
 		}
 
 
-	}
-
-
-	public function ulangan_DeleteSoal() {
-
-		if(session('id_group') == 2) {
-			
-			$id = Input::get('id');
-
-			$delete_soal = DB::delete('delete from ulangan where id = "'.$id.'"');
-
-			$this->json['pesan'] = 'Data telah terhapus';
-			echo json_encode($this->json);
-
-		}
-		else {
-			return redirect('login');
-		}
-
-	}
+	}	
 
 
 	public function AddDetailUlangan() {
@@ -413,7 +461,7 @@ class Guru_UlanganController extends Controller {
 		if(session('id_group') == 2) {
 			
 			$id_after				= Input::get('id_after');
-			$id_param 				= Input::get('id_param');
+			$id_before 				= Input::get('id_before');
 			$id_group_ulangan 		= Input::get('id_group_ulangan');
 			$nama_group_ulangan 	= Input::get('nama_group_ulangan');
 			$id_materi 				= Input::get('id_materi');
@@ -424,7 +472,7 @@ class Guru_UlanganController extends Controller {
 			$ulangan_mulai 			= date("Y-m-d", strtotime($mulai));
 			$ulangan_selesai 		= date("Y-m-d", strtotime($selesai));
 
-			$add_param_id = DB::update('update param_group_ulangan set p_id_group_ulangan = '.$id_after.' where p_id_group_ulangan = '.$id_param);
+			$add_param_id = DB::update('update param_group_ulangan set p_id_group_ulangan = '.$id_after.' where p_id_group_ulangan = '.$id_before);
 
 			$update_group_ulangan = DB::update('update group_ulangan set nama_group_ulangan="'.$nama_group_ulangan.'", id_materi='.$id_materi.', ulangan_mulai="'.$ulangan_mulai.'", ulangan_selesai="'.$ulangan_selesai.'", durasi="'.$durasi.'" where id_group_ulangan="'.$id_group_ulangan.'"');
 
@@ -458,7 +506,9 @@ class Guru_UlanganController extends Controller {
 	}
 
 
-	public function ulangan_get_edit($nama_group_ulangan, $id) {
+// -------------------------------------------------------- ULANGAN EDIT --------------------------------------------------------
+
+	public function ulangan_edit($nama_group_ulangan, $id) {
 
 		if(session('id_group') == 2) {
 
@@ -476,9 +526,9 @@ class Guru_UlanganController extends Controller {
 
 		if(session('id_group') == 2) {
 
-			$id_ulangan = Input::get('id_ulangan');
+			$id = Input::get('id');
 
-			$getDataUlangan = DB::select('select * from group_ulangan where id = '.$id_ulangan);
+			$getDataUlangan = DB::select('select * from group_ulangan where id='.$id);
 
 			foreach ($getDataUlangan as $key => $row) {
 				$row = get_object_vars($row);
@@ -516,9 +566,52 @@ class Guru_UlanganController extends Controller {
 
 		if(session('id_group') == 2) {
 
-			$id_soal = Input::get('id_soal');
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
 
-			$data_ulangan = DB::select('select * from ulangan where id_group_ulangan="'.$id_soal.'"');
+			$id_group_ulangan = Input::get('id_group_ulangan');
+
+			$data_rows = DB::select('select * from ulangan where id_group_ulangan="'.$id_group_ulangan.'"');
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_ulangan = DB::select('select * from ulangan where id_group_ulangan="'.$id_group_ulangan.'" ORDER BY id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
+
 
 			$result = '';
 
@@ -548,7 +641,7 @@ class Guru_UlanganController extends Controller {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_ulangan as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -575,7 +668,8 @@ class Guru_UlanganController extends Controller {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -599,7 +693,7 @@ class Guru_UlanganController extends Controller {
 			$durasi 				= Input::get('edit_durasi');
 
 			$ulangan_mulai 		= date("Y-m-d", strtotime($mulai));
-			$ulangan_selesai 		= date("Y-m-d", strtotime($selesai));
+			$ulangan_selesai 	= date("Y-m-d", strtotime($selesai));
 
 			$update_group_ulangan = DB::update('update group_ulangan set nama_group_ulangan="'.$nama_group_ulangan.'", id_materi='.$id_materi.', ulangan_mulai="'.$ulangan_mulai.'", ulangan_selesai="'.$ulangan_selesai.'", durasi="'.$durasi.'" where id="'.$id_ulangan.'"');
 
@@ -612,8 +706,6 @@ class Guru_UlanganController extends Controller {
 		}
 
 	}
-
-
 
 
 }

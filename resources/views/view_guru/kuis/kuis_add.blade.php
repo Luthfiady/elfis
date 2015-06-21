@@ -104,10 +104,9 @@ Tambah Kuis
 		<div class="col-md-12">
 			<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-soal-add"> <span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 		</div>
-		<div class="col-md-12 dataTable">
+		<div class="col-md-12 table-responsive dataTable">
 			
 		</div>
-
 	</div>
 
 	<div class="row row-paging-table-soal">
@@ -118,10 +117,13 @@ Tambah Kuis
 	    </div>
 	</div>
 
-    <div class="form-group" style="float:right;">
-        <button type="submit" id="simpan_kuis" class="btn btn-primary btn-sm">Submit</button>
-        <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-        <button type="submit" id="hapus_kuis" class="btn btn-primary btn-sm">Batal</button>
+
+    <div class="row">
+	    <div class="form-group" style="float:right;">
+	        <button type="submit" id="simpan_kuis" class="btn btn-primary btn-sm">Submit</button>
+	        <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+	        <button type="submit" id="hapus_kuis" class="btn btn-primary btn-sm">Batal</button>
+	    </div>
     </div>
 	</form>
 

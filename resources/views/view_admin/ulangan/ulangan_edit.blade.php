@@ -83,8 +83,8 @@
 					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
-				<input class="form-control" type="hidden" id="id_ulangan" value="{{$id_ulangan}}">
-				<input class="form-control" type="hidden" id="id_group_ulangan" value="">
+				<input type="hidden" id="id_ulangan" value="{{$id_ulangan}}">
+				<input type="hidden" id="id_group_ulangan" value="">
 
 		</div>		
 	</div>

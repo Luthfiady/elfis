@@ -104,7 +104,7 @@ Tambah Kuis
 		<div class="col-md-12">
 			<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-soal-add"> <span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 		</div>
-		<div class="col-md-12 dataTable">
+		<div class="col-md-12 table-responsive dataTable">
 			
 		</div>
 	</div>

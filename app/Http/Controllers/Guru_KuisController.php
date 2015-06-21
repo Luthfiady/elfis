@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -12,42 +12,11 @@ class Guru_KuisController extends Controller {
 	public $status = false;
 
 
-// -------------------------------------------------------- KUIS --------------------------------------------------------
-
-public function AddIdKuis() {
-
-		if(session('id_group') == 2) {
-
-			$id_kuis = trim(Input::get('id_kuis'));
-
-			$check_data = DB::select('select id_group_kuis from group_kuis where id_group_kuis = "'.$id_kuis.'"');
-
-			if ($check_data == null) {
-				DB::insert('insert into group_kuis (id_group_kuis) values ("'.$id_kuis.'")');
-			} else {
-				return ['data_null' => 'data null'];
-			}
-
-		} else {
-			return redirect('login');
-		}
-
-	}
-
+// -------------------------------------------------------- KUIS INDEX --------------------------------------------------------
 
 	public function kuis() {
 		if(session('id_group') == 2) {
 			return view('view_guru/kuis/index');
-		}
-		else {
-			return redirect('login');
-		}
-	}
-  
-
-	public function kuis_add() {
-		if(session('id_group') == 2) {
-			return view('view_guru/kuis/kuis_add');
 		}
 		else {
 			return redirect('login');
@@ -204,7 +173,19 @@ public function AddIdKuis() {
 	}
 
 
-	public function get_param() {
+// -------------------------------------------------------- KUIS ADD --------------------------------------------------------
+
+	public function kuis_add() {
+		if(session('id_group') == 2) {
+			return view('view_guru/kuis/kuis_add');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
+
+	public function kuis_get_id() {
 
 		if(session('id_group') == 2) {
 
@@ -215,7 +196,8 @@ public function AddIdKuis() {
 				$id_kuis = $value['p_id_group_kuis']+1;
 			}
 
-			return ['data' => $id_kuis];
+			$this->json['data'] = $id_kuis;
+			echo json_encode($this->json);
 
 		} else {
 			return redirect('login');
@@ -227,14 +209,51 @@ public function AddIdKuis() {
 	public function soal_list() {
 		if(session('id_group') == 2) {
 
-			$get_id = DB::select('select * from param_group_kuis');
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
 
-			foreach ($get_id as $key => $value) {
-				$value = get_object_vars($value);
-				$id_kuis = $value['p_id_group_kuis']+1;
-			}
+			$id_kuis = Input::get('id_kuis');
 
-			$data_kuis = DB::select('select * from kuis where id_group_kuis="S00'.$id_kuis.'"');
+			$data_rows = DB::select('select * from kuis where id_group_kuis = "'.$id_kuis.'"');
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_kuis = DB::select('select * from kuis where id_group_kuis = "'.$id_kuis.'" ORDER BY id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
 
 			$result = '';
 
@@ -264,7 +283,7 @@ public function AddIdKuis() {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -291,7 +310,8 @@ public function AddIdKuis() {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -302,10 +322,33 @@ public function AddIdKuis() {
 	}
 
 
+	public function AddIdKuis() {
+
+		if(session('id_group') == 2) {
+
+			$id_kuis = trim(Input::get('id_kuis'));
+
+			$check_data = DB::select('select id_group_kuis from group_kuis where id_group_kuis = "'.$id_kuis.'"');
+
+			if ($check_data == null) {
+				DB::insert('insert into group_kuis (id_group_kuis) values ("'.$id_kuis.'")');
+			} else {
+				$this->json['data'] = 'Data null';
+				echo json_encode($this->json);
+			}
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
 	public function AddSoal() {
 
 		if(session('id_group') == 2) {
 
+			$submit			= Input::get('submit');
 			$id_soal 		= Input::get('id_soal');
 			$soal_kuis 		= Input::get('soal_kuis');
 			$jwb_a			= Input::get('jwb_a');
@@ -315,12 +358,36 @@ public function AddIdKuis() {
 			$jwb_e			= Input::get('jwb_e');
 			$jawaban		= Input::get('jawaban');
 
-			$add_data_soal = DB::insert('insert into kuis values ("", "'.$id_soal.'", "'.$soal_kuis.'", "'.$jwb_a.'", "'.$jwb_b.'", "'.$jwb_c.'", "'.$jwb_d.'", "'.$jwb_e.'", "'.$jawaban.'")');
+			if ($submit == null) {
+				$this->json['pesan'] = 'Data null';
+				echo json_encode($this->json);
+			} else {
+				$add_data_soal = DB::insert('insert into kuis values ("", "'.$id_soal.'", "'.$soal_kuis.'", "'.$jwb_a.'", "'.$jwb_b.'", "'.$jwb_c.'", "'.$jwb_d.'", "'.$jwb_e.'", "'.$jawaban.'")');
 
-			$this->json['pesan'] = 'Data telah tersimpan';
+				$this->json['pesan'] = 'Data telah tersimpan';
+				echo json_encode($this->json);
+			}
+			
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function DeleteSoal() {
+
+		if(session('id_group') == 2) {
+			
+			$id = Input::get('id');
+
+			$delete_soal = DB::delete('delete from kuis where id = "'.$id.'"');
+
+			$this->json['pesan'] = 'Data telah terhapus';
 			echo json_encode($this->json);
 
-		} else {
+		}
+		else {
 			return redirect('login');
 		}
 
@@ -391,31 +458,12 @@ public function AddIdKuis() {
 	}
 
 
-	public function DeleteSoal() {
-
-		if(session('id_group') == 2) {
-			
-			$id = Input::get('id');
-
-			$delete_soal = DB::delete('delete from kuis where id = "'.$id.'"');
-
-			$this->json['pesan'] = 'Data telah terhapus';
-			echo json_encode($this->json);
-
-		}
-		else {
-			return redirect('login');
-		}
-
-	}
-
-
 	public function AddDetailKuis() {
 
 		if(session('id_group') == 2) {
 			
 			$id_after			= Input::get('id_after');
-			$id_param 			= Input::get('id_param');
+			$id_before			= Input::get('id_before');
 			$id_group_kuis 		= Input::get('id_group_kuis');
 			$nama_group_kuis 	= Input::get('nama_group_kuis');
 			$id_materi 			= Input::get('id_materi');
@@ -426,9 +474,8 @@ public function AddIdKuis() {
 			$kuis_mulai 		= date("Y-m-d", strtotime($mulai));
 			$kuis_selesai 		= date("Y-m-d", strtotime($selesai));
 
-			$add_param_id = DB::update('update param_group_kuis set p_id_group_kuis = '.$id_after.' where p_id_group_kuis = '.$id_param);
-
-			$update_group_kuis = DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'" where id_group_kuis="'.$id_group_kuis.'"');
+			$update_id_after 	= DB::update('update param_group_kuis set p_id_group_kuis = '.$id_after.' where p_id_group_kuis = '.$id_before);
+			$update_kuis 		= DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'" where id_group_kuis="'.$id_group_kuis.'"');
 
 			$this->json['pesan'] = 'Data telah disimpan';
 			echo json_encode($this->json);
@@ -448,7 +495,7 @@ public function AddIdKuis() {
 			$id_kuis = Input::get('id_kuis');
 
 			$hapus_group = DB::delete('delete from group_kuis where id_group_kuis = "'.$id_kuis.'"');
-			$hapus_soal = DB::delete('delete from kuis where id_group_kuis = "'.$id_kuis.'"');
+			$hapus_soal  = DB::delete('delete from kuis where id_group_kuis = "'.$id_kuis.'"');
 
 			$this->json['pesan'] = 'Batal membuat kuis';
 			echo json_encode($this->json);
@@ -460,12 +507,12 @@ public function AddIdKuis() {
 	}
 
 
+// -------------------------------------------------------- KUIS EDIT --------------------------------------------------------
+	
 	public function kuis_edit($nama_group_kuis, $id) {
 
 		if(session('id_group') == 2) {
-
 			return view('view_guru/kuis/kuis_edit')->with('id_kuis', $id)->with('nama_group_kuis', $nama_group_kuis);
-
 		}
 		else {
 			return redirect('login');
@@ -478,9 +525,9 @@ public function AddIdKuis() {
 
 		if(session('id_group') == 2) {
 
-			$id_kuis = Input::get('id_kuis');
+			$id = Input::get('id');
 
-			$getDataKuis = DB::select('select * from group_kuis where id = '.$id_kuis);
+			$getDataKuis = DB::select('select * from group_kuis where id='.$id.'');
 
 			foreach ($getDataKuis as $key => $row) {
 				$row = get_object_vars($row);
@@ -518,9 +565,51 @@ public function AddIdKuis() {
 
 		if(session('id_group') == 2) {
 
-			$id_soal = Input::get('id_soal');
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
 
-			$data_kuis = DB::select('select * from kuis where id_group_kuis="'.$id_soal.'"');
+			$id_group_kuis = Input::get('id_group_kuis');
+
+			$data_rows = DB::select('select * from kuis where id_group_kuis = "'.$id_group_kuis.'"');
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_kuis = DB::select('select * from kuis where id_group_kuis = "'.$id_group_kuis.'" ORDER BY id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
 
 			$result = '';
 
@@ -550,7 +639,7 @@ public function AddIdKuis() {
 
 			} else {
 
-				$i = 1;
+				$i = $limit_start;
 				foreach ($data_kuis as $row => $list) {
 					$list = get_object_vars($list);
 
@@ -577,7 +666,8 @@ public function AddIdKuis() {
 			}
 
 			$response = array (
-	            'result' => $result
+	            'result' => $result,
+	            'paging' => $paging
 	        );
 
 	        echo json_encode($response);
@@ -585,7 +675,7 @@ public function AddIdKuis() {
 		} else {
 			return redirect('login');
 		}
-
+		
 	}
 
 
@@ -614,7 +704,6 @@ public function AddIdKuis() {
 		}
 
 	}
-
 
 
 }

@@ -125,12 +125,12 @@ class Admin_ForumController extends Controller {
 					$result .= '<td class="kolom-kiri">'.$list['subyek'].'</td>';
 					$result .= '<td class="kolom-kiri">'.$list['keterangan'].'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['rate'].' <span class="glyphicon glyphicon-star"></span> </td>';
-					$result .= '<td class="kolom-tengah">'.$list['forum_create_by'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['forum_create_by'].'</td>';
 					$result .= '<td class="kolom-tengah">
 									<a class="btn btn-success btn-xs" onClick="getEdit('.$list['id_forum'].')" data-toggle="modal" data-target="#edit_forum"> <span class="glyphicon glyphicon-edit"></span> </a> 
 			                		<a id="btn_delete'.$list['id_forum'].'" class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_forum'].')" data-delete="Apakah anda yakin ingin menghapus forum '.$list['nama_forum'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
-			        $result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="/elfis/admin/forum_isi">
+			     	$result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="/elfis/admin/forum/'.$list['nama_forum'].'/'.$list['id_forum'].'">
 									<span class="glyphicon glyphicon-new-window"></span></a>
 								</td>';
 					$result .= '</tr>';
@@ -262,14 +262,226 @@ class Admin_ForumController extends Controller {
 	}
 
 
-	public function forum_isi() {
+// -------------------------------------------------------- ISI FORUM --------------------------------------------------------
+
+	public function forum_isi($nama_forum, $id_forum) {
+		
 		if(session('id_group') == 3) {
-			return view('view_admin/forum/forum');
+			return view('view_admin/forum/forum')->with('id_forum', $id_forum)->with('nama_forum', $nama_forum);
 		}
 		else {
 			return redirect('login');
 		}
+
 	}
+
+
+	public function forum_add_star() {
+
+		if(session('id_group') == 3) {
+			
+			$id_forum = Input::get('id_forum');
+
+			$rate_forum = DB::select('select rate from forum where id_forum = '.$id_forum);
+
+			foreach ($rate_forum as $key => $value) {
+				$value = get_object_vars($value);
+				$rate = $value['rate'];
+			}
+
+			$add_star = DB::update('update forum set rate = '.$rate.'+1 where id_forum = '.$id_forum);
+
+			$this->json['sukses'] = 'Berhasil menambahkan rating forum';
+			echo json_encode($this->json);
+
+		}
+		else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function komentar_add_star() {
+
+		if(session('id_group') == 3) {
+			
+			$id_komentar = Input::get('id_komentar');
+
+			$rate_komentar = DB::select('select rate_komentar from komentar where id_komentar = '.$id_komentar);
+
+			foreach ($rate_komentar as $key => $value) {
+				$value = get_object_vars($value);
+				$rate = $value['rate_komentar'];
+			}
+
+			$add_star = DB::update('update komentar set rate_komentar = '.$rate.'+1 where id_komentar = '.$id_komentar);
+
+			$this->json['sukses'] = 'Berhasil menambahkan rating komentar';
+			echo json_encode($this->json);
+
+		}
+		else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function komentar_add() {
+
+		if(session('id_group') == 3) {
+			
+			$id_forum = Input::get('id_forum');
+			$isi_komentar = Input::get('add_isi');
+
+			$add_komentar = DB::insert('insert into komentar values ("", "'.$id_forum.'", "'.$isi_komentar.'", 0, "'.date('Y-m-d H:i:s').'", "'.session('username').'")');
+
+			$this->json['sukses'] = 'Komentar berhasil ditambahkan';
+			echo json_encode($this->json);
+
+		}
+		else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function forum_isi_set_data() {
+
+		if(session('id_group') == 3) {
+
+			$id_forum = Input::get('id_forum');
+
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
+
+	        $set_data_head = DB::select('select * from forum where id_forum = '.$id_forum);
+
+			$data_rows = DB::select('select * from komentar where id_forum = '.$id_forum);
+			$total_komentar = count($data_rows);
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_komentar = DB::select('select * from komentar where id_forum = '.$id_forum.' ORDER BY id_forum ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
+
+			$result_head = '';
+			$result_head .= '<table class="table table-header-forum">';
+			$result_head .= '<tr class="forum-kepala">';
+			
+			foreach ($set_data_head as $row => $list) {
+				$list = get_object_vars($list);
+
+				$tanggal 	= date('l, j F Y', strtotime($list['forum_create']));
+				$pukul 		= date('g:i A', strtotime($list['forum_create']));
+
+				$result_head .= '<td>';
+				$result_head .= '<p class="header-pembuat">'.$list['forum_create_by'].'</p>';
+				$result_head .= '<p class="sub-header-buat">'.$tanggal.' | '.$pukul.'</p>';
+				$result_head .= '</td>';
+				$result_head .= '<td class="header-right">';
+				$result_head .= '<p class="sub-header-buat">Rating '.$list['rate'].' <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" onClick="AddStarForum('.$list['id_forum'].')" class="rating">Suka</a></p>';
+				$result_head .= '<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>';
+				$result_head .= '</td>';
+				$result_head .= '</tr>';
+				$result_head .= '<tr class="forum">';
+				$result_head .= '<td colspan="2"> '.$list['isi'].' </td>';
+			}
+
+			$result_head .= '</tr>';
+			$result_head .= '</table>';
+
+
+			$result = '';
+			$result .= '<table class="table table-komentar-forum">';
+
+			if ($data_komentar != true) {
+
+				$result .= '<h3 class="kosong"> Belum Ada Komentar </h3>';
+				$result .= '</table>';
+
+			} else {
+
+				foreach ($data_komentar as $row => $data) {
+					$data = get_object_vars($data);
+
+					$tanggal_komentar 	= date('l, j F Y', strtotime($data['komentar_create']));
+					$pukul_komentar		= date('g:i A', strtotime($data['komentar_create']));
+
+					$result .= '<tr class="forum-komentar">';
+					$result .= '<td>';
+					$result .= '<p class="header-pembuat">'.$data['komentar_create_by'].'</p>';
+					$result .= '<p class="sub-header-buat">'.$tanggal_komentar.' | '.$pukul_komentar.'</p>';
+					$result .= '</td>';
+					$result .= '<td class="header-right">';
+					$result .= '<p class="sub-header-buat">Rating '.$data['rate_komentar'].' <span class="glyphicon glyphicon-star"></span> &nbsp|&nbsp <a href="#" id="star'.$data['id_komentar'].'" onClick="AddStarKomentar('.$data['id_komentar'].')" class="rating">Suka</a></p>';
+					$result .= '<a href="#" class="rating" data-toggle="modal" data-target="#edit_comment">Edit</a>';
+					$result .= '</td>';
+					$result .= '</tr>';
+
+					$result .= '<tr class="forum">';
+					$result .= '<td colspan="2">'.$data['isi_komentar'].'</td>';
+					$result .= '</tr>';
+				}
+
+				$result .= '</table>';
+
+			}
+
+			//return Response()->json(array('result' => $result));
+			$response = array (
+	            'result_head' => $result_head,
+	            'result' => $result,
+	            'paging' => $paging,
+	            'jml' => $total_komentar
+	        );
+
+	        echo json_encode($response);
+
+
+		}
+		else {
+			return redirect('login');
+		}
+
+	}
+
 
 
 }

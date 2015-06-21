@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 	    if (soal == "" && a == "" && b == "" && c == "" && d == "" && e == "" && jawaban == "") {
             return false;
-	    } else {
+        } else {
             AddSoal();
             return false;
         }
@@ -122,7 +122,7 @@ function getId() {
 	}
 
 	$.ajax({
-        url: 'get_param',
+        url: 'kuis_get_id',
         type: 'GET',
         data: form_data,
         dataType: "JSON",
@@ -199,6 +199,7 @@ function refreshSoal() {
 function AddSoal() {
 
 	var form_data = {
+        submit      : $('#simpan_soal').val(),
 		id_soal 	: $('#id_kuis').val(),
     	soal_kuis 	: $('#soal_kuis').val(),
     	jwb_a 		: $('#jwb_a').val(),
@@ -299,7 +300,6 @@ function EditSoal() {
     }
     
     $.ajax({
-        // async: "false",
         url: 'soal_edit',
         type: 'POST',
         data: form_data,
@@ -329,7 +329,7 @@ function AddKuis() {
 
 	var form_data = {
 		id_after			: $('#id_after').val(),
-		id_param			: $('#id_before').val(),
+		id_before			: $('#id_before').val(),
         id_group_kuis 		: $('#id_kuis').val(),
         nama_group_kuis		: $('#add_nama_kuis').val(),
         id_materi			: $('#nama_materi').val(),
@@ -340,16 +340,14 @@ function AddKuis() {
     }
 
     $.ajax({
-        // async: "false",
         url: 'AddDetailKuis',
         type: 'POST',
         data: form_data,
         dataType: "JSON",
         success: function(data) {
-        	getId();
         	alert(data.pesan);
-        	refreshKuis();
-        	soal_list();
+            refreshKuis();
+            getId();
         }
     });
 

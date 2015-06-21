@@ -31,25 +31,6 @@ $(document).ready(function(){
         return false;
     });
 
-    // $("#simpan_soal").click(function(){
-
-    //     soal = $("#soal_ulangan").val('');
-    //     jwb_a = $("#jwb_a").val('');
-    //     jwb_b = $("#jwb_b").val('');
-    //     jwb_c = $("#jwb_c").val('');
-    //     jwb_d = $("#jwb_d").val('');
-    //     jwb_e = $("#jwb_e").val('');
-    //     jwb_benar = $("#jwb_benar").val();
-
-    //     if(soal != '' && jwb_a != '' && jwb_b != '' && jwb_c != '' && jwb_d != '' && jwb_e != '' && jwb_benar != ''){
-    //         // $('#modal-soal').modal('show');
-    //         alert('untuk selanjutnya');
-    //     } else {
-    //         document.getElementById('btn_hide_soal').click();
-    //     }
-        
-    // });
-
 });
 
 $(document).on("click", ".pg a", function(){
@@ -57,6 +38,7 @@ $(document).on("click", ".pg a", function(){
     current_page = this.id;
     return false;
 });
+
 
 function getList(page) {
 
