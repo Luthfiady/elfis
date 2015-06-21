@@ -43,7 +43,7 @@ class Guru_UlanganController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi and (ulangan_mulai<=ADDDATE("'.date('Y-m-d').'",7) and ulangan_selesai>="'.date('Y-m-d').'") and nik="'.session('id_user').'" '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -58,7 +58,7 @@ class Guru_UlanganController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_ulangan = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_ulangan = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi and (ulangan_mulai<=ADDDATE("'.date('Y-m-d').'",7) and ulangan_selesai>="'.date('Y-m-d').'") and nik="'.session('id_user').'" '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -474,7 +474,7 @@ class Guru_UlanganController extends Controller {
 
 			$add_param_id = DB::update('update param_group_ulangan set p_id_group_ulangan = '.$id_after.' where p_id_group_ulangan = '.$id_before);
 
-			$update_group_ulangan = DB::update('update group_ulangan set nama_group_ulangan="'.$nama_group_ulangan.'", id_materi='.$id_materi.', ulangan_mulai="'.$ulangan_mulai.'", ulangan_selesai="'.$ulangan_selesai.'", durasi="'.$durasi.'" where id_group_ulangan="'.$id_group_ulangan.'"');
+			$update_group_ulangan = DB::update('update group_ulangan set nama_group_ulangan="'.$nama_group_ulangan.'", id_materi='.$id_materi.', ulangan_mulai="'.$ulangan_mulai.'", ulangan_selesai="'.$ulangan_selesai.'", durasi="'.$durasi.'", created="'.date('Y-m-d H:i:s').'", created_by="'.session('username').'" where id_group_ulangan="'.$id_group_ulangan.'"');
 
 			$this->json['pesan'] = 'Data telah disimpan';
 			echo json_encode($this->json);
@@ -695,7 +695,7 @@ class Guru_UlanganController extends Controller {
 			$ulangan_mulai 		= date("Y-m-d", strtotime($mulai));
 			$ulangan_selesai 	= date("Y-m-d", strtotime($selesai));
 
-			$update_group_ulangan = DB::update('update group_ulangan set nama_group_ulangan="'.$nama_group_ulangan.'", id_materi='.$id_materi.', ulangan_mulai="'.$ulangan_mulai.'", ulangan_selesai="'.$ulangan_selesai.'", durasi="'.$durasi.'" where id="'.$id_ulangan.'"');
+			$update_group_ulangan = DB::update('update group_ulangan set nama_group_ulangan="'.$nama_group_ulangan.'", id_materi='.$id_materi.', ulangan_mulai="'.$ulangan_mulai.'", ulangan_selesai="'.$ulangan_selesai.'", durasi="'.$durasi.'", created="'.date('Y-m-d H:i:s').'", created_by="'.session('username').'" where id="'.$id_ulangan.'"');
 
 			$this->json['pesan'] = 'Data telah diubah';
 			echo json_encode($this->json);

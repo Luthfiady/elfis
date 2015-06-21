@@ -43,7 +43,7 @@ class Admin_KuisController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi and (kuis_mulai<=ADDDATE("'.date('Y-m-d').'",7) and kuis_selesai>="'.date('Y-m-d').'") '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -58,7 +58,7 @@ class Admin_KuisController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi and (kuis_mulai<=ADDDATE("'.date('Y-m-d').'",7) and kuis_selesai>="'.date('Y-m-d').'") '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -475,7 +475,7 @@ class Admin_KuisController extends Controller {
 			$kuis_selesai 		= date("Y-m-d", strtotime($selesai));
 
 			$update_id_after 	= DB::update('update param_group_kuis set p_id_group_kuis = '.$id_after.' where p_id_group_kuis = '.$id_before);
-			$update_kuis 		= DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'" where id_group_kuis="'.$id_group_kuis.'"');
+			$update_kuis 		= DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'", created="'.date('Y-m-d H:i:s').'", created_by="'.session('username').'" where id_group_kuis="'.$id_group_kuis.'"');
 
 			$this->json['pesan'] = 'Data telah disimpan';
 			echo json_encode($this->json);
@@ -693,7 +693,7 @@ class Admin_KuisController extends Controller {
 			$kuis_mulai 		= date("Y-m-d", strtotime($mulai));
 			$kuis_selesai 		= date("Y-m-d", strtotime($selesai));
 
-			$update_group_kuis = DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'" where id="'.$id_kuis.'"');
+			$update_group_kuis = DB::update('update group_kuis set nama_group_kuis="'.$nama_group_kuis.'", id_materi='.$id_materi.', kuis_mulai="'.$kuis_mulai.'", kuis_selesai="'.$kuis_selesai.'", durasi="'.$durasi.'", created="'.date('Y-m-d H:i:s').'", created_by="'.session('username').'" where id="'.$id_kuis.'"');
 
 			$this->json['pesan'] = 'Data telah diubah';
 			echo json_encode($this->json);
