@@ -31,12 +31,17 @@ Route::get('admin/get_pelajaran', 'AdminController@getPelajaran');
 Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');
 
 
+Route::get('admin/get_guru', 'AdminController@getGuru');
+Route::get('guru/get_guru', 'GuruController@getGuru');
+
+
 Route::get('admin/get_kelas', 'AdminController@getKelas');
 Route::get('guru/get_kelas', 'GuruController@getKelas');
 
+
+Route::get('siswa/get_tugas', 'SiswaController@getTugas');
 Route::get('admin/get_tugas', 'Admin_TugasController@getTugas');
 Route::get('guru/get_tugas', 'Guru_TugasController@getTugas');
-Route::get('siswa/get_tugas', 'SiswaController@getTugas');
 
 
 /////////////////////////////////////////////////  Route Index  /////////////////////////////////////////////////
@@ -56,11 +61,15 @@ Route::get('siswa', 'SiswaController@index');
 /////////////////////////////////////////////////  Route Materi  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/materi', 'AdminController@materi');
-Route::get('admin/materi_add', 'AdminController@materi_add');
-Route::get('admin/soal', 'AdminController@soal');
-Route::get('admin/materi_list', 'AdminController@materi_get_list');
-Route::get('admin/latihanSoal_list', 'AdminController@latihanSoal_get_list');
+Route::get('admin/materi', 'Admin_MateriController@materi');
+Route::get('admin/materi_add', 'Admin_MateriController@materi_add');
+Route::get('admin/soal', 'Admin_MateriController@soal');
+Route::get('admin/materi_list', 'Admin_MateriController@materi_get_list');
+Route::get('admin/latihanSoal_list', 'Admin_MateriController@latihanSoal_get_list');
+Route::post('admin/materi_edit', 'Admin_MateriController@materi_edit');
+Route::post('admin/materi_delete', 'Admin_MateriController@materi_delete');
+Route::get('admin/materi_detail', 'Admin_MateriController@materi_detail');
+
 
 // Route Guru
 Route::get('guru/materi', 'GuruController@materi');
@@ -119,111 +128,122 @@ Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 /////////////////////////////////////////////////  Route Kuis  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/kuis', 'Admin_KuisController@kuis');
-Route::get('admin/kuis_add', 'Admin_KuisController@kuis_add');
-Route::get('admin/kuis_list', 'Admin_KuisController@kuis_get_list');
-Route::post('admin/kuis_delete', 'Admin_KuisController@kuis_delete');
-Route::get('admin/kuis_edit/{id}/{id_group_kuis}', 'Admin_KuisController@kuis_edit');
 
-Route::get('admin/get_param', 'Admin_KuisController@get_param');
-Route::get('admin/soal_list', 'Admin_KuisController@soal_list');
-Route::post('admin/AddIdKuis', 'Admin_KuisController@AddIdKuis');
-Route::post('admin/AddSoal', 'Admin_KuisController@AddSoal');
-Route::post('admin/DeleteSoal', 'Admin_KuisController@DeleteSoal');
+	// ----------------------------- Index -----------------------------
+	Route::get('admin/kuis', 'Admin_KuisController@kuis');
+	Route::get('admin/kuis_list', 'Admin_KuisController@kuis_get_list');
+	Route::post('admin/kuis_delete', 'Admin_KuisController@kuis_delete');
 
-Route::post('admin/soal_get_edit', 'Admin_KuisController@soal_get_edit');
-Route::post('admin/soal_edit', 'Admin_KuisController@soal_edit');
+	// ----------------------------- Kuis Add -----------------------------
+	Route::get('admin/kuis_add', 'Admin_KuisController@kuis_add');
+	Route::get('admin/kuis_get_id', 'Admin_KuisController@kuis_get_id');
+	Route::get('admin/soal_list', 'Admin_KuisController@soal_list');
+	Route::post('admin/AddIdKuis', 'Admin_KuisController@AddIdKuis');
+	Route::post('admin/AddSoal', 'Admin_KuisController@AddSoal');
+	Route::post('admin/DeleteSoal', 'Admin_KuisController@DeleteSoal');
+	Route::post('admin/soal_get_edit', 'Admin_KuisController@soal_get_edit');
+	Route::post('admin/soal_edit', 'Admin_KuisController@soal_edit');
+	Route::post('admin/AddDetailKuis', 'Admin_KuisController@AddDetailKuis');
+	Route::post('admin/KuisBatal', 'Admin_KuisController@KuisBatal');
 
-Route::post('admin/AddDetailKuis', 'Admin_KuisController@AddDetailKuis');
-Route::post('admin/KuisBatal', 'Admin_KuisController@KuisBatal');
+	// ----------------------------- Kuis Edit -----------------------------
 
-Route::get('admin/get_detail_kuis', 'Admin_KuisController@get_detail_kuis');
-Route::get('admin/soal_list_edit', 'Admin_KuisController@soal_list_edit');
-Route::post('admin/UpdateKuis', 'Admin_KuisController@UpdateKuis');
+	Route::get('admin/kuis/{nama_group_kuis}/{id}', 'Admin_KuisController@kuis_edit');
+	Route::get('admin/get_detail_kuis', 'Admin_KuisController@get_detail_kuis');
+	Route::get('admin/soal_list_edit', 'Admin_KuisController@soal_list_edit');
+	Route::post('admin/UpdateKuis', 'Admin_KuisController@UpdateKuis');
 
 
 // Route Guru
-Route::get('guru/kuis', 'Guru_KuisController@kuis');
-Route::get('guru/kuis_add', 'Guru_KuisController@kuis_add');
-Route::get('guru/kuis_list', 'Guru_KuisController@kuis_get_list');
-Route::post('guru/kuis_delete', 'Guru_KuisController@kuis_delete');
-Route::get('guru/kuis_edit/{id}/{id_group_kuis}', 'Guru_KuisController@kuis_edit');
 
-Route::get('guru/get_param', 'Guru_KuisController@get_param');
-Route::get('guru/soal_list', 'Guru_KuisController@soal_list');
-Route::post('guru/AddIdKuis', 'Guru_KuisController@AddIdKuis');
-Route::post('guru/AddSoal', 'Guru_KuisController@AddSoal');
-Route::post('guru/DeleteSoal', 'Guru_KuisController@DeleteSoal');
+	// ----------------------------- Index -----------------------------
+	Route::get('guru/kuis', 'Guru_KuisController@kuis');
+	Route::get('guru/kuis_list', 'Guru_KuisController@kuis_get_list');
+	Route::post('guru/kuis_delete', 'Guru_KuisController@kuis_delete');
 
-Route::post('guru/soal_get_edit', 'Guru_KuisController@soal_get_edit');
-Route::post('guru/soal_edit', 'Guru_KuisController@soal_edit');
+	// ----------------------------- Kuis Add -----------------------------
+	Route::get('guru/kuis_add', 'Guru_KuisController@kuis_add');
+	Route::get('guru/kuis_get_id', 'Guru_KuisController@kuis_get_id');
+	Route::get('guru/soal_list', 'Guru_KuisController@soal_list');
+	Route::post('guru/AddIdKuis', 'Guru_KuisController@AddIdKuis');
+	Route::post('guru/AddSoal', 'Guru_KuisController@AddSoal');
+	Route::post('guru/DeleteSoal', 'Guru_KuisController@DeleteSoal');
+	Route::post('guru/soal_get_edit', 'Guru_KuisController@soal_get_edit');
+	Route::post('guru/soal_edit', 'Guru_KuisController@soal_edit');
+	Route::post('guru/AddDetailKuis', 'Guru_KuisController@AddDetailKuis');
+	Route::post('guru/KuisBatal', 'Guru_KuisController@KuisBatal');
 
-Route::post('guru/AddDetailKuis', 'Guru_KuisController@AddDetailKuis');
-Route::post('guru/KuisBatal', 'Guru_KuisController@KuisBatal');
+	// ----------------------------- Kuis Edit -----------------------------
 
-Route::get('guru/get_detail_kuis', 'Guru_KuisController@get_detail_kuis');
-Route::get('guru/soal_list_edit', 'Guru_KuisController@soal_list_edit');
-Route::post('guru/UpdateKuis', 'Guru_KuisController@UpdateKuis');
+	Route::get('guru/kuis/{nama_group_kuis}/{id}', 'Guru_KuisController@kuis_edit');
+	Route::get('guru/get_detail_kuis', 'Guru_KuisController@get_detail_kuis');
+	Route::get('guru/soal_list_edit', 'Guru_KuisController@soal_list_edit');
+	Route::post('guru/UpdateKuis', 'Guru_KuisController@UpdateKuis');
 
 
 // Route Siswa
 Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
 Route::get('siswa/kuis_soal', 'Siswa_KuisController@kuis_soal');
 Route::get('siswa/kuis_nilai', 'Siswa_KuisController@kuis_nilai');
-
 Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
+
 
 
 
 ///////////////////////////////////////////////// Route Ulangan  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/ulangan', 'Admin_UlanganController@ulangan');
-Route::get('admin/ulangan_add', 'Admin_UlanganController@ulangan_add');
-Route::get('admin/ulangan_list', 'Admin_UlanganController@ulangan_get_list');
-Route::post('admin/ulangan_delete', 'Admin_UlanganController@ulangan_delete');
-Route::get('admin/ulangan_get_edit/{id}/{id_group_ulangan}', 'Admin_UlanganController@ulangan_get_edit');
 
-Route::get('admin/ulangan_get_param', 'Admin_UlanganController@ulangan_get_param');
-Route::get('admin/ulangan_soal_list', 'Admin_UlanganController@ulangan_soal_list');
-Route::post('admin/AddIdUlangan', 'Admin_UlanganController@AddIdUlangan');
-Route::post('admin/ulangan_AddSoal', 'Admin_UlanganController@ulangan_AddSoal');
-Route::post('admin/ulangan_DeleteSoal', 'Admin_UlanganController@ulangan_DeleteSoal');
+	// ----------------------------- Index -----------------------------
+	Route::get('admin/ulangan', 'Admin_UlanganController@ulangan');
+	Route::get('admin/ulangan_list', 'Admin_UlanganController@ulangan_get_list');
+	Route::post('admin/ulangan_delete', 'Admin_UlanganController@ulangan_delete');
 
-Route::post('admin/ulangan_soal_get_edit', 'Admin_UlanganController@ulangan_soal_get_edit');
-Route::post('admin/ulangan_soal_edit', 'Admin_UlanganController@ulangan_soal_edit');
+	// ----------------------------- Ulangan Add -----------------------------
+	Route::get('admin/ulangan_add', 'Admin_UlanganController@ulangan_add');
+	Route::get('admin/ulangan_get_id', 'Admin_UlanganController@ulangan_get_id');
+	Route::get('admin/ulangan_soal_list', 'Admin_UlanganController@ulangan_soal_list');
+	Route::post('admin/AddIdUlangan', 'Admin_UlanganController@AddIdUlangan');
+	Route::post('admin/ulangan_AddSoal', 'Admin_UlanganController@ulangan_AddSoal');
+	Route::post('admin/ulangan_DeleteSoal', 'Admin_UlanganController@ulangan_DeleteSoal');
+	Route::post('admin/ulangan_soal_get_edit', 'Admin_UlanganController@ulangan_soal_get_edit');
+	Route::post('admin/ulangan_soal_edit', 'Admin_UlanganController@ulangan_soal_edit');
+	Route::post('admin/AddDetailUlangan', 'Admin_UlanganController@AddDetailUlangan');
+	Route::post('admin/UlanganBatal', 'Admin_UlanganController@UlanganBatal');
 
-Route::post('admin/AddDetailUlangan', 'Admin_UlanganController@AddDetailUlangan');
-Route::post('admin/UlanganBatal', 'Admin_UlanganController@UlanganBatal');
+	// ----------------------------- Ulangan Edit -----------------------------
 
-Route::get('admin/get_detail_ulangan', 'Admin_UlanganController@get_detail_ulangan');
-Route::get('admin/ulangan_soal_list_edit', 'Admin_UlanganController@ulangan_soal_list_edit');
-Route::post('admin/UpdateUlangan', 'Admin_UlanganController@UpdateUlangan');
+	Route::get('admin/ulangan/{nama_group_ulangan}/{id}', 'Admin_UlanganController@ulangan_edit');
+	Route::get('admin/get_detail_ulangan', 'Admin_UlanganController@get_detail_ulangan');
+	Route::get('admin/ulangan_soal_list_edit', 'Admin_UlanganController@ulangan_soal_list_edit');
+	Route::post('admin/UpdateUlangan', 'Admin_UlanganController@UpdateUlangan');
 
 
 // Route Guru
-Route::get('guru/ulangan', 'Guru_UlanganController@ulangan');
-Route::get('guru/ulangan_add', 'Guru_UlanganController@ulangan_add');
-Route::get('guru/ulangan_list', 'Guru_UlanganController@ulangan_get_list');
-Route::post('guru/ulangan_delete', 'Guru_UlanganController@ulangan_delete');
-Route::get('guru/ulangan_get_edit/{id}/{id_group_ulangan}', 'Guru_UlanganController@ulangan_get_edit');
 
-Route::get('guru/ulangan_get_param', 'Guru_UlanganController@ulangan_get_param');
-Route::get('guru/ulangan_soal_list', 'Guru_UlanganController@ulangan_soal_list');
-Route::post('guru/AddIdUlangan', 'Guru_UlanganController@AddIdUlangan');
-Route::post('guru/ulangan_AddSoal', 'Guru_UlanganController@ulangan_AddSoal');
-Route::post('guru/ulangan_DeleteSoal', 'Guru_UlanganController@ulangan_DeleteSoal');
+	// ----------------------------- Index -----------------------------
+	Route::get('guru/ulangan', 'Guru_UlanganController@ulangan');
+	Route::get('guru/ulangan_list', 'Guru_UlanganController@ulangan_get_list');
+	Route::post('guru/ulangan_delete', 'Guru_UlanganController@ulangan_delete');
 
-Route::post('guru/ulangan_soal_get_edit', 'Guru_UlanganController@ulangan_soal_get_edit');
-Route::post('guru/ulangan_soal_edit', 'Guru_UlanganController@ulangan_soal_edit');
+	// ----------------------------- Ulangan Add -----------------------------
+	Route::get('guru/ulangan_add', 'Guru_UlanganController@ulangan_add');
+	Route::get('guru/ulangan_get_id', 'Guru_UlanganController@ulangan_get_id');
+	Route::get('guru/ulangan_soal_list', 'Guru_UlanganController@ulangan_soal_list');
+	Route::post('guru/AddIdUlangan', 'Guru_UlanganController@AddIdUlangan');
+	Route::post('guru/ulangan_AddSoal', 'Guru_UlanganController@ulangan_AddSoal');
+	Route::post('guru/ulangan_DeleteSoal', 'Guru_UlanganController@ulangan_DeleteSoal');
+	Route::post('guru/ulangan_soal_get_edit', 'Guru_UlanganController@ulangan_soal_get_edit');
+	Route::post('guru/ulangan_soal_edit', 'Guru_UlanganController@ulangan_soal_edit');
+	Route::post('guru/AddDetailUlangan', 'Guru_UlanganController@AddDetailUlangan');
+	Route::post('guru/UlanganBatal', 'Guru_UlanganController@UlanganBatal');
 
-Route::post('guru/AddDetailUlangan', 'Guru_UlanganController@AddDetailUlangan');
-Route::post('guru/UlanganBatal', 'Guru_UlanganController@UlanganBatal');
+	// ----------------------------- Ulangan Edit -----------------------------
 
-Route::get('guru/get_detail_ulangan', 'Guru_UlanganController@get_detail_ulangan');
-Route::get('guru/ulangan_soal_list_edit', 'Guru_UlanganController@ulangan_soal_list_edit');
-Route::post('guru/UpdateUlangan', 'Guru_UlanganController@UpdateUlangan');
-
+	Route::get('guru/ulangan/{nama_group_ulangan}/{id}', 'Guru_UlanganController@ulangan_edit');
+	Route::get('guru/get_detail_ulangan', 'Guru_UlanganController@get_detail_ulangan');
+	Route::get('guru/ulangan_soal_list_edit', 'Guru_UlanganController@ulangan_soal_list_edit');
+	Route::post('guru/UpdateUlangan', 'Guru_UlanganController@UpdateUlangan');
 
 // Route Siswa
 Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
@@ -234,15 +254,30 @@ Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
 /////////////////////////////////////////////////  Route Forum  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/forum', 'Admin_ForumController@forum');
-Route::get('admin/forum_isi', 'Admin_ForumController@forum_isi');
 
-Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
-Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
-Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
-Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
-Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
+	// ----------------------------- index -----------------------------
+	Route::get('admin/forum', 'Admin_ForumController@forum');
+	Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
+	Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
+	Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
+	Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
+	Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
 
+	// ----------------------------- Isi Forum -----------------------------
+	Route::get('admin/forum/{nama_forum}/{id_forum}', 'Admin_ForumController@forum_isi');
+	Route::get('admin/forum_isi_set_data', 'Admin_ForumController@forum_isi_set_data');
+
+	Route::post('admin/forum_add_star', 'Admin_ForumController@forum_add_star');
+	Route::post('admin/forum_remove_star', 'Admin_ForumController@forum_remove_star');
+	Route::post('admin/komentar_add_star', 'Admin_ForumController@komentar_add_star');
+	Route::post('admin/komentar_remove_star', 'Admin_ForumController@komentar_remove_star');
+
+	Route::post('admin/komentar_add', 'Admin_ForumController@komentar_add');
+	Route::post('admin/komentar_delete', 'Admin_ForumController@komentar_delete');
+	Route::post('admin/komentar_get_edit', 'Admin_ForumController@komentar_get_edit');
+	Route::post('admin/komentar_edit', 'Admin_ForumController@komentar_edit');
+	Route::post('admin/forum_isi_get_edit', 'Admin_ForumController@forum_isi_get_edit');
+	Route::post('admin/forum_isi_edit', 'Admin_ForumController@forum_isi_edit');
 
 // Route Guru
 Route::get('guru/forum', 'GuruController@forum');
