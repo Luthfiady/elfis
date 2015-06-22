@@ -238,26 +238,30 @@ Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
 /////////////////////////////////////////////////  Route Forum  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/forum', 'Admin_ForumController@forum');
 
 	// ----------------------------- index -----------------------------
-Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
-Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
-Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
-Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
-Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
+	Route::get('admin/forum', 'Admin_ForumController@forum');
+	Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
+	Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
+	Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
+	Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
+	Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
 
-	// ----------------------------- Isi -----------------------------
-Route::get('admin/forum/{nama_forum}/{id_forum}', 'Admin_ForumController@forum_isi');
-Route::get('admin/forum_isi_set_data', 'Admin_ForumController@forum_isi_set_data');
-Route::post('admin/forum_add_star', 'Admin_ForumController@forum_add_star');
-Route::post('admin/komentar_add_star', 'Admin_ForumController@komentar_add_star');
-Route::post('admin/komentar_add', 'Admin_ForumController@komentar_add');
-Route::post('admin/komentar_delete', 'Admin_ForumController@komentar_delete');
-Route::post('admin/komentar_get_edit', 'Admin_ForumController@komentar_get_edit');
-Route::post('admin/komentar_edit', 'Admin_ForumController@komentar_edit');
-Route::get('admin/refresh_komentar', 'Admin_ForumController@refresh_komentar');
-Route::get('admin/refresh_forum', 'Admin_ForumController@refresh_forum');
+	// ----------------------------- Isi Forum -----------------------------
+	Route::get('admin/forum/{nama_forum}/{id_forum}', 'Admin_ForumController@forum_isi');
+	Route::get('admin/forum_isi_set_data', 'Admin_ForumController@forum_isi_set_data');
+
+	Route::post('admin/forum_add_star', 'Admin_ForumController@forum_add_star');
+	Route::post('admin/forum_remove_star', 'Admin_ForumController@forum_remove_star');
+	Route::post('admin/komentar_add_star', 'Admin_ForumController@komentar_add_star');
+	Route::post('admin/komentar_remove_star', 'Admin_ForumController@komentar_remove_star');
+
+	Route::post('admin/komentar_add', 'Admin_ForumController@komentar_add');
+	Route::post('admin/komentar_delete', 'Admin_ForumController@komentar_delete');
+	Route::post('admin/komentar_get_edit', 'Admin_ForumController@komentar_get_edit');
+	Route::post('admin/komentar_edit', 'Admin_ForumController@komentar_edit');
+	Route::post('admin/forum_isi_get_edit', 'Admin_ForumController@forum_isi_get_edit');
+	Route::post('admin/forum_isi_edit', 'Admin_ForumController@forum_isi_edit');
 
 // Route Guru
 Route::get('guru/forum', 'GuruController@forum');
