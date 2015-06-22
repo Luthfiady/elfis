@@ -46,6 +46,14 @@ td.kolom-kiri {
   }
 }
 
+input:-moz-read-only { /* For Firefox */
+    background-color: white;
+}
+
+input:read-only {
+    background-color: white;
+}
+
 /*--------------------------------------Timer--------------------------------------*/
 
 ul.countdown {

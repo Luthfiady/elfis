@@ -34,6 +34,8 @@ Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');
 Route::get('admin/get_kelas', 'AdminController@getKelas');
 Route::get('guru/get_kelas', 'GuruController@getKelas');
 
+Route::get('admin/get_tugas', 'Admin_TugasController@getTugas');
+Route::get('guru/get_tugas', 'Guru_TugasController@getTugas');
 Route::get('siswa/get_tugas', 'SiswaController@getTugas');
 
 
@@ -78,18 +80,32 @@ Route::get('siswa/materi_detail', 'SiswaController@materi_detail');
 /////////////////////////////////////////////////  Route Tugas  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/tugas', 'AdminController@tugas');
-Route::post('admin/tugas_add', 'AdminController@tugas_add');
-Route::post('admin/tugas_edit', 'AdminController@tugas_edit');
-Route::post('admin/tugas_delete', 'AdminController@tugas_delete');
-Route::get('admin/tugas_detail', 'AdminController@tugas_detail');
-Route::get('admin/tugas_list', 'AdminController@tugas_get_list');
+Route::get('admin/tugas', 'Admin_TugasController@tugas');
+Route::post('admin/tugas_add', 'Admin_TugasController@tugas_add');
+Route::post('admin/tugas_edit', 'Admin_TugasController@tugas_edit');
+Route::post('admin/tugas_delete', 'Admin_TugasController@tugas_delete');
+Route::get('admin/tugas_detail', 'Admin_TugasController@tugas_detail');
+Route::get('admin/tugas_list', 'Admin_TugasController@tugas_get_list');
 
-Route::get('admin/jawaban_tugas', 'AdminController@jawaban_tugas');
-Route::get('admin/jawaban_list', 'AdminController@jawaban_get_list');
+Route::get('admin/jawaban_tugas', 'Admin_TugasController@jawaban_tugas');
+Route::get('admin/jawaban_list', 'Admin_TugasController@jawaban_get_list');
+Route::post('admin/jawaban_delete', 'Admin_TugasController@jawaban_delete');
+
+Route::post('admin/nilai_tugas', 'Admin_TugasController@nilai_tugas');
 
 // Route Guru
-Route::get('guru/tugas', 'GuruController@tugas');
+Route::get('guru/tugas', 'Guru_TugasController@tugas');
+Route::post('guru/tugas_add', 'Guru_TugasController@tugas_add');
+Route::post('guru/tugas_edit', 'Guru_TugasController@tugas_edit');
+Route::post('guru/tugas_delete', 'Guru_TugasController@tugas_delete');
+Route::get('guru/tugas_detail', 'Guru_TugasController@tugas_detail');
+Route::get('guru/tugas_list', 'Guru_TugasController@tugas_get_list');
+
+Route::get('guru/jawaban_tugas', 'Guru_TugasController@jawaban_tugas');
+Route::get('guru/jawaban_list', 'Guru_TugasController@jawaban_get_list');
+Route::post('guru/jawaban_delete', 'Guru_TugasController@jawaban_delete');
+
+Route::post('guru/nilai_tugas', 'Guru_TugasController@nilai_tugas');
 
 // Route Siswa
 Route::get('siswa/tugas', 'SiswaController@tugas');

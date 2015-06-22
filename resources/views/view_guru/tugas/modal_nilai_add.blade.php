@@ -10,7 +10,7 @@
         <p class="modal-title">Tambah Nilai</p>
       </div>
 
-      <form method="post" target="target_submit" class="form form-horizontal" enctype="multipart/form-data" action="{{ URL::to('admin/nilai_tugas') }}" data-toggle="validator">
+      <form method="post" target="target_submit" class="form form-horizontal" enctype="multipart/form-data" action="{{ URL::to('guru/nilai_tugas') }}" data-toggle="validator">
       <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
       <div class="modal-body">
 

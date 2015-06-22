@@ -79,6 +79,15 @@ class GuruController extends Controller {
 		}
 	}
 
+	public function jawaban_tugas() {
+		if(session('id_group') == 2) {
+			return view('view_guru/tugas/index');
+		}
+		else {
+			return redirect('login');
+		}
+	}
+
 
 // -------------------------------------------------------- KUIS --------------------------------------------------------
 

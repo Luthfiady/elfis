@@ -1,11 +1,11 @@
-@extends('templates/admin_layouts')
+@extends('templates/guru_layouts')
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/tugas.css') }}">
 
-@section('add_bread_admin')
-<li><a href="{{ URL::to('admin/tugas') }}">Tugas</a></li>
+@section('add_bread_guru')
+<li><a href="{{ URL::to('guru/tugas') }}">Tugas</a></li>
 @stop
 
-@section('bread_admin')
+@section('bread_guru')
 Detail Tugas
 @stop
 
@@ -22,7 +22,7 @@ Detail Tugas
 			        <span class="panel-title">Detail Tugas</span>
 			        <div class="btn-group pull-right">
 			            <div class="btn-group">
-							<a href="{{URL::to('admin/tugas')}}" class="btn btn-primary">Kembali</a>
+							<a href="{{URL::to('guru/tugas')}}" class="btn btn-primary">Kembali</a>
 						</div>
         			</div>
         			<div class="clearfix"></div>

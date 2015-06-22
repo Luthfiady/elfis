@@ -26,7 +26,7 @@ class SiswaController extends Controller {
 
 		if(session('id_group') == 1) {
 
-			$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas ASC');
+			$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas DESC');
 
 			$tugas = "";
 			foreach ($get_tugas as $key => $value) {
@@ -197,7 +197,7 @@ class SiswaController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select * from tugas '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -212,7 +212,7 @@ class SiswaController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext.' ORDER BY id_tugas ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -266,13 +266,16 @@ class SiswaController extends Controller {
 
 					$list = get_object_vars($list);
 
+					$mulai = date("d-m-Y", strtotime($list['tugas_mulai'])); 
+					$selesai = date("d-m-Y", strtotime($list['tugas_selesai']));
+
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
 					$result .= '<td>'.$list['nama_tugas'].'</td>';
 					$result .= '<td>'.$list['nama_materi'].'</td>';
 					$result .= '<td>'.$list['nama_pelajaran'].'</td>';
-					$result .= '<td>'.$list['tugas_mulai'].'</td>';
-					$result .= '<td>'.$list['tugas_selesai'].'</td>';
+					$result .= '<td>'.$mulai.'</td>';
+					$result .= '<td>'.$selesai.'</td>';
 			        $result .= '<td class="kolom-tengah">
 								<a class="btn btn-xs btn-warning" href="/elfis/siswa/tugas_detail?id_tugas=' . $list['id_tugas'] . '" title="Detail">
 								<span class="glyphicon glyphicon-new-window"></span>
@@ -337,9 +340,17 @@ class SiswaController extends Controller {
 
 			$file_name = "";
 
+			$select_tugas = DB::select('select nama_tugas from tugas where id_tugas='.$id_tugas);
+
+			foreach ($select_tugas as $key => $value) {
+				$value = get_object_vars($value);
+				$nama = $value['nama_tugas'];
+			}
+
+			$nama_tugas = str_replace(" ", "_", $nama);
 
 			if(Input::hasFile('add_file_jawaban')) {
-				$file_name = $nis . '_' . $id_tugas . '.' . Input::file('add_file_jawaban')->getClientOriginalExtension();
+				$file_name = $nis . '_' . $nama_tugas . '.' . Input::file('add_file_jawaban')->getClientOriginalExtension();
 				$path = public_path('uploads/file_jawaban_tugas');
 				Input::file('add_file_jawaban')->move($path, $file_name);
 			}

@@ -1,6 +1,4 @@
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-var base_url = $('#base_url').val();
-var current_page;
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');;
 
 $(document).ready(function(){
 
@@ -14,34 +12,18 @@ $(document).ready(function(){
 
 // ------------------- DateTimePicker -------------------
     $('#time_durasi').datetimepicker({
-        format: 'LT'
-    });
-
-    $('#time_durasi_edit').datetimepicker({
-        format: 'LT'
+        format: 'HH:mm:ss'
     });
 
     $('#datepicker_start').datetimepicker({
-        format: 'YYYY-MM-DD'
-    });
-
-    $('#datepicker_start_edit').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
 
     $('#datepicker_end').datetimepicker({
-        format: 'YYYY-MM-DD'
-    });
-
-    $('#datepicker_end_edit').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
 
     $("#datepicker_start").on("dp.change",function (e) {
-        $('#datepicker_end').data("DateTimePicker").minDate(e.date);
-    });
-
-    $("#datepicker_start_edit").on("dp.change",function (e) {
         $('#datepicker_end').data("DateTimePicker").minDate(e.date);
     });
 
@@ -49,11 +31,31 @@ $(document).ready(function(){
         $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
     });
 
+// ------------------- DateTimePicker ENDING -------------------
+
+// ------------------- DateTimePicker EDIT -------------------
+
+    $('#time_durasi_edit').datetimepicker({
+        format: 'HH:mm:ss'
+    });
+
+    $('#datepicker_start_edit').datetimepicker({
+        format: 'DD-MM-YYYY'
+    });
+
+    $('#datepicker_end_edit').datetimepicker({
+        format: 'DD-MM-YYYY'
+    });
+
+    $("#datepicker_start_edit").on("dp.change",function (e) {
+        $('#datepicker_end').data("DateTimePicker").minDate(e.date);
+    });
+
     $("#datepicker_end_edit").on("dp.change",function (e) {
         $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
     });
-// ------------------- DateTimePicker ENDING -------------------
 
+// ------------------- DateTimePicker EDIT ENDING -------------------    
     $("#search_button").click(function() {
         getList('');
 
@@ -61,6 +63,8 @@ $(document).ready(function(){
     });
 
 });
+
+
 
 $(document).on("click", ".pg a", function(){
     getList(this.id);
@@ -172,10 +176,6 @@ function open_tugas_edit(id_tugas, nama_tugas, id_materi, isi, tugas_mulai, tuga
     $('#edit_file_tugas').val(file);
 }
 
-function open_tugas_hapus(id_tugas, nama_tugas){
-    $('#hapus_id_tugas').val(id_tugas);
-    $('#hapus_nama_tugas').html(nama_tugas);
-}
 
 function deleteData(id_tugas) {
 

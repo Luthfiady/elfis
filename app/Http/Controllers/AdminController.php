@@ -337,7 +337,7 @@ class AdminController extends Controller {
 
 // -------------------------------------------------------- TUGAS --------------------------------------------------------
 
-	public function tugas() {
+public function tugas() {
 		if(session('id_group') == 3) {
 			return view('view_admin/tugas/index');
 		}
