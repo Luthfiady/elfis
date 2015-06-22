@@ -246,6 +246,217 @@ class Admin_SettingController extends Controller {
 
 // ------------------------------------------------------- PELAJARAN ---------------------------------------------------------
 
+	public function pelajaran() {
+		if(session('id_group') == 3) {
+				
+			return view('view_admin/pelajaran/index');
+
+		} else {
+			return redirect('login');
+		}
+	}
+
+
+	public function pelajaran_get_list() {
+		
+		if(session('id_group') == 3) {
+
+			$search_by = trim(Input::get('search_by'));
+			$search_input = trim(Input::get('search_input'));
+
+			if(Input::get('paging') == null) {
+				$nopage = 1;
+	        }
+	        else{
+	            $nopage = Input::get('paging');
+	        }
+
+
+			if ($search_by != null) {
+				$sql_ext = "and ".$search_by." like '%".$search_input."%'";
+			} else {
+				$sql_ext = "";
+			}
+
+			$data_rows = DB::select('select a.*,b.nama_jurusan from pelajaran a join jurusan b where a.id_jurusan=b.id_jurusan '.$sql_ext);
+			$total_rows = count($data_rows);
+
+			if($total_rows < 1) {
+	            $total_rows = 1;
+	        }
+	        $per_page = '10';
+	        $total_page = ceil($total_rows / $per_page);
+
+	        if($nopage > $total_page) {
+	            $nopage = $total_page;
+	        }
+
+	        $offset = ($nopage - 1) * $per_page;
+
+			$data_pelajaran = DB::select('select a.*,b.nama_jurusan from pelajaran a join jurusan b where a.id_jurusan=b.id_jurusan '.$sql_ext.' ORDER BY id_pelajaran ASC LIMIT '.$per_page.' OFFSET '.$offset);
+
+			$limit_start = $offset + 1;
+
+	        $prev = $nopage - 1;
+	        $next = $nopage + 1;
+
+	        $paging = '';
+
+	        if ($nopage > 1) $paging .= '<li><a href="#" aria-label="Previous" id="'.$prev.'"> <span aria-hidden="true">&laquo;</span> </a></li>';
+
+	        // memunculkan nomor halaman dan linknya
+
+	        for($page = 1; $page <= $total_page; $page++){
+	            if ((($page >= $nopage - 3) && ($page <= $nopage + 3)) || ($page == 1) || ($page == $total_page)){
+	                if ($page == $nopage) $paging .= '<li class="active"><a href="#">'.$page.'</a></li>';
+	                else $paging .= '<li><a href="#" id="'.$page.'">'.$page.'</a></li>';
+	            }
+	        }
+
+	        if ($nopage < $total_page) $paging .= '<li><a href="#" aria-label="Next" id="'.$next.'"> <span aria-hidden="true">&raquo;</span> </a></li>';
+
+			$result = '';
+
+			$result .= '<table class="table table-hover table-bordered table-striped">';
+			$result .= '<thead class="index">';
+			$result .= '<tr>';
+			$result .= '<th>No</th>';
+			$result .= '<th>Nama Pelajaran</th>';
+			$result .= '<th>Nama Jurusan</th>';
+			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
+			$result .= '</tr>';
+			$result .= '</thead>';
+			$result .= '<tbody class="index">';
+
+			if ($data_pelajaran != true) {
+
+				$result .= '<tr>';
+				$result .= '<td colspan="4">No Data In Database</td>';
+				$result .= '</tr>';
+				$result .= '</tbody>';
+				$result .= '</table>';
+
+			} else {
+
+				$i = $limit_start;
+				foreach ($data_pelajaran as $row => $list) {
+					$list = get_object_vars($list);
+					$result .= '<tr>';
+					$result .= '<td width="60px;" class="kolom-tengah">'.$i.'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama_pelajaran'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama_jurusan'].'</td>';
+					$result .= '<td width="100px;" class="kolom-tengah">
+									<a class="btn btn-success btn-xs" onClick="getEdit('.$list['id_pelajaran'].')" data-toggle="modal" data-target="#edit_pelajaran"> <span class="glyphicon glyphicon-edit"></span> </a> 
+			                		<a id="btn_delete'.$list['id_pelajaran'].'" class="btn btn-danger btn-xs" onClick="deletePelajaran('.$list['id_pelajaran'].')" data-delete="Apakah anda yakin ingin menghapus pelajaran '.$list['nama_pelajaran'].'?"><span class="glyphicon glyphicon-trash"></span></a>
+			                	</td>';
+					$result .= '</tr>';
+					$i++;
+				}
+
+				$result .= '</tbody';
+				$result .= '</table>';
+
+			}
+
+			$response = array (
+	            'result' => $result,
+	            'paging' => $paging
+	        );
+
+	        echo json_encode($response);
+
+		} else {
+			return redirect('login');
+		}
+	}
+
+
+	public function pelajaran_add() {
+
+		if(session('id_group') == 3) {
+
+			$nama_jurusan 	= Input::get('nama_jurusan');
+			$nama_pelajaran = Input::get('nama_pelajaran');
+			
+			$data_add = DB::insert('insert into pelajaran values ("", "'.$nama_jurusan.'", "'.$nama_pelajaran.'")');
+
+			$this->json['sukses'] = 'Pelajaran berhasil dibuat';
+			echo json_encode($this->json);
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function pelajaran_delete() {
+
+		if(session('id_group') == 3) {
+
+			$id_pelajaran = trim(Input::get('id_pelajaran'));
+				
+			$data_delete = DB::delete('delete from pelajaran where id_pelajaran = "'.$id_pelajaran.'"');
+
+			$this->json['sukses'] = 'Pelajaran berhasil dihapus';
+			echo json_encode($this->json);
+
+		} else {
+			return redirect('login');
+		}
+	
+	}
+
+
+	public function pelajaran_get_edit() {
+
+		if(session('id_group') == 3) {
+
+			$id_pelajaran = trim(Input::get('id_pelajaran'));
+				
+			$data_edit = DB::select('select * from pelajaran where id_pelajaran = '.$id_pelajaran.'');
+
+			foreach ($data_edit as $list => $row) {
+				$row = get_object_vars($row);
+				$data_row = [
+
+					'id_pelajaran'		=>	$row['id_pelajaran'],
+					'id_jurusan'		=>	$row['id_jurusan'],
+					'nama_pelajaran'	=>	$row['nama_pelajaran']
+
+					];
+			}
+
+			$response = array (
+	            'data' => $data_row
+	        );
+
+			echo json_encode($response);
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
+	function pelajaran_edit() {
+
+		if(session('id_group') == 3) {
+
+			$nama_pelajaran 	= Input::get('nama_pelajaran');
+			$id_jurusan 		= Input::get('id_jurusan');
+
+			$data_update =  DB::update('update pelajaran set id_jurusan = "'.$nama_jurusan.'", nama_pelajaran = "'.$nama_pelajaran.'" where id_pelajaran = '.$id_pelajaran);
+
+			$this->json['sukses'] = 'Pelajaran berhasil diubah';
+			echo json_encode($this->json);
+
+		} else {
+			return redirect('login');
+		}
+
+	}
 
 
 }

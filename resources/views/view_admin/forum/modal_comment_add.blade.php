@@ -25,7 +25,7 @@
       <div class="modal-footer">
 	      <div class="form-group">
           <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-          <button type="submit" id="submit_add_form" class="btn btn-primary btn-sm" value="save">Simpan</button>
+          <button type="submit" id="submit_add_komentar" class="btn btn-primary btn-sm" value="save">Simpan</button>
 	      </div>
 
         </form>

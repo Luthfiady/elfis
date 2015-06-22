@@ -20,6 +20,11 @@ label.label-modal-soal {
 	margin-top: 15px;
 }
 
+.row-paging-table-soal {
+  text-align: center;
+  height: 50px;
+}
+
 .table_soal {
 	
 }

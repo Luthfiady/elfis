@@ -1,8 +1,7 @@
 @extends('templates/admin_layouts')
 
-
 @section('bread_admin')
-Ulangan
+Managemen Pelajaran
 @stop
 
 @section('content')
@@ -16,8 +15,8 @@ Ulangan
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="nama_group_ulangan"> Nama Ulangan </option>
-	        			<option value="b.nama_materi"> Nama Materi </option>
+						<option value="nama_pelajaran"> Nama Pelajaran </option>
+	        			<option value="b.nama_jurusan"> Nama Jurusan </option>
 					</select>	
 				</div>
 
@@ -30,7 +29,7 @@ Ulangan
 
 				&nbsp 
 
-				<a href="{{ URL::to('admin/ulangan_add') }}" id="add_button" class="btn btn-sm btn-primary"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_pelajaran"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>
@@ -40,6 +39,7 @@ Ulangan
 
 	<div class="row row-table-data">
 		<div class="col-md-12 dataTable table-responsive">
+			
 
 		</div>
 	</div>
@@ -52,8 +52,21 @@ Ulangan
 	    </div>
 	</div>
 
+	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="add_pelajaran" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.pelajaran.modal_add_pelajaran')
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="edit_pelajaran" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.pelajaran.modal_edit_pelajaran')
+	</div>
+
+
 </div>
 
-<script type="text/javascript" src="{{asset('public/js/apps/ulangan.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/apps/pelajaran.js')}}"></script>
 
 @stop

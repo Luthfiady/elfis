@@ -27,7 +27,7 @@ class GuruController extends Controller {
 
 		if(session('id_group') == 2) {
 
-			$get_materi = DB::select('select DISTINCT * from materi ORDER BY id_materi ASC');
+			$get_materi = DB::select('select DISTINCT * from materi where nik="'.session('id_user').'" ORDER BY id_materi ASC');
 
 			$materi = "";
 			foreach ($get_materi as $key => $value) {

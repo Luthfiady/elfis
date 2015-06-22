@@ -68,6 +68,7 @@ Route::post('admin/materi_edit', 'Admin_MateriController@materi_edit');
 Route::post('admin/materi_delete', 'Admin_MateriController@materi_delete');
 Route::get('admin/materi_detail', 'Admin_MateriController@materi_detail');
 
+
 // Route Guru
 Route::get('guru/materi', 'GuruController@materi');
 Route::get('guru/detail_materi', 'GuruController@detail_materi');
@@ -168,8 +169,8 @@ Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
 Route::get('siswa/kuis_soal', 'Siswa_KuisController@kuis_soal');
 Route::get('siswa/kuis_nilai', 'Siswa_KuisController@kuis_nilai');
-
 Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
+
 
 
 

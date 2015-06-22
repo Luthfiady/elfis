@@ -1,9 +1,9 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var current_page;
 
 $(document).ready(function(){
 
-	getMateri();
-	soal_list_edit();
+    getMateri();
     getEditDetailKuis();
 
 	$('#ubah_kuis').click(function() {
@@ -73,6 +73,12 @@ $(document).ready(function(){
 // ---------------------------------------------------------- Kuis Edit ----------------------------------------------------------
 
 
+$(document).on("click", ".pg a", function(){
+    soal_list_edit(this.id);
+    current_page = this.id;
+    return false;
+});
+
 function getMateri() {
 
 	var form_data = {
@@ -103,8 +109,8 @@ function getMateri() {
 function getEditDetailKuis() {
     
     var form_data = {
-        id_kuis     : $('#id_kuis').val(),
-        _token      : CSRF_TOKEN
+        id      : $('#id_kuis').val(),
+        _token  : CSRF_TOKEN
     }
 
     $.ajax({
@@ -114,23 +120,27 @@ function getEditDetailKuis() {
         dataType: "JSON",
         success: function(data) {
 
+            $('#id_group_kuis').val(data.data_kuis.id_group_kuis);
             $('#edit_nama_kuis').val(data.data_kuis.nama_group_kuis);
             $('#edit_nama_materi').val(data.data_kuis.id_materi);
             $('#edit_tgl_mulai').val(data.data_kuis.kuis_mulai);
             $('#edit_tgl_selesai').val(data.data_kuis.kuis_selesai);
             $('#edit_durasi').val(data.data_kuis.durasi);
-
+            
+            soal_list_edit();
+            return false;
         }
     });
 
 }
 
 
-function soal_list_edit() {
+function soal_list_edit(page) {
 
-    $(".dataTable").html('<img style="margin-top:50px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
+    $(".dataTable").html('<img style="margin-top:50px; margin-bottom:50px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
-        id_soal     : $('#id_group_kuis').val(),
+        id_group_kuis     : $('#id_group_kuis').val(),
+        paging      : page,
         _token      : CSRF_TOKEN
     }
 
@@ -141,6 +151,7 @@ function soal_list_edit() {
         dataType: "JSON",
         success: function(data) {
             $(".dataTable").html(data.result);
+            $(".pg ul").html(data.paging);
             return false;
         }
     });
@@ -164,6 +175,7 @@ function refreshSoal() {
 function AddSoal() {
 
 	var form_data = {
+        submit      : $('#simpan_soal').val(),
 		id_soal 	: $('#id_group_kuis').val(),
     	soal_kuis 	: $('#soal_kuis').val(),
     	jwb_a 		: $('#jwb_a').val(),
@@ -292,7 +304,6 @@ function UpdateKuis() {
     }
 
     $.ajax({
-        // async: "false",
         url: '../../UpdateKuis',
         type: 'POST',
         data: form_data,

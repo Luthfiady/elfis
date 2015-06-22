@@ -5,7 +5,7 @@
 @stop
 
 @section('bread_admin')
-Ubah Ulangan 
+{{$nama_group_ulangan}}
 @stop
 	
 @section('content')
@@ -83,8 +83,8 @@ Ubah Ulangan
 					<div class="col-sm-5 help-block with-errors"></div>
 				</div>
 
-				<input class="form-control" type="hidden" id="id_ulangan" value="{{$id_ulangan}}">
-				<input class="form-control" type="hidden" id="id_group_ulangan" value="{{$id_group_ulangan}}">
+				<input type="hidden" id="id_ulangan" value="{{$id_ulangan}}">
+				<input type="hidden" id="id_group_ulangan" value="">
 
 		</div>		
 	</div>
@@ -106,6 +106,15 @@ Ubah Ulangan
 		<div class="col-md-12 dataTable">
 			
 		</div>
+
+	</div>
+
+	<div class="row row-paging-table-soal">
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
     <div class="form-group" style="float:right;">
