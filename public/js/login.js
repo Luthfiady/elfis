@@ -51,12 +51,12 @@ function DoLogin() {
         dataType: "json",
         success: function(msg){
             if(msg.login_success == null){
-              $('#login_message').html('<img src="../elfis/public/img/setting/exclamation.png" style="margin-top:-5px;">&nbsp'+ msg.login_error);
+              $('#login_message').html('<img src="../elfis/public/img/setting/exclamation.png" style="margin-top:-5px;">&nbsp '+ msg.login_error);
               $('#login_password').val('');
               $('#login_submit').show();
             }
             else{
-              $("#login_message").html('<img src="../elfis/public/img/setting/load.gif" style="margin-top:-5px;">&nbsp' + msg.login_success);
+              $("#login_message").html('<img src="../elfis/public/img/setting/load.gif" style="margin-top:-5px;">&nbsp ' + msg.login_success);
               setTimeout("window.location = '"+msg.group_name+"'", 2000);
             }
         }

@@ -1,4 +1,5 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var current_page;
 
 $(document).ready(function(){
 
@@ -30,33 +31,22 @@ $(document).ready(function(){
         return false;
     });
 
-    // $("#simpan_soal").click(function(){
-
-    //     soal = $("#soal_ulangan").val('');
-    //     jwb_a = $("#jwb_a").val('');
-    //     jwb_b = $("#jwb_b").val('');
-    //     jwb_c = $("#jwb_c").val('');
-    //     jwb_d = $("#jwb_d").val('');
-    //     jwb_e = $("#jwb_e").val('');
-    //     jwb_benar = $("#jwb_benar").val();
-
-    //     if(soal != '' && jwb_a != '' && jwb_b != '' && jwb_c != '' && jwb_d != '' && jwb_e != '' && jwb_benar != ''){
-    //         // $('#modal-soal').modal('show');
-    //         alert('untuk selanjutnya');
-    //     } else {
-    //         document.getElementById('btn_hide_soal').click();
-    //     }
-        
-    // });
-
 });
 
-function getList() {
+$(document).on("click", ".pg a", function(){
+    getList(this.id);
+    current_page = this.id;
+    return false;
+});
+
+
+function getList(page) {
 
     $(".dataTable").html('<img style="margin-top:180px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
         search_by       : $('#search_by').val(),
         search_input    : $('#search_input').val(),
+        paging          : page,
         _token          : CSRF_TOKEN
     }
 
@@ -68,6 +58,7 @@ function getList() {
         dataType: "JSON",
         success: function(data) {
             $(".dataTable").html(data.result);
+            $(".pg ul").html(data.paging);
             return false;
         }
     });

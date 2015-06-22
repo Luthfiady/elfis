@@ -1,4 +1,4 @@
-/*------------------------------------------- Modal Soal -------------------------------------------*/
+/*------------------------------------------- Modal Materi -------------------------------------------*/
 
 p.nomor-soal {font-family: arial; font-size: 13pt; font-weight: bold;}
 
@@ -18,11 +18,6 @@ label.label-modal-soal {
 
 .dataTable {
 	margin-top: 15px;
-}
-
-.row-paging-table-soal {
-  text-align: center;
-  height: 50px;
 }
 
 .table_soal {

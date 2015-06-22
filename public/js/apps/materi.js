@@ -5,15 +5,104 @@ var current_page;
 $(document).ready(function(){
 
 	
-	getList(''); 
-	getPelajaran('');
-	getKelas('');
+	 
+    getPelajaran('');
+    getKelas('');
+    getGuru('');
+	getList('');
+
+    $('#simpan_tugas').click(function(){
+        AddDataMateri();
+        return false;
+    });
 
     $('#search_button').click(function(){
         getList('');
         return false;
     });
  });
+
+// GET DROPDWON
+
+function getPelajaran() {
+
+    var form_data = {
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'get_pelajaran',
+        type: 'GET',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+
+            option_pelajaran = '';
+            option_pelajaran += '<option value="0"> Pilih Pelajaran </option><br/>';
+            $.each(data.data, function(i, item) {
+            option_pelajaran += '<option value="' + data.data[i].id_pelajaran + '">' + data.data[i].nama_pelajaran + '</option><br/>';
+            });
+
+            $('#editPelajaran').html(option_pelajaran);
+            return false;
+        }
+    });
+
+}
+
+function getKelas() {
+
+    var form_data = {
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'get_kelas',
+        type: 'GET',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+
+            option_kelas = '';
+            option_kelas += '<option value="0"> Pilih Kelas </option><br/>';
+            $.each(data.data, function(i, item) {
+            option_kelas += '<option value="' + data.data[i].id_kelas + '">' + data.data[i].nama_kelas + '</option><br/>';
+            });
+
+            $('#editKelas').html(option_kelas);
+            return false;
+        }
+    });
+
+}
+
+function getGuru() {
+
+    var form_data = {
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'get_guru',
+        type: 'GET',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+
+            option_guru = '';
+            option_guru += '<option value="0"> Pilih Guru </option><br/>';
+            $.each(data.data, function(i, item) {
+            option_guru += '<option value="' + data.data[i].nik + '">' + data.data[i].nama + '</option><br/>';
+            });
+
+            $('#editGuru').html(option_guru);
+            return false;
+        }
+    });
+
+}
+
+//ENDING
 
  
 function getList() {
@@ -42,95 +131,66 @@ function getList() {
 
 }
 
-function getPelajaran() {
+function clear_iframe() {
+    $('#target_submit').val(null);
+}
 
-    var form_data = {
-        _token      : CSRF_TOKEN
-    }
+function clear_form() {
+    $('input-materi').val(null);
+}
 
-    $.ajax({
-        url: 'get_pelajaran',
-        type: 'GET',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
+function AddDataMateri(){
 
-            option_pelajaran = '';
-            option_pelajaran += '<option value="0"> Pilih Pelajaran </option><br/>';
-            $.each(data.data, function(i, item) {
-            option_pelajaran += '<option value="' + data.data[i].id_pelajaran + '">' + data.data[i].nama_pelajaran + '</option><br/>';
-            });
-
-            $('#addPelajaran').html(option_pelajaran);
-            return false;
+    setTimeout(function(){
+        result = $('#target_submit').contents().find('body').html();
+        if(result == '') {
+            AddDataMateri();
         }
-    });
-
-}
-
-function getKelas() {
-
-    var form_data = {
-        _token      : CSRF_TOKEN
-    }
-
-    $.ajax({
-        url: 'get_kelas',
-        type: 'GET',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-
-            option_kelas = '';
-            option_kelas += '<option value="0"> Pilih Kelas </option><br/>';
-            $.each(data.data, function(i, item) {
-            option_kelas += '<option value="' + data.data[i].id_kelas + '">' + data.data[i].nama_kelas + '</option><br/>';
-            });
-
-            $('#addKelas').html(option_kelas);
-            return false;
+        else if(result === undefined) {
+            AddDataMateri();
         }
-    });
-
-}
-
-//ENDING
-
-//AddDataMateri
-function getAdd() {
-    $('#addPelajaran').val('');
-    $('#addKelas').val('');
-    $('#addNamaMateri').val('');
-    $('#addIsiMateri').val('');
-    $('#addFileUpload').val('');
-    
-    return false;
-
-}
-
-function addDataMateri() {
-
-    var form_data = {
-        addPelajaran      : $('#addPelajaran').val(),
-        addKelas   		  : $('#addKelas').val(),
-        addNamaMateri     : $('#addNamaMateri').val(),
-        addIsiMateri      : $('#addIsiMateri').val(),
-        addFileUpload     : $('#addFileUpload').val(),
-        _token            : CSRF_TOKEN
-    }
-
-    $.ajax({
-        // async: "false",
-        url: 'materi_add',
-        type: 'POST',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            alert(data.pesan);
+        else {
+            alert(result);
+            clear_iframe();
+            clear_form();
             getList();
-            getAdd();
         }
-    });
-
+    }, 1);
 }
-//
+
+function open_materi_edit(id_materi, id_pelajaran, nik, id_kelas, nama_materi, isi, file) {
+    $('#editIdMateri').val(id_materi);
+    $('#editPelajaran').val(id_pelajaran);
+    $('#editGuru').val(nik);
+    $('#editKelas').val(id_kelas);
+    $('#editNamaMateri').val(nama_materi);
+    $('#editIsi').val(isi);
+    $('#edit_file_materi').val(file);
+}
+
+function deleteData(id_materi){
+
+    var konfirmasi = confirm($('#btn_delete'+id_materi).data('delete'));
+    var form_data = {
+        id_materi : id_materi,
+        _token : CSRF_TOKEN
+    }
+
+    if(konfirmasi == true){
+
+        $.ajax({
+            type: 'POST',
+            data: form_data,
+            url: 'materi_delete',
+            dataType: "JSON",
+            success: function(data){
+                getList();
+                return false;
+            }
+        });
+    }else {
+        return false;
+    }
+}
+
+

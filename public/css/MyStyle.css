@@ -31,6 +31,9 @@ a.paging:link, a.paging:hover, a.paging:active, a.paging:focus {
   color: #f57900;
 }
 
+textarea {
+   resize: none;
+}
 
 
 /*--------------------------------------Template View--------------------------------------*/

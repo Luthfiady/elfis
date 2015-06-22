@@ -13,7 +13,6 @@ Forum
 		<div class="col-md-12">
 			<form class="form-inline" style="float:right;">
 
-				<!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by" name="search_by">
 						<option value=""> Kategori </option>
