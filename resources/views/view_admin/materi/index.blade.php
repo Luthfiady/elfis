@@ -81,12 +81,6 @@ Materi
 		@include('view_admin.materi.modal_edit')
 	</div>
 
-	<!-- ///////////////////////////////////////////////////////////// Modal Delete ///////////////////////////////////////////////////////////// -->
-
-	<div class="modal fade" id="deleteMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.materi.modal_delete')
-	</div>
-
 	<script  type="text/javascript" src="{{asset('public/js/apps/materi.js')}}"></script>
 
 </div>
