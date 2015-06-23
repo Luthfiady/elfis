@@ -306,7 +306,7 @@ Route::get('siswa/nilai', 'SiswaController@nilai');
 /////////////////////////////////////////////////  Route User Profile  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/profile', 'AdminController@profile');
+Route::get('admin/profile', 'Admin_ProfileController@profile');
 
 // Route Guru
 Route::get('guru/profile', 'GuruController@profile');
@@ -320,13 +320,16 @@ Route::get('siswa/profile', 'SiswaController@profile');
 /////////////////////////////////////////////////  Route Change Password  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/change_password', 'AdminController@change_password');
+Route::get('admin/change_password', 'Admin_ProfileController@change_password');
+Route::post('admin/set_change_password', 'Admin_ProfileController@set_change_password');
 
 // Route Guru
-Route::get('guru/change_password', 'GuruController@change_password');
+Route::get('guru/change_password', 'Guru_ProfileController@change_password');
+Route::post('guru/set_change_password', 'Guru_ProfileController@set_change_password');
 
 // Route Siswa
-Route::get('siswa/change_password', 'SiswaController@change_password');
+Route::get('siswa/change_password', 'Siswa_ProfileController@change_password');
+Route::post('siswa/set_change_password', 'Siswa_ProfileController@set_change_password');
 
 
 
@@ -334,7 +337,8 @@ Route::get('siswa/change_password', 'SiswaController@change_password');
 /////////////////////////////////////////////////  Route Reset password  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/reset_password', 'AdminController@reset_password');
+Route::get('admin/reset_password', 'Admin_ProfileController@reset_password');
+Route::post('admin/get_reset_password', 'Admin_ProfileController@get_reset_password');
 
 
 
@@ -349,3 +353,17 @@ Route::post('admin/user_add', 'Admin_SettingController@user_add');
 Route::post('admin/user_delete', 'Admin_SettingController@user_delete');
 Route::post('admin/user_get_edit', 'Admin_SettingController@user_get_edit');
 Route::post('admin/user_edit', 'Admin_SettingController@user_edit');
+
+
+
+
+/////////////////////////////////////////////////  Route Pelajaran Management  /////////////////////////////////////////////////
+
+// Route Admin 
+Route::get('admin/setting_pelajaran', 'Admin_SettingController@pelajaran');
+
+Route::get('admin/pelajaran_list', 'Admin_SettingController@pelajaran_get_list');
+Route::post('admin/pelajaran_add', 'Admin_SettingController@pelajaran_add');
+Route::post('admin/pelajaran_delete', 'Admin_SettingController@pelajaran_delete');
+Route::post('admin/pelajaran_get_edit', 'Admin_SettingController@pelajaran_get_edit');
+Route::post('admin/pelajaran_edit', 'Admin_SettingController@pelajaran_edit');

@@ -57,6 +57,7 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".pg a", function(){
+    $(".dataChild").html('<img style="margin-top:50px; margin-bottom:60px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     getData(this.id);
     current_page = this.id;
     return false;
@@ -65,7 +66,6 @@ $(document).on("click", ".pg a", function(){
 
 function getData(page) {
 
-	$(".dataChild").html('<img style="margin-top:50px; margin-bottom:60px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
 	var form_data = {
         value_tab   : $('#value_tab').val(),
 		id_forum	: $('#id_forum').val(),

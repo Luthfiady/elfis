@@ -64,7 +64,7 @@
 	      	<!-- <div class="alert alert-success alert-dismissable data-sukses" style="display:none;">
 	        	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	        </div> -->
-	        <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+  	        <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
           	<button type="submit" id="submit_add_form" class="btn btn-primary btn-sm" value="save">Simpan</button>
 	      </div>
 
