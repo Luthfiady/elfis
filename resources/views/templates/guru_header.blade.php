@@ -38,7 +38,7 @@
                 <ul class="dropdown-menu">
                     <li class="">
                         <a href="{{ URL::to('guru/tugas') }}">
-                            Tambah Tugas
+                            Daftar Tugas
                         </a>
                     </li>
                     <li class="">

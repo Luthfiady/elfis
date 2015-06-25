@@ -143,7 +143,7 @@ class AdminController extends Controller {
 			return redirect('login');
 		}
 	}
-<<<<<<< HEAD
+
 	//
 
 	public function materi_detail() {
@@ -330,8 +330,6 @@ public function tugas() {
 		}
 
 	}
-=======
->>>>>>> 655f2c02d1b2df0f7413717a82e937ec8fec51bb
 
 
 	public function getGuru() {

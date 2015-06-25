@@ -103,7 +103,7 @@ class Guru_TugasController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",10) and tugas_selesai>="'.date('Y-m-d').'") '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -118,7 +118,7 @@ class Guru_TugasController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",10) and tugas_selesai>="'.date('Y-m-d').'") '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -424,6 +424,7 @@ class Guru_TugasController extends Controller {
 			$result .= '<th>Nama Tugas</th>';
 			$result .= '<th>Jawaban Tugas</th>';
 			$result .= '<th>Tanggal Unggah</th>';
+			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
 			$result .= '<th><span class="glyphicon glyphicon-folder-open"></span></th>';
 			$result .= '</tr>';
 			$result .= '</thead>';
@@ -432,7 +433,7 @@ class Guru_TugasController extends Controller {
 			if ($data_jawaban != true) {
 
 				$result .= '<tr>';
-				$result .= '<td colspan="7">No Data In Database</td>';
+				$result .= '<td colspan="8">No Data In Database</td>';
 				$result .= '</tr>';
 				$result .= '</tbody>';
 				$result .= '</table>';
@@ -453,8 +454,10 @@ class Guru_TugasController extends Controller {
 					$result .= '<td class="kolom-kiri">'.$list['file'].'</td>';
 					$result .= '<td>'.$tgl_unggah.'</td>';
 					$result .= '<td class="kolom-tengah">
+									<a id="btn_delete'.$list['id_jawaban_tugas'].'" title="Hapus" class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_jawaban_tugas'].')" data-delete="Apakah anda yakin ingin menghapus tugas milik '.$list['upload_by'].' untuk tugas '.$list['nama_tugas'].'?"><span class="glyphicon glyphicon-trash"></span></a>
+			                	</td>';
+					$result .= '<td class="kolom-tengah">
 									<a class="btn btn-info btn-xs" href=../public/uploads/file_jawaban_tugas/' . $list['file'] . ' title="Unduh"><span class="glyphicon glyphicon-download-alt"></span></a>
-									<a id="btn_delete'.$list['id_jawaban_tugas'].'" title="Hapus" class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_jawaban_tugas'].')" data-delete="Apakah anda yakin ingin menghapus tugas '.$list['nama_tugas'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
 					$result .= '</tr>';
 					$i++;

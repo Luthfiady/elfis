@@ -104,7 +104,7 @@ class Admin_TugasController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",7) and tugas_selesai>="'.date('Y-m-d').'") '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -119,7 +119,7 @@ class Admin_TugasController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",7) and tugas_selesai>="'.date('Y-m-d').'") '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
