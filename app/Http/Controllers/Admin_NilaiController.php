@@ -21,7 +21,7 @@ class Admin_NilaiController extends Controller {
 
 	public function nilai() {
 		if(session('id_group') == 3) {
-			return view('view_guru/nilai/index');
+			return view('view_admin/nilai/index');
 		}
 		else {
 			return redirect('login');

@@ -1,12 +1,15 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');;
+var base_url = $('#base_url').val();
+var current_page;
 
 $(document).ready(function(){
 
     getMateri();
     getList();
 
-    $('#simpan_tugas').click(function() {
-        AddDataTugas();
+
+    $('#hapus_tugas').click(function() {
+        TugasBatal();
         return false;
     });
 
@@ -87,7 +90,7 @@ function getMateri() {
         success: function(data) {
 
             option_materi = '';
-            option_materi += '<option value="0"> Nama Materi </option><br/>';
+            option_materi += '<option value=""> Nama Materi </option><br/>';
             $.each(data.data, function(i, item) {
             option_materi += '<option value="' + data.data[i].id_materi + '">' + data.data[i].nama_materi + '</option><br/>';
             });
@@ -123,18 +126,6 @@ function getList(page) {
     });
 }
 
-function getAdd() {
-    $('#add_nama_tugas').val('');
-    $('#add_nama_materi').val('');
-    $('#add_isi').val('');
-    $('#add_tugas_mulai').val('');
-    $('#add_tugas_selesai').val('');
-    $('#add_tugas_durasi').val('');
-    $('#add_file_tugas').val('');
-    
-    return false;
-
-}
 
 function clear_iframe() {
     $('#target_submit').val(null);
@@ -194,6 +185,7 @@ function deleteData(id_tugas) {
             url: 'tugas_delete',
             dataType: "JSON",
             success: function(data) {
+                alert(data.sukses);
                 getList();
                 return false;
             }
@@ -204,3 +196,35 @@ function deleteData(id_tugas) {
     }
 
 }
+
+function refreshTugas() {
+
+    $('#add_nama_tugas').val('');
+    $('#add_nama_materi').val('');
+    $('#add_isi').val('');
+    $('#add_tugas_mulai').val('');
+    $('#add_tugas_selesai').val('');
+    $('#add_tugas_durasi').val('');
+    $('#add_file_tugas').val('');
+
+}
+
+function TugasBatal() {
+
+    var form_data = {
+        id_tugas     : $('#id_tugas').val(),
+        _token  : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'tugas_batal',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            alert(data.pesan);
+            refreshTugas();
+            return false;
+        }
+    });
+    }

@@ -95,10 +95,10 @@ function AddDataJawaban() {
             AddDataJawaban();
         }
         else if(result === undefined) {
-            AddDataJawaban();
+            alert('isi kolom yang tersedia!');
         }
         else {
-            alert(result);
+            alert(data.sukses);
             clear_iframe();
             clear_form();
             getList();

@@ -95,6 +95,7 @@ Route::post('admin/tugas_edit', 'Admin_TugasController@tugas_edit');
 Route::post('admin/tugas_delete', 'Admin_TugasController@tugas_delete');
 Route::get('admin/tugas_detail', 'Admin_TugasController@tugas_detail');
 Route::get('admin/tugas_list', 'Admin_TugasController@tugas_get_list');
+Route::post('admin/tugas_batal', 'Admin_TugasController@tugas_batal');
 
 Route::get('admin/jawaban_tugas', 'Admin_TugasController@jawaban_tugas');
 Route::get('admin/jawaban_list', 'Admin_TugasController@jawaban_get_list');
@@ -291,7 +292,7 @@ Route::get('siswa/forum', 'SiswaController@forum');
 /////////////////////////////////////////////////  Route Nilai  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/nilai', 'AdminController@nilai');
+Route::get('admin/nilai', 'Admin_NilaiController@nilai');
 
 // Route Guru
 Route::get('guru/nilai', 'GuruController@nilai');

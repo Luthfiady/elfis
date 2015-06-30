@@ -138,4 +138,6 @@
 <script type="text/javascript" src="{{ asset('public/js/jasny-bootstrap.min.js') }}"></script>
 <script type="text/javascript">
   $('.fileinput').fileinput()
+
+  $('#modalElement').data('modal',null);
 </script>

@@ -245,9 +245,10 @@ class Admin_TugasController extends Controller {
 
 			$add_data_tugas = DB::insert('insert into tugas values ("", '.$id_materi.', "'.$nama_tugas.'", "'.$isi.'", "'.$file_name.'", "'.$tugas_mulai.'", "'.$tugas_selesai.'", "'.$durasi.'")');
 
-			return 'Data telah tersimpan';
-		
-		} else {	
+			return 'Tugas telah tersimpan';
+
+		}
+		else {
 			return redirect('login');
 		}
 
@@ -317,7 +318,7 @@ class Admin_TugasController extends Controller {
 				'durasi' => $durasi
 			]);
 
-			return 'Data telah tersimpan';
+			return 'Tugas telah tersimpan';
 			
 		} else {	
 			return redirect('login');
@@ -339,6 +340,23 @@ class Admin_TugasController extends Controller {
 			return redirect('login');
 		}
 	
+	}
+
+	public function tugas_batal() {
+
+		if(session('id_group') == 3) {
+	
+			$id_tugas = Input::get('id_tugas');
+
+			$hapus_tugas  = DB::delete('delete from tugas where id_tugas = "'.$id_tugas.'"');
+
+			$this->json['pesan'] = 'Batal membuat tugas';
+			echo json_encode($this->json);
+		}
+		else {
+			return redirect('login');
+		}
+
 	}
 
 
@@ -486,7 +504,7 @@ class Admin_TugasController extends Controller {
 			
 		$data_delete = DB::delete('delete from jawaban_tugas where id_jawaban_tugas = "'.$id_jawaban_tugas.'"');
 
-		$this->json['sukses'] = 'Tugas berhasil dihapus';
+		$this->json['sukses'] = 'Jawaban tugas berhasil dihapus';
 		echo json_encode($this->json);
 
 	} else {
@@ -506,11 +524,14 @@ class Admin_TugasController extends Controller {
 			$nilai = Input::get('add_nilaiTugas');
 
 			$nilai_tugas = DB::insert('insert into nilai_tugas values ("", '.$id_tugas.', "'.$nis.'", "'.$nilai.'")');
-
-			return 'Data telah tersimpan';
 		
-		} else {	
+			$this->json['sukses'] = 'Berhasil Input Nilai Tugas';
+			echo json_encode($this->json);
+
+		}
+		else {
 			return redirect('login');
 		}
+
 	}
 }
