@@ -84,7 +84,7 @@ function clear_iframe() {
 }
 
 function clear_form() {
-    $('input-jawaban').val(null);
+    $('.modal-add-jawaban').val("");
 }
 
 function AddDataJawaban() {
@@ -95,10 +95,10 @@ function AddDataJawaban() {
             AddDataJawaban();
         }
         else if(result === undefined) {
-            alert('isi kolom yang tersedia!');
+            AddDataJawaban();
         }
         else {
-            alert(data.sukses);
+            alert(result);
             clear_iframe();
             clear_form();
             getList();

@@ -132,7 +132,7 @@ function clear_iframe() {
 }
 
 function clear_form() {
-    $('input-tugas').val(null);
+    $('.modal-add-tugas').val("");
 }
 
 function AddDataTugas() {

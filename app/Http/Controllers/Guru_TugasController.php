@@ -103,7 +103,7 @@ class Guru_TugasController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaranz '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {

@@ -29,7 +29,7 @@ Dashboard
                     <h3>Tugas</h3>
                 </div>
                 <div class="content">
-                    Tidak ada tugas terbaru. aaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbb ccccccccccccccccccc ddddddddddddddddddd eeeeeeeeeeeeeeeeeee
+                    Tidak ada tugas terbaru. zaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbb ccccccccccccccccccc ddddddddddddddddddd eeeeeeeeeeeeeeeeeee
                 </div>
                 <a class="view-more" href="">
                     View More <i class="clip-arrow-right-2"></i>
