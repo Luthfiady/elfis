@@ -35,7 +35,7 @@ function getTugas() {
         success: function(data) {
 
             option_tugas = '';
-            option_tugas += '<option value="0"> Nama Tugas </option><br/>';
+            option_tugas += '<option value=""> Nama Tugas </option><br/>';
             $.each(data.data, function(i, item) {
             option_tugas += '<option value="' + data.data[i].id_tugas + '">' + data.data[i].nama_tugas + '</option><br/>';
             });

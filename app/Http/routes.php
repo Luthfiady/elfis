@@ -26,6 +26,8 @@ Route::get('do_logout', 'LoginController@do_logout');
 Route::get('admin/get_materi', 'AdminController@getMateri');
 Route::get('guru/get_materi', 'GuruController@getMateri');
 
+Route::get('admin/get_jurusan', 'AdminController@getJurusan');
+
 
 Route::get('admin/get_pelajaran', 'AdminController@getPelajaran');
 Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');

@@ -29,6 +29,9 @@ class Admin_ProfileController extends Controller {
 	}
 
 
+
+
+
 // -------------------------------------------------------- CHANGE PASSWORD --------------------------------------------------------
 
 	public function change_password() {
@@ -105,3 +108,5 @@ class Admin_ProfileController extends Controller {
 
 
 }
+
+// --------------------------------------------------------  --------------------------------------------------------

@@ -65,6 +65,7 @@ function getJurusan() {
             });
 
             $('#add_nama_jurusan').html(option_jurusan);
+            $('#edit_nama_jurusan').html(option_jurusan);
             return false;
         }
     });

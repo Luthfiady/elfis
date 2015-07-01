@@ -1,7 +1,7 @@
 @extends('templates/admin_layouts')
 
 @section('bread_admin')
-Change Password
+Ubah Password
 @stop
 
 @section('content')
