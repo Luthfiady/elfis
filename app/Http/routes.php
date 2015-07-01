@@ -31,10 +31,17 @@ Route::get('admin/get_pelajaran', 'AdminController@getPelajaran');
 Route::get('guru/get_pelajaran', 'GuruController@getPelajaran');
 
 
+Route::get('admin/get_guru', 'AdminController@getGuru');
+Route::get('guru/get_guru', 'GuruController@getGuru');
+
+
 Route::get('admin/get_kelas', 'AdminController@getKelas');
 Route::get('guru/get_kelas', 'GuruController@getKelas');
 
+
 Route::get('siswa/get_tugas', 'SiswaController@getTugas');
+Route::get('admin/get_tugas', 'Admin_TugasController@getTugas');
+Route::get('guru/get_tugas', 'Guru_TugasController@getTugas');
 
 
 /////////////////////////////////////////////////  Route Index  /////////////////////////////////////////////////
@@ -54,11 +61,15 @@ Route::get('siswa', 'SiswaController@index');
 /////////////////////////////////////////////////  Route Materi  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/materi', 'AdminController@materi');
-Route::get('admin/materi_add', 'AdminController@materi_add');
-Route::get('admin/soal', 'AdminController@soal');
-Route::get('admin/materi_list', 'AdminController@materi_get_list');
-Route::get('admin/latihanSoal_list', 'AdminController@latihanSoal_get_list');
+Route::get('admin/materi', 'Admin_MateriController@materi');
+Route::get('admin/materi_add', 'Admin_MateriController@materi_add');
+Route::get('admin/soal', 'Admin_MateriController@soal');
+Route::get('admin/materi_list', 'Admin_MateriController@materi_get_list');
+Route::get('admin/latihanSoal_list', 'Admin_MateriController@latihanSoal_get_list');
+Route::post('admin/materi_edit', 'Admin_MateriController@materi_edit');
+Route::post('admin/materi_delete', 'Admin_MateriController@materi_delete');
+Route::get('admin/materi_detail', 'Admin_MateriController@materi_detail');
+
 
 // Route Guru
 Route::get('guru/materi', 'GuruController@materi');
@@ -78,18 +89,33 @@ Route::get('siswa/materi_detail', 'SiswaController@materi_detail');
 /////////////////////////////////////////////////  Route Tugas  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/tugas', 'AdminController@tugas');
-Route::post('admin/tugas_add', 'AdminController@tugas_add');
-Route::post('admin/tugas_edit', 'AdminController@tugas_edit');
-Route::post('admin/tugas_delete', 'AdminController@tugas_delete');
-Route::get('admin/tugas_detail', 'AdminController@tugas_detail');
-Route::get('admin/tugas_list', 'AdminController@tugas_get_list');
+Route::get('admin/tugas', 'Admin_TugasController@tugas');
+Route::post('admin/tugas_add', 'Admin_TugasController@tugas_add');
+Route::post('admin/tugas_edit', 'Admin_TugasController@tugas_edit');
+Route::post('admin/tugas_delete', 'Admin_TugasController@tugas_delete');
+Route::get('admin/tugas_detail', 'Admin_TugasController@tugas_detail');
+Route::get('admin/tugas_list', 'Admin_TugasController@tugas_get_list');
+Route::post('admin/tugas_batal', 'Admin_TugasController@tugas_batal');
 
-Route::get('admin/jawaban_tugas', 'AdminController@jawaban_tugas');
-Route::get('admin/jawaban_list', 'AdminController@jawaban_get_list');
+Route::get('admin/jawaban_tugas', 'Admin_TugasController@jawaban_tugas');
+Route::get('admin/jawaban_list', 'Admin_TugasController@jawaban_get_list');
+Route::post('admin/jawaban_delete', 'Admin_TugasController@jawaban_delete');
+
+Route::post('admin/nilai_tugas', 'Admin_TugasController@nilai_tugas');
 
 // Route Guru
-Route::get('guru/tugas', 'GuruController@tugas');
+Route::get('guru/tugas', 'Guru_TugasController@tugas');
+Route::post('guru/tugas_add', 'Guru_TugasController@tugas_add');
+Route::post('guru/tugas_edit', 'Guru_TugasController@tugas_edit');
+Route::post('guru/tugas_delete', 'Guru_TugasController@tugas_delete');
+Route::get('guru/tugas_detail', 'Guru_TugasController@tugas_detail');
+Route::get('guru/tugas_list', 'Guru_TugasController@tugas_get_list');
+
+Route::get('guru/jawaban_tugas', 'Guru_TugasController@jawaban_tugas');
+Route::get('guru/jawaban_list', 'Guru_TugasController@jawaban_get_list');
+Route::post('guru/jawaban_delete', 'Guru_TugasController@jawaban_delete');
+
+Route::post('guru/nilai_tugas', 'Guru_TugasController@nilai_tugas');
 
 // Route Siswa
 Route::get('siswa/tugas', 'SiswaController@tugas');
@@ -157,7 +183,6 @@ Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 
 
 // Route Siswa
-
 	// ----------------------------- Index -----------------------------
 	Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
 	Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
@@ -236,26 +261,30 @@ Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
 /////////////////////////////////////////////////  Route Forum  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/forum', 'Admin_ForumController@forum');
 
 	// ----------------------------- index -----------------------------
-Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
-Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
-Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
-Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
-Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
+	Route::get('admin/forum', 'Admin_ForumController@forum');
+	Route::get('admin/forum_list', 'Admin_ForumController@forum_get_list');
+	Route::post('admin/forum_add', 'Admin_ForumController@forum_add');
+	Route::post('admin/forum_delete', 'Admin_ForumController@forum_delete');
+	Route::post('admin/forum_get_edit', 'Admin_ForumController@forum_get_edit');
+	Route::post('admin/forum_edit', 'Admin_ForumController@forum_edit');
 
-	// ----------------------------- Isi -----------------------------
-Route::get('admin/forum/{nama_forum}/{id_forum}', 'Admin_ForumController@forum_isi');
-Route::get('admin/forum_isi_set_data', 'Admin_ForumController@forum_isi_set_data');
-Route::post('admin/forum_add_star', 'Admin_ForumController@forum_add_star');
-Route::post('admin/komentar_add_star', 'Admin_ForumController@komentar_add_star');
-Route::post('admin/komentar_add', 'Admin_ForumController@komentar_add');
-Route::post('admin/komentar_delete', 'Admin_ForumController@komentar_delete');
-Route::post('admin/komentar_get_edit', 'Admin_ForumController@komentar_get_edit');
-Route::post('admin/komentar_edit', 'Admin_ForumController@komentar_edit');
-Route::get('admin/refresh_komentar', 'Admin_ForumController@refresh_komentar');
-Route::get('admin/refresh_forum', 'Admin_ForumController@refresh_forum');
+	// ----------------------------- Isi Forum -----------------------------
+	Route::get('admin/forum/{nama_forum}/{id_forum}', 'Admin_ForumController@forum_isi');
+	Route::get('admin/forum_isi_set_data', 'Admin_ForumController@forum_isi_set_data');
+
+	Route::post('admin/forum_add_star', 'Admin_ForumController@forum_add_star');
+	Route::post('admin/forum_remove_star', 'Admin_ForumController@forum_remove_star');
+	Route::post('admin/komentar_add_star', 'Admin_ForumController@komentar_add_star');
+	Route::post('admin/komentar_remove_star', 'Admin_ForumController@komentar_remove_star');
+
+	Route::post('admin/komentar_add', 'Admin_ForumController@komentar_add');
+	Route::post('admin/komentar_delete', 'Admin_ForumController@komentar_delete');
+	Route::post('admin/komentar_get_edit', 'Admin_ForumController@komentar_get_edit');
+	Route::post('admin/komentar_edit', 'Admin_ForumController@komentar_edit');
+	Route::post('admin/forum_isi_get_edit', 'Admin_ForumController@forum_isi_get_edit');
+	Route::post('admin/forum_isi_edit', 'Admin_ForumController@forum_isi_edit');
 
 // Route Guru
 Route::get('guru/forum', 'GuruController@forum');
@@ -269,7 +298,7 @@ Route::get('siswa/forum', 'SiswaController@forum');
 /////////////////////////////////////////////////  Route Nilai  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/nilai', 'AdminController@nilai');
+Route::get('admin/nilai', 'Admin_NilaiController@nilai');
 
 // Route Guru
 Route::get('guru/nilai', 'GuruController@nilai');
@@ -284,7 +313,7 @@ Route::get('siswa/nilai', 'SiswaController@nilai');
 /////////////////////////////////////////////////  Route User Profile  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/profile', 'AdminController@profile');
+Route::get('admin/profile', 'Admin_ProfileController@profile');
 
 // Route Guru
 Route::get('guru/profile', 'GuruController@profile');
@@ -298,13 +327,16 @@ Route::get('siswa/profile', 'SiswaController@profile');
 /////////////////////////////////////////////////  Route Change Password  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/change_password', 'AdminController@change_password');
+Route::get('admin/change_password', 'Admin_ProfileController@change_password');
+Route::post('admin/set_change_password', 'Admin_ProfileController@set_change_password');
 
 // Route Guru
-Route::get('guru/change_password', 'GuruController@change_password');
+Route::get('guru/change_password', 'Guru_ProfileController@change_password');
+Route::post('guru/set_change_password', 'Guru_ProfileController@set_change_password');
 
 // Route Siswa
-Route::get('siswa/change_password', 'SiswaController@change_password');
+Route::get('siswa/change_password', 'Siswa_ProfileController@change_password');
+Route::post('siswa/set_change_password', 'Siswa_ProfileController@set_change_password');
 
 
 
@@ -312,7 +344,8 @@ Route::get('siswa/change_password', 'SiswaController@change_password');
 /////////////////////////////////////////////////  Route Reset password  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/reset_password', 'AdminController@reset_password');
+Route::get('admin/reset_password', 'Admin_ProfileController@reset_password');
+Route::post('admin/get_reset_password', 'Admin_ProfileController@get_reset_password');
 
 
 
@@ -327,3 +360,17 @@ Route::post('admin/user_add', 'Admin_SettingController@user_add');
 Route::post('admin/user_delete', 'Admin_SettingController@user_delete');
 Route::post('admin/user_get_edit', 'Admin_SettingController@user_get_edit');
 Route::post('admin/user_edit', 'Admin_SettingController@user_edit');
+
+
+
+
+/////////////////////////////////////////////////  Route Pelajaran Management  /////////////////////////////////////////////////
+
+// Route Admin 
+Route::get('admin/setting_pelajaran', 'Admin_SettingController@pelajaran');
+
+Route::get('admin/pelajaran_list', 'Admin_SettingController@pelajaran_get_list');
+Route::post('admin/pelajaran_add', 'Admin_SettingController@pelajaran_add');
+Route::post('admin/pelajaran_delete', 'Admin_SettingController@pelajaran_delete');
+Route::post('admin/pelajaran_get_edit', 'Admin_SettingController@pelajaran_get_edit');
+Route::post('admin/pelajaran_edit', 'Admin_SettingController@pelajaran_edit');

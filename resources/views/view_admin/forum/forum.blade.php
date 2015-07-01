@@ -29,11 +29,15 @@
 	<div class="row"> <!-- Header Komentar Forum -->
 		<div class="col-md-12">
 			<ul class="nav nav-tabs">
-				<li role="presentation" class="active"><a href="#">Votes</a></li>
-			  	<li role="presentation"><a href="#">Newer</a></li>
-			  	<li role="presentation"><a href="#">Older</a></li>
+				<!-- <button class="btn btn-sm btn-primary inform-height">Terbaru</button>
+				<button class="btn btn-sm btn-primary inform-height">Terlama</button>
+				<button class="btn btn-sm btn-primary inform-height">Terpopuler</button> -->
+				<li role="presentation" class="active older"><a href="#" id="tab_older" class="tabs_komentar">Older</a></li>
+			  	<li role="presentation" class="newer"><a href="#" id="tab_newer" class="tabs_komentar">Newer</a></li>
+			  	<li role="presentation" class="votes"><a href="#" id="tab_votes" class="tabs_komentar">Votes</a></li>
+			  	<input id="value_tab" type="hidden">
 
-			  	<button href="#" class="btn btn-sm btn-primary inform-height form-right" data-toggle="modal" data-target="#add_comment">Tambah</button>
+			  	<button class="btn btn-sm btn-primary inform-height form-right" data-toggle="modal" data-target="#add_comment">Tambah</button>
 			  	<p class="info-komentar form-right jml_komentar"></p>
 			  	
 			</ul>
@@ -69,6 +73,12 @@
 
 	<div class="modal fade" id="edit_comment" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		@include('view_admin.forum.modal_comment_edit')
+	</div>
+
+	<!-- ///////////////////////////////////////////////////////////// Modal Edit Isi Forum ///////////////////////////////////////////////////////////// -->
+
+	<div class="modal fade" id="edit_forum" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		@include('view_admin.forum.modal_forum_edit')
 	</div>
 
 </div>

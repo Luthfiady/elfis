@@ -109,7 +109,7 @@
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">File Lama</label>
             <div class="col-sm-8">
-              <input type="text" protected id="edit_file_tugas" name="edit_file_tugas_lama" class="form-control inform-height" style="border: 0; "/>
+              <input readonly type="text" protected id="edit_file_tugas" name="edit_file_tugas_lama" class="form-control inform-height"/>
             </div>
             <div class="col-sm-1"></div>
 
@@ -135,10 +135,10 @@
       </div>
 
       <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+          <a type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</a>
           <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
 	        <button type="submit" class="btn btn-primary btn-sm" onclick="AddDataTugas()" >Simpan Ubah</button>
-          <iframe id="target_submit" name="target_submit" style="width:100px; height:100px;"></iframe>
+          <iframe id="target_submit" name="target_submit" style="width:100px; display:none; height:100px;"></iframe>
 	      </div>
 
         </form>

@@ -1,4 +1,4 @@
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');;
 var base_url = $('#base_url').val();
 var current_page;
 
@@ -7,41 +7,26 @@ $(document).ready(function(){
     getMateri();
     getList();
 
-    $('#simpan_tugas').click(function() {
-        AddDataTugas();
+
+    $('#hapus_tugas').click(function() {
+        TugasBatal();
         return false;
     });
 
 // ------------------- DateTimePicker -------------------
     $('#time_durasi').datetimepicker({
-        format: 'LT'
-    });
-
-    $('#time_durasi_edit').datetimepicker({
-        format: 'LT'
+        format: 'HH:mm:ss'
     });
 
     $('#datepicker_start').datetimepicker({
-        format: 'YYYY-MM-DD'
-    });
-
-    $('#datepicker_start_edit').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
 
     $('#datepicker_end').datetimepicker({
-        format: 'YYYY-MM-DD'
-    });
-
-    $('#datepicker_end_edit').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD-MM-YYYY'
     });
 
     $("#datepicker_start").on("dp.change",function (e) {
-        $('#datepicker_end').data("DateTimePicker").minDate(e.date);
-    });
-
-    $("#datepicker_start_edit").on("dp.change",function (e) {
         $('#datepicker_end').data("DateTimePicker").minDate(e.date);
     });
 
@@ -49,11 +34,31 @@ $(document).ready(function(){
         $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
     });
 
+// ------------------- DateTimePicker ENDING -------------------
+
+// ------------------- DateTimePicker EDIT -------------------
+
+    $('#time_durasi_edit').datetimepicker({
+        format: 'HH:mm:ss'
+    });
+
+    $('#datepicker_start_edit').datetimepicker({
+        format: 'DD-MM-YYYY'
+    });
+
+    $('#datepicker_end_edit').datetimepicker({
+        format: 'DD-MM-YYYY'
+    });
+
+    $("#datepicker_start_edit").on("dp.change",function (e) {
+        $('#datepicker_end').data("DateTimePicker").minDate(e.date);
+    });
+
     $("#datepicker_end_edit").on("dp.change",function (e) {
         $('#datepicker_start').data("DateTimePicker").maxDate(e.date);
     });
-// ------------------- DateTimePicker ENDING -------------------
 
+// ------------------- DateTimePicker EDIT ENDING -------------------    
     $("#search_button").click(function() {
         getList('');
 
@@ -61,6 +66,8 @@ $(document).ready(function(){
     });
 
 });
+
+
 
 $(document).on("click", ".pg a", function(){
     getList(this.id);
@@ -83,7 +90,7 @@ function getMateri() {
         success: function(data) {
 
             option_materi = '';
-            option_materi += '<option value="0"> Nama Materi </option><br/>';
+            option_materi += '<option value=""> Nama Materi </option><br/>';
             $.each(data.data, function(i, item) {
             option_materi += '<option value="' + data.data[i].id_materi + '">' + data.data[i].nama_materi + '</option><br/>';
             });
@@ -119,25 +126,13 @@ function getList(page) {
     });
 }
 
-function getAdd() {
-    $('#add_nama_tugas').val('');
-    $('#add_nama_materi').val('');
-    $('#add_isi').val('');
-    $('#add_tugas_mulai').val('');
-    $('#add_tugas_selesai').val('');
-    $('#add_tugas_durasi').val('');
-    $('#add_file_tugas').val('');
-    
-    return false;
-
-}
 
 function clear_iframe() {
     $('#target_submit').val(null);
 }
 
 function clear_form() {
-    $('input-tugas').val(null);
+    $('.modal-add-tugas').val("");
 }
 
 function AddDataTugas() {
@@ -172,10 +167,6 @@ function open_tugas_edit(id_tugas, nama_tugas, id_materi, isi, tugas_mulai, tuga
     $('#edit_file_tugas').val(file);
 }
 
-function open_tugas_hapus(id_tugas, nama_tugas){
-    $('#hapus_id_tugas').val(id_tugas);
-    $('#hapus_nama_tugas').html(nama_tugas);
-}
 
 function deleteData(id_tugas) {
 
@@ -194,6 +185,7 @@ function deleteData(id_tugas) {
             url: 'tugas_delete',
             dataType: "JSON",
             success: function(data) {
+                alert(data.sukses);
                 getList();
                 return false;
             }
@@ -204,3 +196,35 @@ function deleteData(id_tugas) {
     }
 
 }
+
+function refreshTugas() {
+
+    $('#add_nama_tugas').val('');
+    $('#add_nama_materi').val('');
+    $('#add_isi').val('');
+    $('#add_tugas_mulai').val('');
+    $('#add_tugas_selesai').val('');
+    $('#add_tugas_durasi').val('');
+    $('#add_file_tugas').val('');
+
+}
+
+function TugasBatal() {
+
+    var form_data = {
+        id_tugas     : $('#id_tugas').val(),
+        _token  : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'tugas_batal',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            alert(data.pesan);
+            refreshTugas();
+            return false;
+        }
+    });
+    }

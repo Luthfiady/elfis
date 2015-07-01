@@ -44,3 +44,32 @@ function jawaban_getList(page) {
     });
     
 }
+
+function deleteData(id_jawaban_tugas) {
+
+    var konfirmasi = confirm($('#btn_delete'+id_jawaban_tugas).data('delete'));
+    var form_data = {
+            id_jawaban_tugas : id_jawaban_tugas,
+            _token   : CSRF_TOKEN
+        }
+
+    if(konfirmasi == true) {
+
+        $.ajax({
+            //async: "false",
+            type: 'POST',
+            data: form_data,
+            url: 'jawaban_delete',
+            dataType: "JSON",
+            success: function(data) {
+                alert(data.sukses);
+                jawaban_getList();
+                return false;
+            }
+        });
+
+    } else {
+        return false;
+    }
+
+}

@@ -6,7 +6,7 @@
 @stop
 
 @section('bread_admin')
-Menggambar Gunung
+{{ $data_tugas['nama_tugas'] }}
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@ Menggambar Gunung
 
 		<div class="col-md-12">
 		
-			<div class="panel panel-success">
+			<div class="panel panel-default">
     			<div class="panel-heading">
 			        <span class="panel-title">Detail Tugas</span>
 			        <div class="btn-group pull-right">
@@ -36,7 +36,7 @@ Menggambar Gunung
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="success">
+							<tr>
 								<td class="kolom-kiri">
 									<div class="form-group">
 										<p class="col-sm-2">Materi</p>

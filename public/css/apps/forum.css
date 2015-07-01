@@ -41,6 +41,20 @@ a.rating:hover, a.rating:active, a.rating:link {
 }
 
 
+a.tabs_komentar, a.tabs_komentar:visited {
+	text-decoration: none;
+	color: black;
+	font-family: sans-serif;
+	background-color: none;
+}
+
+a.tabs_komentar:hover, a.tabs_komentar:active, a.tabs_komentar:link {
+	text-decoration: none;
+	color: #219DD3;
+	font-family: sans-serif;
+}
+
+
 /* ----------------------------------------- Tabel -----------------------------------------*/
 
 tr.forum-kepala {

@@ -24,9 +24,40 @@ $(document).ready(function(){
         }
     })
 
+    $('#submit_edit_forum').click(function(){
+        isi_forum = $('#edit_isi_forum').val();
+
+        if (isi_forum != "") {
+            EditForum();
+            return false;
+        }
+    })
+
+    $('#tab_older').click(function(){
+        $('#value_tab').val('tab_older');
+        $('#older').addClass('active').siblings().removeClass('active');
+        getData();
+        return false;
+    })
+
+    $('#tab_newer').click(function(){
+        $('#value_tab').val('tab_newer');
+        $('#newer li').addClass('active').siblings().removeClass('active');
+        getData();
+        return false;
+    })
+
+    $('#tab_votes').click(function(){
+        $('#value_tab').val('tab_votes');
+        $('#votes li').addClass('active').siblings().removeClass('active');
+        getData();
+        return false;
+    })
+
 });
 
 $(document).on("click", ".pg a", function(){
+    $(".dataChild").html('<img style="margin-top:50px; margin-bottom:60px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     getData(this.id);
     current_page = this.id;
     return false;
@@ -35,8 +66,8 @@ $(document).on("click", ".pg a", function(){
 
 function getData(page) {
 
-	$(".dataChild").html('<img style="margin-top:50px; margin-bottom:60px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
 	var form_data = {
+        value_tab   : $('#value_tab').val(),
 		id_forum	: $('#id_forum').val(),
 		paging      : page,
 		_token      : CSRF_TOKEN
@@ -60,52 +91,6 @@ function getData(page) {
 }
 
 
-function getHeadForum() {
-
-    var form_data = {
-        id_forum    : $('#id_forum').val(),
-        _token      : CSRF_TOKEN
-    }
-
-    $.ajax({
-        url: '../../refresh_forum',
-        type: 'GET',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            $(".dataHead").html(data.result_head);
-
-            return false;
-        }
-    });
-
-}
-
-
-function getKomentar(data) {
-
-    var form_data = {
-        id_forum    : $('#id_forum').val(),
-        id_komentar : data,
-        _token      : CSRF_TOKEN
-    }
-
-    $.ajax({
-        url: '../../refresh_komentar',
-        type: 'GET',
-        data: form_data,
-        dataType: "JSON",
-        success: function(data) {
-            $(".dataChild").html(data.result);
-            $(".pg ul").html(data.paging);
-
-            return false;
-        }
-    });
-
-}
-
-
 function AddStarForum(id_forum) {
 
 	var form_data = {
@@ -120,7 +105,30 @@ function AddStarForum(id_forum) {
         dataType: "JSON",
         success: function(data) {
             // alert(data.sukses);
-            getHeadForum();
+            getData();
+            return false;
+        }
+    });
+
+}
+
+
+function RemoveStarForum(id_forum, id_user) {
+
+    var form_data = {
+        id_forum    : id_forum,
+        id_user     : id_user,
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: '../../forum_remove_star',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            // alert(data.sukses);
+            getData();
             return false;
         }
     });
@@ -141,7 +149,30 @@ function AddStarKomentar(id_komentar) {
         data: form_data,
         dataType: "JSON",
         success: function(data) {
-            getKomentar(data.data);
+            getData();
+            return false;
+        }
+    });
+
+}
+
+
+function RemoveStarKomentar(id_komentar, id_user) {
+
+    var form_data = {
+        id_komentar : id_komentar,
+        id_user     : id_user,
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: '../../komentar_remove_star',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            // alert(data.sukses);
+            getData();
             return false;
         }
     });
@@ -239,6 +270,53 @@ function EditKomentar() {
         success: function(data) {
             alert(data.sukses);
             getData();
+            document.getElementById('close_modal').click();
+        }
+    });
+
+}
+
+
+function getEditForum(id_forum) {
+
+    var form_data = {
+        id_forum : id_forum,
+        _token   : CSRF_TOKEN
+    }
+
+    $.ajax({
+        type: 'POST',
+        data: form_data,
+        url: '../../forum_isi_get_edit',
+        dataType: "JSON",
+        success: function(data) {
+            
+            $('#id_forum').val(data.data.id_forum);
+            $('#edit_isi_forum').val(data.data.isi);
+
+            return false;
+        }
+    });
+}
+
+
+function EditForum() {
+
+    var form_data = {
+        id_forum        : $('#id_forum').val(),
+        isi_forum       : $('#edit_isi_forum').val(),
+        _token          : CSRF_TOKEN
+    }
+
+    $.ajax({
+        type: 'POST',
+        data: form_data,
+        url: '../../forum_isi_edit',
+        dataType: "JSON",
+        success: function(data) {
+            alert(data.sukses);
+            getData();
+            document.getElementById('close_modal_forum').click();
         }
     });
 
