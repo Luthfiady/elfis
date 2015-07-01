@@ -21,7 +21,7 @@ class Siswa_KuisController extends Controller {
 			return redirect('login');
 		}
 	}
-
+ 
 
 	public function kuis_get_list() {
 		if(session('id_group') == 1) {
