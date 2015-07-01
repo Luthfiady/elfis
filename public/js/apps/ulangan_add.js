@@ -81,7 +81,6 @@ $(document).ready(function(){
 
 // ---------------------------------------------------------- Ulangan Add ----------------------------------------------------------
 
-
 $(document).on("click", ".pg a", function(){
     soal_list(this.id);
     current_page = this.id;

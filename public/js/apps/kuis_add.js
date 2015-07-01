@@ -218,7 +218,7 @@ function AddSoal() {
         dataType: "JSON",
         success: function(data) {
             alert(data.pesan);
-            soal_list();
+            soal_list(current_page);
             refreshSoal();
         }
     });
@@ -243,7 +243,7 @@ function deleteSoal(id) {
 	        data: form_data,
 	        dataType: "JSON",
 	        success: function(data) {
-	            soal_list();
+	            soal_list(current_page);
 
 	            return false;
 	        }
@@ -306,7 +306,7 @@ function EditSoal() {
         dataType: "JSON",
         success: function(data) {
         	alert(data.pesan);
-            soal_list();
+            soal_list(current_page);
             document.getElementById('close_modal').click();
         }
     });

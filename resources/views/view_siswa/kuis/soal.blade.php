@@ -1,135 +1,53 @@
 @extends('templates/siswa_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/kuis_siswa.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/kuis_siswa.css') }}">
 
 @section('add_bread_siswa')
 <li><a href="{{ URL::to('siswa/kuis') }}">Kuis</a></li>
 @stop
 
 @section('bread_siswa')
-Perancangan Sistem Informasi
+{{$nama_group_kuis}}
 @stop
 
 @section('content')
 
 <div class="main-content">
 
+	<input type="hidden" id="id" value="{{$id}}" />
+	<input type="hidden" id="id_group_kuis" value="" />
+	<input type="hidden" id="session_durasi" value="{{$session_durasi}}" />
+
 	<div class="row row-judul">
 		<div class="col-md-6">
-			<h4 class="judul-soal"> Perancangan Sistem Informasi </h4>
+			<h4 class="judul-soal"> {{$nama_group_kuis}} </h4>
 		</div>
 
-		<div class="col-md-6">
-			<h3 class="durasi"> 00:04:09 / 00:20:00 </h3>
+		<div class="col-md-6 rata-kanan-text">
+			<div class="col-xs-7"></div>
+			<h3 class="durasi countdown-durasi col-xs-2"></h3><h3 class="durasi-a col-xs-1">|</h3><h3 class="durasi durasi-soal col-xs-2"></h3>
+		</div>
+	</div>
+	<form class="form form-horizontal" id="form_soal" role="form" data-toggle="validator" method="post">
+	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<div class="row row-table-data-soal dataNilai">
+		<div class="col-md-12 table-responsive dataSoal">
+			
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row row-paging-table">
 		<div class="col-md-12">
-			
-			<table class="table table-soal">
-				<thead class="thead-soal">
-					<tr>
-						<th width="30px">1.</th>
-						<th>Huruf apa saja yang terdapat pada kata sistem, kecuali?</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<td></td>
-						<td>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="A">
-									Huruf S
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="B">
-									Huruf I
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="C">
-									Huruf T
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="D">
-									Huruf O
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="E">
-									Huruf M
-								</label>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-
-				<thead class="thead-soal">
-					<tr>
-						<th width="30px">2.</th>
-						<th>Suku kata apa saja yang terdapat pada kata informasi, kecuali?</th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<td></td>
-						<td>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="A">
-									Huruf IN
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="B">
-									Huruf SIS
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="C">
-									Huruf MA
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="D">
-									Huruf FOR
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="" id="" value="E">
-									Huruf M
-								</label>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-		<div class="col-md-12">
-			<nav>
+			<nav class="pg">
 				<ul class="pager">
-					<li class="previous"><a class="paging" href="#"><span aria-hidden="true">&larr;</span> Sebelumnya</a></li>
-					<li class="next"><a class="paging" href="{{URL::to('siswa/kuis_nilai')}}">Selanjutnya <span aria-hidden="true">&rarr;</span></a></li>
+					
 				</ul>
 			</nav>
 		</div>
 	</div>
-
+	</form>
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/siswa_jawab_kuis.js')}}"></script>
 
 @stop

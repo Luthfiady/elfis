@@ -43,7 +43,7 @@ class Admin_UlanganController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi and (ulangan_mulai<=ADDDATE("'.date('Y-m-d').'",7) and ulangan_selesai>="'.date('Y-m-d').'") '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -58,7 +58,7 @@ class Admin_UlanganController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_ulangan = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi and (ulangan_mulai<=ADDDATE("'.date('Y-m-d').'",7) and ulangan_selesai>="'.date('Y-m-d').'") '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_ulangan = DB::select('select a.*,b.nama_materi from group_ulangan a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.ulangan_mulai ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 

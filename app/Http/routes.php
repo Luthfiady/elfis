@@ -157,11 +157,18 @@ Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 
 
 // Route Siswa
-Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
-Route::get('siswa/kuis_soal', 'Siswa_KuisController@kuis_soal');
-Route::get('siswa/kuis_nilai', 'Siswa_KuisController@kuis_nilai');
 
-Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
+	// ----------------------------- Index -----------------------------
+	Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
+	Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
+
+	// ----------------------------- Jawab Soal -----------------------------
+	Route::get('siswa/kuis/{nama_group_kuis}/{id}', 'Siswa_KuisController@kuis_soal');
+	Route::get('siswa/kuis_get_id', 'Siswa_KuisController@kuis_get_id');
+	Route::get('siswa/kuis_get_soal', 'Siswa_KuisController@kuis_get_soal');
+	Route::post('siswa/AddParamJawaban', 'Siswa_KuisController@AddParamJawaban');
+	Route::get('siswa/kuis_get_nilai', 'Siswa_KuisController@kuis_get_nilai');
+
 
 
 

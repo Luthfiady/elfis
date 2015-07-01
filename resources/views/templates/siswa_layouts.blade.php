@@ -20,6 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-theme.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}">
+		<!-- <link rel="stylesheet" type="text/css" href="{{ asset('public/css/jquery.countdown.css') }}"> -->
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/jquery-ui-1.11.3/jquery-ui.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/MyStyle.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/css/nivo-slider.css') }}">
@@ -38,6 +39,8 @@
 		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('public/js/bootstrap-datetimepicker.js') }}"></script>
 		<script src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+		<script src="{{ asset('public/js/jquery.plugin.js') }}"></script>
+		<script src="{{ asset('public/js/jquery.countdown.js') }}"></script>
 		<script src="{{ asset('public/js/validator.js') }}"></script>
 		<script src="{{ asset('public/js/jquery.nivo.slider.js') }}"></script>
 		<script>
