@@ -43,7 +43,7 @@ class Admin_KuisController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi,c.nama from group_kuis a join materi b join guru c where a.id_materi=b.id_materi and b.nik=c.nik '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -58,7 +58,7 @@ class Admin_KuisController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.kuis_mulai ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_kuis = DB::select('select a.*,b.nama_materi,c.nama from group_kuis a join materi b join guru c where a.id_materi=b.id_materi and b.nik=c.nik '.$sql_ext.' ORDER BY a.kuis_mulai ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -89,6 +89,7 @@ class Admin_KuisController extends Controller {
 			$result .= '<th>No</th>';
 			$result .= '<th>Nama Kuis</th>';
 			$result .= '<th>Nama Materi</th>';
+			$result .= '<th>Nama Guru</th>';
 			$result .= '<th>Tanggal Mulai</th>';
 			$result .= '<th>Tanggal Selesai</th>';
 			$result .= '<th>Durasi Kuis</th>';
@@ -100,7 +101,7 @@ class Admin_KuisController extends Controller {
 			if ($data_kuis != true) {
 
 				$result .= '<tr>';
-				$result .= '<td colspan="7">No Data In Database</td>';
+				$result .= '<td colspan="8">No Data In Database</td>';
 				$result .= '</tr>';
 				$result .= '</tbody>';
 				$result .= '</table>';
@@ -118,6 +119,7 @@ class Admin_KuisController extends Controller {
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
 					$result .= '<td class="kolom-kiri">'.$list['nama_group_kuis'].'</td>';
 					$result .= '<td class="kolom-kiri">'.$list['nama_materi'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama'].'</td>';
 					$result .= '<td class="kolom-kanan">'.$mulai.'</td>';
 					$result .= '<td class="kolom-kanan">'.$selesai.'</td>';
 					$result .= '<td class="kolom-kanan">'.$list['durasi'].'</td>';
