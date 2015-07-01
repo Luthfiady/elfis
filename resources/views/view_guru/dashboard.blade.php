@@ -21,51 +21,6 @@ Dashboard
 		</div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="core-box" style="border-right: 2px solid #DDDDDD;">
-                <div class="heading">
-                    <i class="clip-list-3 circle-icon circle-green"></i>
-                    <h3>Tugas</h3>
-                </div>
-                <div class="content">
-                    Tidak ada tugas terbaru. aaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbb ccccccccccccccccccc ddddddddddddddddddd eeeeeeeeeeeeeeeeeee
-                </div>
-                <a class="view-more" href="">
-                    View More <i class="clip-arrow-right-2"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="core-box" style="border-right: 2px solid #DDDDDD;">
-                <div class="heading">
-                    <i class="clip-pencil-3 circle-icon circle-teal"></i>
-                    <h3>Ujian</h3>
-                </div>
-                <div class="content">
-                	Tidak ada ujian hari ini. aaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbb ccccccccccccccccccc ddddddddddddddddddd eeeeeeeeeeeeeeeeeee
-                </div>
-                <a class="view-more" href="">
-                    View More <i class="clip-arrow-right-2"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="core-box">
-                <div class="heading">
-                    <i class="clip-map circle-icon circle-bricky"></i>
-                    <h3>Materi</h3>
-                </div>
-                <div class="content">
-                    Tidak ada materi terbaru. aaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbb ccccccccccccccccccc ddddddddddddddddddd eeeeeeeeeeeeeeeeeee
-                </div>
-                <a class="view-more" href="">
-                    View More <i class="clip-arrow-right-2"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 

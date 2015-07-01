@@ -20,7 +20,7 @@ Dashboard
             </div>
 		</div>
     </div>
-
+<!-- 
     <div class="row">
         <div class="col-sm-4">
             <div class="core-box" style="border-right: 2px solid #DDDDDD;">
@@ -65,7 +65,7 @@ Dashboard
             </div>
         </div>
     </div>
-
+ -->
 </div>
 
 

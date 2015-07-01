@@ -23,6 +23,12 @@ Nilai
 						<option value=""> Materi </option>
 						<option value="modul_code"> Bahasa Indonesia </option>
 	        			<option value="modul_name"> Perkabelan </option>
+					</select>
+
+					<select class="form-control inform-height" id="search_by">
+						<option value=""> Nilai </option>
+						<option value="modul_code"> Kuis </option>
+	        			<option value="modul_name"> Ulangan </option>
 					</select>	
 					
 				</div>
