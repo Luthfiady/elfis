@@ -6,7 +6,7 @@
 @stop
 
 @section('bread_admin')
-Detail Tugas
+{{ $data_tugas['nama_tugas'] }}
 @stop
 
 @section('content')

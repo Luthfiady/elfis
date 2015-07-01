@@ -19,7 +19,7 @@
               <div class="col-sm-1"></div>
               <label class="col-sm-2 ">Nama Tugas</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control inform-height input-tugas" name="add_nama_tugas" id="add_nama_tugas" placeholder="Nama Tugas" required>
+                <input type="text" class="form-control inform-height modal-add-tugas" name="add_nama_tugas" id="add_nama_tugas" placeholder="Nama Tugas" required>
               </div>
               <div class="col-sm-1"></div>
 
@@ -31,7 +31,7 @@
               <div class="col-sm-1"></div>
               <label class="col-sm-2 ">Nama Materi</label>
               <div class="col-sm-8">
-                <select class="form-control input-tugas" name="add_nama_materi" id="add_nama_materi" required>
+                <select class="form-control modal-add-tugas" name="add_nama_materi" id="add_nama_materi" required>
 
                 </select>
               </div>
@@ -45,7 +45,7 @@
               <div class="col-sm-1"></div>
               <label class="col-sm-2 ">Isi</label>
               <div class="col-sm-8">
-                <textarea rows="3" class="form-control inform-height input-tugas" name="add_isi" id="add_isi" placeholder="Uraian Tugas" required></textarea>
+                <textarea rows="3" class="form-control inform-height modal-add-tugas" name="add_isi" id="add_isi" placeholder="Uraian Tugas" required></textarea>
               </div>
               <div class="col-sm-1"></div>
 
@@ -58,7 +58,7 @@
               <label class="col-sm-2 ">Tugas Mulai</label>
               <div class="col-sm-8">
                 <div class="input-group date" id="datepicker_start">
-                  <input type="text" name="add_tugas_mulai" id="add_tugas_mulai" class="form-control inform-height input-tugas" placeholder="Tanggal Mulai" required>
+                  <input type="text" name="add_tugas_mulai" id="add_tugas_mulai" class="form-control inform-height modal-add-tugas" placeholder="Tanggal Mulai" required>
                     <span class="input-group-addon">
                       <i class="glyphicon glyphicon-calendar"></i>
                     </span>
@@ -75,7 +75,7 @@
               <label class="col-sm-2 ">Tugas Selesai</label>
               <div class="col-sm-8">
                 <div class="input-group date" id="datepicker_end">
-                  <input type="text" name="add_tugas_selesai" id="add_tugas_selesai" class="form-control inform-height input-tugas" placeholder="Tanggal Selesai" required>
+                  <input type="text" name="add_tugas_selesai" id="add_tugas_selesai" class="form-control inform-height modal-add-tugas" placeholder="Tanggal Selesai" required>
                   <span class="input-group-addon">
                     <i class="glyphicon glyphicon-calendar"></i>
                   </span>
@@ -92,7 +92,7 @@
               <label class="col-sm-2 ">Durasi Tugas</label>
               <div class="col-sm-8">
                 <div class="input-group date" id="time_durasi">
-                  <input type="text" name="add_tugas_durasi" id="add_tugas_durasi" class="form-control inform-height input-tugas" placeholder="Durasi Tugas" required>
+                  <input type="text" name="add_tugas_durasi" id="add_tugas_durasi" class="form-control inform-height modal-add-tugas" placeholder="Durasi Tugas" required>
                   <span class="input-group-addon">
                     <i class="glyphicon glyphicon-time"></i>
                   </span>
@@ -123,7 +123,7 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+            <a type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</a>
             <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
   	        <button type="submit" class="btn btn-primary btn-sm" onclick="AddDataTugas()" value="save">Simpan</button>
             <iframe id="target_submit" name="target_submit" style="width:100px; display:none; height:100px; position:relative;"></iframe>

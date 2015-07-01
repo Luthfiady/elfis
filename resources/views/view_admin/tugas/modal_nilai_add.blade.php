@@ -10,15 +10,15 @@
         <p class="modal-title">Tambah Nilai</p>
       </div>
 
-      <form method="post" target="target_submit" class="form form-horizontal" enctype="multipart/form-data" action="{{ URL::to('admin/nilai_tugas') }}" data-toggle="validator">
-      <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+      
       <div class="modal-body">
+      <form id="add_nilai" class="form form-horizontal" role="form" data-toggle="validator">
 
           <div class="form-group">
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">Nama Tugas</label>
             <div class="col-sm-8">
-              <select class="form-control input-nilai-tugas" id="add_nama_tugas" name="add_nama_tugas" required>
+              <select class="form-control" id="add_nama_tugas" name="add_nama_tugas" required>
               </select>
             </div>
             <div class="col-sm-1"></div>
@@ -31,7 +31,7 @@
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">NIS</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control inform-height input-nilai-tugas" id="add_nis" name="add_nis" placeholder="Nomer Induk Siswa" required>
+              <input type="text" class="form-control inform-height" id="add_nis" name="add_nis" placeholder="Nomer Induk Siswa" required>
             </div>
             <div class="col-sm-1"></div>
 
@@ -43,7 +43,7 @@
             <div class="col-sm-1"></div>
             <label class="col-sm-2 ">Nilai Tugas</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control inform-height input-nilai-tugas" id="add_nilaiTugas" name="add_nilaiTugas" placeholder="Nilai Tugas" required>
+              <input type="text" class="form-control inform-height" id="add_nilaiTugas" name="add_nilaiTugas" placeholder="Nilai Tugas" required>
             </div>
             <div class="col-sm-1"></div>
 
@@ -52,11 +52,10 @@
           </div>
 
       <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+            <a type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</a>
             <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-            <button type="submit" class="btn btn-primary btn-sm" onclick="AddDataNilaiTugas()" value="save">Simpan</button>
-            <iframe id="target_submit" name="target_submit" style="width:100px; display:none; height:100px; position:relative;"></iframe>
-               
+            <button type="submit" class="btn btn-primary btn-sm" id="submit_add_nilai" value="save">Simpan</button>
+              
         </div>
 
         </form>

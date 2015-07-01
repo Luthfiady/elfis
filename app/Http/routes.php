@@ -95,6 +95,7 @@ Route::post('admin/tugas_edit', 'Admin_TugasController@tugas_edit');
 Route::post('admin/tugas_delete', 'Admin_TugasController@tugas_delete');
 Route::get('admin/tugas_detail', 'Admin_TugasController@tugas_detail');
 Route::get('admin/tugas_list', 'Admin_TugasController@tugas_get_list');
+Route::post('admin/tugas_batal', 'Admin_TugasController@tugas_batal');
 
 Route::get('admin/jawaban_tugas', 'Admin_TugasController@jawaban_tugas');
 Route::get('admin/jawaban_list', 'Admin_TugasController@jawaban_get_list');
@@ -182,10 +183,16 @@ Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 
 
 // Route Siswa
-Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
-Route::get('siswa/kuis_soal', 'Siswa_KuisController@kuis_soal');
-Route::get('siswa/kuis_nilai', 'Siswa_KuisController@kuis_nilai');
-Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
+	// ----------------------------- Index -----------------------------
+	Route::get('siswa/kuis', 'Siswa_KuisController@kuis');
+	Route::get('siswa/kuis_list', 'Siswa_KuisController@kuis_get_list');
+
+	// ----------------------------- Jawab Soal -----------------------------
+	Route::get('siswa/kuis/{nama_group_kuis}/{id}', 'Siswa_KuisController@kuis_soal');
+	Route::get('siswa/kuis_get_id', 'Siswa_KuisController@kuis_get_id');
+	Route::get('siswa/kuis_get_soal', 'Siswa_KuisController@kuis_get_soal');
+	Route::post('siswa/AddParamJawaban', 'Siswa_KuisController@AddParamJawaban');
+	Route::get('siswa/kuis_get_nilai', 'Siswa_KuisController@kuis_get_nilai');
 
 
 
@@ -291,7 +298,7 @@ Route::get('siswa/forum', 'SiswaController@forum');
 /////////////////////////////////////////////////  Route Nilai  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/nilai', 'AdminController@nilai');
+Route::get('admin/nilai', 'Admin_NilaiController@nilai');
 
 // Route Guru
 Route::get('guru/nilai', 'GuruController@nilai');

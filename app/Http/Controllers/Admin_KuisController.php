@@ -43,7 +43,7 @@ class Admin_KuisController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi and (kuis_mulai<=ADDDATE("'.date('Y-m-d').'",7) and kuis_selesai>="'.date('Y-m-d').'") '.$sql_ext);
+			$data_rows = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -58,7 +58,7 @@ class Admin_KuisController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi and (kuis_mulai<=ADDDATE("'.date('Y-m-d').'",7) and kuis_selesai>="'.date('Y-m-d').'") '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_kuis = DB::select('select a.*,b.nama_materi from group_kuis a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY a.kuis_mulai ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -224,7 +224,7 @@ class Admin_KuisController extends Controller {
 			if($total_rows < 1) {
 	            $total_rows = 1;
 	        }
-	        $per_page = '10';
+	        $per_page = '2';
 	        $total_page = ceil($total_rows / $per_page);
 
 	        if($nopage > $total_page) {

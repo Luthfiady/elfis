@@ -58,7 +58,7 @@ class Guru_KuisController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_kuis = DB::select('select a.*,b.nama_materi,b.nik from group_kuis a join materi b where a.id_materi=b.id_materi and (kuis_mulai<=ADDDATE("'.date('Y-m-d').'",7) and kuis_selesai>="'.date('Y-m-d').'") and nik="'.session('id_user').'" '.$sql_ext.' ORDER BY a.id ASC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_kuis = DB::select('select a.*,b.nama_materi,b.nik from group_kuis a join materi b where a.id_materi=b.id_materi and (kuis_mulai<=ADDDATE("'.date('Y-m-d').'",7) and kuis_selesai>="'.date('Y-m-d').'") and nik="'.session('id_user').'" '.$sql_ext.' ORDER BY a.kuis_mulai ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 

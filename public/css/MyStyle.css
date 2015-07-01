@@ -56,6 +56,10 @@ body {
 	border-top: solid 1px lightgray;
 	text-align: center;
 	margin-bottom: 20px;
+
+  clear: both;
+  position: relative;
+
 }
 
 .Row-Main-Header {
@@ -65,7 +69,6 @@ body {
 }
 
 .Row-Main-Body {
-	max-height: 100%;
 	max-width: 80%;
 	text-align: left;
 	padding-top: 50px;
@@ -328,7 +331,6 @@ input[readonly] {
 
 .row-paging-table {
   text-align: center;
-  height: 50px;
 }
 
 

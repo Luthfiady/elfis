@@ -1,0 +1,6 @@
+- Buka web yify torrent
+- Cari filmnya yang mau dicari
+- Download torrent file
+- Tapi liat seedernya banyak atau engga, kalo banyak downloadnya cepet
+- Setelah didownload buka torrentnya
+- Buka file (add torrent file)

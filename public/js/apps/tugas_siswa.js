@@ -84,7 +84,7 @@ function clear_iframe() {
 }
 
 function clear_form() {
-    $('input-jawaban').val(null);
+    $('.modal-add-jawaban').val("");
 }
 
 function AddDataJawaban() {

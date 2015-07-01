@@ -30,7 +30,7 @@ Tugas
 
 				&nbsp 
 
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_tugas"> 
+				<a href="#" id="add_button" class="btn btn-sm btn-primary" onclick="clear_form()" data-toggle="modal" data-target="#add_tugas"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
 
 			</form>

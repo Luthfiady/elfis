@@ -62,6 +62,7 @@ function deleteData(id_jawaban_tugas) {
             url: 'jawaban_delete',
             dataType: "JSON",
             success: function(data) {
+                alert(data.sukses);
                 jawaban_getList();
                 return false;
             }

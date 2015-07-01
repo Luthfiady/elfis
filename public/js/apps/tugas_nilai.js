@@ -6,8 +6,20 @@ $(document).ready(function(){
 
     getTugas();
 
-
 });
+
+ $('#submit_add_nilai').click(function(){
+
+        nama_tugas    = $('#add_nama_tugas').val();
+        nis           = $('#add_nis').val();
+        nilai         = $('#add_nilaiTugas').val();
+
+        if (nama_tugas && nis && nilai != null) {
+            AddData();
+            return false;
+        }
+
+    })
 
 $(document).on("click", ".pg a", function(){
     getList(this.id);
@@ -29,7 +41,7 @@ function getTugas() {
         success: function(data) {
 
             option_tugas = '';
-            option_tugas += '<option value="0"> Nama Tugas </option><br/>';
+            option_tugas += '<option value=""> Nama Tugas </option><br/>';
             $.each(data.data, function(i, item) {
             option_tugas += '<option value="' + data.data[i].id_tugas + '">' + data.data[i].nama_tugas + '</option><br/>';
             });
@@ -51,31 +63,25 @@ function getAdd() {
 
 }
 
-function clear_iframe() {
-    $('#target_submit').val(null);
-}
+function AddData() {
 
-function clear_form() {
-    $('input-nilai-tugas').val(null);
-}
+    var form_data = {
+        add_nama_tugas    : $('#add_nama_tugas').val(),
+        add_nis           : $('#add_nis').val(),
+        add_nilaiTugas    : $('#add_nilaiTugas').val(),
+        _token          : CSRF_TOKEN
+    }
 
-function AddDataNilaiTugas() {
-
-    setTimeout(function() {
-        result = $('#target_submit').contents().find('body').html(); // Nama Iframe
-        if(result == '') {
-            AddDataNilaiTugas();
+    $.ajax({
+        // async: "false",
+        url: 'nilai_tugas',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            alert(data.sukses);
+            getAdd();
         }
-        else if(result === undefined) {
-            AddDataNilaiTugas();
-        }
-        else {
-            alert(result);
-            clear_iframe();
-            clear_form();
-            getList();
-        }
-    }, 1);
-
+    });
 
 }
