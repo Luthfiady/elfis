@@ -1,7 +1,8 @@
 @extends('templates/siswa_layouts')
 
+
 @section('bread_siswa')
-Ujian
+Ulangan
 @stop
 
 @section('content')
@@ -15,10 +16,11 @@ Ujian
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="modul_code"> Modul Code </option>
-	        			<option value="modul_name"> Modul Name </option>
+						<option value="nama_group_ulangan"> Nama Ulangan </option>
+	        			<option value="b.nama_materi"> Nama Materi </option>
+	        			<option value="c.nama"> Nama Guru </option>
 					</select>	
-				</div>
+				</div> 
 
 				<div class="form-group">
 					<input type="text" id="search_input" name="search_input" class="form-control inform-height" placeholder="Cari">
@@ -27,77 +29,27 @@ Ujian
 					</button>
 				</div>
 
-				&nbsp 
-
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
-					<span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
-
 			</form>
 		</div>
 	</div>
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
+		<div class="col-md-12 dataTable table-responsive">
 			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>A</th>
-						<th>B</th>
-						<th>C</th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-					</tr>
-				</tbody>
-			</table>
-
 		</div>
 	</div>
 
 	<div class="row row-paging-table">
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/siswa_ulangan.js')}}"></script>
 
 @stop
