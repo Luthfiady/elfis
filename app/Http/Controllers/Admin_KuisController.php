@@ -334,6 +334,9 @@ class Admin_KuisController extends Controller {
 
 			if ($check_data == null) {
 				DB::insert('insert into group_kuis (id_group_kuis) values ("'.$id_kuis.'")');
+
+				$this->json['data'] = 'Data sukses masuk';
+				echo json_encode($this->json);
 			} else {
 				$this->json['data'] = 'Data null';
 				echo json_encode($this->json);

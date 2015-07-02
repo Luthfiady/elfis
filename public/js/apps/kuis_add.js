@@ -24,8 +24,6 @@ $(document).ready(function(){
 
 	$('#simpan_soal').click(function() {
 
-        AddIdKuis();
-
 		soal = $('#soal_kuis').val();
 	    a = $('#jwb_a').val();
 	    b = $('#jwb_b').val();
@@ -34,10 +32,10 @@ $(document).ready(function(){
 	    e = $('#jwb_e').val();
 	    jawaban = $('#jawaban').val();
 
-	    if (soal == "" && a == "" && b == "" && c == "" && d == "" && e == "" && jawaban == "") {
+	    if (soal && a && b && c && d && e && jawaban != "") {
+            AddIdKuisParam();
             return false;
         } else {
-            AddSoal();
             return false;
         }
 
@@ -87,6 +85,7 @@ $(document).on("click", ".pg a", function(){
     current_page = this.id;
     return false;
 });
+
 
 function getMateri() {
 
@@ -159,6 +158,28 @@ function soal_list(page) {
             return false;
         }
     });
+
+}
+
+
+function AddIdKuisParam() {
+
+    var form_data = {
+        id_kuis     : $('#id_kuis').val(),
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'AddIdKuis',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            return false;
+        }
+    });
+
+    AddSoal();
 
 }
 

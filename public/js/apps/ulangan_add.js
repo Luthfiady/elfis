@@ -24,8 +24,6 @@ $(document).ready(function(){
 
 	$('#simpan_soal').click(function() {
 
-        AddIdUlangan();
-
 		soal = $('#soal_ulangan').val();
 	    a = $('#jwb_a').val();
 	    b = $('#jwb_b').val();
@@ -34,10 +32,10 @@ $(document).ready(function(){
 	    e = $('#jwb_e').val();
 	    jawaban = $('#jawaban').val();
 
-	    if (soal == "" && a == "" && b == "" && c == "" && d == "" && e == "" && jawaban == "") {
+	    if (soal && a && b && c && d && e && jawaban != "") {
+            AddIdUlanganParam();
             return false;
 	    } else {
-            AddSoal();
             return false;
         }
 
@@ -158,6 +156,28 @@ function soal_list(page) {
             return false;
         }
     });
+
+}
+
+
+function AddIdUlanganParam() {
+
+    var form_data = {
+        id_ulangan  : $('#id_ulangan').val(),
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'AddIdUlangan',
+        type: 'POST',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+            return false;
+        }
+    });
+
+    AddSoal();
 
 }
 

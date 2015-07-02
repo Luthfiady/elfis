@@ -73,8 +73,7 @@ $(document).on("click", ".pga a", function(){
 
 $(document).on("click", ".pgn a", function(){
     
-    getNilai();
-
+    AddParamJawabanFinal();
     return false;
 });
 
@@ -120,10 +119,24 @@ function AddParamJawaban() {
 }
 
 
+function AddParamJawabanFinal() {
+
+    $.ajax({
+        url: '../../AddParamJawaban',
+        type: 'POST',
+        data: $("#form_soal").serialize(),
+        dataType: "JSON",
+        success: function(data) {
+            return false;
+        }
+    });
+
+    getNilai();
+}
+
+
 function getNilai() {
 
-    AddParamJawaban();
-    
     $(".dataSoal").html('<img style="margin-top:180px;" src="../../../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
         id_group_kuis   : $('#id_group_kuis').val(),

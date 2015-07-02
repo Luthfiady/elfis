@@ -456,7 +456,7 @@ class Siswa_KuisController extends Controller {
 			$id_group_kuis = Input::get('id_group_kuis');
 
 			$soal = DB::select('select * from kuis where id_group_kuis="'.$id_group_kuis.'"');
-			$jawaban = DB::select('select b.jawaban from param_radio a join kuis b where a.id_soal=b.id and a.jawaban=b.jawaban and a.id_group_kuis="'.$id_group_kuis.'" and a.created_by="'.session('id_user').'"');
+			$jawaban = DB::select('select b.jawaban from param_radio a join kuis b where a.id_soal=b.id and a.jawaban=b.jawaban and a.id_group_kuis="'.$id_group_kuis.'" and a.nis="'.session('id_user').'"');
 
 			$jml_soal = count($soal);
 			$jwb_benar = count($jawaban);
