@@ -162,7 +162,7 @@ class Admin_TugasController extends Controller {
 			if ($data_tugas != true) {
 
 				$result .= '<tr>';
-				$result .= '<td colspan="8">No Data In Database</td>';
+				$result .= '<td colspan="8">Tidak Ada Data Tugas dalam Database</td>';
 				$result .= '</tr>';
 				$result .= '</tbody>';
 				$result .= '</table>';

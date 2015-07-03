@@ -21,13 +21,54 @@ class Admin_ProfileController extends Controller {
 
 	public function profile() {
 		if(session('id_group') == 3) {
-			return view('view_admin/setting/profile');
+			return view('view_admin/setting/profile')
+			->with('nik', session('id_user'));
 		}
 		else {
 			return redirect('login');
 		}
 	}
 
+		public function profile_edit() {
+		if(session('id_group') == 3) {
+
+			$nik = Input::get('add_nik');
+			$nama = Input::get('add_nama');
+			$tempat_lahir = Input::get('add_tempat_lahir');
+			$tanggal_lahir = Input::get('add_tgl_lahir');
+			$agama = Input::get('add_agama');
+			$email = Input::get('add_email');
+			$telp = Input::get('add_telp');
+
+			$file_name = "";
+
+			if(Input::hasFile('add_foto')) {
+				$file_name = Input::file('add_foto')->getClientOriginalName();
+				$path = public_path('uploads/file_profile');
+				Input::file('add_foto')->move($path, $file_name);
+			}
+			else {
+				$file_name = Input::get('edit_file_tugas_lama');
+			}
+
+			DB::table('admin')
+			->where('nik', '=', $nik)
+			->update([
+				'nama' => $nama, 
+				'tempat_lahir' => $tempat_lahir, 
+				'tanggal_lahir' => $tanggal_lahir, 
+				'agama' => $agama, 
+				'email' => $email, 
+				'telp' => $telp,
+				'file_name' => $foto,
+			]);
+
+			return 'Profile telah tersimpan';
+			
+		} else {	
+			return redirect('login');
+		}
+	}
 
 
 

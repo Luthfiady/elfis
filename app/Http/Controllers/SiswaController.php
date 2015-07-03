@@ -254,7 +254,7 @@ class SiswaController extends Controller {
 			if ($data_tugas != true) {
 
 				$result .= '<tr>';
-				$result .= '<td colspan="7">No Data In Database</td>';
+				$result .= '<td colspan="7">Tidak Ada Data Tugas dalam Database</td>';
 				$result .= '</tr>';
 				$result .= '</tbody>';
 				$result .= '</table>';

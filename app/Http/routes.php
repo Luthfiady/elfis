@@ -316,6 +316,7 @@ Route::get('siswa/nilai', 'SiswaController@nilai');
 
 // Route Admin 
 Route::get('admin/profile', 'Admin_ProfileController@profile');
+Route::get('admin/profile_edit', 'Admin_ProfileController@profile_edit');
 
 // Route Guru
 Route::get('guru/profile', 'GuruController@profile');
