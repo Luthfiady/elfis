@@ -27,8 +27,8 @@ function EditProfile() {
 
 }
 
-function open_tugas_edit(nik, nama, tempat_lahir, tanggal_lahir, agama, email, telp, foto) {
-    $('#add_nik').val(nik);
+function open_tugas_edit(nis, nama, tempat_lahir, tanggal_lahir, agama, email, telp, foto) {
+    $('#add_nis').val(nik);
     $('#add_nama').val(nama);
     $('#add_tempat_lahir').val(tempat_lahir);
     $('#add_tgl_lahir').val(tanggal_lahir);

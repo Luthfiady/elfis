@@ -46,6 +46,28 @@ class GuruController extends Controller {
 
 	}
 
+	public function getTugas() {
+
+	if(session('id_group') == 2) {
+
+		$get_tugas = DB::select('select DISTINCT * from tugas where nik="'.session('id_user').'" ORDER BY id_tugas DESC');
+
+		$tugas = "";
+		foreach ($get_tugas as $key => $value) {
+			$value = get_object_vars($value);
+			$tugas[] = array(
+                'id_tugas' => $value['id_tugas'],
+                'nama_tugas' => $value['nama_tugas']
+            );
+		}
+		return ['data' => $tugas];
+
+	} else {
+		return redirect('login');
+	}
+
+}
+
 
 // -------------------------------------------------------- MATERI --------------------------------------------------------
 	

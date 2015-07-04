@@ -316,13 +316,15 @@ Route::get('siswa/nilai', 'SiswaController@nilai');
 
 // Route Admin 
 Route::get('admin/profile', 'Admin_ProfileController@profile');
-Route::get('admin/profile_edit', 'Admin_ProfileController@profile_edit');
+Route::post('admin/profile_edit', 'Admin_ProfileController@profile_edit');
 
 // Route Guru
-Route::get('guru/profile', 'GuruController@profile');
+Route::get('guru/profile', 'Guru_ProfileController@profile');
+Route::post('guru/profile_edit', 'Guru_ProfileController@profile_edit');
 
 // Route Siswa
-Route::get('siswa/profile', 'SiswaController@profile');
+Route::get('siswa/profile', 'Siswa_ProfileController@profile');
+Route::post('siswa/profile_edit', 'Siswa_ProfileController@profile_edit');
 
 
 

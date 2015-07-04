@@ -21,8 +21,8 @@ class Admin_ProfileController extends Controller {
 
 	public function profile() {
 		if(session('id_group') == 3) {
-			return view('view_admin/setting/profile')
-			->with('nik', session('id_user'));
+			$data_admin = DB::table('admin')->where('nik', session('id_user'))->select('nama', 'tempat_lahir', 'tanggal_lahir', 'agama', 'email', 'telp', 'foto')->first();
+			return view('view_admin/setting/profile', ['nik' => session('id_user'), 'data_admin' => $data_admin]);
 		}
 		else {
 			return redirect('login');
@@ -40,16 +40,16 @@ class Admin_ProfileController extends Controller {
 			$email = Input::get('add_email');
 			$telp = Input::get('add_telp');
 
-			$file_name = "";
+			$file_name = Input::get('old_foto');
+
 
 			if(Input::hasFile('add_foto')) {
-				$file_name = Input::file('add_foto')->getClientOriginalName();
+				$file_name = $nik . '_' . $nama . '.' . Input::file('add_foto')->getClientOriginalExtension();
 				$path = public_path('uploads/file_profile');
 				Input::file('add_foto')->move($path, $file_name);
 			}
-			else {
-				$file_name = Input::get('edit_file_tugas_lama');
-			}
+
+			$tanggal_lahir = date("Y-m-d", strtotime($tanggal_lahir));
 
 			DB::table('admin')
 			->where('nik', '=', $nik)
@@ -60,7 +60,10 @@ class Admin_ProfileController extends Controller {
 				'agama' => $agama, 
 				'email' => $email, 
 				'telp' => $telp,
-				'file_name' => $foto,
+				'foto' => $file_name,
+				'admin_modified' => date('Y-m-d'),
+				'admin_modified_by' => session('username'),
+				
 			]);
 
 			return 'Profile telah tersimpan';

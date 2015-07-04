@@ -27,51 +27,6 @@ class Guru_TugasController extends Controller {
 	}
 
 
-	public function getMateri() {
-
-		if(session('id_group') == 2) {
-
-			$get_materi = DB::select('select DISTINCT * from materi ORDER BY id_materi DESC');
-
-			$materi = "";
-			foreach ($get_materi as $key => $value) {
-				$value = get_object_vars($value);
-				$materi[] = array(
-                    'id_materi' => $value['id_materi'],
-                    'nama_materi' => $value['nama_materi']
-                );
-			}
-
-			return ['data' => $materi];
-
-		} else {
-			return redirect('login');
-		}
-
-	}
-
-
-	public function getTugas() {
-
-	if(session('id_group') == 2) {
-
-		$get_tugas = DB::select('select DISTINCT * from tugas ORDER BY id_tugas DESC');
-
-		$tugas = "";
-		foreach ($get_tugas as $key => $value) {
-			$value = get_object_vars($value);
-			$tugas[] = array(
-                'id_tugas' => $value['id_tugas'],
-                'nama_tugas' => $value['nama_tugas']
-            );
-		}
-		return ['data' => $tugas];
-
-	} else {
-		return redirect('login');
-	}
-
-}
 
 // -------------------------------------------------------- TUGAS --------------------------------------------------------
 
@@ -103,7 +58,7 @@ class Guru_TugasController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",7) and tugas_selesai>="'.date('Y-m-d').'") and nik="'.session('id_user').'" '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -118,7 +73,7 @@ class Guru_TugasController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",10) and tugas_selesai>="'.date('Y-m-d').'") '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_tugas = DB::select('select a.*, b.id_materi, b.nama_materi, c.id_pelajaran, c.nama_pelajaran from tugas a JOIN materi b JOIN pelajaran c where a.id_materi = b.id_materi and b.id_pelajaran = c.id_pelajaran and (tugas_mulai<=ADDDATE("'.date('Y-m-d').'",10) and tugas_selesai>="'.date('Y-m-d').'") and nik="'.session('id_user').'" '.$sql_ext.' ORDER BY id_tugas DESC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -179,7 +134,7 @@ class Guru_TugasController extends Controller {
 
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
-					$result .= '<td>'.$list['nama_tugas'].'</td>';
+					$result .= '<td class="kolom-kiri">'.$list['nama_tugas'].'</td>';
 					$result .= '<td>'.$list['nama_materi'].'</td>';
 					$result .= '<td>'.$list['nama_pelajaran'].'</td>';
 					$result .= '<td>'.$mulai.'</td>';

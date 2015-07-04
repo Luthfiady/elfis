@@ -21,9 +21,54 @@ class Guru_ProfileController extends Controller {
 
 	public function profile() {
 		if(session('id_group') == 2) {
-			return view('view_guru/setting/profile');
+			$data_guru = DB::table('guru')->where('nik', session('id_user'))->select('nama', 'tempat_lahir', 'tanggal_lahir', 'agama', 'email', 'telp', 'foto')->first();
+			return view('view_guru/setting/profile', ['nik' => session('id_user'), 'data_guru' => $data_guru]);
 		}
 		else {
+			return redirect('login');
+		}
+	}
+
+		public function profile_edit() {
+		if(session('id_group') == 2) {
+
+			$nik = Input::get('add_nik');
+			$nama = Input::get('add_nama');
+			$tempat_lahir = Input::get('add_tempat_lahir');
+			$tanggal_lahir = Input::get('add_tgl_lahir');
+			$agama = Input::get('add_agama');
+			$email = Input::get('add_email');
+			$telp = Input::get('add_telp');
+
+			$file_name = Input::get('old_foto');
+
+
+			if(Input::hasFile('add_foto')) {
+				$file_name = $nik . '_' . $nama . '.' . Input::file('add_foto')->getClientOriginalExtension();
+				$path = public_path('uploads/file_profile');
+				Input::file('add_foto')->move($path, $file_name);
+			}
+
+			$tanggal_lahir = date("Y-m-d", strtotime($tanggal_lahir));
+
+			DB::table('guru')
+			->where('nik', '=', $nik)
+			->update([
+				'nama' => $nama, 
+				'tempat_lahir' => $tempat_lahir, 
+				'tanggal_lahir' => $tanggal_lahir, 
+				'agama' => $agama, 
+				'email' => $email, 
+				'telp' => $telp,
+				'foto' => $file_name,
+				'guru_modified' => date('Y-m-d'),
+				'guru_modified_by' => session('username'),
+				
+			]);
+
+			return 'Profile telah tersimpan';
+			
+		} else {	
 			return redirect('login');
 		}
 	}
