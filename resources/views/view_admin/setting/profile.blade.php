@@ -19,7 +19,7 @@ Profil
 			<legend> <h3 class="legend"> Edit Profil </h3> </legend>
 			<div class="col-sm-3">
 			    <div class="thumbnail" style="height:auto; width:100%;">
-				    <img src="{{ asset ('public/uploads/file_profile')  . '/' . $data_guru->foto }} " style="height:100%; width:100%;">
+				    <img src="{{ asset ('public/uploads/file_profile')  . '/' . $data_admin->foto }} " style="height:100%; width:100%;">
 			    </div>
 			</div>
 			<div class="col-sm-9">
@@ -33,14 +33,14 @@ Profil
 				<div class="form-group">
 					<label class="col-sm-3">Nama</label>
 			        <div class="col-sm-5">
-			        	<input type="text" class="form-control inform-height" id="add_nama" name="add_nama" value="{{ $data_guru->nama }}" placeholder="Nama">
+			        	<input type="text" class="form-control inform-height" id="add_nama" name="add_nama" value="{{ $data_admin->nama }}" placeholder="Nama">
 		            </div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-3">Tempat Lahir</label>
 			        <div class="col-sm-5">
-			        	<input type="text" class="form-control inform-height" id="add_tempat_lahir" name="add_tempat_lahir" value="{{ $data_guru->tempat_lahir }}" placeholder="Tempat Lahir">
+			        	<input type="text" class="form-control inform-height" id="add_tempat_lahir" name="add_tempat_lahir" value="{{ $data_admin->tempat_lahir }}" placeholder="Tempat Lahir">
 		            </div>
 				</div>
 
@@ -48,7 +48,7 @@ Profil
 					<label class="col-sm-3">Tanggal Lahir</label>
 			        <div class="col-sm-5">
 			        	<div class="input-group date" id="datepicker_start">
-		                  <input type="text" name="add_tgl_lahir" id="add_tgl_lahir" value="{{ date("d-m-Y", strtotime($data_guru->tanggal_lahir)) }}" class="form-control inform-height" placeholder="Tanggal Lahir">
+		                  <input type="text" name="add_tgl_lahir" id="add_tgl_lahir" value="{{ date("d-m-Y", strtotime($data_admin->tanggal_lahir)) }}" class="form-control inform-height" placeholder="Tanggal Lahir">
 		                    <span class="input-group-addon">
 		                      <i class="glyphicon glyphicon-calendar"></i>
 		                    </span>
@@ -59,23 +59,23 @@ Profil
 				<div class="form-group">
 					<label class="col-sm-3">Agama</label>
 			        <div class="col-sm-5">
-			        	<input type="text" class="form-control inform-height" id="add_agama" name="add_agama" value="{{ $data_guru->agama }}" placeholder="Agama">
+			        	<input type="text" class="form-control inform-height" id="add_agama" name="add_agama" value="{{ $data_admin->agama }}" placeholder="Agama">
 		            </div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-3">Email</label>
 			        <div class="col-sm-5">
-			        	<input type="email" class="form-control inform-height" id="add_email" name="add_email" value="{{ $data_guru->email }}" placeholder="nama@email.com">
+			        	<input type="email" class="form-control inform-height" id="add_email" name="add_email" value="{{ $data_admin->email }}" placeholder="nama@email.com">
 		            </div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-sm-3">No Telepon / HP</label>
 			        <div class="col-sm-5">
-			        	<input type="text" class="form-control inform-height" id="add_telp" name="add_telp" value="{{ $data_guru->telp }}" placeholder="081xxxxxxxxx">
+			        	<input type="text" class="form-control inform-height" id="add_telp" name="add_telp" value="{{ $data_admin->telp }}" placeholder="081xxxxxxxxx">
 		            </div>
-		            <input type="hidden" name="old_foto" value="{{ $data_guru->foto }}" >
+		            <input type="hidden" name="old_foto" value="{{ $data_admin->foto }}" >
 
 				</div>
 
