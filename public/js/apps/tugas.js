@@ -153,8 +153,6 @@ function AddDataTugas() {
             getList();
         }
     }, 1);
-
-
 }
 
 function open_tugas_edit(id_tugas, nama_tugas, id_materi, isi, tugas_mulai, tugas_selesai, durasi, file) {
