@@ -13,7 +13,7 @@
 
 <div class="main-content">
 
-	<div class="row"> <!-- Header Forum -->
+	<div class="row"> <!-- Header Forum --> 
 		<div class="col-md-12">
 			<h3 class="header-judul">{{$nama_forum}}</h3>
 			<input class="form-control" type="hidden" id="id_forum" value="{{$id_forum}}" />
