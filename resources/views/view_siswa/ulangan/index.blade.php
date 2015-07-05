@@ -20,7 +20,7 @@ Ulangan
 	        			<option value="b.nama_materi"> Nama Materi </option>
 	        			<option value="c.nama"> Nama Guru </option>
 					</select>	
-				</div> 
+				</div>  
 
 				<div class="form-group">
 					<input type="text" id="search_input" name="search_input" class="form-control inform-height" placeholder="Cari">

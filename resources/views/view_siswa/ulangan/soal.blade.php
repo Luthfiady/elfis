@@ -1,6 +1,6 @@
 @extends('templates/siswa_layouts')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/ulangan_siswa.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/kuis_siswa.css') }}">
 
 @section('add_bread_siswa')
 <li><a href="{{ URL::to('siswa/ulangan') }}">Ulangan</a></li>

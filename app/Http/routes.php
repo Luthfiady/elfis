@@ -257,7 +257,17 @@ Route::post('siswa/add_jawaban', 'SiswaController@jawaban_add');
 	Route::post('guru/UpdateUlangan', 'Guru_UlanganController@UpdateUlangan');
 
 // Route Siswa
-Route::get('siswa/ulangan', 'Siswa_UlanganController@ujian');
+
+	// ----------------------------- Index -----------------------------
+	Route::get('siswa/ulangan', 'Siswa_UlanganController@ulangan');
+	Route::get('siswa/ulangan_list', 'Siswa_UlanganController@ulangan_get_list');
+
+	// ----------------------------- Jawab Soal -----------------------------
+	Route::get('siswa/ulangan/{nama_group_ulangan}/{id}', 'Siswa_UlanganController@ulangan_soal');
+	Route::get('siswa/ulangan_get_id', 'Siswa_UlanganController@ulangan_get_id');
+	Route::get('siswa/ulangan_get_soal', 'Siswa_UlanganController@ulangan_get_soal');
+	Route::post('siswa/AddParamJawaban_ulangan', 'Siswa_UlanganController@AddParamJawaban');
+	Route::get('siswa/ulangan_get_nilai', 'Siswa_UlanganController@ulangan_get_nilai');
 
 
 
