@@ -103,6 +103,7 @@ function getMateri() {
 
 }
 
+
 function getList(page) {
     $(".dataTable").html('<img style="margin-top:180px;" src="../public/img/loading/loading4.gif") }}" width="50px" height="50px">');
     var form_data = {
