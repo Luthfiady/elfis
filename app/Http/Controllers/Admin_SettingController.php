@@ -194,7 +194,7 @@ class Admin_SettingController extends Controller {
 
 			$id_user = trim(Input::get('id_user'));
 				
-			$data_edit = DB::select('select * from users where id_user = '.$id_user.'');
+			$data_edit = DB::select('select * from users where id_user="'.$id_user.'"');
 
 			foreach ($data_edit as $list => $row) {
 				$row = get_object_vars($row);
@@ -203,8 +203,8 @@ class Admin_SettingController extends Controller {
 					'id_user'		=>	$row['id_user'],
 					'username'		=>	$row['username'],
 					'password'		=>	$row['password'],
-					'nama_group'	=>	$row['nama_group'],
-					'disabled'		=>	$row['disabled'],
+					'id_group'		=>	$row['id_group'],
+					'is_disabled'	=>	$row['is_disabled']
 
 					];
 			}
@@ -232,7 +232,7 @@ class Admin_SettingController extends Controller {
 			$nama_group = Input::get('nama_group');
 			$disabled 	= Input::get('disabled');
 
-			$data_update =  DB::update('update users set username = "'.$username.'", password = "'.$password.'", nama_group = "'.$nama_group.'", disabled = "'.$disabled.'", user_modified = "'.date('Y-m-d H:i:s').'", user_modified_by = "'.session('username').'" where id_user = '.$id_user);
+			$data_update =  DB::update('update users set username = "'.$username.'", password = "'.$password.'", id_group = "'.$nama_group.'", is_disabled = "'.$disabled.'", user_modified = "'.date('Y-m-d H:i:s').'", user_modified_by = "'.session('username').'" where id_user="'.$id_user.'"');
 
 			$this->json['sukses'] = 'User berhasil diubah';
 			echo json_encode($this->json);
@@ -414,7 +414,7 @@ class Admin_SettingController extends Controller {
 
 			$id_pelajaran = trim(Input::get('id_pelajaran'));
 				
-			$data_edit = DB::select('select * from pelajaran where id_pelajaran = '.$id_pelajaran.'');
+			$data_edit = DB::select('select * from pelajaran where id_pelajaran="'.$id_pelajaran.'"');
 
 			foreach ($data_edit as $list => $row) {
 				$row = get_object_vars($row);
@@ -444,10 +444,11 @@ class Admin_SettingController extends Controller {
 
 		if(session('id_group') == 3) {
 
+			$id_pelajaran 		= Input::get('id_pelajaran');
 			$nama_pelajaran 	= Input::get('nama_pelajaran');
-			$id_jurusan 		= Input::get('id_jurusan');
+			$nama_jurusan		= Input::get('nama_jurusan');
 
-			$data_update =  DB::update('update pelajaran set id_jurusan = "'.$nama_jurusan.'", nama_pelajaran = "'.$nama_pelajaran.'" where id_pelajaran = '.$id_pelajaran);
+			$data_update =  DB::update('update pelajaran set id_jurusan="'.$nama_jurusan.'", nama_pelajaran="'.$nama_pelajaran.'" where id_pelajaran="'.$id_pelajaran.'"');
 
 			$this->json['sukses'] = 'Pelajaran berhasil diubah';
 			echo json_encode($this->json);

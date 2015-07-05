@@ -20,12 +20,12 @@ $(document).ready(function(){
         nama_group    = $('#add_nama_group').val();
         disabled      = $('#add_disabled').val();
 
-        if (id_user && username && password && nama_group && disabled != null) {
+        if (id_user && username && password && nama_group && disabled != "") {
             AddUser();
             return false;
         }
 
-    })
+    });
 
     $('#submit_edit_form').click(function(){
 
@@ -35,12 +35,12 @@ $(document).ready(function(){
         nama_group    = $('#edit_nama_group').val();
         disabled      = $('#edit_disabled').val();
 
-        if (id_user && username && password && nama_group && disabled != null) {
+        if (id_user && username && password && nama_group && disabled != "") {
             EditUser();
             return false;
         }
         
-    })
+    });
 
 });
 
@@ -158,8 +158,8 @@ function getEdit(id_user) {
             $('#edit_id_user').val(data.data.id_user);
             $('#edit_nama_user').val(data.data.username);
             $('#edit_password').val(data.data.password);
-            $('#edit_nama_group').val(data.data.nama_group);
-            $('#edit_disabled').val(data.data.disabled);
+            $('#edit_nama_group').val(data.data.id_group);
+            $('#edit_disabled').val(data.data.is_disabled);
 
             return false;
         }
@@ -187,6 +187,7 @@ function EditUser() {
         success: function(data) {
             alert(data.sukses);
             getList();
+            document.getElementById('close_modal').click();
         }
     });
 

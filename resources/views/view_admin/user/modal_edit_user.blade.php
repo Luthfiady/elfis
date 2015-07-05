@@ -4,7 +4,7 @@
     <div class="modal-content">
       
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" id="close_modal" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <p class="modal-title">Edit User</p>
       </div>
 
@@ -53,9 +53,9 @@
             <div class="col-sm-8">
               <select class="form-control" id="edit_nama_group" required>
                 <option value=""> Nama Group </option>
-                <option value="Siswa"> Siswa </option>
-                <option value="Guru"> Guru </option>
-                <option value="Admin"> Admin </option>\
+                <option value="1"> Siswa </option>
+                <option value="2"> Guru </option>
+                <option value="3"> Admin </option>\
               </select>
             </div>
             <div class="col-sm-1"></div>

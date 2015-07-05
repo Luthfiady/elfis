@@ -50,7 +50,7 @@ class Admin_ForumController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select * from forum '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.nama_jurusan from forum a join jurusan b where a.id_jurusan=b.id_jurusan '.$sql_ext);
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -65,7 +65,7 @@ class Admin_ForumController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_forum = DB::select('select * from forum '.$sql_ext.' ORDER BY id_forum DESC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_forum = DB::select('select a.*, b.nama_jurusan from forum a join jurusan b where a.id_jurusan=b.id_jurusan '.$sql_ext.' ORDER BY id_forum DESC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -95,6 +95,7 @@ class Admin_ForumController extends Controller {
 			$result .= '<th>No</th>';
 			$result .= '<th>Nama Forum</th>';
 			$result .= '<th>Hak Akses</th>';
+			$result .= '<th>Jurusan</th>';
 			$result .= '<th>Subyek</th>';
 			$result .= '<th>Keterangan</th>';
 			$result .= '<th>Rating</th>';

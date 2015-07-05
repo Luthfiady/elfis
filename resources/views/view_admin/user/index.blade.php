@@ -15,8 +15,9 @@ Managemen User
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
 						<option value=""> Kategori </option>
-						<option value="username"> Nama User </option>
+						<option value="a.username"> Nama User </option>
 	        			<option value="b.nama_group"> Nama Group </option>
+	        			<option value="a.is_disabled"> Disabled </option>
 					</select>	
 				</div>
 

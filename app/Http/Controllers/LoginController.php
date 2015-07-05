@@ -44,7 +44,7 @@ class LoginController extends Controller {
 		$id_user = trim(Input::get('login_username'));
 		$password = trim(Input::get('login_password'));
 		
-		$status = DB::table('users')->where('id_user', '=', $id_user)->where('password', '=', $password)->get(['id_group', 'username', 'id_user']);
+		$status = DB::table('users')->where('id_user', '=', $id_user)->where('password', '=', $password)->where('is_disabled', '=', 'N')->get(['id_group', 'username', 'id_user']);
 
 		if($status != null) {
 

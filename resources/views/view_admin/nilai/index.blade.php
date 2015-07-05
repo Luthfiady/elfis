@@ -13,35 +13,30 @@ Nilai
 			<form class="form-inline" style="float:right;">
 
 				<div class="form-group">
-					<select class="form-control inform-height" id="search_by">
-						<option value=""> Kelas </option>
-						<option value="modul_code"> XI M1 </option>
-	        			<option value="modul_name"> XI M2 </option>
+					<select class="form-control inform-height" id="nama_jurusan" style="width:300px;">
+						<option value="">Pilih Jurusan</option>
+					</select>
+
+					<select class="form-control inform-height" id="nama_kelas" style="width:150px;">
+						<option value="">Pilih Kelas</option>
 					</select>	
 
-					<select class="form-control inform-height" id="search_by">
-						<option value=""> Materi </option>
-						<option value="modul_code"> Bahasa Indonesia </option>
-	        			<option value="modul_name"> Perkabelan </option>
+					<select class="form-control inform-height" id="nama_materi" style="width:225px;">
+						<option value="">Pilih Materi</option>
 					</select>
 
 					<select class="form-control inform-height" id="search_by">
-						<option value=""> Nilai </option>
-						<option value="modul_code"> Kuis </option>
-	        			<option value="modul_name"> Ulangan </option>
+						<option value=""> Kategori Nilai </option>
+						<option value="Kuis"> Kuis </option>
+	        			<option value="Tugas"> Tugas </option>
+	        			<option value="Ulangan"> Ulangan </option>
 					</select>	
 					
 				</div>
 
-				<button type="submit" id="search_button" class="btn btn-sm btn-primary inform-height"> 
+				<button type="submit" id="search_button" class="btn btn-sm btn-primary inform-height" value="search"> 
 					<span class="glyphicon glyphicon-search"></span> 
 				</button>
-
-				&nbsp 
-
-				<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_div_form"> 
-					<span class="glyphicon glyphicon-plus-sign"></span> Tambah 
-				</a>
 
 			</form>
 		</div>
@@ -49,68 +44,21 @@ Nilai
 
 
 	<div class="row row-table-data">
-		<div class="col-md-12 table-responsive">
+		<div class="col-md-12 table-responsive dataTable">
 			
-			<table class="table table-hover table-bordered table-striped">
-				<thead class="index">
-					<tr>
-						<th>No</th>
-						<th>NIS</th>
-						<th>Nama Siswa</th>
-						<th>Kelas</th>
-						<th>Nama Materi</th>
-						<th>Keterangan</th>
-						<th>Nilai</th>
-					</tr>
-				</thead>
-
-				<tbody class="index">
-					<tr>
-						<td class="kolom-tengah">1</td>
-						<td class="kolom-tengah">10001</td>
-						<td>Faried Muharam</td>
-						<td class="kolom-tengah">XI M1</td>
-						<td>Perkabelan</td>
-						<td>Ujian</td>
-						<td class="kolom-kanan">90</td>
-					</tr>
-					<tr>
-						<td class="kolom-tengah">2</td>
-						<td class="kolom-tengah">10001</td>
-						<td>Faried Muharam</td>
-						<td class="kolom-tengah">XI M1</td>
-						<td>Perkabelan</td>
-						<td>Kuis</td>
-						<td class="kolom-kanan">95</td>
-					</tr>
-				</tbody>
-			</table>
-
 		</div>
 	</div>
 
 	<div class="row row-paging-table">
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
 </div>
+
+<script type="text/javascript" src="{{asset('public/js/apps/nilai.js')}}"></script>
 
 @stop

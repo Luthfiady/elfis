@@ -5,7 +5,8 @@ var current_page;
 
 $(document).ready(function(){
 
-	getList(''); 
+	getList('');
+    getJurusan();
 
     $('#search_button').click(function(){
         getList('');
@@ -43,6 +44,34 @@ $(document).ready(function(){
     })
 
 });
+
+
+function getJurusan() {
+
+    var form_data = {
+        _token      : CSRF_TOKEN
+    }
+
+    $.ajax({
+        url: 'get_jurusan',
+        type: 'GET',
+        data: form_data,
+        dataType: "JSON",
+        success: function(data) {
+
+            option_jurusan = '';
+            option_jurusan += '<option value="0"> Semua Jurusan </option><br/>';
+            $.each(data.data, function(i, item) {
+            option_jurusan += '<option value="' + data.data[i].id_jurusan + '">' + data.data[i].nama_jurusan + '</option><br/>';
+            });
+
+            $('#nama_jurusan').html(option_jurusan);
+            return false;
+        }
+    });
+
+}
+
 
 $(document).on("click", ".pg a", function(){
     getList(this.id);

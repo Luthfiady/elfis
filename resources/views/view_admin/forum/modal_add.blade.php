@@ -35,6 +35,17 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2">Jurusan</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="nama_jurusan" required>
+                
+              </select>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-2">Subyek</label>
             <div class="col-sm-10">
               <input type="text" class="form-control inform-height" name="add_subyek" id="add_subyek" placeholder="Subyek">

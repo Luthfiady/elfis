@@ -81,7 +81,7 @@
                     </li>
                     <li class="">
                         <a href="{{ URL::to('admin/setting_pelajaran') }}">
-                            Pelajaran
+                            Manajemen Pelajaran
                         </a>
                     </li>
                 </ul>

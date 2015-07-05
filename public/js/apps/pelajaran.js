@@ -18,32 +18,34 @@ $(document).ready(function(){
         nama_pelajaran    = $('#add_nama_pelajaran').val();
         nama_jurusan      = $('#add_nama_jurusan').val();
 
-        if (nama_pelajaran && nama_jurusan) {
+        if (nama_pelajaran && nama_jurusan != "") {
             AddPelajaran();
             return false;
         }
 
-    })
+    });
 
     $('#submit_edit_form').click(function(){
 
         nama_pelajaran    = $('#edit_nama_pelajaran').val();
         nama_jurusan      = $('#edit_nama_jurusan').val();
 
-        if (nama_pelajaran && nama_jurusan) {
+        if (nama_pelajaran && nama_jurusan != "") {
             EditPelajaran();
             return false;
         }
         
-    })
+    });
 
 });
+
 
 $(document).on("click", ".pg a", function(){
     getList(this.id);
     current_page = this.id;
     return false;
 });
+
 
 function getJurusan() {
 
@@ -164,7 +166,6 @@ function getEdit(id_pelajaran) {
     }
 
     $.ajax({
-        //async: "false",
         url: 'pelajaran_get_edit',
         type: 'POST',
         data: form_data,
@@ -184,13 +185,13 @@ function getEdit(id_pelajaran) {
 function EditPelajaran() {
 
     var form_data = {
+        id_pelajaran      : $('#edit_id_pelajaran').val(),
         nama_pelajaran    : $('#edit_nama_pelajaran').val(),
-        id_jurusan        : $('#edit_nama_jurusan').val(),
+        nama_jurusan      : $('#edit_nama_jurusan').val(),
         _token            : CSRF_TOKEN
     }
     
     $.ajax({
-        // async: "false",
         url: 'pelajaran_edit',
         type: 'POST',
         data: form_data,
@@ -198,6 +199,7 @@ function EditPelajaran() {
         success: function(data) {
             alert(data.sukses);
             getList();
+            document.getElementById('close_modal').click();
         }
     });
 

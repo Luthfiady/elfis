@@ -24,6 +24,7 @@ Route::get('do_logout', 'LoginController@do_logout');
 
 
 Route::get('admin/get_materi', 'AdminController@getMateri');
+Route::get('admin/get_materi_kelas', 'AdminController@getMateriKelas');
 Route::get('guru/get_materi', 'GuruController@getMateri');
 
 Route::get('admin/get_jurusan', 'AdminController@getJurusan');
@@ -38,6 +39,7 @@ Route::get('guru/get_guru', 'GuruController@getGuru');
 
 
 Route::get('admin/get_kelas', 'AdminController@getKelas');
+Route::get('admin/get_kelas_jurusan', 'AdminController@getKelasJurusan');
 Route::get('guru/get_kelas', 'GuruController@getKelas');
 
 
@@ -300,7 +302,9 @@ Route::get('siswa/forum', 'SiswaController@forum');
 /////////////////////////////////////////////////  Route Nilai  /////////////////////////////////////////////////
 
 // Route Admin 
-Route::get('admin/nilai', 'Admin_NilaiController@nilai');
+
+	Route::get('admin/nilai', 'Admin_NilaiController@nilai');
+	Route::get('admin/nilai_list', 'Admin_NilaiController@nilai_get_list');
 
 // Route Guru
 Route::get('guru/nilai', 'GuruController@nilai');

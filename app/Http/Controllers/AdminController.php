@@ -76,11 +76,63 @@ class AdminController extends Controller {
 	}
 
 
+	public function getMateriKelas() {
+
+		if(session('id_group') == 3) {
+
+			$id_kelas = Input::get('id_kelas');
+
+			$get_materi = DB::select('select DISTINCT a.*, b.id_kelas from materi a join kelas b where a.id_kelas = b.id_kelas and b.id_kelas="'.$id_kelas.'" ORDER BY id_materi ASC');
+
+			$materi = "";
+			foreach ($get_materi as $key => $value) {
+				$value = get_object_vars($value);
+				$materi[] = array(
+                    'id_materi' => $value['id_materi'],
+                    'nama_materi' => $value['nama_materi']
+                );
+			}
+
+			return ['data' => $materi];
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
 	public function getKelas() {
 
 		if(session('id_group') == 3) {
 
 			$get_kelas = DB::select('select DISTINCT * from kelas ORDER BY id_kelas ASC');
+
+			$kelas = "";
+			foreach ($get_kelas as $key => $value) {
+				$value = get_object_vars($value);
+				$kelas[] = array(
+                    'id_kelas' => $value['id_kelas'],
+                    'nama_kelas' => $value['nama_kelas']
+                );
+			}
+
+			return ['data' => $kelas];
+
+		} else {
+			return redirect('login');
+		}
+
+	}
+
+
+	public function getKelasJurusan() {
+
+		if(session('id_group') == 3) {
+
+			$id_jurusan = Input::get('id_jurusan');
+
+			$get_kelas = DB::select('select DISTINCT * from kelas where id_jurusan="'.$id_jurusan.'" ORDER BY id_kelas ASC');
 
 			$kelas = "";
 			foreach ($get_kelas as $key => $value) {
