@@ -28,7 +28,7 @@
             <li class="">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">
                     <span class="selected"></span>
-                    Materi dan Soal <span class="caret"></span><i class="fa fa-angle-down"></i>
+                    Materi dan Latihan <span class="caret"></span><i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="">
@@ -37,8 +37,8 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ URL::to('siswa/soal') }}">
-                            Soal
+                        <a href="{{ URL::to('siswa/latihan') }}">
+                            Latihan
                         </a>
                     </li>
                 </ul>

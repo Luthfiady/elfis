@@ -52,7 +52,7 @@ Detail Materi dan Soal
 									</div>
 									<div class="form-group">
 										<p class="col-sm-2">File Materi</p>
-								        <p class="col-sm-10">: &nbsp <a href="{{ URL::to('public/uploads/file_materi/' . $data_materi['file']) }}" title="Unduh">{{ $data_materi['file'] }} <span class="glyphicon glyphicon-download-alt"></span></a></p>
+								        <p class="col-sm-10">: &nbsp <a href="{{ URL::to('public/uploads/file_materi/'.$data_materi['file']) }}" title="Unduh">{{ $data_materi['file'] }} <span class="glyphicon glyphicon-download-alt"></span></a></p>
 									</div>
 								</td>
 							</tr>

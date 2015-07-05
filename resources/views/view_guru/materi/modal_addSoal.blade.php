@@ -14,114 +14,88 @@
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Soal</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="10" required></textarea>
+                  <textarea class="form-control" rows="5" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 help-block with-errors"></div>
             </div>
             <div class="form-group">
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Jawaban A</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
+                  <textarea class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 help-block with-errors"></div>
             </div>
             <div class="form-group">
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Jawaban B</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
+                  <textarea class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 help-block with-errors"></div>
             </div>
             <div class="form-group">
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Jawaban C</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
+                  <textarea class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 help-block with-errors"></div>
             </div>
             <div class="form-group">
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Jawaban D</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
+                  <textarea class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 help-block with-errors"></div>
             </div>
             <div class="form-group">
               <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Jawaban E</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
+                  <textarea class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="col-md-1"></div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 help-block with-errors"></div>
             </div>
              <div class="form-group">
               <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban Benar</label>
-                <div class="col-sm-8">                  
-                </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-1"></div>
-              <div class="col-md-2"></div>
-              <div class="col-md-3">
-                <table class="table table-soal">
-                  <tr>
-                    <td class="kolom-tengah">Jawaban A</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="A">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban B</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="B">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban C</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="C">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban D</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="D">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban E</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="E">
-                1
-                </label>
-                </td>
-              </tr>
-                </table>              
-          </div>
-            </div>
+              <label class="col-sm-2 label-modal-soal">Jawaban</label>
+              <div class="col-sm-2">
+                <select class="form-control" id="jawaban" required>
+                  <option value=""> Jawaban </option>
+                  <option value="A"> A </option>
+                  <option value="B"> B </option>
+                  <option value="C"> C </option>
+                  <option value="D"> D </option>
+                  <option value="E"> E </option>
+                </select>
+              </div>
+              <div class="col-md-7 help-block with-errors"></div>
+            </div>                    
 
             <div class="modal-footer">
               <div class="form-group">
-                  <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-                <a type="submit" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
+                <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+                <a type="submit" id="simpan_soal" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
             </div>
           </div>
           </form>

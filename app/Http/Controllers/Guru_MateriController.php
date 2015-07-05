@@ -12,19 +12,19 @@ use Illuminate\Http\Response;
 use Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class Admin_MateriController extends Controller {
+class Guru_MateriController extends Controller {
 
 	public $status = false;
 // -------------------------------------------------------- MATERI --------------------------------------------------------
 
 	public function materi() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 			$pelajaran = DB::table('pelajaran')->get(['id_pelajaran', 'nama_pelajaran']);
 			$kelas = DB::table('kelas')->get(['id_kelas', 'nama_kelas']);
 			$guru = DB::table('guru')->get(['nik', 'nama']);
 
-			return view('view_admin/materi/index', ['data_pelajaran' => $pelajaran, 'data_kelas' => $kelas, 'data_guru' => $guru]);
+			return view('view_guru/materi/index', ['data_pelajaran' => $pelajaran, 'data_kelas' => $kelas, 'data_guru' => $guru]);
 		}
 		else {
 			return redirect('login');
@@ -32,7 +32,7 @@ class Admin_MateriController extends Controller {
 	}
 
 	public function materi_get_list(){
-		if(session('id_group') == 3){
+		if(session('id_group') == 2){
 			$search_by = trim(Input::get('search_by'));
 			$search_input = trim(Input::get('search_input'));
 
@@ -49,7 +49,7 @@ class Admin_MateriController extends Controller {
 				$sql_ext = "";
 			}
 
-			$data_rows = DB::select('select a.*, b.nama_pelajaran, c.nama_kelas, d.nama from materi a JOIN pelajaran b JOIN kelas c JOIN guru d where a.id_pelajaran = b.id_pelajaran and a.id_kelas = c.id_kelas and a.nik = d.nik '.$sql_ext);
+			$data_rows = DB::select('select a.*, b.nama_pelajaran, c.nama_kelas, d.nama from materi a JOIN pelajaran b JOIN kelas c JOIN guru d where a.id_pelajaran = b.id_pelajaran and a.id_kelas = c.id_kelas and d.nik="'.session('id_user').'" '.$sql_ext);
 
 			$total_rows = count($data_rows);
 
@@ -65,7 +65,7 @@ class Admin_MateriController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_materi = DB::select('select a.*, b.nama_pelajaran, c.nama_kelas, d.nama from materi a JOIN pelajaran b JOIN kelas c JOIN guru d where a.id_pelajaran = b.id_pelajaran and a.id_kelas = c.id_kelas and a.nik = d.nik '.$sql_ext.' ORDER BY id_materi DESC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_materi = DB::select('select a.*, b.nama_pelajaran, c.nama_kelas, d.nama from materi a JOIN pelajaran b JOIN kelas c JOIN guru d where a.id_pelajaran = b.id_pelajaran and a.id_kelas = c.id_kelas and d.nik="'.session('id_user').'" '.$sql_ext.' ORDER BY id_materi DESC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -89,15 +89,15 @@ class Admin_MateriController extends Controller {
 
 			$result = '';
 
-			$result .= '<table class="table table-bordered table-striped table-hover">';
-			$result .= '<thead class="index kolom-kiri">';
+			$result .= '<table class="table table-hover table-bordered table-striped">';
+			$result .= '<thead class="index">';
 			$result .= '<tr>';
-			$result .= '<th class="kolom-kiri">No.</th>';
-			$result .= '<th class="kolom-kiri">Nama Materi</th>';
-			$result .= '<th class="kolom-kiri">Pelajaran</th>';
-			$result .= '<th class="kolom-kiri">Kelas</th>';
-			$result .= '<th class="kolom-kiri">Waktu Unggah</th>';
-			$result .= '<th class="kolom-kiri">Nama Guru</th>';
+			$result .= '<th>No.</th>';
+			$result .= '<th>Nama Materi</th>';
+			$result .= '<th>Pelajaran</th>';
+			$result .= '<th>Kelas</th>';
+			$result .= '<th>Waktu Unggah</th>';
+			$result .= '<th>Nama Guru</th>';
 			$result .= '<th><span class="glyphicon glyphicon-wrench"></span></th>';
 			$result .= '<th><span class="glyphicon glyphicon-folder-open"></span></th>';
 			$result .= '</tr>';
@@ -122,7 +122,7 @@ class Admin_MateriController extends Controller {
 
 					$result .= '<tr>';
 					$result .= '<td class="kolom-tengah">'.$i.'</td>';
-					$result .= '<td class="kolom-kiri">'.$list['nama_materi'].'</td>';
+					$result .= '<td>'.$list['nama_materi'].'</td>';
 					$result .= '<td>'.$list['nama_pelajaran'].'</td>';
 					$result .= '<td>'.$list['nama_kelas'].'</td>';
 					$result .= '<td>'.$list['create_date'].'</td>';
@@ -131,7 +131,7 @@ class Admin_MateriController extends Controller {
 									<a class="btn btn-success btn-xs" data-toggle="modal" data-target="#editMateri" onClick="open_materi_edit(' . $data_testMateri . ')"> <span class="glyphicon glyphicon-edit"></span> </a> 
 			                		<a id="btn_delete'.$list['id_materi'].'" title="Hapus" class="btn btn-danger btn-xs" onClick="deleteData('.$list['id_materi'].')" data-delete="Apakah Anda yakin ingin menghapus tugas '.$list['nama_materi'].'?"><span class="glyphicon glyphicon-trash"></span></a>
 			                	</td>';
-			        $result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="/elfis/admin/materi_detail?id_materi=' . $list['id_materi'] . '" title="Detail">
+			        $result .= '<td class="kolom-tengah"><a class="btn btn-xs btn-warning" href="/elfis/guru/materi_detail?id_materi=' . $list['id_materi'] . '" title="Detail">
 									<span class="glyphicon glyphicon-new-window"></span></a>
 								</td>';
 					$result .= '</tr>';
@@ -156,8 +156,8 @@ class Admin_MateriController extends Controller {
 
 	// 
 	public function materiLatihan_add() {
-		if(session('id_group') == 3) {
-			return view('view_admin/materi/materiLatihan_add');
+		if(session('id_group') == 2) {
+			return view('view_guru/materi/materiLatihan_add');
 		}
 		else {
 			return redirect('login');
@@ -167,7 +167,7 @@ class Admin_MateriController extends Controller {
 
 	public function materi_add() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_pelajaran = Input::get('addPelajaran');
 			$nik = Input::get('addGuru');
@@ -197,7 +197,7 @@ class Admin_MateriController extends Controller {
 	}
 
 	public function materi_edit() {
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_materi = Input::get('id_materi');
 			$pelajaran = Input::get('editPelajaran');
@@ -238,7 +238,7 @@ class Admin_MateriController extends Controller {
 	//
 
 	public function materi_delete(){
-		if(session('id_group') == 3){
+		if(session('id_group') == 2){
 			$id_materi = trim(Input::get('id_materi'));
 
 			$data_delete = DB::delete('delete from materi where id_materi = "'.$id_materi.'"');
@@ -252,7 +252,7 @@ class Admin_MateriController extends Controller {
 
 
 	public function materi_detail() {
-		if(session('id_group') == 3) {			
+		if(session('id_group') == 2) {			
 
 			$data_materi = DB::table('materi')
 			->join('pelajaran', 'materi.id_pelajaran', '=', 'pelajaran.id_pelajaran')
@@ -269,7 +269,7 @@ class Admin_MateriController extends Controller {
 				}
 			}
 			
-			return view('view_admin/materi/detail', ['data_materi' => $result]);
+			return view('view_guru/materi/detail', ['data_materi' => $result]);
 
 			
 		}	
@@ -284,7 +284,7 @@ class Admin_MateriController extends Controller {
 
 	public function AddIdLatihan() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_latihan = trim(Input::get('id_latihan'));
 
@@ -303,8 +303,8 @@ class Admin_MateriController extends Controller {
 
 
 	public function latihan() {
-		if(session('id_group') == 3) {
-			return view('view_admin/materi/indexSoal');
+		if(session('id_group') == 2) {
+			return view('view_guru/materi/indexSoal');
 		}
 		else {
 			return redirect('login');
@@ -313,8 +313,8 @@ class Admin_MateriController extends Controller {
 
 
 	public function latihanMateri_add() {
-		if(session('id_group') == 3) {
-			return view('view_admin/materi/latihanMateri_add');
+		if(session('id_group') == 2) {
+			return view('view_guru/materi/latihanMateri_add');
 		}
 		else {
 			return redirect('login');
@@ -323,7 +323,7 @@ class Admin_MateriController extends Controller {
 
 
 	public function latihan_get_list() {
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$search_by = trim(Input::get('search_by'));
 			$search_input = trim(Input::get('search_input'));
@@ -342,7 +342,6 @@ class Admin_MateriController extends Controller {
 			}
 
 			$data_rows = DB::select('select a.*,b.nama_materi from group_latihan a join materi b where a.id_materi=b.id_materi '.$sql_ext);
-
 			$total_rows = count($data_rows);
 
 			if($total_rows < 1) {
@@ -357,7 +356,7 @@ class Admin_MateriController extends Controller {
 
 	        $offset = ($nopage - 1) * $per_page;
 
-			$data_latihan = DB::select('select a.*,b.nama_materi from group_latihan a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY id DESC LIMIT '.$per_page.' OFFSET '.$offset);
+			$data_latihan = DB::select('select a.*,b.nama_materi from group_latihan a join materi b where a.id_materi=b.id_materi '.$sql_ext.' ORDER BY id_materi ASC LIMIT '.$per_page.' OFFSET '.$offset);
 
 			$limit_start = $offset + 1;
 
@@ -438,7 +437,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_delete() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_latihan = trim(Input::get('id_latihan'));
 
@@ -464,7 +463,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_get_param() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$get_id = DB::select('select * from param_group_latihan');
 
@@ -483,7 +482,7 @@ class Admin_MateriController extends Controller {
 
 
 	public function latihan_soal_list() {
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$get_id = DB::select('select * from param_group_latihan');
 
@@ -562,7 +561,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_AddSoal() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_soal 		= Input::get('id_soal');
 			$soal_latihan 	= Input::get('soal_latihan');
@@ -587,7 +586,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_soal_get_edit() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id = trim(Input::get('id'));
 				
@@ -625,7 +624,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_soal_edit() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 			
 			$id 		= trim(Input::get('id'));
 			$soal 		= trim(Input::get('soal'));
@@ -652,7 +651,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_DeleteSoal() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 			
 			$id = Input::get('id');
 
@@ -671,7 +670,7 @@ class Admin_MateriController extends Controller {
 
 	public function AddDetailLatihan() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 			
 			$id_after				= Input::get('id_after');
 			$id_param 				= Input::get('id_param');
@@ -696,7 +695,7 @@ class Admin_MateriController extends Controller {
 
 	public function LatihanBatal() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 	
 			$id_latihan = Input::get('id_latihan');
 
@@ -715,9 +714,9 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_edit($nama_group_latihan, $id) {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
-			return view('view_admin/materi/latihanMateri_edit')->with('nama_group_latihan', $nama_group_latihan)->with('id', $id);
+			return view('view_guru/materi/latihanMateri_edit')->with('nama_group_latihan', $nama_group_latihan)->with('id', $id);
 
 		}
 		else {
@@ -729,7 +728,7 @@ class Admin_MateriController extends Controller {
 
 	public function get_detail_latihan() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_latihan = Input::get('id_latihan');
 
@@ -763,7 +762,7 @@ class Admin_MateriController extends Controller {
 
 	public function latihan_soal_list_edit() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 
 			$id_group_latihan = Input::get('id_group_latihan');
 
@@ -838,7 +837,7 @@ class Admin_MateriController extends Controller {
 
 	public function UpdateLatihan() {
 
-		if(session('id_group') == 3) {
+		if(session('id_group') == 2) {
 			
 			$id_latihan 			= Input::get('id_latihan');
 			$nama_group_latihan 	= Input::get('edit_nama_latihan');
@@ -856,7 +855,6 @@ class Admin_MateriController extends Controller {
 		}
 
 	}
-
 
 
 }

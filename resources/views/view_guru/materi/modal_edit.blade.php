@@ -1,75 +1,117 @@
 <!-- MODAL ADD --> 
-  
+<!-- <link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/tugas.css') }}"> -->
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/jasny-bootstrap.min.css') }}">
+	
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <p class="modal-title">Edit Materi</p>
-        </div>
+    	<div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <p class="modal-title">Edit Materi</p>
+      	</div>
 
-        <div class="modal-body">
-          <form id="editMateri" class="form form-horizontal" role="form" data-toggle="validator">
-            
-            <div class="form-group">
-                <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Materi</label>
-                <div class="col-sm-8">
-                  <select class="form-control" id="pelajaran" required>
-                    <option value=""> Pilih Pelajaran </option>
-                    <option value="A"> Matematika2 </option>
-                    <option value="B"> Matematika3 </option>
-                    <option value="C"> Matematika4 </option>
-                  </select>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
+      	<div class="modal-body">
+	        <form method="post" target="target_submit" class="form form-horizontal" enctype="multipart/form-data" action="{{ URL::to('guru/materi_edit') }}" data-toggle="validator">
+	      	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+	      	<input type="text" id="editIdMateri" name="id_materi" style="display:none;" />
+	        	
+		        <div class="form-group">
+		            <div class="col-md-1"></div>
+		            <label class="col-sm-2 label-right">Pelajaran</label>
+		            <div class="col-sm-8">
+		              	<select class="form-control" id="editPelajaran" name="editPelajaran" required>
+		              		@foreach($data_pelajaran as $ddp)
+			              		<option value="{{ $ddp->id_pelajaran }}" >{{ $ddp->nama_pelajaran }}</option>
+			              	@endforeach
+		              	</select>
+		            </div>
+		            <div class="col-md-1"></div>
+		        </div>
 
-            <div class="form-group">
-                <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Kelas</label>
-                <div class="col-sm-8">
-                  <select class="form-control" id="kelas" required>
-                    <option value=""> Pilih Kelas </option>
-                    <option value="A"> 2MM2 </option>
-                    <option value="B"> 2TKR1 </option>
-                    <option value="C"> 2TKR2 </option>
-                  </select>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
+		        <div class="form-group">
+		            <div class="col-md-1"></div>
+		            <label class="col-sm-2 label-right">Kelas</label>
+		            <div class="col-sm-8">
+		              <select class="form-control" id="editKelas" name="editKelas" required>
+		                	@foreach($data_kelas as $ddk)
+			              		<option value="{{ $ddk->id_kelas }}" >{{ $ddk->nama_kelas }}</option>
+			              	@endforeach
+		              </select>
+		            </div>
+		            <div class="col-md-1"></div>
+		        </div>
 
-            <div class="form-group">
-                <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Nama Materi</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control inform-height" id="addNamaMateri" placeholder="Nama Materi" required>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
+		         <div class="form-group">
+		            <div class="col-md-1"></div>
+		            <label class="col-sm-2 label-right">Guru</label>
+		            <div class="col-sm-8">
+		              <select class="form-control" id="editGuru" name="editGuru" required>
+			              @foreach($data_guru as $ddg)
+			              	<option value="{{ $ddg->nik }}" >{{ $ddg->nama }}</option>
+			              @endforeach
+		              </select>
+		            </div>
+		            <div class="col-md-1"></div>
+		        </div>
 
-            <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Isi Materi</label>
-                <div class="col-sm-8">
-                  <textarea class="form-control" rows="10" required></textarea>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
+		        <div class="form-group">
+		            <div class="col-md-1"></div>
+		            <label class="col-sm-2 label-right">Nama Materi</label>
+		            <div class="col-sm-8">
+		              <input type="text" class="form-control inform-height" id="editNamaMateri" name="editNamaMateri" value="Nama Materi" required>
+		            </div>
+		            <div class="col-md-1"></div>
+		        </div>
 
-            <div class="form-group">
-              <div class="col-md-1"></div>
-              <label class="col-sm-2 label-right" for="fileUpload">File Upload</label>
-              <input type="file" id="fileUpload">
-              <div class="col-md-1"></div>
-            </div>
+		        <div class="form-group">
+		        	<div class="col-md-1"></div>
+		            <label class="col-sm-2 label-right">Isi Materi</label>
+		            <div class="col-sm-8">
+		            	<textarea class="form-control" rows="10" id="editIsi" name="editIsi" value="Isi Materi" required></textarea>
+		            </div>
+		            <div class="col-md-1"></div>
+		        </div>
 
-            <div class="modal-footer">
-              <div class="form-group">
-                  <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-                <a type="submit" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
-            </div>
-          </div>
-          </form>
+		        <div class="form-group">
+		            <div class="col-sm-1"></div>
+		            <label class="col-sm-2 ">File Lama</label>
+		            <div class="col-sm-8">
+		              <input type="text" protected id="edit_file_materi" name="edit_file_materi_lama" class="form-control inform-height" style="border: 0; "/>
+		            </div>
+		            <div class="col-sm-1"></div>
+
+		            <div class="col-sm-3"></div>
+		            <div class="col-sm-9 help-block with-errors"></div>
+		          </div>
+
+		          <div class="form-group">
+		            <div class="col-sm-1"></div>
+		            <label class="col-sm-2 ">File Baru</label>
+		            <div class="col-sm-8">
+		              <div class="fileinput fileinput-new" data-provides="fileinput">
+		                <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="edit_file_materi"></span>
+		                <span class="fileinput-filename"></span>
+		                <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+		              </div>
+		            </div>
+		            <div class="col-sm-1"></div>
+
+		            <div class="col-sm-3"></div>
+		            <div class="col-sm-9 help-block with-errors"></div>
+		          </div>
+		      </div>
+
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+		          <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+			        <button type="submit" class="btn btn-primary btn-sm" onclick="AddDataMateri()" >Simpan Ubah</button>
+		          <iframe id="target_submit" name="target_submit" style="width:100px; height:100px; display:none;"></iframe>
+			    </div>
+	        </form>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="{{ asset('public/js/jasny-bootstrap.min.js') }}"></script>
+<script type="text/javascript">
+  $('.fileinput').fileinput()
+</script>

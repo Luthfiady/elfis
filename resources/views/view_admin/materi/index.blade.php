@@ -33,7 +33,7 @@ Materi
 				&nbsp 
 
 				<!-- <a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#formAddMateri">  -->
-				<a href="{{ URL::to('admin/materiSoal_add') }}" id="add_button" class="btn btn-sm btn-primary"> 
+				<a href="{{ URL::to('admin/materiLatihan_add') }}" id="add_button" class="btn btn-sm btn-primary"> 
 					<span class="glyphicon glyphicon-plus-sign"></span> Tambah Materi</a>
 			</form>
 		</div>
@@ -48,33 +48,14 @@ Materi
 	</div>
 
 	<div class="row row-paging-table">
-		<nav>
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<div class="pg num-page">
+	        <ul class="pagination pagination-sm">
+
+	        </ul>
+	    </div>
 	</div>
 
-	<!-- ///////////////////////////////////////////////////////////// Modal Add ///////////////////////////////////////////////////////////// -->
-
-	<div class="modal fade" id="formAddMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.materi.modal_add')
-	</div>
-
+	
 	<!-- ///////////////////////////////////////////////////////////// Modal Edit ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="editMateri" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

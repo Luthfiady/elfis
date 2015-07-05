@@ -66,26 +66,83 @@ Route::get('siswa', 'SiswaController@index');
 
 // Route Admin 
 Route::get('admin/materi', 'Admin_MateriController@materi');
-Route::get('admin/materi_add', 'Admin_MateriController@materi_add');
-Route::get('admin/soal', 'Admin_MateriController@soal');
+Route::post('admin/materi_add', 'Admin_MateriController@materi_add');
+Route::get('admin/materiLatihan_add', 'Admin_MateriController@materiLatihan_add');
 Route::get('admin/materi_list', 'Admin_MateriController@materi_get_list');
-Route::get('admin/latihanSoal_list', 'Admin_MateriController@latihanSoal_get_list');
 Route::post('admin/materi_edit', 'Admin_MateriController@materi_edit');
 Route::post('admin/materi_delete', 'Admin_MateriController@materi_delete');
 Route::get('admin/materi_detail', 'Admin_MateriController@materi_detail');
 
+/////////////////////// Route Admin-Latihan  ////////////////////////////////
+
+Route::get('admin/latihan', 'Admin_MateriController@latihan');
+Route::get('admin/latihanMateri_add', 'Admin_MateriController@latihanMateri_add');
+Route::get('admin/latihan_list', 'Admin_MateriController@latihan_get_list');
+Route::post('admin/latihan_delete', 'Admin_MateriController@latihan_delete');
+Route::get('admin/latihan/{nama_group_latihan}/{id}', 'Admin_MateriController@latihan_edit');
+
+Route::get('admin/latihan_get_param', 'Admin_MateriController@latihan_get_param');
+Route::get('admin/latihan_soal_list', 'Admin_MateriController@latihan_soal_list');
+Route::post('admin/AddIdLatihan', 'Admin_MateriController@AddIdLatihan');
+Route::post('admin/latihan_AddSoal', 'Admin_MateriController@latihan_AddSoal');
+Route::post('admin/latihan_DeleteSoal', 'Admin_MateriController@latihan_DeleteSoal');
+
+Route::post('admin/latihan_soal_get_edit', 'Admin_MateriController@latihan_soal_get_edit');
+Route::post('admin/latihan_soal_edit', 'Admin_MateriController@latihan_soal_edit');
+
+Route::post('admin/AddDetailLatihan', 'Admin_MateriController@AddDetailLatihan');
+Route::post('admin/LatihanBatal', 'Admin_MateriController@LatihanBatal');
+
+Route::get('admin/get_detail_latihan', 'Admin_MateriController@get_detail_latihan');
+Route::get('admin/latihan_soal_list_edit', 'Admin_MateriController@latihan_soal_list_edit');
+Route::post('admin/UpdateLatihan', 'Admin_MateriController@UpdateLatihan');
 
 // Route Guru
-Route::get('guru/materi', 'GuruController@materi');
-Route::get('guru/detail_materi', 'GuruController@detail_materi');
+Route::get('guru/materi', 'Guru_MateriController@materi');
+Route::post('guru/materi_add', 'Guru_MateriController@materi_add');
+Route::get('guru/materiLatihan_add', 'Guru_MateriController@materiLatihan_add');
+Route::get('guru/materi_list', 'Guru_MateriController@materi_get_list');
+Route::post('guru/materi_edit', 'Guru_MateriController@materi_edit');
+Route::post('guru/materi_delete', 'Guru_MateriController@materi_delete');
+Route::get('guru/materi_detail', 'Guru_MateriController@materi_detail');
 
-// Route Siswa
-Route::get('siswa/materi', 'SiswaController@materi');
-Route::get('siswa/materi_list', 'SiswaController@materi_get_list');
-Route::get('siswa/soal', 'SiswaController@soal');
-Route::get('siswa/materi_soal', 'SiswaController@materi_soal');
-Route::get('siswa/materi_nilai', 'SiswaController@materi_nilai');
-Route::get('siswa/materi_detail', 'SiswaController@materi_detail');
+/////////////////////// Route Guru-Latihan  ////////////////////////////////
+
+Route::get('guru/latihan', 'Guru_MateriController@latihan');
+Route::get('guru/latihanMateri_add', 'Guru_MateriController@latihanMateri_add');
+Route::get('guru/latihan_list', 'Guru_MateriController@latihan_get_list');
+Route::post('guru/latihan_delete', 'Guru_MateriController@latihan_delete');
+Route::get('guru/latihan/{nama_group_latihan}/{id}', 'Guru_MateriController@latihan_edit');
+
+Route::get('guru/latihan_get_param', 'Guru_MateriController@latihan_get_param');
+Route::get('guru/latihan_soal_list', 'Guru_MateriController@latihan_soal_list');
+Route::post('guru/AddIdLatihan', 'Guru_MateriController@AddIdLatihan');
+Route::post('guru/latihan_AddSoal', 'Guru_MateriController@latihan_AddSoal');
+Route::post('guru/latihan_DeleteSoal', 'Guru_MateriController@latihan_DeleteSoal');
+
+Route::post('guru/latihan_soal_get_edit', 'Guru_MateriController@latihan_soal_get_edit');
+Route::post('guru/latihan_soal_edit', 'Guru_MateriController@latihan_soal_edit');
+
+Route::post('guru/AddDetailLatihan', 'Guru_MateriController@AddDetailLatihan');
+Route::post('guru/LatihanBatal', 'Guru_MateriController@LatihanBatal');
+
+Route::get('guru/get_detail_latihan', 'Guru_MateriController@get_detail_latihan');
+Route::get('guru/latihan_soal_list_edit', 'Guru_MateriController@latihan_soal_list_edit');
+Route::post('guru/UpdateLatihan', 'Guru_MateriController@UpdateLatihan');
+
+/////////////////////// Route Siswa-Latihan  ////////////////////////////////
+Route::get('siswa/materi', 'Siswa_MateriController@materi');
+Route::get('siswa/materi_list', 'Siswa_MateriController@materi_get_list');
+Route::get('siswa/materi_detail', 'Siswa_MateriController@materi_detail');
+
+Route::get('siswa/latihan', 'Siswa_MateriController@latihan');
+Route::get('siswa/latihan_list', 'Siswa_MateriController@latihan_get_list');
+
+Route::get('siswa/latihan/{nama_group_latihan}/{id}', 'Siswa_MateriController@latihan_soal');
+Route::get('siswa/latihan_get_id', 'Siswa_MateriController@latihan_get_id');
+Route::get('siswa/latihan_get_soal', 'Siswa_MateriController@latihan_get_soal');
+Route::post('siswa/latihan_AddParamJawaban', 'Siswa_MateriController@latihan_AddParamJawaban');
+Route::get('siswa/latihan_get_nilai', 'Siswa_MateriController@latihan_get_nilai');
 
 
 

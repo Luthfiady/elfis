@@ -1,12 +1,12 @@
-@extends('templates/admin_layouts')
+@extends('templates/guru_layouts')
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi.css') }}">
 <link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/jasny-bootstrap.min.css') }}">
 
-@section('add_bread_admin')
-<li><a href="{{ URL::to('admin/materi') }}">Materi</a></li>
+@section('add_bread_guru')
+<li><a href="{{ URL::to('guru/materi') }}">Materi</a></li>
 @stop
 
-@section('bread_admin')
+@section('bread_guru')
 Tambah Materi
 @stop
 	
@@ -24,12 +24,12 @@ Tambah Materi
 
 	<div class="row">
 		<div class="col-md-12">
-			<form method="post" target="target_submit" class="form form-horizontal" enctype="multipart/form-data" action="{{ URL::to('admin/materi_add') }}" data-toggle="validator">
+			<form method="post" target="target_submit" class="form form-horizontal" enctype="multipart/form-data" action="{{ URL::to('guru/materi_add') }}" data-toggle="validator">
 	        	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 				<div class="form-group">
 		            <label class="col-sm-2 label-modal-soal">Pelajaran</label>
 		            <div class="col-sm-5">
-		              <select class="form-control" id="addPelajaran" name="addPelajaran" required>
+		              <select class="form-control input-materi" id="addPelajaran" name="addPelajaran" required>
 		               
 		              </select>
 		            </div>
@@ -39,7 +39,7 @@ Tambah Materi
 		        <div class="form-group">
 		            <label class="col-sm-2 label-modal-soal">Kelas</label>
 		            <div class="col-sm-5">
-		              <select class="form-control" id="addKelas" name="addKelas" required>
+		              <select class="form-control input-materi" id="addKelas" name="addKelas" required>
 		               
 		              </select>
 		            </div>
@@ -49,7 +49,7 @@ Tambah Materi
 		        <div class="form-group">
 		            <label class="col-sm-2 label-modal-soal">Guru</label>
 		            <div class="col-sm-5">
-		              <select class="form-control" id="addGuru" name="addGuru" required>
+		              <select class="form-control input-materi" id="addGuru" name="addGuru" required>
 		               
 		              </select>
 		            </div>
@@ -59,7 +59,7 @@ Tambah Materi
 		         <div class="form-group">
 		            <label class="col-sm-2 label-modal-soal">Nama Materi</label>
 		            <div class="col-sm-5">
-		              <input type="text" class="form-control inform-height" id="addNamaMateri" name="addNamaMateri" placeholder="Nama Materi" required>
+		              <input type="text" class="form-control input-materi inform-height" id="addNamaMateri" name="addNamaMateri" placeholder="Nama Materi" required>
 		            </div>
 
             		<div class="col-sm-5 help-block with-errors"></div>
@@ -67,7 +67,7 @@ Tambah Materi
 		        <div class="form-group">
 		            <label class="col-sm-2 label-modal-soal">Isi Materi</label>
 		            <div class="col-sm-5">
-		            	<textarea class="form-control" rows="10" id="addIsiMateri" name="addIsiMateri" required></textarea>
+		            	<textarea class="form-control input-materi" rows="10" id="addIsiMateri" name="addIsiMateri" required></textarea>
 		            </div>
 
             		<div class="col-sm-5 help-block with-errors"></div>
@@ -87,44 +87,30 @@ Tambah Materi
 			
 		</div>
 	</div>
-
-<!-- Daftar Materi -->
-	<div class="row row-judul">
-		<div class="col-md-12">
-			<legend><h4 class="judul-soal"> Daftar Soal </h4></legend>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<a href="#" id="add_button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addSoal"> <span class="glyphicon glyphicon-plus-sign"></span> Tambah </a>
-		</div>
-		<div class="col-md-12 dataTable">
-			
-		</div>		
-	</div>
+				<div class="col-sm-7">
 				<div class="form-group" style="float:right;">
 				        <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
 			        	<button type="submit" class="btn btn-primary btn-sm" onclick="addDataMateri()" value="save">Simpan</button>
 			        	<iframe id="target_submit" name="target_submit" style="width:100px; display:none; height:100px; position:relative;"></iframe>
+				</div>
 				</div>
 			</form>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Add Soal///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="addSoal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.materi.modal_addSoal')
+		@include('view_guru.materi.modal_addSoal')
 	</div>
 
 	<!-- ///////////////////////////////////////////////////////////// Modal Edit Soal ///////////////////////////////////////////////////////////// -->
 
 	<div class="modal fade" id="editSoal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		@include('view_admin.materi.modal_editSoal')
+		@include('view_guru.materi.modal_editSoal')
 	</div>
 
 <!-- End Daftar Materi -->
 
-<script  type="text/javascript" src="{{asset('public/js/apps/materi_soal.js')}}"></script>
-<!-- <script  type="text/javascript" src="{{asset('public/js/apps/materi.js')}}"></script> -->
+<script type="text/javascript" src="{{asset('public/js/apps/materi.js')}}"></script>
 <script type="text/javascript" src="{{ asset('public/js/jasny-bootstrap.min.js') }}"></script>
 <script type="text/javascript">
   $('.fileinput').fileinput()

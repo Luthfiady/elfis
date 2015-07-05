@@ -1,121 +1,33 @@
 <!-- MODAL ADD --> 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi_guru.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/apps/materi_admin.css') }}">
 
 <div class="modal-dialog modal-width-index modal-lg">
     <div class="modal-content">
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <p class="modal-title">Edit Soal</p>
+          <p class="modal-title">dodo Soal</p>
         </div>
 
         <div class="modal-body">
           <form id="editSoal" class="form form-horizontal" role="form" data-toggle="validator">
             <div class="form-group">
-              <div class="col-md-1"></div>
                 <label class="col-sm-2 label-right">Soal</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="10" required></textarea>
+                  <textarea class="form-control" rows="10" id="edit_nama_latihan" name="edit_nama_latihan" required></textarea>
                 </div>
-                <div class="col-md-1"></div>
+
+                <div class="col-sm-5 help-block with-errors"></div>
             </div>
+
             <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban A</label>
+                <label class="col-sm-2 label-modal-soal">Materi</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
+                  <select class="form-control" rows="10" id="edit_nama_materi" name="edit_nama_materi" required>
+                   
+                  </select>
                 </div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban B</label>
-                <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban C</label>
-                <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban D</label>
-                <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban E</label>
-                <div class="col-sm-8">
-                  <textarea class="form-control" rows="5" required></textarea>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-             <div class="form-group">
-              <div class="col-md-1"></div>
-                <label class="col-sm-2 label-right">Jawaban Benar</label>
-                <div class="col-sm-8">                  
-                </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-1"></div>
-              <div class="col-md-2"></div>
-              <div class="col-md-3">
-                <table class="table table-soal">
-                  <tr>
-                    <td class="kolom-tengah">Jawaban A</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="A">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban B</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="B">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban C</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="C">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban D</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="D">
-                1
-                </label>
-                </td>
-              </tr>
-              <tr>
-                    <td class="kolom-tengah">Jawaban E</td>
-                    <td>
-                    <label>
-                <input type="radio" name="" id="" value="E">
-                1
-                </label>
-                </td>
-              </tr>
-                </table>              
-          </div>
+                
+                <div class="col-sm-5 help-block with-errors"></div>
             </div>
 
             <div class="modal-footer">

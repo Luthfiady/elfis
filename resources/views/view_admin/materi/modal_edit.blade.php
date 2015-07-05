@@ -18,9 +18,11 @@
 		            <div class="col-md-1"></div>
 		            <label class="col-sm-2 label-right">Pelajaran</label>
 		            <div class="col-sm-8">
-		              <select class="form-control" id="editPelajaran" name="editPelajaran" required>
-		                
-		              </select>
+		              	<select class="form-control" id="editPelajaran" name="editPelajaran" required>
+		              		@foreach($data_pelajaran as $ddp)
+			              		<option value="{{ $ddp->id_pelajaran }}" >{{ $ddp->nama_pelajaran }}</option>
+			              	@endforeach
+		              	</select>
 		            </div>
 		            <div class="col-md-1"></div>
 		        </div>
@@ -30,7 +32,9 @@
 		            <label class="col-sm-2 label-right">Kelas</label>
 		            <div class="col-sm-8">
 		              <select class="form-control" id="editKelas" name="editKelas" required>
-		                
+		                	@foreach($data_kelas as $ddk)
+			              		<option value="{{ $ddk->id_kelas }}" >{{ $ddk->nama_kelas }}</option>
+			              	@endforeach
 		              </select>
 		            </div>
 		            <div class="col-md-1"></div>
@@ -41,7 +45,9 @@
 		            <label class="col-sm-2 label-right">Guru</label>
 		            <div class="col-sm-8">
 		              <select class="form-control" id="editGuru" name="editGuru" required>
-		               
+			              @foreach($data_guru as $ddg)
+			              	<option value="{{ $ddg->nik }}" >{{ $ddg->nama }}</option>
+			              @endforeach
 		              </select>
 		            </div>
 		            <div class="col-md-1"></div>

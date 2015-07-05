@@ -14,10 +14,12 @@ Materi
 
 				<div class="form-group">
 					<select class="form-control inform-height" id="search_by">
-						<option value="kategori"> Kategori </option>
-						<option value="a.nama_materi"> Nama Materi </option>
+						<option value=""> Kategori </option>
+						<option value="a.nama_materi"> Materi </option>
 						<option value="b.nama_pelajaran"> Pelajaran </option>
-	        			<option value="a.created_by"> Nama Guru </option>
+	        			<option value="c.nama_kelas"> Kelas </option>
+	        			<option value="d.nama"> Nama Guru </option>
+	        			<option value="a.create_date"> Waktu Unggah </option>
 					</select>	
 				</div>
 
@@ -28,11 +30,10 @@ Materi
 					</button>
 				</div>
 
-				&nbsp 
-
 			</form>
 		</div>
 	</div>
+
 
 	<div class="row row-table-data">
 		<div class="col-md-12 table-responsive dataTable">
@@ -63,7 +64,7 @@ Materi
 		</nav>
 	</div>
 
-	<script  type="text/javascript" src="{{asset('public/js/apps/siswaMateri.js')}}"></script>
+	<script  type="text/javascript" src="{{asset('public/js/apps/siswa_materi.js')}}"></script>
 
 </div>
 

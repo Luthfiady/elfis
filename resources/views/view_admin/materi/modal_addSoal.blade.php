@@ -94,8 +94,8 @@
 
             <div class="modal-footer">
               <div class="form-group">
-                  <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
-                <a type="submit" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
+                <button type="reset" id="reset_add_form" class="btn btn-primary btn-sm">Reset</button>
+                <a type="submit" id="simpan_soal" class="btn btn-primary btn-sm" value="save" data-toggle="modal">Simpan</a>
             </div>
           </div>
           </form>
