@@ -177,6 +177,25 @@ class Admin_MateriController extends Controller {
 
 			$file_name = "";
 
+			if($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0) {
+				
+				$displayMaxSize = ini_get('post_max_size');
+
+				switch(substr($displayMaxSize,-1)) {
+					case 'G':
+					$displayMaxSize = $displayMaxSize * 1024;
+					case 'M':
+					$displayMaxSize = $displayMaxSize * 1024;
+					case 'K':
+					$displayMaxSize = $displayMaxSize * 1024;
+				}
+
+				$error = 'Posted data is too large. '.
+				$_SERVER[CONTENT_LENGTH].
+				' bytes exceeds the maximum size of '.
+				$displayMaxSize.' bytes.';
+			}
+
 
 			if(Input::hasFile('add_file_materi')) {
 				$file_name = Input::file('add_file_materi')->getClientOriginalName();

@@ -1,5 +1,3 @@
-
-
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 var base_url = $('#base_url').val();
 var current_page;

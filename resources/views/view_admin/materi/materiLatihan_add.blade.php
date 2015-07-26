@@ -65,7 +65,7 @@ Tambah Materi
             		<div class="col-sm-5 help-block with-errors"></div>
 		        </div>
 		        <div class="form-group">
-		            <label class="col-sm-2 label-modal-soal">Isi Materi</label>
+		            <label class="col-sm-2 label-modal-soal">Keterangan Materi</label>
 		            <div class="col-sm-5">
 		            	<textarea class="form-control input-materi" rows="10" id="addIsiMateri" name="addIsiMateri" required></textarea>
 		            </div>

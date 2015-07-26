@@ -25,7 +25,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<form id="add_form" class="form form-horizontal" role="form" data-toggle="validator">
-
+				<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 				<div class="form-group">
 					<label class="col-sm-2 label-modal-soal">Nama Latihan</label>
 					<div class="col-sm-5">
